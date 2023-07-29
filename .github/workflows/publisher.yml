@@ -15,10 +15,9 @@ jobs:
       - name: Generate your content
         run: echo "Optional placeholder. Put your project's static website generator command here."
 
-      - name: Publish current workdir (which contains generated content) to GitHub Pages
-        uses: rayluo/github-pages-overwriter@v1.3
-
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          source-directory: output
-          target-branch: gh_pages
-          github-token: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: output
