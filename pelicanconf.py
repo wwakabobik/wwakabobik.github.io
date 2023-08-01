@@ -42,16 +42,16 @@ HOME_COVER = 'assets/images/bg/main.png'
 HOME_COLOR = 'black'
 
 # Feed generation is usually not desired when developing
-FEED_ATOM = None
-FEED_RSS = None
-FEED_ALL_ATOM = None
-FEED_ALL_RSS = None
-CATEGORY_FEED_ATOM = None
-CATEGORY_FEED_RSS = None
-TAG_FEED_ATOM = None
-TAG_FEED_RSS = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+FEED_ATOM = 'feeds/atom.xml'
+FEED_RSS = 'feeds/rss.xml'
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
+TAG_FEED_ATOM = 'feeds/{slug}.tag.atom.xml'
+TAG_FEED_RSS = 'feeds/{slug}.tag.rss.xml'
+AUTHOR_FEED_ATOM = 'feeds/{slug}.author.atom.xml'
+AUTHOR_FEED_RSS = 'feeds/{slug}.author.rss.xml'
 
 # Blogroll
 LINKS = (('Github', 'https://github.com/wwakabobik'),
@@ -259,3 +259,5 @@ JINJA_ENVIRONMENT = {
     'jinja2.ext.do',
   ]
 }
+
+
