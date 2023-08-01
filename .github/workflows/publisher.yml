@@ -12,8 +12,11 @@ jobs:
       - name: Check out
         uses: actions/checkout@v3
 
-      - name: Generate your content
-        run: echo "Optional placeholder. Put your project's static website generator command here."
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
+      - name: Install requirements
+        run: invoke bild
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
