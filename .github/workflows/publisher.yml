@@ -18,11 +18,11 @@ jobs:
       - name: Update submodules
         run: git submodule update --init --recursive
 
-      - name: Print working directory
-        run: pwd && ls -l
-
       - name: Generate content
         run: pelican content
+
+      - name: Print working directory
+        run: pwd && ls -l
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
