@@ -16,7 +16,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Print working directory
-        run: pwd
+        run: pwd && ls
 
       - name: Generate content
         run: pelican content
