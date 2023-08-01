@@ -25,7 +25,7 @@ I use ChatGPT-4 as an engine, although in general, the davinci or GPT-3.5-turbo 
 and with fine tuning, it may still be the best option. But I do this for two simple reasons:
 I want the bot to be able to continue and offer content itself,
 and I want to set the story options directly from the dialog, and not from the system settings.
-The first criterion is not satisfied by davinci, and the second by GPT3.5.
+The first criterion is not satisfied by davinci, and the second by GPT3.5-turbo.
 The current LLMs, when given correct and precise instructions, can perform narrow tasks very well,
 but for tasks with reconfiguration on the fly, they still require the influence and refinement of
 the user as a motivator. And I suppose that my bot can be used both to create very simple bedtime stories for
@@ -54,7 +54,7 @@ For sure!
 
 As you can see, the bot coped well with the task, and although sparingly, it was able to continue the story, but, most importantly, initiate and conduct a conversation with the child itself.
 
-Let's pause a bit at this point, and for the sake of curiosity, switch the model to davinci and GPT3.5 for comparison.
+Let's pause a bit at this point, and for the sake of curiosity, switch the model to davinci and GPT3.5-turbo for comparison.
 
 davinci-003 doesn't ask me my age and preferences, so I must to ask it tell me story about robot.
 
