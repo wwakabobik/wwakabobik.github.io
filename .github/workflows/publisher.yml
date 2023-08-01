@@ -16,7 +16,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Install requirements
-        run: invoke bild
+        run: pelican content
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
