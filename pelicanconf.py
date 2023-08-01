@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+
 AUTHOR = 'Iliya Vereshchagin'
 SITENAME = "wwakabobik's lair"
 SITEURL = 'https://wwakabobik.github.io'
@@ -18,7 +19,7 @@ DEFAULT_DATE_FORMAT = '%d %b %Y'
 
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
@@ -253,11 +254,9 @@ SHOW_TAGS_IN_ARTICLE_SUMMARY = True
 
 # Jinja config - Pelican 4
 JINJA_ENVIRONMENT = {
-  'extensions':[
+  'extensions': [
     'jinja2.ext.loopcontrols',
     'jinja2.ext.i18n',
     'jinja2.ext.do',
   ]
 }
-
-
