@@ -3,7 +3,7 @@ Can AI write a fairy tale?
 ##########################
 :date: 2023-07-30 14:22
 :author: wwakabobik
-:tags: ai, storytelling
+:tags: ai, storytelling, openai
 :slug: ai_fairy_tale_attempt_1
 :category: ai
 :status: published
