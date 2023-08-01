@@ -21,7 +21,7 @@ I just created a new bot and entered the basic instructions.
 .. image:: /assets/images/articles/ai/fairy_tale_attempt_1/instructions_1.png
    :alt: initial ChatGPT instructions
 
-I use ChatGPT-4 as an engine, although in general, the davinci or GPT-3.5 model for such tasks is at least cheaper,
+I use ChatGPT-4 as an engine, although in general, the davinci or GPT-3.5-turbo model for such tasks is at least cheaper,
 and with fine tuning, it may still be the best option. But I do this for two simple reasons:
 I want the bot to be able to continue and offer content itself,
 and I want to set the story options directly from the dialog, and not from the system settings.
@@ -81,7 +81,14 @@ Well, still looks nice. But is it on-piece story, or just a separate stories at 
 .. pull-quote::
   Certainly, my young friend! As the heroes basked in their victory, a new threat emerged. A rogue group of malfunctioning robots, led by the notorious Malware, began wreaking havoc in Technopolis. Max and his loyal companions joined forces once again to save their city. They embarked on a perilous journey to find the source of the malfunction and restore order. Along the way, they encountered strange robotic creatures, ancient artifacts, and mysterious codes. With their combined skills and unwavering determination, they overcame every obstacle. In a final showdown, Max and Sparky faced off against Malware, using their ingenuity to outsmart the rogue robots. With Malware defeated, peace was restored to Technopolis, and the heroes were hailed as saviors. The tale of their epic adventure spread far and wide, inspiring future generations of inventors and adventurers. And so, my young friend, the story of Max and his robotic companions came to a close, leaving behind a legacy of bravery and innovation.
 
-Now I got it. Bot have no one general-line story, but set of short stories for baby. So, it might be an option to generate idea or produce and force to explain stories more detailed, but every time I need to guide the bot, that's not a best option for fableteller. So, let's get back to GPT-4 and ask it to generate detailed Spooky tale of dragons and orcs for 10-year boy.
+Now I got it. Bot have no one general-line story, but set of short stories for baby. So, it might be an option to generate idea or produce and force to explain stories more detailed, but every time I need to guide the bot, that's not a best option for fableteller.
+
+Let's make a break here. I want to highlight that I used not tuned models, just manipulating with general instructions. But, in other hand, I still able to make a small tune passing extra options to base model. For example, for stories it's good idea to raise "temperature" or decrease "top_p" params, but, most like not at same time. This will make the output more random, which will have a positive effect on creativity and plot branching. On the other hand, this will most likely lead to the fact that the bot will begin to ignore, forget or mix up the original instructions. It’s not that I’m for the “golden mean”, but it’s necessary to experimentally sort out the moment when the model still follows the instructions for asking the user about his age and wishes, and does not ignore or skip further, but already freely departs in the narrative into arguments about details and feelings of the characters. I think it is appropriate to raise the temperature from the base 0.5 to 0.65-0.7. It is noticeably more difficult to manage the "top_p" parameter, because, on the one hand, with high values (closer to 1), the model will be more variable, very differently, in different words to describe the same events and objects, on the other hand, low values, on the contrary, will lead to clearer and sharper wording. I rather tend to lower the "top_p" to 0.2-0.3 to follow or create a single "author's style" while the creativity will be boosted through the temperature.
+
+The use of "Frequency Penalty" and "Presence Penalty" can also add a little personality to my narrator. It's a good tool for fine-tuning your storytelling style. For example, with negative, values close to -1 of the "Frequency Penalty" parameter, you can quite strongly clamp the model to use typical phrases and turns of the personality / character played by the bot. Increasing the parameter from zero to plus one, on the contrary, will allow the bot to adapt to the user's reaction. In my case, when we are guided not by system settings, but by user input, this parameter is not very convenient to use. Therefore, I think it's appropriate to leave it around 0, or see what fits your criteria better around -0.2/+0.2. With "Presence Penalty" it's basically the same principle, but here the focus is on themes rather than words and style. I would rather increase this parameter, but the consequences may not be very accurate, especially during the continuation of the story - medieval warriors may appear with revolvers, and fish will walk on the ground. Although who said that this is very bad for a fairy tale? In the end, this is how The Little Mermaid was born, and I wouldn’t be surprised if other fairy tales were born.
+
+After setting up these parameters, let's get back to GPT-4 and ask it to generate detailed Spooky tale of dragons and orcs for 10-year boy.
+
 
 .. pull-quote::
   Perfect! Now, gather your courage, dear friend, as we dive into our spooky tale.
@@ -108,7 +115,7 @@ Now I got it. Bot have no one general-line story, but set of short stories for b
 
   And so, they lived out their days, sharing tales of their adventure and inspiring others with their bravery. The land was peaceful, and the eerie melody of the Ghostly King was heard no more. And that, dear friend, is the end of our spooky tale. 
 
-What a story. Different character, general canvas and details. I liked it. But still not perfect. I want to have a possibility to generate a multi-chaptered book also, so, why not to enhance my settings. Let's add more tunes!
+What a story. Different characters, general canvas and details. I liked it. But still not perfect. I want to have a possibility to generate a multi-chaptered book also, so, why not to enhance my settings. Let's add more tunes!
 
 .. image:: /assets/images/articles/ai/fairy_tale_attempt_1/instructions_3.png
    :alt: chapter and detalization ChatGPT instructions
