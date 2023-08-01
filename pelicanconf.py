@@ -123,7 +123,7 @@ SITEMAP = {
 AUTHORS_BIO = {
   "wwakabobik": {
     "name": "Iliya Vereshchagin",
-    "cover": "assets/images/bg/main7.png",
+    "cover": "assets/images/bg/personal.png",
     "image": "assets/images/authors/wwakabobik.png",
     "linkedin": "wwakabobik",
     "github": "wwakabobik",
@@ -137,7 +137,7 @@ AUTHORS_BIO = {
 AUTHOR_META = {
   "wwakabobik": {
     "name": "Iliya Vereshchagin",
-    "cover": "assets/images/bg/main7.png",
+    "cover": "assets/images/bg/personal.png",
     "image": "assets/images/authors/wwakabobik.png",
     "linkedin": "wwakabobik",
     "github": "wwakabobik",
