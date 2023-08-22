@@ -19,7 +19,7 @@ DEFAULT_DATE_FORMAT = '%d %b %Y'
 
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = False
+RELATIVE_URLS = True
 
 PLUGIN_PATHS = ['plugins']
 PLUGINS = [
