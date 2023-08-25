@@ -528,21 +528,21 @@ It's last one service in my research. Shedevrum is AI generated developed by Yan
 
 Elon Musk:
 
-.. image:: /assets/images/articles/ai/image_generators/elon_musk_Shedevrum.jpg
+.. image:: /assets/images/articles/ai/image_generators/elon_musk_shedevrum.jpg
    :alt: Elon Musk in geometric shapes by Shedevrum
 
 Yandex prefer to ban Elon musk, so, space enthusiast looks like any generic retro futuristic illustration. Nice, but there is no geometry here.
 
 Necromancers:
 
-.. image:: /assets/images/articles/ai/image_generators/necromancers_Shedevrum.jpg
+.. image:: /assets/images/articles/ai/image_generators/necromancers_shedevrum.jpg
    :alt: Necromancers and skeletons by Shedevrum
 
 Image looks too generic and blurry. Yes, I know, there some representation of fog, but it's too inaccurate.
 
 Palms:
 
-.. image:: /assets/images/articles/ai/image_generators/palms_Shedevrum.jpg
+.. image:: /assets/images/articles/ai/image_generators/palms_shedevrum.jpg
    :alt: Palms by Shedevrum
 
 Here are the scenery. Partly correct images, but focus not on palms, but on woman.
