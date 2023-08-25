@@ -783,7 +783,8 @@ table td {
     padding: 0.5em;
     line-height: 0.95em;
     text-align: left;
-    border: 1px solid #e5e4e1
+    border: 1px solid #e5e4e1;
+    background-color: #0d202c;
 }
 
 table th {
@@ -792,7 +793,8 @@ table th {
     font-size: 0.75em;
     line-height: 1.25em;
     padding: 0.666em;
-    color: #fff
+    color: #fff;
+    background-color: #0d202c;
 }
 
 table td:after {
@@ -1427,6 +1429,10 @@ img {
     text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 }
 
+.post-title:hover {
+    color: #3ad6e5;
+}
+
 .has-cover .post-title {
     display: flex;
     align-items: flex-end;
@@ -1436,6 +1442,10 @@ img {
     text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 }
 
+.has-cover .post-title:hover {
+    color: #3ad6e5;
+}
+
 .post-title a {
     text-decoration: none;
     color: inherit;
@@ -1443,6 +1453,14 @@ img {
     display: flex;
     align-items: flex-end;
     text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+}
+
+.post-title:hover a {
+    color: #3ad6e5;
+}
+
+.post-title a:hover {
+    color: #3ad6e5;
 }
 
 .post-meta {
@@ -1956,6 +1974,9 @@ img {
         display: flex;
         align-items: flex-end;
         text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+    }
+    .container .post.featured .post-title:after:hover {
+        color = #3ad6e5
     }
     .post-content img,
     .post-content .fluid-width-video-wrapper {
