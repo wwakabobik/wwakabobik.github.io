@@ -7,7 +7,7 @@ AI image generators
 :slug: image_generators
 :category: ai
 :status: published
-:summary: Are there alternatives for Midjourney? Can they compete with her? I am doing my research on generative AI image tools and services.
+:summary: Are there alternatives for Midjourney? Can they compete with it? I am doing my research on generative AI image tools and services.
 :cover: assets/images/bg/ai.png
 
 It's been a year since I signed up for a paid subscription to Midjourney. With the help of this amazing generative neural network, I have created thousands of different images - from desktop wallpapers and virtual background for Zoom calls, illustrations for my movie to the cover design of my Youtube channel and this site. With the advent of such powerful tools, creating unique illustrations has become as simple as possible for a non-artist, and the results, for my taste, look professional, not to say that they were prepared by an experienced graphic designer or artist.

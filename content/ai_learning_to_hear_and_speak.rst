@@ -1,7 +1,7 @@
 ###################################
 Making AI chatbot to hear and speak
 ###################################
-:date: 2023-09-01 11:08
+:date: 2023-09-07 11:08
 :author: wwakabobik
 :tags: ai, tts, transcribe, asyncio, threading
 :slug: ai_learning_to_hear_and_speak
@@ -10,7 +10,11 @@ Making AI chatbot to hear and speak
 :summary: Learning to interact with chatbots in a natural way. How to make a bot speak and listen using Python
 :cover: assets/images/bg/ai.png
 
-I really like the concept when you can expand the possibilities of perception for artificial intelligence. Today, the chat format is the most understandable and popular for interacting with AI. Of course, communication only through chat warms my introverted soul, brought up on `BBS`_ and stories about `BOFH`_. But, nevertheless, why not make communication with bots more "human", teach them to listen, hear and speak? Everything that will be discussed further in the article is not some kind of unique killer-feature, and has long been used in many services that provide access to artificial intelligence, for example, in `aBLT.ai`_ chats. In this article, I want to talk about a Python solution available to anyone.
+I really like the concept when you can expand the possibilities of perception for artificial intelligence. Today, the chat format is the most understandable and popular for interacting with AI. Of course, communication only through chat warms my introverted soul, brought up on `BBS`_ and stories about `BOFH`_. But, nevertheless, why not make communication with bots more human, teach them to listen, hear and speak? Everything that will be discussed further in the article is not some kind of unique killer-feature, and has been used in many services that provide access to artificial intelligence, for example, in `aBLT.ai`_ chats. In this article, I want to talk about a Python solution available to anyone.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ph7EQSZPmGc?si=2AgO98dUN2ihiVW-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Transcriptions
 --------------
@@ -18,7 +22,7 @@ Transcriptions
 openai.Audio.transcribe
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-You are most likely using ChatGPT as your main LLM engine. If you turn to its API, you can find a special whisper-1 model, which is also responsible for text transcription. All you need to do to translate your voice into text is call the openai.Audio.atranscribe method. Here and below, I will use asynchronous methods where possible. This is more convenient for organizing parallel work.
+You are most likely using ChatGPT as your main LLM engine. If you turn to its `API`_, you can find a special **whisper-1** model, which is also responsible for text transcription. All you need to do to transcribe your voice into text is call the **openai.Audio.atranscribe method**. Here and below, I will use asynchronous methods where possible. This is more convenient for implementing parallel execution and running.
 
 .. code-block:: python
 
@@ -51,7 +55,7 @@ You are most likely using ChatGPT as your main LLM engine. If you turn to its AP
         )
 
 
-To call this function, we pass a file to it. And let's look at the result of the work.
+To call this function, we just pass a file to it.
 
 .. code-block:: python
 
@@ -60,12 +64,12 @@ To call this function, we pass a file to it. And let's look at the result of the
     response = await ask_chat(transcript)  # this method is for prompting LLM using pure string
 
 
-Using a pre-made file is fine, but for the sake of completeness, is it worth assuming that you probably want to record your voice on the fly?
+Using a pre-made file is fine, but for the sake of completeness: is it worth assuming that you probably want to record your voice on the fly?
 
 Recording audio: sounddevice
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The easiest way is to use sounddevice. Since sounddevice records a file in wav format, it is reasonable to convert it to mp3 for transmission over the Internet, for this you can use, for example, pydab. As a result, the code will look something like this:
+The easiest way is to use **sounddevice**. Since **sounddevice** records a file in **wav** format, it is reasonable to convert it to **mp3** for transmission over the Internet, for this you can use, for example, **pydab**. As a result, the code will look something like this:
 
 .. code-block:: python
 
@@ -91,28 +95,28 @@ The easiest way is to use sounddevice. Since sounddevice records a file in wav f
 
     :return: The path to the saved .mp3 file.
     """
-    print(f"Listening beginning for {duration}s...")
-    recording = sd.rec(int(duration * frequency_sample), samplerate=frequency_sample, channels=1)
-    sd.wait()  # Wait until recording is finished
-    print("Recording complete!")
-    temp_dir = tempfile.gettempdir()
-    wave_file = f"{temp_dir}/{str(uuid.uuid4())}.wav"
-    sf.write(wave_file, recording, frequency_sample)
-    print(f"Temp audiofile saved: {wave_file}")
-    audio = AudioSegment.from_wav(wave_file)
-    os.remove(wave_file)
-    mp3_file = f"{temp_dir}/{str(uuid.uuid4())}.mp3"
-    audio.export(mp3_file, format="mp3")
-    print(f"Audio converted to MP3 and stored into {mp3_file}")
-    return mp3_file
+        print(f"Listening beginning for {duration}s...")
+        recording = sd.rec(int(duration * frequency_sample), samplerate=frequency_sample, channels=1)
+        sd.wait()  # Wait until recording is finished
+        print("Recording complete!")
+        temp_dir = tempfile.gettempdir()
+        wave_file = f"{temp_dir}/{str(uuid.uuid4())}.wav"
+        sf.write(wave_file, recording, frequency_sample)
+        print(f"Temp audiofile saved: {wave_file}")
+        audio = AudioSegment.from_wav(wave_file)
+        os.remove(wave_file)
+        mp3_file = f"{temp_dir}/{str(uuid.uuid4())}.mp3"
+        audio.export(mp3_file, format="mp3")
+        print(f"Audio converted to MP3 and stored into {mp3_file}")
+        return mp3_file
 
 
-The resulting file can already be fed to the model. But the method looks very clumsy, because the recording continues for a fixed time, no matter how long you speak - less than the set interval and you have to wait for the end of the recording or more, which will lead to the phrase being cut off. Usually the smartest solution is to implement push-to-talk. While the user presses the button, the recording is in progress. This is how instant messengers and many online chats work.
+The resulting file can already be fed to the model. But the method looks very clumsy, because the recording continues for a fixed time, no matter how long you speak - less than the set interval and you have to wait for the end of the recording; or more, which will lead to the phrase being cut off. Usually the smartest solution is to implement push-to-talk. While the user presses the button, the recording is in progress. This is how instant messengers and many online chats work.
 
 Recording audio: AudioRecorder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-But I still don't think it's smart enough, because it doesn't fit with the concept of AI having ears. As a console user, it would be more convenient for me to do without any buttons, and, by and large, transfer this work to the code, that is, listen constantly, and if speech is noticed in the noise, then recognize it. Well, almost like how Google Assistant, Siri, and smart speakers work in your home. If you don't need to respond to any sound, you can always filter your catch phrase to be recognized first (at the start of the recording).
+But I still don't think it's smart enough, because it doesn't fit with the concept of AI having ears. As a console user, it would be more convenient for me to make an implementation without any buttons and keyboard interactions, and always it's better to assign this task to the code. That is: listen constantly, and if speech is noticed in the noise, then recognize it. Well, almost like how Google Assistant, Siri, and smart speakers work in your home. If you don't need to respond to any sound, you can always filter your catch phrase to be recognized first (at the start of the recording).
 
 .. code-block:: python
 
@@ -123,7 +127,7 @@ But I still don't think it's smart enough, because it doesn't fit with the conce
         prompt = re.sub(pattern, '', text, flags=re.IGNORECASE).lstrip()
         response = await ask_chat(prompt)
 
-Well, for this task you can use for example my AudioRecorder based on pyaudio. He will listen to the microphone and detect noise (speech) against the background of silence using the RMS (Root Mean Square) method. Full implementation below.
+Well, for this task you can use for example my **AudioRecorder** based on **pyaudio**. It will listen to the microphone and detect noise (speech) against the background of silence using the **RMS** (Root Mean Square) method. Full implementation below.
 
 .. code-block:: python
 
@@ -341,7 +345,7 @@ Well, for this task you can use for example my AudioRecorder based on pyaudio. H
 
             return rms * 1000
 
-You may need to experiment with the threshold, timeout, channels, sample_length, chunk, and rate parameters depending on your microphone. And finally, the code to get the entry for the model.
+You may need to experiment with the *threshold*, *timeout*, *channels*, *sample_length*, *chunk*, and *rate* parameters depending on your microphone. And finally, the code to get use as for "ears" of bot.
 
 .. code-block:: python
 
@@ -353,8 +357,8 @@ You may need to experiment with the threshold, timeout, channels, sample_length,
 speech_recognition
 ~~~~~~~~~~~~~~~~~~
 
-Using OpenAI's ready-made methods is fine, but the tokens are not free, and you might want to use an alternative approach. Or this method does not suit you at all, because you use, for example, llama2 or Bard instead of ChatGPT. Then an alternative solution may be to use the speech_recognition library.
-I use google recognition, but you can use other engines if you want, like wit, azure, sphinx. The library has everything we need so that we can recognize both an audio file and record directly using the Microphone() class. Just like my AudioRecorder, it's convenient to use voice activation. The only thing you need to specify is the language of the audio file. Yes, this is not as flexible and convenient as in the method from OpenAI, where you can omit the language parameter and hope that the system itself will select the correct language, but I personally would not recommend not specifying the language in order to avoid errors. An example method might look like this:
+Using **OpenAI**'s ready-made methods is fine, but the tokens are not free, and you might want to use an alternative approach. Or this method does not suit you at all, because you use, for example, **llama2** or **Bard** instead of **ChatGPT**. Then an alternative solution may be to use the **speech_recognition** library.
+I use *google* recognition, but you can use other engines if you want, like *wit*, *azure*, *sphinx*. The library has everything we need so that we can recognize both an audio file and record directly using the **Microphone()** class. Just like my **AudioRecorder**, it's convenient to use voice activation. The only thing you need to specify is the language of the audio file. Yes, this is not as flexible and convenient as in the method from OpenAI, where you can omit the language parameter and hope that the system itself will select the correct language, but I personally would recommend to specify the language you speaking in order to avoid errors. An example method might look like this:
 
 .. code-block:: python
 
@@ -417,7 +421,6 @@ Finally, the code for working with chat via voice might look like this.
                         transcript = await gpt.transcript(file=f, language="en")
                 else:
                     transcript = CustomTranscriptor(language="en-US").transcript()
-                    pass
                 if transcript:
                     print(transcript)
                     response = await ask_chat(transcript)
@@ -435,7 +438,7 @@ It's time to teach our artificial intelligence to speak. Unfortunately, there is
 gtts
 ~~~~
 
-The first option is to use the gtts library from Google. In this case, gtts will create a file with voice acting, which will need to be played in some player, and then deleted. In order not to produce entities, I use pydub.playback.
+The first option is to use the **gtts** library from Google. In this case, **gtts** will create a file with voice acting, which will need to be played in some player, and then deleted. In order not to produce entities, I use **pydub.playback**.
 
 .. code-block:: python
 
@@ -459,7 +462,7 @@ The first option is to use the gtts library from Google. In this case, gtts will
 pyttsx
 ~~~~~~
 
-The second option is to use the pyttsx library. Unlike gtts, speech synthesis occurs on the fly in a loop, which is more convenient and faster when streaming text.
+The second option is to use the **pyttsx** library. Unlike **gtts**, speech synthesis occurs on the fly in a loop, which is more convenient and faster when streaming text. And, moreover, doesn't require Internet connection.
 
 .. code-block:: python
 
@@ -525,7 +528,6 @@ Actually, to put it together, we get a response from the chat and play it throug
                         transcript = await gpt.transcript(file=f, language="en")
                 else:
                     transcript = CustomTranscriptor(language="en-US").transcript()
-                    pass
                 if transcript:
                     print(transcript)
                     response = await ask_chat(transcript)  # this method returns string of whole chatbot response
@@ -539,7 +541,7 @@ Actually, to put it together, we get a response from the chat and play it throug
 Reality and usage challenges
 ----------------------------
 
-As in a wonderful anecdote about Chapaev: but there is one caveat. Receiving a response from the chatbot takes some time, depending on the model, it can be quite long. When using tts, we have to wait for a full response and start playing the voice, which further increases the final response time. When I first started my experiments, it ruined all the magic of live communication and caused only irritation and a desire to return to satrom-kind text communication. But it is not all that bad. To be honest, I'm in love with ChatGPT's stream method, which returns a response on the fly from ChatCompletion. So my idea is to call tts as soon as something is received in response from the bot. But probably those who used this feature probably know that anything can be returned - both words and sentences or individual letters. And that's a problem if you try to run tts on every chunk you get.
+As in a wonderful anecdote about Chapaev: "But there is one caveat". Receiving a response from the chatbot takes some time, depending on the model, it can be quite long. When using tts, we have to wait for a full response and start playing the voice, which further increases the final response time. When I first started my experiments, it ruined all the magic of live communication and caused only irritation and a desire to return to satrom-kind text communication. But it is not all that bad. To be honest, I'm in love with ChatGPT's stream method, which returns a response on the fly from **ChatCompletion**. So my idea is to call tts as soon as something is received in response from the bot. But those who used this feature probably know that anything can be returned - both words and sentences or individual letters. And that's a problem if you try to run tts on every chunk you get.
 
 .. code-block:: json
 
@@ -684,7 +686,7 @@ The result, to be honest, will be so-so - torn. It's probably a good idea to wai
             asyncio.create_task(tts_task())
             # and rest of the code
 
-This already sounds better, but intonation and punctuation are lost in the process of processing. Finally, let's make the assumption that only sentences should be processed, well, or parts of them, that is, pieces that will end with the characters ".?!,;:".
+This already sounds better, but intonation and punctuation are lost in the process of processing. Finally, let's make the assumption that only sentences should be processed, well, or parts of them, that is, pieces that will end with the characters "*.?!,;:*".
 
 .. code-block:: python
 
@@ -779,41 +781,41 @@ If you tried my examples, you will notice that the chat output is interrupted du
         asyncio.create_task(tts_worker())
         # and rest of the code
 
-And yet the task is not solved, because, alas, the methods of tts (what is gtts, what is pyttsx) are synchronous. This means that for the duration of voice acting, the execution of the main loop is blocked, and awaits the execution of a synchronous task. To solve this problem, you should, for example, run the players in separate threads. The easiest way to do this is using the threading library.
+And yet the task is not solved, because, alas, the methods of tts (what is **gtts** or **pyttsx**) are synchronous. This means that for the duration of voice acting, the execution of the main loop is blocked, and awaits the execution of a synchronous task. To solve this problem, you should, for example, run the players in separate threads. The easiest way to do this is using the **threading** library.
 
 .. code-block:: python
 
-        import threading
+    import threading
 
 
-        async def process_via_gtts(text):
-        """
-        Converts text to speach using gtts text-to-speach method
+    async def process_via_gtts(text):
+    """
+    Converts text to speach using gtts text-to-speach method
 
-        :param text: Text needs to be converted to speach.
-        """
-            temp_dir = tempfile.gettempdir()
-            tts = gTTS(text, lang="en")
-            raw_file = f"{temp_dir}/{str(uuid4())}.mp3"
-            tts.save(raw_file)
-            audio = AudioSegment.from_file(raw_file, format="mp3").speedup(1.3)
-            os.remove(raw_file)
-            player_thread = threading.Thread(target=playback.play(audio), args=(audio,))
-            player_thread.start()
+    :param text: Text needs to be converted to speach.
+    """
+        temp_dir = tempfile.gettempdir()
+        tts = gTTS(text, lang="en")
+        raw_file = f"{temp_dir}/{str(uuid4())}.mp3"
+        tts.save(raw_file)
+        audio = AudioSegment.from_file(raw_file, format="mp3").speedup(1.3)
+        os.remove(raw_file)
+        player_thread = threading.Thread(target=playback.play(audio), args=(audio,))
+        player_thread.start()
 
-        async def tts_process(text):
-        """
-        Converts text to speach using pre-defined model
+    async def tts_process(text):
+    """
+    Converts text to speach using pre-defined model
 
-        :param text: Text needs to be converted to speach.
-        """
-        if "google" in self.___method:
-            await self.__process_via_gtts(text)
-        else:
-            player_thread = threading.Thread(target=process_via_pytts, args=(text,))
-            player_thread.start()
+    :param text: Text needs to be converted to speach.
+    """
+    if "google" in self.___method:
+        await self.__process_via_gtts(text)
+    else:
+        player_thread = threading.Thread(target=process_via_pytts, args=(text,))
+        player_thread.start()
 
-In this case, we get a new problem - now tts will be played as soon as a new offer appears in the queue. If, by the time the first sentence is spoken, the second sentence is received, then it will be played, then the third, and a cacophony will result. To avoid this, finally, you need to use the semaphore mechanism. Before the work, we check and wait for the release of the semaphore, and upon its completion, we release the semaphore.
+In this case, we get a new problem - now tts will be played as soon as a new offer appears in the queue. If, by the time the first sentence is spoken, the second sentence is received, then it will be played, then the third, and a cacophony will result. To avoid this, finally, you need to use the **semaphore** mechanism. Before going further, we'll check and wait for the release of the **semaphore**, and upon its completion, we release the **semaphore**.
 
 .. code-block:: python
 
@@ -893,3 +895,4 @@ Why is it needed? Here everyone can answer depending on their tasks and needs. I
 .. _BBS: https://en.wikipedia.org/wiki/FidoNet
 .. _aBLT.ai: https://ablt.ai/
 .. _BOFH: http://www.bofharchive.com/
+.. _API: https://platform.openai.com/docs/introduction
