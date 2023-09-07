@@ -10,7 +10,7 @@ My history of first-person view party-based RPG
 :summary: I love first-person view party-based RPGs. Here is a list of games I played and my thoughts about them and future of the genre.
 :cover: assets/images/bg/gaming.png
 
-While gamers are discussing and playing through `Baldur's Gate 3`_, I also want to talk about this one of the oldest and most interesting genres of computer games, about `RPG`_. Yes, my favourite RPG is `Baldur's Gate`_, but today is not about it, but about other games. Unlike RPG with isometric third-person view, I want turn to RPGs with first person view, moreover, not to modern first-person-slash-pew-pew-bethseda-style “games”, but to party-based, classic RPGs.  Yes, good old party-based dungeon crawlers.
+While gamers are discussing and playing through `Baldur's Gate 3`_, I also want to talk about this one of the oldest and most interesting genres of computer games, about `RPG`_. Yes, my favourite RPG is `Baldur's Gate`_, but today is not about it, but about other games. Unlike RPG with isometric third-person view, I want turn to RPGs with first person view, moreover, not to modern first-person-slash-pew-pew-bethesda-style “games”, but to party-based, classic RPGs.  Yes, good old party-based dungeon crawlers.
 
 .. image:: /assets/images/articles/gaming/first_person_view_party_based_rpg/cover.png
    :alt: Every game start with party creation
@@ -245,7 +245,7 @@ My criticism also focuses on `Morrowind`_, and subsequent `Oblivion`_ and `Skyri
 Our Time
 ========
 
-Time doesn't spare anyone. And the years that followed were not productive for me in terms of going through RPG games. Initially, this was due to the fact that `FPS`_ took over the industry, replaced by numerous open-world actions and survivors. In such a world, hard-to-do with such relicts, which must be dealt with, apart from `RTS`_ and RPG have gone to the past, leaving only room for enthusiasts and small `indie`_ projects. I regret to miss `Pillars of Ethernity`_ and the `Divinity`_ series in the genre of isometric RPGs, supported only by one powerful and radiant `Larian Studios`_, and the games to think transformed into large-scale `Total War`_ and `Crusaders Kings`_. But, in general, since the beginning of zero in the genre of party RPF nothing remarkable has come out. Dungeon crawler has been transformed into simplified `indie`_ mechanics, for example, this is very noticeable in the remarkable `Darkest Dungeon`_.
+Time doesn't spare anyone. And the years that followed were not productive for me in terms of going through RPG games. Initially, this was due to the fact that `FPS`_ took over the industry, replaced by numerous open-world actions and survivors. In such a world, hard-to-do with such relicts, which must be dealt with, apart from `RTS`_ and RPG have gone to the past, leaving only room for enthusiasts and small `indie`_ projects. I regret to miss `Pillars of Eternity`_ and the `Divinity`_ series in the genre of isometric RPGs, supported only by one powerful and radiant `Larian Studios`_, and the games to think transformed into large-scale `Total War`_ and `Crusaders Kings`_. But, in general, since the beginning of zero in the genre of party RPF nothing remarkable has come out. Dungeon crawler has been transformed into simplified `indie`_ mechanics, for example, this is very noticeable in the remarkable `Darkest Dungeon`_.
 
 .. image:: /assets/images/articles/gaming/first_person_view_party_based_rpg/darkest_dungeon.jpeg
    :alt: Darkest Dungeon
@@ -310,7 +310,7 @@ On the other hand, a very small number of games of the genre of party RPG from t
 .. _Might & Magic: https://en.wikipedia.org/wiki/Might_and_Magic
 .. _The Elder Scrolls: https://en.wikipedia.org/wiki/The_Elder_Scrolls
 .. _Daggerfall: https://en.wikipedia.org/wiki/The_Elder_Scrolls_II:_Daggerfall
-.. _Pillars of Ethernity: https://en.wikipedia.org/wiki/Pillars_of_Eternity
+.. _Pillars of Eternity: https://en.wikipedia.org/wiki/Pillars_of_Eternity
 .. _Divinity: https://en.wikipedia.org/wiki/Divinity_(video_game_series)
 .. _Total War: https://en.wikipedia.org/wiki/Total_War_(video_game_series)
 .. _Crusaders Kings: https://en.wikipedia.org/wiki/Crusader_Kings
