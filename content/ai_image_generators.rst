@@ -4,7 +4,7 @@ AI image generators
 :date: 2023-08-25 16:14
 :author: wwakabobik
 :tags: ai, image generation
-:slug: image_generators
+:slug: ai_image_generators
 :category: ai
 :status: published
 :summary: Are there alternatives for Midjourney? Can they compete with it? I am doing my research on generative AI image tools and services.
