@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Iliya Vereshchagin'
 SITENAME = "wwakabobik's lair"
 SITEURL = 'https://wwakabobik.github.io'
+GOOGLE_ANALYTICS = "G-MVTS1WKZ1T"
 
 PATH = 'content'
 TIMEZONE = 'Europe/Belgrade'
