@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>AI practices used for QA</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa-ai.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa-ai.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Can AI completely replace human testers? Is it more than tool? What are the best practices for using AI in QA? Let's find out!">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="ai">
+    <meta name="tags" content="qa">
+    <meta name="tags" content="copilot">
+    <meta name="tags" content="gpt">
+    <meta name="tags" content="testing">
+    <meta name="tags" content="automation">
+    <meta name="tags" content="python">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="AI practices used for QA"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Can AI completely replace human testers? Is it more than tool? What are the best practices for using AI in QA? Let's find out!"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2023-10-23 09:38:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2023-10-23 08:35:50.130838+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="qa, ai"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="ai"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="qa"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="copilot"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="gpt"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="testing"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="automation"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/qa.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "AI practices used for QA",
+  "headline": "AI practices used for QA",
+  "datePublished": "2023-10-23 09:38:00+02:00",
+  "dateModified": "2023-10-23 08:35:50.130838+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/qa.png",
+  "url": "https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/",
+  "description": "Can AI completely replace human testers? Is it more than tool? What are the best practices for using AI in QA? Let's find out!"
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">AI practices used for QA</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="23 Oct 2023">23 Oct 2023</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/qa.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>As a beginning, I want say that LLM is a great base for introducing to any field or subject and the QA is no exception. AI does an excellent job of explaining testing theory; it can interactively explain the best practices, share the knowledge and accumulated past experience, recommend the QA-related books, answer questions and help a Junior tester to dive into QA area. If so, then a reasonable question arises: can AI completely replace the tester? And this question is ambiguous. Considering the pace of AI development, the answer is yes, on the other hand, there are several pitfalls and nuances…</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hNtOEr2W2D4?si=FpdFJ1VDOk8PBO4W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="section" id="manual-testing-and-possibilities">
+<h2>Manual testing and possibilities</h2>
+<p>I use AI assistants every day in my work. And I may say that now the capabilities of AI are comparable to several Junior testers at once. Existing AIs can perform very well of what young testers can do being under control of the Senior. Let's say, depending on the AI model, and how you use it, AI can handle tasks of a manual tester very well, like write checklists or troubleshooting, and act as a test designer - describe test cases in details. But with the nuance that you, as a Senior tester, still need to control and correct it, and, what is most importantly, have a good understanding of your subject area. The fact is that AI can perform a task quite well and put it in layman's terms, in the most understandable and obvious way. This means you shouldn’t expect complex interconnected and, most importantly, deep nested scenarios from AI.</p>
+<img alt="LLM generates code for you" src="/assets/images/articles/qa/ai_practices_used_for_qa/pom_generation.jpg" />
+<p>Don’t expect that it will separate test data from test cases (although it knows perfectly well how to do it right). So, every time you will need to adjust AI and its outputs: redo it, complete it, deepen it. Tell again and again: rework, rework, rework, show me an several options, retry… And every time you will confront a problem, that consistency of cases is because of size limitation of the context: the data and instructions with which your AI works. This is similar to how to train a Junior tester to fit you, to fit your vision, to fit the depth and accuracy, style you need, to fit your capabilities and cost - in terms of money and time and productivity. And due to this you need to provide the context before generation each time, or retrain the model to suit your specific needs (substitute embeddings, fine-tune models, etc.). In other words, without a lot of context, giving some tasks to AI, which can be done by Middle tester, won’t work at all. Because AI doesn’t have enough context and a control mechanism, some feedback loop, thus, you must control it every and each interaction. But we can try to delegate control also… But let’s not hurry for now.</p>
+<img alt="LLM generates code for you" src="/assets/images/articles/qa/ai_practices_used_for_qa/checklists.jpg" />
+<p>At the same time, AI is not just a tool for delegating routine, but it also your helpful assistant and handy reference, deeply involved in solving your problems. Give it a log, an error, a problem or ask how to set up some environment or tool, and the AI will do the its task quickly and perfectly, without human being need to google StackOverflow. But you need to understand that most models are relevant for a certain date of training, and model will not know about changes made in recent weeks, months, or even a year. Unless, of course, it has access to Internet search.</p>
+<img alt="Environment setup guide" src="/assets/images/articles/qa/ai_practices_used_for_qa/env_guide.jpg" />
+<p>Further I'll move on to automated testing only. Cause actual thing performed by AI is automation of every routine you may have. So, what do I personally use AI for and what kind?</p>
+</div>
+<div class="section" id="copilot">
+<h2>Copilot</h2>
+<p>I've been using Copilot from GitHub for three months. That is, I pay $10 a month for it. Is it worth it? To be honest, for me - yes. I really like to delegate writing comments, docstrings and other documentation to Copilot. In most cases, it does this well, but if you need something else, something more, then on the second or third try it picks up what you want from it - in what style to write docstrings, in what terms, and from which modules and packages.</p>
+<img alt="Copilot generates docstrings" src="/assets/images/articles/qa/ai_practices_used_for_qa/documenting.jpg" />
+<p>This functionality at last, but not least, for me is worth the time I would have spent writing documentation. But the functionality of copilot is not limited to just generating documentation. Copilot can also generate code, functions, classes. For simplicity, I assume Copilot as an enhanced version of IDE hint mechanism. As far you started to write code, it will spit out the most likely completions of your code to you. This doesn't always work as I expected, but at least you'll have the option to choose both the copilot hint or classic IDE substitution. As for generating code from the description, and even more so from the function name everything getting worse. AI can generate skeletons and some trivial functions, or vary those that you have already written. But if you need some specific logic, then, most probably, you will have to write it by yourself. And here's an important nuance - as a developer tool, Copilot is more of a fifth wheel than a help - it can easily generate incorrect code that you will then have to debug. But as a test automation tool, it’s not bad at all: producing similar tests in essence literally just by pressing 2-3 keys on the keyboard to complete whole test at all. This accelerates the work by an order of magnitude.</p>
+<img alt="Copilot generates code" src="/assets/images/articles/qa/ai_practices_used_for_qa/code_generation.jpg" />
+<p>Do you need to test your webform? Just write one or two tests, and then start writing the name of the test and now you have all the rest written. In total, as in the case of Junior tester and in the case of Copilot, you will need to provide both of them examples, stories and show them how to write tests correctly: to use generators instead of hardcode, and bot of them most probably need to have a ready-made POM (or at least part of it). Yes, for sure, you can try to extract it from the generation, but not everything is as rosy as if you were to supplement it by analogy. On the other hand, Сopilot can explain someone else’s code quite well if you need it. It can fix errors in code and optimize, shorten the code (note that it can do this in unusual and unexpected way and even discard what you need - but, again, you can adjust it). Last what you can do using Copilot is to generate unit tests based on the source code of your software.</p>
+<img alt="Unit tests generation" src="/assets/images/articles/qa/ai_practices_used_for_qa/unit_testing.jpg" />
+<p>And, actually, quite accurately and not bad at all, even with mocking. This is quite impressive, but you still need to keep in mind that there is always a chance that something will not work either the first or the fifth time. Because, I saying it one more time: Copilot, like any other AI, also have a problem with the size of the context, that is, the depth of your calls , code, and its complexity and specific architecture. So, it’s more Junior AI engineer, not a Middle, you still cannot delegate to it the task like: “cover my functionality with 100% tests.” It won't cover. At least without your active participation.</p>
+</div>
+<div class="section" id="best-practice-and-qa-tasks">
+<h2>Best practice and QA tasks</h2>
+<p>Whether you use Copilot or not, other regular QA tasks can also  be delegated to AI. For example, every day when I write tests, I ask LLM to write me locators or even whole POM objectsusing my template. How it looks like: I provide the AI bot the source code of the page and ask it to generate POM objects for me. This accelerates my work, but at the same time, the result still needs to be revised and iteratively improved. For example, the locators that the bot will quickly produce will be too far from good. So you will need to clarify what and how you want to be shorten and improved. The AI bot is the same Junior guy who needs to learn that them don’t just need to take and copy a huge XPATH from the browser dev tools. You know, cause it will break as far next very first change will be introduced to frontend.</p>
+<img alt="If you don't teach AI, it will generate bad locators" src="/assets/images/articles/qa/ai_practices_used_for_qa/bad_locator.jpg" />
+<p>Well, of course, this applies not only to UI testing, but also to API: you also can pass Swagger’s JSON file to AI and ask it to write test base - cover API endpoints calls in your code and tests for responses and parameters of them. In general, if your team have good software architecture and documentation, you can get ready-made tests on the fly. If necessary, provide extra the requirements and documentation to the model and adjust it to expand your model. How it may look? Pass URL to AI bot, tell it to write tests, then rewrite them in POM style, and here they are ready-made tests. Moreover, you can find that other AI services and tools already exist. That not only allow you to write tests on the fly, but also “poke” your site live with a robot just from your user browser session. It looks impressive and replaces the work of a manual tester who sits behind you under your control. Only difference is here, that it can immediately write down the autotest code. Well, I’m talking about Sider.ai, which is not a cheap, but at least you need to try it.</p>
+</div>
+<div class="section" id="growing-the-electronic-middle-tester">
+<h2>Growing the electronic Middle tester</h2>
+<p>And here we got to the most frustrating problem: the lack of AI of your context. Let’s say, no matter how wonderful the AI is, it will not have ability to use for test cookieSSO to obtain information from externally closed pages and system. Also, if you need your own style and code, your framework, you need to provide your own code base and/or documentation, so, you may need to use some embeddings package in model. This is the first problem: most likely your autotests already use yours some test framework and bindings, your POM functions and helpers that the AI does not know about. Second problem, that it would be nice not to sit with the AI and copy HTML/JSON to it, then receive a response, copy it into your code, and then check, and back, and repeat. Why not to delegate it to AI? Just say: “Hey, dude, come back with final result”! Well, I, and, most likely you, want that it’s not a Junior, but such an electronic Middle tester. Is it possible to achieve? The task of grew up a manually driven Junior tester into a semi-automatic Middle still assigned on you. And you must perform. Bot, take a break and review: it’s almost done. Generally speaking, the AI has all the necessary part. It can generate locators, page objects, and tests based on them too. We need to unite, assemble and give AI the opportunity to receive feedback on the nonsense that he wrote, generate and change. So, let's send errors back to it, so that it may fix the code. Do you want also to fix styles and docstrings, cases, issues? Let AI fix it until he gets 100% pass rate of runners and linters.</p>
+<img alt="Test Driven Development as it is" src="/assets/images/articles/qa/ai_practices_used_for_qa/tdd.png" />
+<p>As a prototype, proof-of-concept, I will use my OpenAI wrapper. In order to get something expected and reasonable from the AI, I will use ChatGPT4, and I will also need to use functions that will do all the dirty work: function call to receive page content and function call to run tests. So, that means that I need to use the gpt-4-0613 model.</p>
+<img alt="AI generator scheme" src="/assets/images/articles/qa/ai_practices_used_for_qa/scheme.png" />
+<p>I will use pytest+selenium as a framework cause of simplicity, regularity  and familiarity (and because the mine OpenAI wrapper is also written using Python). My entire testing framework will consist of just one conftest file with a driver fixture, a runner, and by default we will assume that for each unique page we de facto have a fixture that will open the required page for testing. In real life, probably, before starting the test, we would go through authentication and somehow manage the environment.</p>
+<div class="highlight"><pre><span></span>from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+
+
+def pytest_runtest_makereport(item, call):
+    &quot;&quot;&quot;
+    Pytest hook for saving html page on test failure
+
+    :param item: pytest item
+    :param call: pytest call
+    &quot;&quot;&quot;
+    if &quot;driver&quot; in item.fixturenames:
+        web_driver = item.funcargs[&quot;driver&quot;]
+        if call.when == &quot;call&quot; and call.excinfo is not None:
+            with open(f&quot;{item.nodeid.split(&#39;::&#39;)[1]}.html&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
+                file.write(web_driver.page_source)
+
+
+@pytest.fixture
+def driver():
+    &quot;&quot;&quot;
+    Pytest fixture for selenium webdriver
+
+    :return: webdriver
+    &quot;&quot;&quot;
+    options = Options()
+    options.add_argument(&quot;--headless&quot;)
+    options.headless = True
+    path = ChromeDriverManager().install()
+    _driver = webdriver.Chrome(service=ChromeService(executable_path=path, options=options), options=options)
+
+    yield _driver
+
+    _driver.close()
+    _driver.quit()
+</pre></div>
+<p>But let's leave that out. At least we’re experimenting. We are already, in fact, running tests from the “real”-like environment. At first, let's write system instructions for the bot. We need three things from it: 1) I’ll ask to receive the page code (by calling a certain function), and then generate json for it, which will contain page objects and tests in a certain format. 2) Run a specific test and get the result. If there is an error, fix it. 3) Repeat 2.</p>
+<div class="highlight"><pre><span></span>1) You may obtain page code by calling &quot;get_page_code&quot; function. It will return you:
+ raw HTML document, what needs to be tested (guarded by ```). And you need to respond with json in following format:
+{
+&quot;page_objects&quot;: [
+&quot;@property\\n
+    def calculate_button(self):\\n
+        return WebDriverWait(self.driver, 10).until(\\n
+            EC.presence_of_element_located((By.XPATH, &#39;//button[.=&#39;&#39;&#39;Calculate&#39;&#39;&#39;]&#39;))\\n
+        )&quot;, &lt;...&gt;
+],
+&quot;tests&quot;: [&quot;def test_division_by_zero(page):\\n
+    page.numbers_input.send_keys(1024)\\n
+    page.divide_button.click()\\n
+    page.calculator_input.send_keys(&#39;0&#39;)\\n
+    page/calculate_button.click()\\n
+    assert page.error.text() == &#39;Error: divide by zero&#39;&quot;, &lt;...&gt;],
+}
+This means you need to create page objects for each object on the page using laconic and stable XPATH locators (as short and stables as you can, use only By.XPATH locators, not By.ID, not By.CSS_SELECTOR or By.CLASS name), and then create all possible test cases for them. It might be some filed filling tests (errors, border checks, positive and negative cases), clicking, content changing, etc. Please respect to use &#39;page&#39; fixture for every test, it&#39;s predefined in code and opens page under test before it.
+2) Then I may ask you to execute some tests. You can run demanded test via &quot;get_tests_results&quot; function, based on gathered content, you need to respond with json in following format:
+results = {
+    &quot;passed&quot;: [],
+    &quot;failed&quot;: [],
+    &quot;error&quot;: [],
+    &quot;failure details&quot;: {}
+}
+where &quot;failure details&quot; - is dict with keys equal to test names (which you generated) and possible failures details. If you got an failures and errors, you need to respond as in 1 with fixed code (page objects and/or tests).
+Answer only with JSON in format I mentioned in 1. Never add anything more than that (no explanations, no extra text, only json).
+3) In addition to 1 and 2 i may pass you extra info what kind of test data might be used (i.e. for form filling), but in general you need to generate all possible scenarios (valid/invalid/border cases, always add what&#39;s not listed by user, but should be for best quality of testing coverage).
+&quot;&quot;&quot;
+</pre></div>
+<p>If necessary, I, as an user, can enhance tests generation with user context (requirements, styling, test data, demanded cases, coverage, etc.).</p>
+<p>In order to reduce gpt tokens consumption, we’ll get a page (it’s better to do this not with a request, but with the help of selenium, so that possible javascript can be processed on the page), then we’ll remove everything unnecessary and insignificant: just leaving only the body and remove all scripts from it. You can easily expand it as you need, for example, removing repeating elements (sidebars, headers, etc.). To do this for prototype, I wrote the PageRetriever class.</p>
+<div class="highlight"><pre><span></span>from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
+
+
+class PageRetriever:
+    &quot;&quot;&quot;The PageRetriever class is for managing an instance of the PageRetriever.&quot;&quot;&quot;
+
+    def __init__(self, url=&quot;&quot;):
+        &quot;&quot;&quot;
+        General init.
+
+        :param url: (str) URL of the page.
+        &quot;&quot;&quot;
+        options = Options()
+        options.add_argument(&quot;--headless&quot;)
+        options.headless = True
+        path = ChromeDriverManager().install()
+        self.driver = webdriver.Chrome(service=ChromeService(executable_path=path), options=options)
+        self.url = url
+
+    def set_url(self, url):
+        &quot;&quot;&quot;
+        Set the url.
+
+        :param url: (str) URL of the page.
+        &quot;&quot;&quot;
+        self.url = url
+
+    def get_page(self, url=None):
+        &quot;&quot;&quot;
+        Get the page content from the url.
+
+        :param url: (str) URL of the page.
+        :return: (str) HTML content of the page.
+        &quot;&quot;&quot;
+        if url:
+            self.set_url(url)
+        return self.get_page_content(self.url)
+
+    def get_body(self, url=None):
+        &quot;&quot;&quot;
+        Get the body content of the page.
+
+        :param url: (str) URL of the page.
+        :return: (str) Body content of the page.
+        &quot;&quot;&quot;
+        if url:
+            self.set_url(url)
+        return self.extract_body_content(self.get_page())
+
+    def get_body_without_scripts(self, url=None):
+        &quot;&quot;&quot;
+        Get the body content of the page without &lt;script&gt;...&lt;/script&gt; tags.
+
+        :param url: (str) URL of the page.
+        :return: (str) Body content of the page without &lt;script&gt;...&lt;/script&gt; tags.
+        &quot;&quot;&quot;
+        if url:
+            self.set_url(url)
+        return self.remove_script_tags(self.get_body())
+
+    def get_page_content(self, url):
+        &quot;&quot;&quot;
+        Get the page content from the url.
+
+        :param url: (str) URL of the page.
+        :return: (str) HTML content of the page.
+        &quot;&quot;&quot;
+        self.driver.get(url)
+
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, &quot;body&quot;)))
+
+        start_time = time.time()
+        while True:
+            network_activity = self.driver.execute_script(
+                &quot;return window.performance.getEntriesByType(&#39;resource&#39;).filter(item =&gt; &quot;
+                &quot;item.initiatorType == &#39;xmlhttprequest&#39; &amp;&amp; item.duration == 0)&quot;
+            )
+            if not network_activity or time.time() - start_time &gt; 30:
+                break
+
+        content = self.driver.page_source
+        self.driver.close()
+        self.driver.quit()
+
+        return content
+
+    @staticmethod
+    def extract_body_content(html_content):
+        &quot;&quot;&quot;
+        Extract the body content from the html_content.
+
+        :param html_content: (str) HTML content of the page.
+        :return: (str) Body content of the page.
+        &quot;&quot;&quot;
+        soup = BeautifulSoup(html_content, &quot;html.parser&quot;)
+        body_content = soup.body
+
+        return str(body_content)
+
+    @staticmethod
+    def remove_script_tags(input_content):
+        &quot;&quot;&quot;
+        Remove all &lt;script&gt;...&lt;/script&gt; tags from the input_content.
+
+        :param input_content: (str) HTML content of the page.
+        :return: (str) Body content of the page without &lt;script&gt;...&lt;/script&gt; tags.
+        &quot;&quot;&quot;
+        pattern_1 = re.compile(r&quot;&lt;script.*?&gt;.*?&lt;/script&gt;&quot;, re.DOTALL)
+        pattern_2 = re.compile(r&quot;&lt;path.*?&gt;.*?&lt;/path&gt;&quot;, re.DOTALL)
+        output = re.sub(pattern_1, &quot;&quot;, input_content)
+        output = re.sub(pattern_2, &quot;&quot;, output)
+        return output
+</pre></div>
+<p>We also need a runner that will receive data for AI feedback on completed tests. Let's say we use the pytest-json-report plugin to obtain test results data. In the report I will add information about passed and failed tests, for each failed test I will add the error itself (if necessary, you can put a traceback there also), and it would also be a good idea to send back the page code at the time of the failure happened. This will be useful for the AI to see what has changed on the page so to be able to change actual to the the correct expected values. To be honest, in real life, the pages are not so small, and providing a page for every error is too exhaustive. So we will still be limited by the size of the content and the relatively high cost in tokens of such an experiment. But, what is actual truth that AI's work costs are cents, not hundreds of dollars like human being Junior/Middle tester..</p>
+<div class="highlight"><pre><span></span>import pytest
+
+from utils.page_retriever import PageRetriever
+
+
+def run_tests(test_files, add_failed_html=True, add_failure_reasons=True, count_of_htmls=1):
+    &quot;&quot;&quot;
+    Run tests and return results in JSON format.
+
+    :param test_files: (list) list with test files.
+    :param add_failed_html: (bool) boolean to add html report.
+    :param add_failure_reasons: (bool) boolean to add failure reasons.
+    :param count_of_htmls: (int) count of htmls to add. Doesn&#39;t recommend to use more than 1.
+
+    :return: JSON with results.
+    &quot;&quot;&quot;
+    pytest.main(
+        [
+            &quot;-q&quot;,
+            &quot;--json-report&quot;,
+            &quot;--json-report-file=test_report.json&quot;,
+            &quot;-n=4&quot;,
+            &quot;-rfEx --tb=none -p no:warnings -p no:logging&quot;,
+        ]
+        + test_files
+    )
+
+    with open(&quot;test_report.json&quot;, encoding=&quot;utf-8&quot;) as json_file:
+        data = json.load(json_file)
+
+    results = {&quot;passed&quot;: [], &quot;failed&quot;: [], &quot;error&quot;: [], &quot;failure details&quot;: {}, &quot;failed_pages&quot;: {}}
+
+    for test in data[&quot;tests&quot;]:
+        node_name = test[&quot;nodeid&quot;].split(&quot;::&quot;)[1]
+        if test[&quot;outcome&quot;] == &quot;passed&quot;:
+            results[&quot;passed&quot;].append(node_name)
+        elif test[&quot;outcome&quot;] == &quot;failed&quot; or test[&quot;outcome&quot;] == &quot;error&quot;:
+            results[test[&quot;outcome&quot;]].append(node_name)
+            if add_failure_reasons:
+                results[&quot;failure details&quot;][node_name] = {node_name: test[&quot;call&quot;][&quot;crash&quot;]}
+            if add_failed_html:
+                if len(results[&quot;failed_pages&quot;]) &lt; count_of_htmls:
+                    results[&quot;failed_pages&quot;][node_name] = {node_name: parse_error_page(node_name)}
+
+    json_results = json.dumps(results)
+
+    return json_results
+
+
+def parse_error_page(node_name):
+    &quot;&quot;&quot;
+    Parse error page.
+
+    :param node_name: (str) name of the node.
+
+    :return: (str) formatted content of the page.
+    &quot;&quot;&quot;
+    parser = PageRetriever()
+    try:
+        file_name = f&quot;{node_name}.html&quot;
+        with open(file_name, &quot;r&quot;, encoding=&quot;utf-8&quot;) as file:
+            formatted_content = parser.remove_script_tags(parser.extract_body_content(file))
+        remove(file_name)
+        return formatted_content
+    except io.UnsupportedOperation:
+        return &quot;No page available.&quot;
+</pre></div>
+<p>Next steps: I add functions and json for ChatGPT, which will call PageRetriever and Runner, respectively.</p>
+<div class="highlight"><pre><span></span>doc_engine = PageRetriever()
+gpt_functions = [
+    {
+        &quot;name&quot;: &quot;get_page_code&quot;,
+        &quot;description&quot;: &quot;Get page code to generate locators and tests&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {&quot;url&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The URL of the page to get the code from&quot;}},
+            &quot;required&quot;: [],
+        },
+    },
+    {
+        &quot;name&quot;: &quot;get_tests_results&quot;,
+        &quot;description&quot;: &quot;Get the results of the tests&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;test_files&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;},
+                    &quot;description&quot;: &quot;The list of test files to run&quot;,
+                }
+            },
+            &quot;required&quot;: [],
+        },
+    },
+]
+
+gpt_functions_dict = {
+    &quot;get_page_code&quot;: doc_engine.get_body_without_scripts,
+    &quot;get_tests_results&quot;: run_tests,
+}
+</pre></div>
+<p>Since we expect the AI to return only tests and POMs elements, and not entire files (this way we also save a little tokens), we need to take this on ourselves and write a class that will recreate the file every time it needed. We will call it ourselves, but we could ask the AI to do this also, or even make a separate variation so that the headers of the files is created for our tests. Here you can further improve it - add logic for updating the file rather than re-creating it, adding tests to existing ones, and so on. But for the experiment, it’s enough for me to simply recreate the entire file.</p>
+<div class="highlight"><pre><span></span>from urllib.parse import urlparse, unquote
+
+
+class PomTestCaseGenerator:
+    &quot;&quot;&quot;Class for generating test files and page objects from json data&quot;&quot;&quot;
+
+    def __init__(self, url=&quot;&quot;):
+        &quot;&quot;&quot;
+        General init.
+
+        :param url: (str) URL of the page.
+        &quot;&quot;&quot;
+        self.url = url
+
+    def set_url(self, url):
+        &quot;&quot;&quot;
+        Set the url.
+
+        :param url: (str) URL of the page.
+        &quot;&quot;&quot;
+        self.url = url
+
+    def ___create_pom_file(self, file_name, page_objects, url=&quot;&quot;, pom_folder=&quot;pom&quot;):
+        &quot;&quot;&quot;
+        Create page object model file.
+
+        :param file_name: (str) Name of the file.
+        :param page_objects: (list) List of page objects.
+        :param url: (str) URL of the page.
+        :param pom_folder: (str) Folder for page object model files.
+        &quot;&quot;&quot;
+        if not url:
+            url = self.url
+        if not os.path.exists(pom_folder):
+            os.makedirs(pom_folder)
+        with open(f&quot;{pom_folder}/page_{file_name}.py&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as pom_file:
+            pom_file.write(&quot;from selenium.webdriver.common.by import By\n&quot;)
+            pom_file.write(&quot;from selenium.webdriver.support.ui import WebDriverWait\n&quot;)
+            pom_file.write(&quot;from selenium.webdriver.support import expected_conditions as EC\n\n\n&quot;)
+            pom_file.write(f&#39;class Page{&quot;&quot;.join(word.capitalize() for word in file_name.split(&quot;_&quot;))}:\n&#39;)
+            pom_file.write(&quot;    def __init__(self, driver):\n&quot;)
+            pom_file.write(f&#39;        self.url = &quot;{url}&quot;\n&#39;)
+            pom_file.write(&quot;        self.driver = driver\n\n&quot;)
+            for method in page_objects:
+                pom_file.write(f&quot;    {method}\n\n&quot;)
+
+    @staticmethod
+    def ___create_test_file(file_name, tests, pom_folder=&quot;pom&quot;, tests_folder=&quot;tests&quot;):
+        &quot;&quot;&quot;
+        Create test file.
+
+        :param file_name: (str) Name of the file.
+        :param tests: (list) List of tests.
+        :param pom_folder: (str) Folder for page object model files.
+        :param tests_folder: (str) Folder for test files.
+        &quot;&quot;&quot;
+        with open(f&quot;{tests_folder}/test_{file_name}.py&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as test_file:
+            test_file.write(&quot;import pytest\n\n&quot;)
+            test_file.write(
+                f&#39;from {pom_folder}.{os.path.splitext(f&quot;page_{file_name}&quot;)[0]} import Page&#39;
+                f&#39;{&quot;&quot;.join(word.capitalize() for word in file_name.split(&quot;_&quot;))}\n\n\n&#39;
+            )
+            test_file.write(&#39;@pytest.fixture(scope=&quot;function&quot;)\n&#39;)
+            test_file.write(&quot;def page(driver):\n&quot;)
+            test_file.write(
+                f&#39;    page_under_test = Page{&quot;&quot;.join(word.capitalize() for word in file_name.split(&quot;_&quot;))}(driver)\n&#39;
+            )
+            test_file.write(&quot;    driver.get(page_under_test.url)\n&quot;)
+            test_file.write(&quot;    return page_under_test\n\n\n&quot;)
+            for test in tests:
+                test_file.write(f&quot;{test}\n\n\n&quot;)
+
+    def create_files_from_json(self, json_data, url=&quot;&quot;, pom_folder=&quot;pom&quot;, tests_folder=&quot;tests&quot;):
+        &quot;&quot;&quot;
+        Create test and page object model files from json data.
+
+        :param json_data: (str) JSON data.
+        :param url: (str) URL of the page.
+        :param pom_folder: (str) Folder for page object model files.
+        :param tests_folder: (str) Folder for test files.
+        &quot;&quot;&quot;
+        if not url:
+            url = self.url
+        parsed_url = urlparse(unquote(url))
+        file_name = parsed_url.path.strip(&quot;/&quot;).replace(&quot;/&quot;, &quot;_&quot;) or &quot;index&quot;
+        self.___create_test_file(file_name, json_data[&quot;tests&quot;], pom_folder=&quot;..pom&quot;, tests_folder=tests_folder)
+        self.___create_pom_file(file_name, json_data[&quot;page_objects&quot;], url, pom_folder=pom_folder)
+</pre></div>
+<p>Finally, when we have all the parts, let's just call everything in the right order.</p>
+<div class="highlight"><pre><span></span>from examples.creds import oai_token, oai_organization
+from examples.test_generator.gpt_functions import gpt_functions, gpt_functions_dict
+from examples.test_generator.pom_case_generator import PomTestCaseGenerator
+from openai_api.src.openai_api import ChatGPT
+from openai_api.src.openai_api.logger_config import setup_logger
+
+url_under_test = &quot;https://www.saucedemo.com/&quot;
+generator = PomTestCaseGenerator(url=url_under_test)
+
+
+def setup_gpt():
+    &quot;&quot;&quot;Setup GPT bot with appropriate functions and settings&quot;&quot;&quot;
+    gpt = ChatGPT(auth_token=oai_token, organization=oai_organization, model=&quot;gpt-4-0613&quot;)
+    gpt.logger = setup_logger(&quot;gpt&quot;, &quot;gpt.log&quot;, logging.INFO)
+    gpt.system_settings = &quot;&quot;
+    gpt.function_dict = gpt_functions_dict
+    gpt.function_call = &quot;auto&quot;
+    gpt.functions = gpt_functions
+    gpt.system_settings = system_instructions
+    return gpt
+
+
+async def main():
+    &quot;&quot;&quot;Main function for testing GPT bot&quot;&quot;&quot;
+    print(&quot;===Setup GPT bot===&quot;)
+    gpt = setup_gpt()
+    print(&quot;===Get page code of https://www.saucedemo.com/ and generate POM and tests===&quot;)
+    response = await anext(gpt.str_chat(f&quot;Get page code of {url_under_test} and generate POM and tests&quot;))
+    print(response)
+    response = response.replace(&quot;\n&quot;, &quot;&quot;)
+    generator.create_files_from_json(
+        json.loads(response), pom_folder=&quot;examples/test_generator/pom&quot;, tests_folder=&quot;examples/test_generator/tests&quot;
+    )
+    print(&quot;===Get tests results for examples/test_generator/tests/test_index.py==&quot;)
+    response = await anext(gpt.str_chat(&quot;Get tests results for examples/test_generator/tests/test_index.py&quot;))
+    print(response)
+    print(&quot;===If there are failures in code, please fix it by fixing POM and tests===&quot;)
+    response = await anext(gpt.str_chat(&quot;If there are failures in code, please fix it by fixing POM and tests&quot;))
+    print(response)
+    generator.create_files_from_json(
+        json.loads(response), pom_folder=&quot;..pom&quot;, tests_folder=&quot;examples/test_generator/tests&quot;
+    )
+
+
+asyncio.run(main())
+</pre></div>
+<p>Receiving a page, generating and running tests takes one and a half minutes, which is not so bad for the time of one iteration. The results of the “blind” generation look quite good. Yes, it would be possible to write more tests, but overall the AI has written basic checks, and the tests look correct. So, for example, in the first iteration, one out of five passed.</p>
+<img alt="Generated tests. Where is the assert?" src="/assets/images/articles/qa/ai_practices_used_for_qa/generated_test.jpg" />
+<p>Hm… it’s not entirely fair. But in the second iteration, the AI corrected the first test with missing assert, and corrected rest of the the tests based on the test execution results.</p>
+<img alt="Second test iteration: 5/6 test passed" src="/assets/images/articles/qa/ai_practices_used_for_qa/2_iteration.png" />
+<p>Now we have 5 out of 6 tests passing. In just 3 minutes! As you can see, the approach works, and going through page by page you can quickly create working tests for your web application. Taking into account the fact that if you have requirements or documentation, what is still much better and correct way, then by providing the this info to the AI, as well as specifying what scenarios you want to see (negative scenarios? boundary values? flow tests? Injections?) you can achieve very good results in semi-automatic mode, just by passing a set of urls to the script.</p>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions</h2>
+<p>Now I can’t imagine my life and future work without AI. Using AI in my work increases mine productivity by an order of magnitude. I hope that with the development of AI technology, new approaches, models, services, returns from them will also increase without increasing prices and decreasing the quality. And many things that today require participation and involvement of Seniors testers, SDET, QA managers, will also be delegated to AI. Does this mean that testers are no longer needed? No. Despite all the wonderful descriptive and generative capabilities, AI is just a powerful tool, a machine, if you will, which you also need to know how to use, and if you don’t know how, you can cut off your fingers or even dumb head.</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=AI practices used for QA&amp;url=https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/&amp;title=AI practices used for QA" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=AI practices used for QA&amp;body=https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/ai/">ai</a><a href="https://wwakabobik.github.io/tag/qa/">qa</a><a href="https://wwakabobik.github.io/tag/copilot/">copilot</a><a href="https://wwakabobik.github.io/tag/gpt/">gpt</a><a href="https://wwakabobik.github.io/tag/testing/">testing</a><a href="https://wwakabobik.github.io/tag/automation/">automation</a><a href="https://wwakabobik.github.io/tag/python/">python</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2023/09/gaming_first_person_view_party_based_rpg/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">My history of first-person view party-based RPG</h2>
+                            <p class="post-nav-excerpt">I love first-person view party-based RPGs. Here is a list of games I played and my...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
