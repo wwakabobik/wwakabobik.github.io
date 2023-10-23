@@ -76,7 +76,7 @@ As a prototype, proof-of-concept, I will use my OpenAI wrapper. In order to get 
 .. image:: /assets/images/articles/qa/ai_practices_used_for_qa/scheme.png
    :alt: AI generator scheme
 
-I will use pytest+selenium as a framework cause of simplicity, regularity and familiarity (and because the mine OpenAI wrapper is also written using Python). My entire testing framework will consist of just one conftest file with a driver fixture, a runner, and by default we will assume that for each unique page we de facto have a fixture that will open the required page for testing. In real life, probably, before starting the test, we would go through authentication and somehow manage the environment.
+I will use pytest+selenium as a framework cause of simplicity, regularity  and familiarity (and because the mine OpenAI wrapper is also written using Python). My entire testing framework will consist of just one conftest file with a driver fixture, a runner, and by default we will assume that for each unique page we de facto have a fixture that will open the required page for testing. In real life, probably, before starting the test, we would go through authentication and somehow manage the environment.
 
 .. code-block:: python
     """examples/test_generator/tests/conftest.py"""
