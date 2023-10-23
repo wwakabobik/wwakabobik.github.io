@@ -16,7 +16,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Update submodules
-        run: git submodule update --init --recursive
+        run: |
+          git submodule update --init --recursive
+          cd plugins
+          git checkout 18a59c35ec2f0ae109ac5d86eecf7c232a69a69b
+          cd ..
 
       - name: Generate content
         run: pelican content
