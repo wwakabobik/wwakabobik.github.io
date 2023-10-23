@@ -1,4 +1,5 @@
 pelican==4.8.0
-Markdown==3.4.4
+Markdown==3.5
 beautifulsoup4==4.12.2
 webassets==2.0
+pelican-liquid-tags==1.0.4
