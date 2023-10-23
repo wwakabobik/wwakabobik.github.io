@@ -73,5 +73,3 @@ Overall, I enjoyed this great road trip experience. Traveling by car in the Balk
 
 .. image:: /assets/images/articles/travel/serbia_montenegro/14_mn.jpg
    :alt: Old town of Ulcinj at night
-
-test
