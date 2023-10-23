@@ -5,7 +5,7 @@ AI practices used for QA
 :author: wwakabobik
 :tags: ai, qa, copilot, gpt, testing, automation, python
 :slug: qa_ai_practices_used_for_qa
-:category: qa, ai
+:category: qa
 :status: published
 :summary: Can AI completely replace human testers? Is it more than tool? What are the best practices for using AI in QA? Let's find out!
 :cover: assets/images/bg/qa.png
