@@ -29,7 +29,6 @@ PLUGINS = [
   'neighbors',
   'assets',
   'post_stats',
-  'liquid_tags'
 ]
 
 BOOTSTRAPIFY = {
