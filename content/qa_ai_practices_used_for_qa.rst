@@ -1,7 +1,7 @@
 ########################
 AI practices used for QA
 ########################
-:date: 2023-10-23 10:08
+:date: 2023-10-23 9:38
 :author: wwakabobik
 :tags: ai, qa, copilot, gpt, testing, automation, python
 :slug: qa_ai_practices_used_for_qa
