@@ -7,7 +7,7 @@ Horror games of 90s
 :slug: gaming_horrors_of_90s
 :category: gaming
 :status: published
-:summary: I love first-person view party-based RPGs. Here is a list of games I played and my thoughts about them and future of the genre.
+:summary: Halloween is coming! Let's remember best chilling PC games of 90s. If you like horror games, you should definitely check out these classics!
 :cover: assets/images/bg/gaming.png
 
 .. image:: /assets/images/articles/gaming/first_person_view_party_based_rpg/cover.png
