@@ -423,7 +423,510 @@ Game on Old-Games | Page on MobyGames
 Critics' average rating: 83.7%
 
 
-16.
+16. Aliens: A Comic Book Adventure (1995)
+-----------------------------------------
+
+Okay, if the previous game was criticized for the infamous "rails" and the incorrectly killed boss that led to the game being unwinnable, overall it was the ultimate immersion in cosmic horror. But without completely copying the plots of Alien by Ridley Scott. Unlike the next game...
+
+You're not Nostromo?
+
+In a distant galaxy, on a lost planet, stands an abandoned outpost. Once, people lived here, but now they are gone. They were taken. They were taken by xenomorphs. One day, a team of three people arrives on the planet. They must investigate a distress signal that came from the outpost.
+
+The team is led by Lieutenant Colonel Henry Hendrickson. He would rather stay on his ship, but duty calls. Hendrickson and his team arrive at the outpost and discover that it has been overrun by xenomorphs. They must find a way to escape the planet and save themselves from the deadly creatures.
+
+The game balances between pre-rendered and just drawings
+
+Aliens: A Comic Book Adventure is a first-person adventure game based on the comics about "Aliens". The game follows the plot of the comic "Maze", but also includes elements from other comics in the series.
+
+Aliens: A Comic Book Adventure is a dark and unsettling game. The familiar locations from the movie are easy to recognize here. Here are they, the wonderful retro bulbs on the computers, here is the exoskeleton, not very similar to the one that Ripley wore and in which you will have to put on, cocoons of aliens, and everything else is present in a dark color scheme, the appearance of xenomorphs is silent and unexpected, and the disturbing sound effects only exacerbate the feeling of anxiety and fear.
+
+The game has some strange turn-based tactical battles
+
+Aliens: A Comic Book Adventure is based on the comics about "Aliens", which, in turn, are based on the movie "Aliens". The game includes many elements from the movie, including. Despite the fact that the game is based on the comics, it has some contradictions with the movie. For example, in the game, xenomorphs look a little different than in the movie. In addition, the game has some plot elements that do not match the movie.
+
+The turn-based guards also look strange - too busy, and no, this is not a problem with modern power, but a problem with such animation. Of course, you will have the opportunity to tactically throw grenades into cocoons and shoot a facehugger with a rifle, but still, the game is not about tactics, but about adventure.
+
+My father always recommended that I figure it out and finish it, but, I confess honestly, I abandoned it, not having seen the first xenomorph, because the game is very slow and repetitive. Yes, it should be the routine of a space ship crew, but illogical puzzles (in some moments it is not only impossible to predict your death, but after it is hard to understand why you actually died), long movements - all this made me quit the game.
+
+The game is beautiful, but every action is a cut from the animation. Every time.
+
+Aliens: A Comic Book Adventure is a game that is worth trying. It is an atmospheric and exciting game that will appeal to fans of "Aliens". For a long time, it was even one of the few that revealed the universe of aliens (no, let's not talk about Alien 3 on NES). Now, of course, the laurels of primacy rightfully belong to Alien Isolation, as the most correct and accurate game in the universe, organically woven into the narrative of the movie universe. But in the 90s, Aliens: A Comic Book Adventure was the best thing you could play in this universe. But by the end of the 90s, this game lost its status quo...
+
+Game on Old-Games | Page on MobyGames
+
+Average critic rating: 76.8%
+
+
+17. Bureau 13 (1995)
+--------------------
+
+About Aliens, we would probably say now that it is a AAA project, about Aliens: A Comic Book Adventure, that it is, well, based on this kind of AA. Well, okay, A. But maybe the fact is that the more terrifying atmosphere was in trash horror movies like The Living Dead, Hellraiser? B-movies? But who said it had to be zombies? Especially the explosive popularity of Ghostbusters and The X-Files?
+
+I just have a wide bone
+
+Bureau 13 is a point-and-click adventure game with horror elements, released in 1995. The player takes on the role of an agent of a top-secret Bureau 13 department specializing in investigating paranormal events.
+
+The game takes place in a small American town where strange things are happening: people are disappearing, objects are floating in the air, and other devilry. The game begins with the Bureau 13 agents being assigned to find and stop an agent who has gone crazy and tried to kill the local sheriff. The agents must act covertly so as not to alarm the residents of the town. Our task is to find out what is really happening in the city and eliminate the threat.
+
+Almost the entire game is pre-rendered computer graphics, which was not just flat backgrounds at the time, but hours of work by graphics workstations and 3D artists.
+
+The game allows you to explore detailed locations such as shops, houses, and hotels. Along the way, you have to interrogate suspicious characters, collect and analyze crime evidence. The game is divided into several chapters, each of which tells a separate story. In each chapter, the player must explore locations, solve puzzles, and avoid dangers to progress further.
+
+You can choose which character you want to play, and each has their own paranormal abilities.
+
+The special atmosphere is created by paranormal scenes such as cult rituals or monster attacks. Different characters can use different abilities in different missions, and this is a major plus. High-quality graphics and sound at the time enhance the immersion effect. The game contains malicious references to pop culture and horror movies.
+
+An interesting fact is that Bureau 13 is based on the tabletop role-playing game "Bureau 13: Stalking the Night Fantastic", which is a satirical sci-fi/horror game published by Tri Tac Games in 1992.
+
+Yes, you will find something... not like that
+
+Bureau 13 offers an interesting story for fans of mysterious investigations in the spirit of The X-Files. The game turned out to be atmospheric and promising, although it was not without technical flaws. In general, it plays and feels tacky, even unnatural, both because of the picture style and its inconsistency with the setting. It seems that the authors smelled to make the game as unusual as possible - with a choice of unusual characters, able to solve problems in different ways, using their abilities, but they ran into the limitations of their own and technical capabilities. In general, it is definitely worth the attention of fans of horror detectives, at least in that you are unlikely to have the opportunity to play the role of a detective-psychic anywhere else!
+
+Game on Old-Games | Page on MobyGames
+
+Average critic rating: 73.1%
+
+
+18. Prisoner of Ice (1995)
+--------------------------
+
+This game is an excellent example of how to create quite logical, but also dynamic horror-quests. I played this game in the 90s (and it slowed down pretty well) but I finished it to the end much later. Unlike the theme of Innsmouthites and Dagon, which is raped in every first game in the universe of H. P. Lovecraft (Hello, Call of Cthulhu and Sinking City), transferred to endless tabletop games like "The Ancient Horror" (and it's good that they are endless), unlike almost everything related to Lovecraft, this game is clearly inspired by The Mountains of Madness, which can't but please.
+
+Hey, xenomorph! Cthulhu Fhtagn!
+
+Prisoner of Ice is a point-and-click adventure game with horror elements, released by Infogames in 1995. The game takes place in the 1930s.
+
+The main character is an intelligence agent investigating the disappearance of an expedition in Greenland. He will have to visit abandoned ice caves and face the forces of occultism and Lovecraftian horror.
+
+Nazis? At the ready! Cultists? Where else?
+
+The game creates an atmosphere of mystery and mysticism from the very beginning. Dark locations, howling wind, disturbing music - all this makes you nervous and look over your shoulder. The scenes of rituals where the hero faces ancient evil are especially memorable, as well as the very beginning of the game, when the expected leisurely quest turns into a chilling escape from deadly tentacles. The graphics for that time look realistic and high-quality, enhancing the immersion effect.
+
+The quest component is also well-developed - the puzzles are logical, they are presented gradually. There are difficult puzzles and arcade elements such as climbing sheer walls. In general, the game is if not a benchmark, then a great representative of horror quests, and certainly a classic of the genre.
+
+Kill them all! Kill them all!
+The darkness will descend, the economy will bloom,
+You just have to read
+To the end of the Necronomicon!
+
+In general, Prisoner of Ice is a great representative of classic horror quests of the 90s. An exciting plot and a gloomy atmosphere of Lovecraftian horror keep you on edge until the very end. It is definitely worth trying for fans of the genre.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 72.5%
+
+
+19. Shivers (1995)
+------------------
+
+Among many Sierra games and horror adventures, I would like to highlight this one. This game, and especially its second part, released in 1997, unfortunately did not escape the curse of difficult and obscure puzzles, which are familiar from other Sierra games. On the other hand, the atmosphere of dark foreboding, fear, decay, and degradation is the game's main asset. On the one hand, it feels very real, our familiar reality, often due to the beautiful photorealistic graphics, but on the other hand, it makes you put yourself in the shoes of a detective who has been doomed to fall into a supernatural story of psychedelic horror.
+
+A night at the museum. Every man goes through this
+
+Shivers is a horror adventure series from Red Lemon Studios and published by Sierra Online, the first part of which was released in 1995. The main feature of these games is their unusual visual style.
+
+In the first game of the series, you accept a challenge from your friends and spend a night in an old museum. It turns out that the museum is full of strange and creepy exhibits from all over the world and is inhabited by evil spirits. The game is a first-person adventure with slide-based navigation, fully controlled by the mouse. The museum is a huge place to explore, but you'll learn your way around... The game is characterized by extremely detailed rendering of locations and objects in the style of old photography.
+Shivers (1995) gameOpens in a new window
+en.wikipedia.org
+Shivers (1995) game
+
+Every room in the museum is worked out with photographic precision, creating a truly unique atmosphere of a sinister museum with ghosts. You can spend hours studying various artifacts and interiors. It is clear that the developers were inspired by the example of Myst (to a greater extent) and 7th Guest (to a lesser extent). But one of the key features of the game is the ability to rotate the camera 360 degrees. This feature was quite innovative for its time and significantly improved the gaming experience.
+
+The second part was released in 1997. The plot of "Shivers II: Harvest of Souls" continues the theme of horror and adventure. In the game, you find yourself in a small town in the desert where a local rock band has disappeared. Your task is to solve the mystery of their disappearance by exploring the town and solving various puzzles. And the game hints that you have not long to live...
+Shivers II: Harvest of Souls (1997) gameOpens in a new window
+en.wikipedia.org
+Shivers II: Harvest of Souls (1997) game
+
+"Shivers II: Harvest of Souls" offers players to explore various locations, interact with the surrounding world, and solve puzzles to progress through the plot. The game is known for its complex and intriguing plot, as well as its atmosphere of horror and tension.
+
+I believe that a significant part of the atmosphere is created by the main character, his voice, and the translation greatly spoils the feeling of the game. The main character of the game, Dave, was voiced by Sierra Online employee Jason Lindsey. It is curious that now you can easily find him on YouTube under the name Metal Jesus Rocks - he is both a rocker and a retro gamer. If you are not yet subscribed to him, hurry up to fix this omission.
+Jason Lindsey, the voice actor of Dave in Shivers (1995) gameOpens in a new window
+www.imdb.com
+Jason Lindsey, the voice actor of Dave in Shivers (1995) game
+
+The Shivers series is remembered for its unique style and detailed locations that can be viewed for hours. This is a real interactive museum of creepy exhibits! Definitely worth trying for fans of dark adventures.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 76.0%
+
+
+20. 11th Hour (1995)
+--------------------
+
+1995 was just incredibly rich with horror games. And of course, it was in this year that the sequel to my beloved 7th Guest came out - "11th Hour". Launching the game in 1996, I happily returned to the still gloomy mansion. Visually, 11th Hour looked great - rendered backgrounds, smooth animation, there were even video inserts, and there were more 3D prerendered animations! Everything is in place. Only about twice as sharp and better.
+
+Firstly, it's beautiful.
+
+There were definitely more puzzles and logic riddles. I even got confused at first with all these clock mechanisms and mirror rooms. I had to rack my brain, expecting a ghost to pop out at any moment, and that ghosts would be with me like in the first part. But no, there is no horror per se in the game. Yes, the dark mystical atmosphere is still there, but the game has become more of a set of puzzles than a creepy mystical investigation.
+
+Again, chess pieces, and more than once
+
+As a result, despite the fact that the game was technically improved, I didn't get very far into it and quickly lost interest. This is probably also due to the fact that the game has actually become more mature and relevant, and not a bright ghost story told in the glow of a flashlight under a blanket. So mature, in fact, that there are explicit, adult scenes, and moreover, there were rumors that there is a full, uncensored version. But to this day, no one has found it or dug up an old dusty hard drive. Well, who knows. The fact is that commercially the game was successful and sold 300,000 copies, and is still sold to this day, with a GOG version of the game available since 2012.
+
+Deadly love
+
+In the end, it’s probably best to get acquainted with the game in conjunction with 7th Guest, expect a more adult plot, but with the understanding that the scenes that may have seemed provocative at the time of release now still look mundane.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 77.7%
+
+
+21. D (1995)
+------------
+
+You can't say the same about the following game...
+
+Indeed, in childhood I held in my hands a disc with the game D, but never once launched it. My father imposed a strict ban on even touching it. Why? On the disc there was only the boring letter "D" on a black background. In books there were vague mentions of the plot, very vague, unlike the usual walkthroughs.
+
+Of course, such mystery only stoked childish curiosity. I wondered what was so special about it that it was banned in some countries. But I never violated my father's ban, although the temptation was great.
+
+The whole game is pre-rendered
+The whole game is pre-rendered
+"D" was developed and released during the period when FMV (Full Motion Video) games were at the peak of popularity. It was a time when developers were looking for new ways to utilize the increased power of computers to create more cinematic and engaging gaming experiences. "D" stood out from most other FMV games of that time – not just drawings, but computer graphics – from rooms to objects and characters, stood out for its unique approach to narrative and gameplay – it’s more of a film than a Myst-style slideshow.
+
+Sometimes you have to be nimble and do some QTE
+Sometimes you have to be nimble and do some QTE
+In "D" players control a character named Laura who is trying to find her father in a sinister hospital. Her father, Dr. Richter Harris, committed a mass murder and barricaded himself in the hospital. To find out what happened, Laura has only two hours, and if the game is not completed in that time, Laura will remain forever in the sinister hospital. The game offers many puzzles and riddles that players need to solve in order to advance the plot.
+
+That infamous human flesh eating scene
+That infamous human flesh eating scene
+The game's creator, Kenji Eno, added scenes of violence and cannibalism to make the game more vivid and memorable. However, he assumed such content might be too extreme for censors or publishers. Curious fact, the project lead Kenji Iino had to be sly. Initially, the game was created without any plot at all, and Iino kept it secret even from other team members. When development was complete, he sent D for review (without plot and violent scenes). He intentionally sent the master disc to the US manufacturers later - thus, a version without violent scenes passed review, and the final version of the game went into production and D was not censored, though it did receive an "adults only" rating. In Japan, the game became one of the best-selling PlayStation games in 1995. On PlayStation, success exceeded expectations, so much so that Sony failed to release enough copies of the game for PlayStation - pre-orders exceeded what they could fulfill. As a result, less than a third of the projected quantity was sold. In Europe, the game sold well but was censored because of its brutal content. In the UK, for example, the game was banned from sale until some of the most controversial scenes were removed. This sparked further debate about censorship in video games and what themes and materials are suitable for the medium. Today this may seem strange, given the level of detail, and the conditionality of what is happening, but one must not forget that in 1995 this level of CG was incredible and almost hyper-realistic.
+
+I'm your father, Laura.
+I'm your father, Laura.
+In general, "D" is an example of how video games can provoke debate and discussion about censorship and content. Despite its controversial reputation, it remains an important and influential game in the survival horror genre.
+
+GameFan called the game a "masterpiece", although they usually didn't like FMV games. They praised "D" for its innovation and creativity, calling it "the best FMV game that will probably ever be made." At the same time, Game Informer included D in the list of the worst horror games of all time. Such a contradiction. Like many FMV games, D was ahead of its time. And once again made me think about how the value of forbidden fruit is not in the filling, but in the fact of the ban. Personally, I would have avoided this game if not for such a juicy backstory.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 79.6%
+
+
+22. Phantasmagoria (1995)
+-------------------------
+
+Here is my attempt to translate the Russian text about Phantasmagoria into English:
+
+If D slyly infiltrated the market and blew up the public, then Phantasmagoria trampled all moral principles and boundaries with the grace of an elephant in a china shop. Very effective, but very clumsy. This is the most ambitious FMV horror project and one of the biggest games in video game history, spanning seven CDs. Yes, sometime in '96-'97 the game fell into my father's hands, but again in a wonderful pirated version on two disks. At the same time, as I remember, you could only buy some of the disks, and then buy the remaining two later. From a game consisting entirely of video, pirates managed to cut out or compress the video and make the game more compact, but...
+
+Phantasmagoria is an interactive movie, with cinema-quality visuals
+Phantasmagoria is an interactive movie, with cinema-quality visuals
+The truth was that if you look at screenshots of D for PS and PC, you'll notice a significant difference - the PC version looks worse, more compressed, darker, the interface - all to fit the game on a disk, and so that the not-so-impressive capabilities of computers of those years could handle full-screen video. But this did not apply to Phantasmagoria. The game was unplayable on a 486 and required a Pentium and preferably not just a 2x CD-ROM. Of course, you can find the minimum requirements and say that 8 MB was enough for everyone... but... if you want to play comfortably, not in slideshow mode with stuttering sound, yes, a 486 was too little. In short, the game was doomed to commercial failure due to its size and price. And in our pirated copy with the missing disks, in the '90s, as it turned out, additional disks may no longer be available, and... I never completed the game in the '90s, and never saw the most horrific scenes for which the game was banned wherever possible, accusing the brutality of video games.
+
+In the game you can die in many different ways, not to mention those characters who will die without your help
+In the game you can die in many different ways, not to mention those characters who will die without your help
+Fortunately, sometime in the early 2000s, a licensed re-release of the game with a Russian translation came out in a small paper box, into which all 11 disks were stuffed. And... yes, for me this is the most monstrous game ever released on PC. Because no matter how brutal games are, no matter how scary past and present horrors are, like some Dark Pictures Anthology, they still involve 3D models. And only in Phantasmagoria - people. Yes, of course it's filmed footage, but you control that footage yourself, and it's your heroine who gets torn to pieces, turned into mush...
+
+Pray this is just a dream
+Pray this is just a dream
+The uniqueness of the game was the combination of live actors in video clips and classic point-and-click gameplay when exploring locations. The transition between video fragments and overlaying prerendered graphics was almost seamless, allowing for incredible immersion in the story.
+
+And the story is good, it manipulates the feeling of the reality of what is happening and the acceptance of real horror. To summarize the plot briefly, a young couple, Adrienne and Don, buy an old castle in hopes of starting a new life. But soon they discover that the castle harbors a grim secret.
+
+You can't hide from this nightmare
+You can't hide from this nightmare
+Adrienne begins to see strange things, and soon realizes that an evil spirit dwells in the castle. Don, meanwhile, absorbed in renovating the castle, does not believe Adrienne and thinks she is simply overworked.
+
+As Adrienne learns more about the castle, she realizes that her life and her husband's life are in danger. She has to find a way to stop the evil spirit before it takes their lives.
+
+Adrienne begins to explore the castle, hoping to find answers to her questions. She finds old books and documents that tell of the castle's dark past. She also finds strange objects that she suspects are connected to the spirit.
+
+This meaty spirit
+This meaty spirit
+As Adrienne gets closer to unraveling the mystery, the evil spirit begins to pursue her. He appears in her dreams and visions, and he tries to intimidate her. Adrienne must gather all her strength to resist the evil. She has to use everything she knows to find a way to stop the evil spirit and save her life and her husband's life.
+
+Of particular note are the many shocking and bloody scenes that caused scandals in the gaming press of those years, but at the same time strongly attracted players. The atmosphere of horror was maintained throughout the game. The developers created a truly sinister story about a writer moving into an ancient manor with a dark past.
+
+The game is unprecedentedly bloody, adult, but at the same time it does not cross the line into outright erotica
+The game is unprecedentedly bloody, adult, but at the same time it does not cross the line into outright erotica
+Overall, Phantasmagoria has become a real milestone in the development of the horror quest genre, offering players a cinematic story full of mysticism and horrors. Definitely worth a try for fans of dark quests!
+
+P.S. Curiously, a year later Sierra released a sequel that few people know about. And which, apart from the title and FMV, is in no way connected to the first one. According to reviews, the game is also worth attention, although it does not have cult status.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 72.0%
+
+
+23. I have no mouth, and I must scream (1995)
+---------------------------------------------
+
+I Have No Mouth, and I Must Scream
+
+As a child, I was fascinated by this game. I read all the reviews, which were overwhelmingly positive, and I saw the screenshots, which were deeply mysterious. The game was a quest, but it was also very strange. I wanted to experience it for myself, but I never had the chance. Perhaps there was never an English translation, perhaps because the game is more adult and philosophical than a fun slasher for a night of scares. Who knows? Perhaps one day I'll finally get around to playing it fully, as it is considered a true work of art.
+
+The best representatives of humanity imprisoned. Nothing changes.
+
+I Have No Mouth, and I Must Scream is a graphic adventure game developed and published by Cyberdreams in 1995. The game is based on the short story of the same name by American science fiction writer Harlan Ellison, first published in 1967. It is a first-person game in which the player controls one of five characters. The player must explore a dungeon, solve puzzles, and avoid danger to progress.
+
+Each new character's arc is a new twist in the narrative and a changing setting.
+
+The plot, being based on a science fiction short story, is quite unconventional. In 2042, humanity was destroyed in a nuclear war. The only survivors are five people who have been locked in an underground complex and tortured and abused by AM, an artificial intelligence created to destroy humanity. AM forces the people to play cruel games for its amusement. It also manipulates them to fight each other.
+
+There is nothing human in machines. But if there is in humans, why do they obey?
+
+The game is divided into five chapters, each of which tells a separate story. In each chapter, the player must complete certain tasks to complete the chapter. I Have No Mouth, and I Must Scream is a dark and disturbing game. A game that is unlike anything else. It combines elements of horror, drama, and philosophy. The game explores the dark side of humanity and how easily we can give in to temptation and cruelty.
+
+I will break you, AM.
+
+One of the game's strengths is its story. The story of five people who have been locked in a dungeon and tortured and abused is both gripping and heartbreaking. Players will empathize with the characters and try to help them escape this nightmare. At the end of the game, players are faced with a choice that has serious consequences. This choice forces players to contemplate the nature of good and evil.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 75.0%
+
+
+24. Ripper (1996)
+-----------------
+
+Ripper is a point-and-click adventure game with horror elements from the legendary Take-Two studio. The game is set in the near future, in the year 2040. It hints at its cyberpunk affiliation, it is juicy and noir, but at the same time it tries to be as realistic and understandable as possible for a 90s layman.
+
+Ripper today looks like a mix of Blade Runner and a 1950s detective story.
+
+I had the opportunity to play the demo of the game when it came out. Since the game is also an FMV story interspersed with puzzles on pre-rendered locations, the game was apparently too large (a full playthrough takes about 5 hours) to be translated and released on multiple discs by the pirates of those years.
+
+The main character is a reporter investigating a series of brutal murders committed by a maniac who calls himself Jack the Ripper. The game allows you to explore various locations and interact with a large number of characters in search of clues. To be honest, it is much more interesting to unravel the tangle of relationships and intrigues between the characters, as they are so well-developed, than to rush and hurry to investigate the murders.
+
+The morgue is beautiful, but it's better not to see what's on the couch.
+
+The game features rather naturalistic video clips of the murders of the maniac's victims, which are memorable for those years. The detective plot allows you to delve into the psychology of the serial killer and the motives of his crimes.
+
+The game features several plot variations and various endings depending on the player's actions. This adds replayability and motivates you to play Ripper several times.
+
+The game also features clumsy but action-packed scenes. After all, someone has to put things in order in a woman's head!
+
+Overall, this game is a successful hybrid of a cyberpunk film and a detective, diluted with puzzles and a bit of shooting. The gripping atmosphere of the maniac in the game keeps you on edge until the very end.
+
+Fortunately, years later, you can (and should) learn about the story - the game is available in full digital form. The game is not so much scary as it is deep and breaking stereotypes and your expectations of a familiar plot.
+
+Game on Old-Games | MobyGames page
+
+Critics' average rating: 73.3%
+
+25. Realms of the Haunting (1996)
+---------------------------------
+
+We haven't had any strange hybrids in a while, have we?
+
+"Realms of the Haunting" is not just a game, it is art embodied in digital form. It represents a unique combination of genres, including elements of adventure games, first-person shooters and horror.
+
+The gun lies at the very beginning of the game
+
+In "Realms of the Haunting" you will explore a sinister mansion, encountering creatures from other worlds and solving complex puzzles to uncover the secrets of this place. All of this is accompanied by high-quality sound that enhances the sense of horror and tension. You have to explore the mansion's gloomy corridors, collect items and use them to solve puzzles.
+
+The game's plot revolves around Adam Randall, who comes to an abandoned mansion after his father's death. But as soon as he crosses the threshold, he enters another world full of demons and mysteries. He has to uncover the secrets of this place and find out what happened to his father. One of the most memorable scenes in "Realms of the Haunting" is the encounter with the demon Belial. This powerful creature from another world poses a serious threat to Adam. Fighting him requires not only quick reflexes, but also a good understanding of the game's mechanics. Another impressive scene is the meeting with Adam's father in the form of a ghost. This is when the plot of the game begins to unfold, and the player starts to understand what is going on. The very pleasant and convincing acting in the FMV scenes only adds to the atmosphere and elaboration of the plot...
+
+The plot in the game is presented through FMV inserts
+
+To be honest, I couldn't shake the feeling of the strangeness of what was happening. On the one hand, it's a quest, with searching for items, with great FMV scenes, the clashes with enemies are not so much surprising, as they were in Elvira, as the format that this happens in first person, with a hand growing out of the chest, like in Doom, with shootouts that really feel like shootouts. In general, the game is beautifully and well made, with nice graphics that immerse the player in a 3D environment with many details that many shooters of those years would envy.
+
+Of the negatives, I can note an extremely unusual and unintuitive interface and keys for modern players. As in early games, it uses arrow keys and angle brackets instead of WASD, strafing and running exist, but there is insane sensitivity in the game. To interact with the interface, you need to press additional keys on the keyboard (U)se, and to turn your head you have to hold down two mouse buttons at the same time. Yes, in 1996 there were no standards yet, but now such a thing can easily catch fire.
+
+Puzzles in the game are frequent, but do not overshadow the gameplay
+
+That is, this game is difficult to evaluate as a game. It is neither a quest to find items, nor a shooter with hordes of monsters, nor a crawler with wandering down corridors. In general, it is more like modern first-person horror games than anything of those years. For 1995, such an approach to details and gameplay is a real claim to being a work of art, and it is very unfortunate that the game is not very well known.
+
+Let's go crush some minotaurs so the demons are afraid
+
+Realms of the Haunting is a game that will not leave you indifferent. It offers a unique combination of genres, a complex plot and an engaging atmosphere that will make your journey through this world unforgettable. It's strange, unusual, uncomfortable and beautiful. In short, if you're looking for something complex, dynamic and unusual tonight - this is definitely your choice.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 74.1%
+
+
+26. Harvester (1996)
+--------------------
+
+I didn't play or even hear about this game in the '90s. But in today's selection, it's one of the most interesting, provocative and unusual games in my opinion. It's definitely worth checking out. Primarily because of its psychologism, absurdity, possibilities and contradictions. Just like with Darkseed, I got stuck in the game for a few hours, and then went on to flip through walkthroughs on Youtube to immerse myself a little more in the context and write a slightly more detailed review.
+
+The game is full of absurd black humor
+The game is full of absurd black humor
+From a gameplay perspective, Harvester is a classic point-and-click adventure. Most of the time you will be exploring the town, interacting with its inhabitants and solving various puzzles. Unfortunately, the controls in the game are quite inconvenient, the consequences of events are hard to anticipate, and sometimes without a walkthrough it's difficult to understand what is required of you, especially if you, like me, are not an expert in quests.
+
+The game represents a unique combination of black humor, violence and absurdity, which makes it truly unique. The game has no boundaries in morality or narrative, yet it is not gore for the sake of gore, not violence for the sake of violence, but violence and absurdity for the sake of challenging morality and for philosophical reflections.
+
+If you wish, you can kill all the inhabitants of the town
+If you wish, you can kill all the inhabitants of the town
+The main feature of Harvester is its atmosphere. From the first minutes of the game you are immersed in a world that seems simultaneously familiar and completely alien. The town of Harvest is full of strange characters and even stranger events that keep you tense all the time.
+
+The game's plot revolves around Steve, who wakes up in the small town of Harvest with no memories of his past. The whole town seems strange and unreal, and its inhabitants behave like characters from a cheap 50s TV show. A small, quiet American town with an outwardly ideal way of life that actually conceals many dark secrets and human vices. Steve has to interact with the town's strange inhabitants, fulfill their requests, while encountering violence, cruelty and surrealistic black humor along the way.
+
+The inhabitants of the town are mildly put, strange, hand-picked. Or is it Steve's perception?
+The inhabitants of the town are mildly put, strange, hand-picked. Or is it Steve's perception?
+One of the main features of Harvester is the ability to choose Steve's behavior style from benevolent to aggressively cynical. This affects the plot development and generates many ending variants.
+
+The game contains a lot of shocking content, including violence, explicit sexual scenes, and black humor. This caused a lot of controversy and scandal in the 1990s, but is now seen more as a stylized aesthetic. The graphics are well done, mimicking 1950s-60s American films. The sound, the musical accompaniment are also stylized to the music of that era and enhance the atmosphere of an absurd retro nightmare.
+
+Trash is thy name - from dialogues to surroundings
+Trash is thy name - from dialogues to surroundings
+Overall, Harvester is a cult game for fans of Tarantino-esque black humor. The shocking content is a deliberate artistic device, not an end in itself. The scene in the family restaurant is especially memorable, where the player can choose how exactly Steve will kill the waitress - with an axe or a cleaver. At the same time, the surrounding guests and the owner calmly continue breakfasting, and the corpse is removed as if nothing happened. The absurd black humor is simply off the charts. Another highlight is the opportunity to perform a ritual sacrifice of a virgin in an occult temple. The gameplay offers to choose how exactly to deprive her of innocence before the sacrifice.
+
+Such scenes caused (and still cause for some) shock and indignation. But this is how Harvester parodies the hypocrisy of society and takes it to absurdity.
+
+Pity, truth, fear, absurdity, cruelty?
+Pity, truth, fear, absurdity, cruelty?
+And even decades after its release, this game continues to evoke conflicting feelings. It shocks and repels, but at the same time lures and intrigues with its nightmare atmosphere under the guise of a 1950s ideal. It shocks with variability and multiple endings. That it has no good endings, no choice in principle that you would make yourself - "it just so happened", although you can choose absolutely anything. The game allows you to do not only what is taboo in other games (to be honest, I will refrain from listing), but also allows you in principle not to do so, and to be a victim in both the literal and figurative sense of the word. Despite its flaws and contradictions, Harvester is a game that is worth trying. Its unique atmosphere, interesting plot and original gameplay make it one of the most memorable games of the 90s. It's hard to imagine something similar coming out today.
+
+I recommend that those interested read a detailed review of the game.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 71.2%
+
+
+
+27. Blood (1997)
+----------------
+
+Unlike Harvester, I think almost all FPS genre fans in the '90s have heard of Blood. Like Harvester, the game allows you to unleash your share of violence, albeit with ostensibly righteous (righteous?) goals. At the time, I personally didn't care for the game precisely because of the excessive brutality and relatively outdated graphics. The game looked like a generic Witchhaven or Duke Nukem, even though Quake II and Hexen II had come out at the same time. But now this seems like a matter of taste, because the game isn't really about that, it's about the slasher, blood and horrors of a dark cult, and it's just fun!..
+
+Dance until you're dead
+
+Blood is a classic FPS game that still delights players to this day. The level design, animation, movement, weapons arsenal and monsters are organic, elaborate, and wonderful, especially in the context of their time. The weapon arsenal in Blood also deserves a separate mention. From shotgun to dynamite, from pitchfork to "Tommy gun" - each weapon has its own peculiarities and tactics of use. The levels in Blood are especially notable. They are ingeniously designed and full of secrets, which makes exploring them an exciting activity. In addition, the game has many different enemies, each of which requires its own approach in combat.
+
+The red splashed, splashed
+
+Despite the fact that Blood is a classic game, it has not aged. The movement in the game is fast and responsive, and the animation is smooth and detailed. In 2021, a remake was released, "Blood: Fresh Supply" - this is a new version of the game that offers improved graphics and support for modern screen resolutions. However, despite these improvements, "Fresh Supply" is unlikely to lure all players away from the 1997 version, because the classic has a special charm... A mixture of brutal bloodiness with black humor, a unique atmosphere that is hard to forget. Blood does not shy away from its bloodiness. Enemies explode into pieces, and blood splashes everywhere. But this is not just meaningless cruelty. All of this is accompanied by black humor, which gives the game a special appeal. The protagonist, Caleb, constantly mocks his enemies, making the game even more amusing.
+
+Everything is convenient except the pitchfork. But the pitchfork is brutal
+
+Overall, Blood is a great game that combines brutality, black humor, and great level design. If you love FPS games and aren't afraid of a little blood, this game is for you. I, for example, have revised my attitude and enjoy playing it purely for fun :)
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Average critic rating: 83.6%
+
+
+28. Sanitarium (1998)
+---------------------
+
+"Sanitarium" is a psychological horror point-and-click adventure game developed by DreamForge Entertainment and published by ASC Games in 1998. The game is set in an asylum, where the player controls a man who has amnesia and must explore the asylum to uncover his past.
+
+"Get that through your head, you're not the chosen one"
+
+The game is presented in a series of interactive puzzles that the player must solve to progress. The puzzles are often challenging and require the player to think outside the box.
+
+"Sanitarium" is distinguished by its unique, surreal atmosphere and deep plot. The game can be quite difficult and demanding, but for those who love horror and adventure, it offers a unique and engaging gaming experience.
+
+"Who's been missing - come to the carnival"
+
+First, it's worth talking a bit more about the plot. It is built around the theme of madness and the perception of reality. As you progress, you enter different worlds and meet characters who are projections of the protagonist's memories and fears. Revealing the true essence of what is happening is one of the key plot twists.
+
+Second, the game is interesting for its puzzles, many of which are based on associations related to the theme of madness. For example, in one of the worlds, you need to build a "logical" chain of absurd statements by a character to get a key clue to progress.
+
+"The game is a real horror fun"
+
+Third, it is worth noting the psychology of the characters and the moral choices that the player has to face. This gives the plot depth and emotional engagement.
+
+Today, the game still looks wonderful and relevant, in my opinion, and does not give the impression of something outdated. The world is very beautiful, full and atmospheric. But, as in the case of, for example, Planescape Torment (I think they are both atmospherically and visually similar), the game world is very specific and unlike anything else. There is probably no game to compare Sanitarium with - it is too eclectic, too original, like a work of art, fragile and ambiguous to perceive. Despite this, "Sanitarium" remains a classic of the genre and still attracts new players with its unusual approach to storytelling and puzzles. This is another game from today's list that, in my opinion, will not become obsolete and should be preserved on the shelves of the museum of digital history for posterity.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Critics' average rating: 80.2%
+
+
+29. Legacy of Kain (1999)
+-------------------------
+
+Legacy of Kain is a series of action-RPG games set in a dark fantasy world, developed by Crystal Dynamics. The first game was released in 1997 and quickly gained cult status thanks to its engaging story and atmosphere.
+
+Not all the dead have nothing to lose
+
+In the first game, you play as Kain, an aristocrat who is turned into a vampire after his death. Kain is driven by revenge against his murderers, but he can also save or doom the world of Nosgoth, depending on the player's actions. The moral dilemma facing Kain forces the player to consider the cost of salvation. The series' antagonist, the Soul Reaver, is also interesting. He initially appears to be a villain, but the player gradually comes to understand his motives. The ambiguity of the characters is a defining feature of the story.
+
+Gameplay consists of exploring Gothic locations, fighting monsters and enemies with a sword, claws and blood magic. Kain develops his strength and abilities as he levels up. The ability to transform into a wolf or bat for more effective attacks is particularly interesting.
+
+Tired vampires smell like dog
+
+It is also worth noting the difficulty of the enemies, especially the bosses. In battles, you have to use a lot of dodging and vampire abilities to win. This makes the battles truly exciting.
+
+As the game progresses, Kain gradually learns about the ancient curse that plagues this world. The protagonist is drawn into a massive conflict, where he must make a difficult choice about the fate of the entire empire.
+
+The dark atmosphere, memorable characters, well-developed story, and engaging action all made the first part a true classic, spawning numerous sequels and fans.
+
+Bloodletting is not only beautiful, but also restores health
+
+In 1999, the sequel Legacy of Kain: Soul Reaver was released. I played both games when they were released, but I admit that I didn't finish either one. Personally, for me, Legacy of Kain, released in 1997, was the first hack-and-slash game. Yes, of course, Diablo was released in 1996, and I managed to play it and appreciate the theme of Tristram, but I couldn't fall in love with the mechanics in either the first or the second part (although I finished both). Unlike Legacy of Kain, where, in addition to slicing enemies, which is quite varied, there were quite a few puzzles in the gameplay, there was more plot, narrative and dark atmosphere of vampire aesthetics.
+
+The dark atmosphere, memorable characters, well-developed story, and engaging action all made the first part a true classic, spawning numerous sequels and fans.
+
+Full 3D and hello Voodoo
+
+In 1999, the sequel Legacy of Kain: Soul Reaver was released. I played both games when they were released, but I admit that I didn't finish either one. Personally, for me, Legacy of Kain, released in 1997, was the first hack-and-slash game. Yes, of course, Diablo was released in 1996, and I managed to play it and appreciate the theme of Tristram, but I couldn't fall in love with the mechanics in either the first or the second part (although I finished both). Unlike Legacy of Kain, where, in addition to slicing enemies, which is quite varied, there were quite a few puzzles in the gameplay, there was more plot, narrative and dark atmosphere of vampire aesthetics.
+
+Legacy of Kain is still the standard for atmospheric action-RPGs in a Gothic setting. This legendary series is definitely worth trying!
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Critics' average rating: 76.5%
+
+
+30. Alien vs. Predator (1999)
+-----------------------------
+
+Aliens Versus Predator is a first-person shooter game released in 1999 that combines the universes of Aliens and Predator. Players can choose to fight for the humans, aliens, or Predators.
+
+The gameplay varies depending on the chosen race. Marines have access to firearms, Aliens can climb walls and ceilings, and Predators have powerful melee weapons with claws and a spear.
+
+The main modes are a single-player campaign for each race and multiplayer battles. The campaigns are well-developed in the spirit of the films, with an atmosphere of hopelessness and horror from fighting an unknown enemy in the darkness of space corridors.
+
+The graphics are impressive for the 1990s, with detailed models of Aliens and Predators and well-designed locations. The sound design is also top-notch, with the growls of Xenomorphs causing goosebumps.
+
+Playing as Colonial Marines, players must rely on firearms such as pistols, rifles, and shotguns. Ammunition is limited, so players often have to resort to hit-and-run tactics using cover. The Marine story is about investigating the disappearance of people on a planet.
+
+Playing as Xenomorphs, players have access to fun abilities such as climbing walls and ceilings and attacking with their tails. There is no weapon, only claws. In general, playing as Xenomorphs is probably the most interesting, but it is also the easiest to get lost and get motion sickness when the floor, ceiling, and walls are mixed up. The story of the Xenomorphs tells of the infection of colonists and Marines with eggs. It is necessary to make them serve the Queen.
+
+Predators have a powerful arsenal of melee weapons such as claws, spears, and a laser gun. Their campaign is about hunting Xenomorphs for trophies and recognition in the clan. The Predator's tactics are to attack from stealth. Predators are probably the easiest to play, but they are not as intuitive as ordinary fragile Marines.
+
+In multiplayer, players can play as all races, choosing the appropriate tactics. For example, Xenomorphs are effective in ambush attacks. And Marines can create defensive turrets.
+
+I, as not a big fan and skilled FPS player, appreciated the game already in the early 2000s. Unfortunately, it was not as popular as CS or Quake III, but it was still played, and it was fun.
+
+Overall, AvP has become a benchmark for multiplayer shooters in the setting of a science fiction horror. This game is still considered one of the best in the Aliens vs. Predator universe.
+
+Game on Old-Games | Game on GOG | Page on MobyGames
+
+Critics' average rating: 83.4%
+
+
+31. And more, and another one...
+--------------------------------
+
+The list includes games that were either iconic for me or that I was not familiar with but that I found to be the most interesting. I am sure that I missed something important and more significant for you, so I ask you to share in the comments.
+
+I specifically did not separate the first game in the series from the sequels (except for 7th Guest and 11th Hour), and I also did not take ports from other platforms (ok, except for Legacy of Kain, but in the 1990s I had no idea that the game was from the PS, and I found out only in the 2000s). Otherwise, Resident Evil and Silent Hill would definitely have made the list, and if you remove the platform restriction and take into account emulators...
+
+On the other hand, it somehow seems inconvenient for me to completely ignore games like BloodNet, Dark Eye, Nocturne, Veil of Darkness, Amber, Killing Time, Congo, Shadow Man, the Jack in the Dark promo spin-off, and others...
+
+And then it will still turn out that I bypassed horror games before the 90s, but included Maniac Mansion in the list of games from the 90s... And what about text-based horror games?
+
+In a word, you can't get everything, especially considering that such masterpieces as American McGee's Alice, Vampire: The Masquerade - Redemption, and KISS: Psycho Circus appeared in the 2000s.
+
+Most of the games can be found on GOG, so you can launch the games without any problems in a few clicks. The average rating is given as the arithmetic mean of the ratings from MobyGames and IGDB.
+
+
+Conclusion
+----------
+
+While I was listing thirty games and writing the half, "31" game, I thought about the questions that adults in the 1990s did not think about. How reasonable is it to expose children to provocative and scary content, to protect them from cruelty and violence? Now we are adults. Ratings have been invented for our children - PEGI and ESRB, laws are being passed at the state level to care for children so that they grow up with a healthy psyche, as once was the case when there were no harmful computer games. And you know, that's right. A child should not have the same experience that we had (okay, I'll be talking about myself), I had.
+
+Freddy and Jason, who killed people, traumatized me. I saw, albeit fake, but fountains of blood and sausages turned inside out instead of entrails. Violence is scary. Violence is bad. That's the conclusion I came to. When I played Cannon Fodder, and it was a lot of fun, because "War has never been so much fun," I mowed down hordes of enemies, set fire to other people's houses, and it's cool to feel stronger and more right, your green people are better than other people's blue ones. But my hill was filled with white crosses, and I was really sad that my Corporal Jops was no longer with me, but he threw grenades so well. Because war kills. War is absolute evil.
+
+Computer games traumatized me, since I wrote so many words about them, and even for the sake of devilry. And how many and whom do people who have not played them traumatize? Hardly. Nonsense.
+
+Literary translation of Russian text:
+
+As I was listing thirty games and writing the half, "31" game, I began to ponder questions that adults in the 1990s did not consider. Is it reasonable to expose children to provocative and scary content, or should they be protected from cruelty and violence? Now that we are adults, ratings such as PEGI and ESRB have been developed for our children, and laws have been passed at the state level to protect children so that they can grow up with healthy minds, as was once the case before harmful video games existed. And you know, that's the right thing to do. Children should not have the same experiences that we did (okay, I'll be talking about myself), I had.
+
+Freddy and Jason, who killed people, traumatized me. I saw, albeit fake, fountains of blood and sausages turned inside out instead of entrails. I came to the conclusion that violence is scary and bad. When I played Cannon Fodder, which was a lot of fun because "War has never been so much fun," I mowed down hordes of enemies and set fire to other people's houses. It was exhilarating to feel stronger and more righteous, that my green soldiers were better than the other team's blue ones. But my hill was filled with white crosses, and I was truly sad that my Corporal Jops was no longer with me, even though he threw grenades so well. Because war kills. War is absolute evil.
+
+Computer games traumatized me, as evidenced by the fact that I wrote so many words about them, and even for the sake of devilry. How many people and whom do people who have not played video games traumatize? Hardly anyone. Nonsense.
 
 
 .. _indie: https://en.wikipedia.org/wiki/Indie_game
+
+
