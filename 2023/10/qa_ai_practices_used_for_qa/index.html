@@ -62,7 +62,7 @@
 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2023/10/qa_ai_practices_used_for_qa/"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
 <meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2023-10-23 09:38:00+02:00"/>
-<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2023-10-31 15:32:56.468942+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2023-11-02 17:16:51.448821+01:00"/>
 <meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
   <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
 <meta prefix="og: http://ogp.me/ns#" property="article:section" content="qa"/>
@@ -84,7 +84,7 @@
   "name": "AI practices used for QA",
   "headline": "AI practices used for QA",
   "datePublished": "2023-10-23 09:38:00+02:00",
-  "dateModified": "2023-10-31 15:32:56.468942+01:00",
+  "dateModified": "2023-11-02 17:16:51.448821+01:00",
   "author": {
     "@type": "Person",
     "name": "wwakabobik",
@@ -575,8 +575,8 @@ class PomTestCaseGenerator:
 <div class="highlight"><pre><span></span>from examples.creds import oai_token, oai_organization
 from examples.test_generator.gpt_functions import gpt_functions, gpt_functions_dict
 from examples.test_generator.pom_case_generator import PomTestCaseGenerator
-from openai_api.src.openai_api import ChatGPT
-from openai_api.src.openai_api.logger_config import setup_logger
+from openai_python_api.src.openai_api import ChatGPT
+from openai_python_api.src.openai_api.logger_config import setup_logger
 
 url_under_test = &quot;https://www.saucedemo.com/&quot;
 generator = PomTestCaseGenerator(url=url_under_test)
