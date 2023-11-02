@@ -507,8 +507,8 @@ Finally, when we have all the parts, let's just call everything in the right ord
     from examples.creds import oai_token, oai_organization
     from examples.test_generator.gpt_functions import gpt_functions, gpt_functions_dict
     from examples.test_generator.pom_case_generator import PomTestCaseGenerator
-    from openai_api.src.openai_api import ChatGPT
-    from openai_api.src.openai_api.logger_config import setup_logger
+    from openai_python_api.src.openai_api import ChatGPT
+    from openai_python_api.src.openai_api.logger_config import setup_logger
 
     url_under_test = "https://www.saucedemo.com/"
     generator = PomTestCaseGenerator(url=url_under_test)
