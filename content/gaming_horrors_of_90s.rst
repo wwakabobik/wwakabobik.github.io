@@ -592,7 +592,7 @@ The second part was released in 1997. The plot of "Shivers II: Harvest of Souls"
 .. image:: https://habrastorage.org/getpro/habr/upload_files/05c/ac6/0dc/05cac60dc3822e5af41fc64777f8162c.gif
    :alt: Only the dead can help you
 
-I believe that a significant part of the atmosphere is created by the main character, his voice, and the translation greatly spoils the feeling of the game. The main character of the game, Dave, was voiced by Sierra Online employee Jason Lindsey. It is curious that now you can easily find him on YouTube under the name Metal Jesus Rocks - he is both a rocker and a retro gamer. If you are not yet subscribed to him, hurry up to fix this omission.
+I believe that a significant part of the atmosphere is created by the main character, his voice, and the translation greatly spoils the feeling of the game. The main character of the game, Dave, was voiced by Sierra Online employee Jason Lindsey. It is curious that now you can easily find him on YouTube under the name `Metal Jesus Rocks`_ - he is both a rocker and a retro gamer. If you are not yet subscribed to him, hurry up to fix this omission.
 
 .. image:: https://habrastorage.org/getpro/habr/upload_files/23d/e7d/2e4/23de7d2e4ec8af7c5c5d7ed9d81e8f58.gif
    :alt: Jason Lindsey, the voice actor at the game ending
