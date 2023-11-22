@@ -1,4 +1,4 @@
-pelican==4.8.0
-Markdown==3.5
+pelican==4.9.1
+Markdown==3.5.1
 beautifulsoup4==4.12.2
 webassets==2.0
