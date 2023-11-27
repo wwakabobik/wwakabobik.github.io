@@ -163,7 +163,7 @@ I highly not to recommend you to use it outside of private guild and channels, s
 Watcher bot
 ===========
 
-Second part here is to monitor Midjourney Bot response. You may use self-bot to achieve it, or you can create official bot for such purporses. I like to use `py-cord`_, but, you can use any other framework you want.
+Second part here is to monitor Midjourney Bot response. You may use self-bot to achieve it, or you can create official bot for such purposes. I like to use `py-cord`_, but, you can use any other framework you want.
 
 At the beginning, you need to navigate to `Discord Developer Applications`_ and create new one. Then:
 
