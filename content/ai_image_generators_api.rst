@@ -1,7 +1,7 @@
 ################################
 Generate images via API using AI
 ################################
-:date: 2023-11-25 10:14
+:date: 2023-11-29 14:30
 :author: wwakabobik
 :tags: ai, image generation, api, leonardo, dalle, midjourney, python
 :slug: ai_image_generators_api
@@ -11,6 +11,10 @@ Generate images via API using AI
 :cover: assets/images/bg/ai.png
 
 It's time to revisit AI image generators and use them from API. If you red my previous `article about image generators`_, you know that I am a big fan of `Midjourney`_, but I also liked `Leonardo.ai`_. I am still using them, but recently OpenAI released new version of DALL-E, DALL-E-3, and it's pretty impressive. Moreover, you most probably saw my `youtube video`_ and saw how generators works on the fly. I am going to compare them and see if there are any alternatives.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/qGixYKzmSB4?si=4B4uMhNFyXiejKcA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Leonardo.ai
 -----------
