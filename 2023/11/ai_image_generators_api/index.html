@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Generate images via API using AI</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2023/11/ai_image_generators_api/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/ai.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/ai.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="It's time to revisit AI image generators and use them from API. How to generate images via API using AI? Let's compare Leonardo.ai,...">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="ai">
+    <meta name="tags" content="image generation">
+    <meta name="tags" content="api">
+    <meta name="tags" content="leonardo">
+    <meta name="tags" content="dalle">
+    <meta name="tags" content="midjourney">
+    <meta name="tags" content="python">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Generate images via API using AI"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="It's time to revisit AI image generators and use them from API. How to generate images via API using AI? Let's compare Leonardo.ai,..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2023/11/ai_image_generators_api/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2023-11-29 14:30:00+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2023-11-29 13:31:15.758246+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="ai"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="ai"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="image generation"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="api"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="leonardo"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="dalle"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="midjourney"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/ai.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Generate images via API using AI",
+  "headline": "Generate images via API using AI",
+  "datePublished": "2023-11-29 14:30:00+01:00",
+  "dateModified": "2023-11-29 13:31:15.758246+01:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/ai.png",
+  "url": "https://wwakabobik.github.io/2023/11/ai_image_generators_api/",
+  "description": "It's time to revisit AI image generators and use them from API. How to generate images via API using AI? Let's compare Leonardo.ai,..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">Generate images via API using AI</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="29 Nov 2023">29 Nov 2023</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/ai.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>It's time to revisit AI image generators and use them from API. If you red my previous <a class="reference external" href="https://wwakabobik.github.io/2023/08/ai_image_generators/">article about image generators</a>, you know that I am a big fan of <a class="reference external" href="https://midjourney.com/">Midjourney</a>, but I also liked <a class="reference external" href="https://leonardo.ai/">Leonardo.ai</a>. I am still using them, but recently OpenAI released new version of DALL-E, DALL-E-3, and it's pretty impressive. Moreover, you most probably saw my <a class="reference external" href="https://www.youtube.com/watch?v=Ph7E`QSZPmGc">youtube video</a> and saw how generators works on the fly. I am going to compare them and see if there are any alternatives.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qGixYKzmSB4?si=4B4uMhNFyXiejKcA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="section" id="leonardo-ai">
+<h2>Leonardo.ai</h2>
+<p>For Leonardo.ai I wrote python wrapper, you may find it on <a class="reference external" href="https://github.com/wwakabobik/leonardo_api">Leonardo API github</a> or <a class="reference external" href="https://pypi.org/project/leonardo-api/">Leonardo API pypi</a>. It's pretty simple to use, you just need to create an account and get API key. Then you can use it like this:</p>
+<div class="highlight"><pre><span></span>leonardo = Leonardo(auth_token=leonardo_token)  # init API
+response = await leonardo.get_user_info()  # get user info, if you need to know your ID, etc
+prompt = &quot;a beautiful necromancer witch resurrects skeletons against the backdrop of a burning ruined castle&quot;
+# Then trigger generation
+response = await leonardo.post_generations(
+    prompt=prompt,
+    num_images=2,
+    negative_prompt=&quot;bright colors, good characters, positive&quot;,  # make sure it&#39;s not too negative
+    model_id=&quot;e316348f-7773-490e-adcd-46757c738eb7&quot;,
+    width=1024,
+    height=1024,
+    guidance_scale=7,  # it&#39;s better to be 7+-2
+    prompt_magic=True,  # if you want smart enhancement of your prompt
+)
+# this will create generation job, you can check it&#39;s status, or use helper method to wait for it
+response = await leonardo.wait_for_image_generation(generation_id=response[&quot;sdGenerationJob&quot;][&quot;generationId&quot;])
+print(json.dumps(response[0][&quot;url&quot;]))  # if you generate only one image, it will be not list, use response[&quot;url&quot;]
+</pre></div>
+<p>It's pretty simple, isn't it? You can use it to generate images in bulk or vary params of generation.</p>
+</div>
+<div class="section" id="dall-e-3">
+<h2>Dall-E-3</h2>
+<p>It was a big surprise for me, that OpenAI released new version of DALL-E. DALL-E-2 was total disappointment and actually, complete trash to use it in real life projects, but DALL-E-3 is better. Much better.</p>
+<p>To interact with it, you need to create an account on <a class="reference external" href="https://openai.com/">OpenAI</a> and get API key. I Then you can use mine python wrapper for it (you can find it in <a class="reference external" href="https://github.com/wwakabobik/openai_api">OpenAI API github</a> or <a class="reference external" href="https://pypi.org/project/openai-python-api/">OpenAI API pypi</a>). It's pretty simple to use, you just need to create an account on OpenAI and get API key. Then you can use it like this:</p>
+<div class="highlight"><pre><span></span>dalle = DALLE(auth_token=oai_token, organization=oai_organization)  # by default model=&quot;dall-e-3&quot;
+resp = await dalle.create_image_url(&quot;robocop (robot policeman, from 80s movie)&quot;)
+</pre></div>
+<p>Oh, even simpler than Leonardo.ai :)</p>
+</div>
+<div class="section" id="midjourney">
+<h2>Midjourney</h2>
+<p>Midjourney actually is a pain in ass. Because it's available only via discord, using Discord credentials, and you can't interact with it via API. Moreover, you shouldn't use any automation tools for it. As for Midjourney, and same for Discord. Due to this all that I wrote bellow will violate terms of service. I recommend you not to use it, or use by your own risk. I personally recommend you just wait till web interface / API of Midjourney will be implemented and use it instead of hacking the system.</p>
+<p>Ok, at first, to generate image from code, we need at least two parts to get images from it.</p>
+<div class="section" id="interactions-bot">
+<h3>Interactions bot</h3>
+<p>It's most crucial and dangerous part. Starting 2021 Discord prohibit to use slash commands by Discord bots and bans all of user-bots accounts. This means that this bot will violate rules of Discord. But, for sure, they exists. You may use ready-made library <a class="reference external" href="https://pypi.org/project/discum/">discum</a>, or, because we need only trigger few things, it'll be enough to trigger single request to Discord.</p>
+<div class="highlight"><pre><span></span>class DiscordInteractions:
+    &quot;&quot;&quot;&quot;&quot;&quot;
+    def __init__(self, token, **kwargs):
+        &quot;&quot;&quot;
+        Initialize DiscordInteractions class.
+
+        :param token: The token to use for authorization.
+        :param kwargs: The default parameters for the interaction.
+        &quot;&quot;&quot;
+        self.token = token
+        self.headers = {&quot;authorization&quot;: self.token}
+        self.url = &quot;https://discord.com/api/v9/interactions&quot;
+        self.default_params = kwargs
+
+    async def post_interaction(self, my_text_prompt, **kwargs):
+        &quot;&quot;&quot;
+        Post any discord interaction.
+
+        :param my_text_prompt: The text prompt to post.
+        :type my_text_prompt: str
+        :param kwargs: The parameters for the interaction.
+        :return: The response from the interaction.
+        &quot;&quot;&quot;
+        params = {**self.default_params, **kwargs}
+
+        payload_data = {
+            &quot;type&quot;: 2,
+            &quot;application_id&quot;: params.get(&#39;application_id&#39;),
+            &quot;guild_id&quot;: params.get(&#39;guild_id&#39;),
+            &quot;channel_id&quot;: params.get(&#39;channel_id&#39;),
+            &quot;session_id&quot;: params.get(&#39;session_id&#39;),
+            &quot;data&quot;: {
+                &quot;version&quot;: params.get(&#39;version&#39;),
+                &quot;id&quot;: params.get(&#39;interaction_id&#39;),
+                &quot;name&quot;: &quot;imagine&quot;,
+                &quot;type&quot;: 1,
+                &quot;options&quot;: [
+                    {
+                        &quot;type&quot;: 3,
+                        &quot;name&quot;: &quot;prompt&quot;,
+                        &quot;value&quot;: my_text_prompt
+                    }
+                ]
+            }
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(self.url, json=payload_data, headers=self.headers) as resp:
+                if resp.status != 200 and resp.status != 204:
+                    raise ValueError(f&quot;Request failed with status code {resp.status}&quot;)
+</pre></div>
+<p>Once again, I don't recommend you to use it, because it's against Discord rules. But, if you want to use it, you can use it like this:</p>
+<ul class="simple">
+<li>Open Chrome browser</li>
+<li>Open developer tools (F12)</li>
+<li>Go to Network tab</li>
+<li>Login to Discord via browser</li>
+<li>Find <cite>science</cite> request and copy <cite>authorization</cite> header from it - it's your token</li>
+</ul>
+<img alt="Discord token" src="/assets/images/articles/ai/image_generators_api/discord_token.jpg" />
+<ul class="simple">
+<li>Go to Discord channel with Midjouney bot and trigger /imagine slash command</li>
+<li>Find request to <cite>interactions</cite> and copy payload from it</li>
+<li>Paste values from it to <cite>payload_data</cite> variable in <cite>post_interaction</cite> method (i.e. via kwargs)</li>
+</ul>
+<img alt="Discord payload" src="/assets/images/articles/ai/image_generators_api/discord_payload.jpg" />
+<p>I highly not to recommend you to use it outside of private guild and channels, so, ensure, that guild_id and channel_id are correct and it's your private channel. For usage, use following:</p>
+<div class="highlight"><pre><span></span><span class="n">discord_interaction</span> <span class="o">=</span> <span class="n">DiscordInteractions</span><span class="p">(</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;auth_token&quot;</span><span class="p">],</span>
+    <span class="n">application_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;application_id&quot;</span><span class="p">],</span>
+    <span class="n">guild_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;guild_id&quot;</span><span class="p">],</span>
+    <span class="n">channel_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;channel_id&quot;</span><span class="p">],</span>
+    <span class="n">session_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;session_id&quot;</span><span class="p">],</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">],</span>
+    <span class="n">interaction_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;interaction_id&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="k">await</span> <span class="n">discord_interaction</span><span class="o">.</span><span class="n">post_interaction</span><span class="p">(</span><span class="n">my_text_prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="watcher-bot">
+<h3>Watcher bot</h3>
+<p>Second part here is to monitor Midjourney Bot response. You may use self-bot to achieve it, or you can create official bot for such purposes. I like to use <a class="reference external" href="https://pypi.org/project/py-cord/">py-cord</a>, but, you can use any other framework you want.</p>
+<p>At the beginning, you need to navigate to <a class="reference external" href="https://discord.com/developers/applications/">Discord Developer Applications</a> and create new one. Then:</p>
+<ul class="simple">
+<li>Open this application</li>
+<li>Go to Bot tab</li>
+<li>Get the token (if you don't see it, click on <cite>Reset Token</cite> button))</li>
+<li>Scroll down and switch on all flipper switches on &quot;Privileged Gateway Intents&quot; section</li>
+<li>Ensure that all three flipper switches, especially 'MESSAGE CONTENT INTENT' is turned on</li>
+<li>Save changes</li>
+<li>Go to OAuth2 tab</li>
+<li>Select <cite>bot</cite> scope</li>
+<li>Select <cite>Send Messages</cite> and <cite>Read Message History</cite> and <cite>Read Messages/View Channels</cite> permissions</li>
+<li>Invite bot to your channel (where Midjourney bot is), and grant permissions for it.</li>
+</ul>
+<img alt="Discord watcher bot" src="/assets/images/articles/ai/image_generators_api/discord_watcher_bot.jpg" />
+<p>Then let's code logic for watcher bot:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
+
+<span class="kn">from</span> <span class="nn">discord</span> <span class="kn">import</span> <span class="n">Intents</span>
+<span class="kn">from</span> <span class="nn">discord.ext</span> <span class="kn">import</span> <span class="n">commands</span>
+
+<span class="kn">from</span> <span class="nn">utils.logger_config</span> <span class="kn">import</span> <span class="n">setup_logger</span>
+
+
+<span class="k">class</span> <span class="nc">DiscordWatcher</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">Bot</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">watch_user_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize DiscordWatcher class.</span>
+
+<span class="sd">        :param command_prefix: The prefix for the bot.</span>
+<span class="sd">        :param watch_user_id: The user ID to watch.</span>
+<span class="sd">        :param options: The options for the bot.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">command_prefix</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">intents</span><span class="o">=</span><span class="n">Intents</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_user_id</span> <span class="o">=</span> <span class="n">watch_user_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span> <span class="o">=</span> <span class="n">setup_logger</span><span class="p">(</span><span class="s2">&quot;discord_watcher&quot;</span><span class="p">,</span> <span class="s2">&quot;discord_watcher.log&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;DiscordWatcher initialized&#39;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called when the bot is ready.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;We have logged in as </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function is called when a message is created and sent.</span>
+
+<span class="sd">        :param message: The message that was sent.</span>
+<span class="sd">        :type message: discord.Message</span>
+<span class="sd">        :return: The message content.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Got a message from </span><span class="si">%s</span><span class="s1"> : </span><span class="si">%s</span><span class="s1"> : </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">author</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_user_id</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;Waiting to start&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Found a message from the target user: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">attachments</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">attachment</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">attachments</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Found an attachment: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">attachment</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+                        <span class="k">return</span> <span class="n">attachment</span><span class="o">.</span><span class="n">url</span>  <span class="c1"># instead of return it&#39;s better to pass it to queue</span>
+                <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">embeds</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">embed</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">embeds</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Found an embed: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">embed</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+                        <span class="k">return</span> <span class="n">embed</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">___logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Found a message from the target user, but content is not ready yet...&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Ok, then you may monitor channel for any messages and content. Just execute your bot as follows:</p>
+<div class="highlight"><pre><span></span><span class="n">watcher</span> <span class="o">=</span> <span class="n">DiscordWatcher</span><span class="p">(</span><span class="n">watch_user_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;application_id&quot;</span><span class="p">])</span>  <span class="c1"># this is Midjourney bot ID</span>
+<span class="n">watcher</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">discord_watcher_token</span><span class="p">)</span>  <span class="c1"># use your bot token here</span>
+</pre></div>
+<p>Now you'll get info from watcher about generated URL by Midjourney. You can use it to download image and use it in your code. Or, you may proceed further, obtain one of the action buttons and click on it via interaction.</p>
+</div>
+</div>
+<div class="section" id="gathering-all-together-and-generate-images">
+<h2>Gathering all together and generate images</h2>
+<p>Ok, now we have all parts to compare three API generators. Let's do it.</p>
+<p>At the beginning, we need to collect response from Midjourney Watcher bot. We can do it via queue, or via global variable. Or just parse a log. So, let's write a function to do it:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">find_and_clear</span><span class="p">(</span><span class="n">log_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find and clear the log file.</span>
+
+<span class="sd">    :param log_file: The log file to use for the function.</span>
+<span class="sd">    :type log_file: str</span>
+<span class="sd">    :return: The attachment found in the log file.</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="s2">&quot;r+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>  <span class="c1"># read from the end of file</span>
+                <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Found an attachment: (.*)&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># clear file to make it ready for next iteration</span>
+                    <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+<p>Then let's wrap Midjourney and Leonardo into wrapper generation functions:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">midjourney_wrapper</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wrapper for midjourney testing.</span>
+
+<span class="sd">    :param prompt: The prompt to use for the function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">discord</span> <span class="o">=</span> <span class="n">DiscordInteractions</span><span class="p">(</span>
+        <span class="n">token</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;auth_token&quot;</span><span class="p">],</span>
+        <span class="n">application_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;application_id&quot;</span><span class="p">],</span>
+        <span class="n">guild_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;guild_id&quot;</span><span class="p">],</span>
+        <span class="n">channel_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;channel_id&quot;</span><span class="p">],</span>
+        <span class="n">session_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;session_id&quot;</span><span class="p">],</span>
+        <span class="n">version</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">],</span>
+        <span class="n">interaction_id</span><span class="o">=</span><span class="n">discord_midjourney_payload</span><span class="p">[</span><span class="s2">&quot;interaction_id&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="k">await</span> <span class="n">discord</span><span class="o">.</span><span class="n">post_interaction</span><span class="p">(</span><span class="n">my_text_prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">find_and_clear</span><span class="p">(</span><span class="n">log_file</span><span class="o">=</span><span class="s2">&quot;discord_watcher.log&quot;</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">leonardo_wrapper</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">leonardo</span><span class="o">.</span><span class="n">post_generations</span><span class="p">(</span>
+        <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+        <span class="n">num_images</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;1e60896f-3c26-4296-8ecc-53e2afecc132&quot;</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">prompt_magic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">leonardo</span><span class="o">.</span><span class="n">wait_for_image_generation</span><span class="p">(</span><span class="n">generation_id</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;sdGenerationJob&quot;</span><span class="p">][</span><span class="s2">&quot;generationId&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+</pre></div>
+<p>Ok, one more thing to do - let's save image from URL. I'll use <cite>aiohttp</cite> and <cite>aiofiles</cite> for it:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aiofiles</span>
+<span class="kn">import</span> <span class="nn">aiohttp</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">save_image_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save image from url to file.</span>
+
+<span class="sd">    :param url: The url to use for the function.</span>
+<span class="sd">    :type url: str</span>
+<span class="sd">    :param file_path: The file path to use for the function.</span>
+<span class="sd">    :type file_path: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="k">await</span> <span class="n">aiofiles</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+                <span class="k">await</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                <span class="k">await</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Image successfully saved to </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">file_path</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unable to save image. HTTP response code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+<p>Well, if DALLE API have such method, it'll be much easier to use it. But, it's not, so, let's use it as is. Last thing to do - gather all methods together and feed them with same prompts. But... you know... If you want to get good results, you need to use different prompts for different generators. Moreover, it's better to follow style guide for each generator. So, let's use different prompts for each generator. In case of Leonardo <cite>promptmagic</cite> and <cite>alchemy</cite> does a great job, but for DALLE and Midjourney it's better to use more detailed prompts. Due to that, why not to delegate it to AI? I'll use aBLT 'mAINA' bot for it. It's already trained to generate prompts for Midjourney and DALLE. So, I'll use <a class="reference external" href="https://pypi.org/project/ablt-python-api/">ablt_python_api</a> (<a class="reference external" href="https://github.com/ablt-ai/ablt_python_api">ablt_python_api github</a>). So, let's use it:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ssl</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">ablt_python_api</span> <span class="kn">import</span> <span class="n">ABLTApi_async</span> <span class="k">as</span> <span class="n">ABLTApi</span>
+<span class="kn">from</span> <span class="nn">leonardo_api</span> <span class="kn">import</span> <span class="n">LeonardoAsync</span> <span class="k">as</span> <span class="n">Leonardo</span>
+<span class="kn">from</span> <span class="nn">openai_python_api.dalle</span> <span class="kn">import</span> <span class="n">DALLE</span>
+
+<span class="c1"># Initialize the APIs</span>
+<span class="n">ssl_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">create_default_context</span><span class="p">()</span>
+<span class="n">ssl_context</span><span class="o">.</span><span class="n">check_hostname</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">ssl_context</span><span class="o">.</span><span class="n">verify_mode</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">CERT_NONE</span>
+<span class="n">dalle</span> <span class="o">=</span> <span class="n">DALLE</span><span class="p">(</span><span class="n">auth_token</span><span class="o">=</span><span class="n">oai_token</span><span class="p">,</span> <span class="n">organization</span><span class="o">=</span><span class="n">oai_organization</span><span class="p">)</span>
+<span class="n">leonardo</span> <span class="o">=</span> <span class="n">Leonardo</span><span class="p">(</span><span class="n">auth_token</span><span class="o">=</span><span class="n">leonardo_token</span><span class="p">)</span>
+<span class="n">ablt</span> <span class="o">=</span> <span class="n">ABLTApi</span><span class="p">(</span><span class="n">bearer_token</span><span class="o">=</span><span class="n">ablt_token</span><span class="p">,</span> <span class="n">ssl_context</span><span class="o">=</span><span class="n">ssl_context</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">generate_image</span><span class="p">():</span>  <span class="c1"># pylint: disable=too-many-locals</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate image.</span>
+
+<span class="sd">    :return: The image list with dict (contains url and filepathes).</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">prompts</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;beautiful and scary necromancer girl riding white unicorn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;draw a character that is a toast-mascot in cartoon style&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ai robots are fighting against humans in style of Pieter Bruegel&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">image_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prompts</span><span class="p">):</span>
+        <span class="n">midjourney_prompt</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ablt</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span>
+            <span class="n">bot_slug</span><span class="o">=</span><span class="s2">&quot;maina&quot;</span><span class="p">,</span>
+            <span class="n">prompt</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Please write a midjourney prompt with aspect ratio 1:1, realistic style: &#39;</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Give me the prompt only, without any comments and descriptions. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Just prompt output for midjourney.&quot;</span><span class="p">,</span>
+            <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="fm">__anext__</span><span class="p">()</span>
+        <span class="n">dalle_prompt</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ablt</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span>
+            <span class="n">bot_slug</span><span class="o">=</span><span class="s2">&quot;maina&quot;</span><span class="p">,</span>
+            <span class="n">prompt</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Please write a dalle3 prompt: &#39;</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Give me the prompt only, without any comments and descriptions. Just prompt output.&quot;</span><span class="p">,</span>
+            <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="fm">__anext__</span><span class="p">()</span>
+        <span class="n">midjourney_prompt</span> <span class="o">=</span> <span class="n">midjourney_prompt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;`&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">leonardo_image_url_coro</span> <span class="o">=</span> <span class="n">leonardo_wrapper</span><span class="p">(</span><span class="n">dalle_prompt</span><span class="p">)</span>
+        <span class="n">dalle3_image_url_coro</span> <span class="o">=</span> <span class="n">dalle</span><span class="o">.</span><span class="n">create_image_url</span><span class="p">(</span><span class="n">dalle_prompt</span><span class="p">)</span>
+        <span class="n">midjourney_image_url_coro</span> <span class="o">=</span> <span class="n">midjourney_wrapper</span><span class="p">(</span><span class="n">midjourney_prompt</span><span class="p">)</span>
+        <span class="n">leonardo_image_url</span><span class="p">,</span> <span class="n">dalle3_image_url</span><span class="p">,</span> <span class="n">midjourney_image_url</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+            <span class="n">leonardo_image_url_coro</span><span class="p">,</span> <span class="n">dalle3_image_url_coro</span><span class="p">,</span> <span class="n">midjourney_image_url_coro</span>
+        <span class="p">)</span>
+        <span class="n">leonardo_image_coro</span> <span class="o">=</span> <span class="n">save_image_from_url</span><span class="p">(</span><span class="n">leonardo_image_url</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;leonardo_image_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">dalle3_image_coro</span> <span class="o">=</span> <span class="n">save_image_from_url</span><span class="p">(</span><span class="n">dalle3_image_url</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;dalle3_image_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">midjourney_image_coro</span> <span class="o">=</span> <span class="n">save_image_from_url</span><span class="p">(</span><span class="n">midjourney_image_url</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;midjourney_image_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">leonardo_image</span><span class="p">,</span> <span class="n">dalle3_image</span><span class="p">,</span> <span class="n">midjourney_image</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+            <span class="n">leonardo_image_coro</span><span class="p">,</span> <span class="n">dalle3_image_coro</span><span class="p">,</span> <span class="n">midjourney_image_coro</span>
+        <span class="p">)</span>
+        <span class="n">image_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;images&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;leonardo&quot;</span><span class="p">:</span> <span class="n">leonardo_image</span><span class="p">,</span> <span class="s2">&quot;dalle3&quot;</span><span class="p">:</span> <span class="n">dalle3_image</span><span class="p">,</span> <span class="s2">&quot;midjourney&quot;</span><span class="p">:</span> <span class="n">midjourney_image</span><span class="p">},</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;leonardo&quot;</span><span class="p">:</span> <span class="n">leonardo_image_url</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">),</span>
+                    <span class="s2">&quot;dalle3&quot;</span><span class="p">:</span> <span class="n">dalle3_image_url</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">),</span>
+                    <span class="s2">&quot;midjourney&quot;</span><span class="p">:</span> <span class="n">midjourney_image_url</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">),</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;prompts&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;leonardo&quot;</span><span class="p">:</span> <span class="n">dalle_prompt</span><span class="p">,</span> <span class="s2">&quot;dalle3&quot;</span><span class="p">:</span> <span class="n">dalle_prompt</span><span class="p">,</span> <span class="s2">&quot;midjourney&quot;</span><span class="p">:</span> <span class="n">midjourney_prompt</span><span class="p">},</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">image_list</span>
+</pre></div>
+<p>Ok, now we have all parts to compare three API generators. Let's do it.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main function.&quot;&quot;&quot;</span>
+    <span class="n">image_list</span> <span class="o">=</span> <span class="k">await</span> <span class="n">generate_image</span><span class="p">()</span>
+    <span class="n">pprint</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="section" id="image-generation-results">
+<h2>Image generation results</h2>
+<div class="section" id="beautiful-and-scary-necromancer-girl-riding-white-unicorn">
+<h3>&quot;beautiful and scary necromancer girl riding white unicorn&quot;</h3>
+<p>Simple prompt will lead to simple results, like image of some girl in dark dress riding horse. It's kinda boring. Enhanced prompt version of prompt will looks like:</p>
+<p>For DALLE:</p>
+<blockquote class="pull-quote">
+beautiful yet intimidating necromancer girl with flowing dark robes and glowing eyes, riding a majestic white unicorn with a twisted horn, amidst a swirling vortex of spectral souls and arcane symbols, under a moonlit, starless sky.</blockquote>
+<p>For Midjourney:</p>
+<blockquote class="pull-quote">
+beautiful and scary white-haired necromancer girl with flaming eyes riding a white unicorn with long spiked twisted horn, realistic, dark lighting, --ar 1:1 --q 5 --v 5.2 --s 750</blockquote>
+<p>Midjourney:</p>
+<img alt="Midjourney's necromancer girl riding white unicorn" src="/assets/images/articles/ai/image_generators_api/midjourney_generation_0.png" />
+<p>Leonardo:</p>
+<img alt="Leonardos's necromancer girl riding white unicorn" src="/assets/images/articles/ai/image_generators_api/leonardo_generation_0.jpg" />
+<p>DALLE:</p>
+<img alt="DALL-E-3's necromancer girl riding white unicorn" src="/assets/images/articles/ai/image_generators_api/dalle_generation_0.png" />
+<p>All images looks good. To be fair, I like Midjourney's image more because of realistics, but it's just my personal opinion. DALLE's image is more related to prompt, but it looks like collage, and it's not a realistic at all. Leonardo's image is good, looks like dark fantasy or game art. In general, all images are good, just depends on your needs.</p>
+</div>
+<div class="section" id="draw-a-character-that-is-a-toast-mascot-in-cartoon-style">
+<h3>&quot;draw a character that is a toast-mascot in cartoon style&quot;</h3>
+<p>DALLE prompt:</p>
+<blockquote class="pull-quote">
+A cartoon-style character designed as a whimsical toast-mascot, with butter-pat shoes, a cheerful smile, and a crusty bread texture, holding a jam jar in one hand and a butter knife in the other, set against a breakfast-themed backdrop with eggs and bacon</blockquote>
+<p>Midjourney prompt:</p>
+<blockquote class="pull-quote">
+a character that is a toast-mascot, cartoon style, realistic textures, expressive face, standing pose, with a lice of butter, wearing a small chef hat, --ar 1:1 --q 2 --niji</blockquote>
+<p>Midjourney:</p>
+<img alt="Midjourney's toast-mascot" src="/assets/images/articles/ai/image_generators_api/midjourney_generation_1.png" />
+<p>Leonardo:</p>
+<img alt="Leonardos's toast-mascot" src="/assets/images/articles/ai/image_generators_api/leonardo_generation_1.jpg" />
+<p>DALLE:</p>
+<img alt="DALL-E-3's toast-mascot" src="/assets/images/articles/ai/image_generators_api/dalle_generation_1.png" />
+<p>Well, cartoon style seems simpler to all models. Starting v5.2 all of Midjourney models seems to be more scenery and realistic, so, it looks like a cartoon movie, not just a drawing, and if you want to generate something like that, you need to take it into account even using niji model. Leonardo is good, looks like character from casual coop game like Overcooked. I like it. DALLE is good too, and, to be fair, much more clear, more relevant to prompt, as it was for first image. But still it have less stylization and creativity, to get more artistic results, you need to use more creative prompts.</p>
+</div>
+<div class="section" id="ai-robots-are-fighting-against-humans-in-style-of-pieter-bruegel">
+<h3>&quot;ai robots are fighting against humans in style of Pieter Bruegel&quot;</h3>
+<p>DALLE prompt:</p>
+<blockquote class="pull-quote">
+A horde of AI robots clashing with human warriors in a chaotic and detailed landscape reminiscent of Pieter Bruegel's style, with an emphasis on the tumult of the battle and the contrast between the mechanical forms of the robots and the organic figures of the humans, set against a backdrop of a 16th-century European village.</blockquote>
+<p>Midjourney prompt:</p>
+<blockquote class="pull-quote">
+ai robots, human warriors, epic battle, Bruegel style, dynamic composition, 16th-century European landscape, dark dramatic clouds, earthy color palette, metallic textures, --ar 1:1 --v 5 --q 5</blockquote>
+<p>Midjourney:</p>
+<img alt="Midjourney's robots fighting against humans" src="/assets/images/articles/ai/image_generators_api/midjourney_generation_2.png" />
+<p>Leonardo:</p>
+<img alt="Leonardos's robots fighting against humans" src="/assets/images/articles/ai/image_generators_api/leonardo_generation_2.jpg" />
+<p>DALLE:</p>
+<img alt="DALL-E-3's robots fighting against humans" src="/assets/images/articles/ai/image_generators_api/dalle_generation_2.png" />
+<p>I expect nothing from models, just something  like similar to topic. Something quite absourdistic, like suffering middle ages art. And I was surprised by results. Midjourney image have quite a lot of details, strange, scary robots and brave medieval humans. I looked it for a several minutes to get all details. Colors are great too. Leonardo is quite average. It's accurate, some medieval landscape, some robot-like creatures and... probably some humans defending the castle. Well, if I saw it in internet, I'll probably just scroll it through. DALLE image much more strange and atmospheric. It's like some kind of surrealistic art. I like it, but background details a bit messy, with generation errors, but, who cares - it's kind a normal for Breugel's style.</p>
+<p>Summarizing generations I may say that all models works fine, especially with enriched prompts. In average, I still like Midjourney more, but recent DALLE-3 it's breakthrough indeed. It's much more accurate and more creative rather than Leonardo, but you need to be careful with it.</p>
+<img alt="DALL-E-3 vision of necromancer girl" src="/assets/images/articles/ai/image_generators_api/dalle_generation_0_alt.png" />
+<p>As you can see, it contains unique details and vision, like attention to horse hair or moss on trees. It's impressive. But some details may still looks like collage, so, you need to be careful with it. And, of course regenerate, repeat and variate...</p>
+</div>
+</div>
+<div class="section" id="create-variations">
+<h2>Create variations</h2>
+<p>All of the models is able to create variations. Simplest here is Midjourney. All you need to do is to pass same (or a bit different from original) prompt and web link to any existing image (i.g. generated by Midjourney). It will be something like this:</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">get_midjourney_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get variations from midjourney images.</span>
+
+<span class="sd">    :param image_list: The image list to use for the function.</span>
+<span class="sd">    :type image_list: list</span>
+<span class="sd">    :return: The variations from midjourney images.</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">variations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">images</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image_list</span><span class="p">):</span>
+        <span class="n">midjourney_url</span> <span class="o">=</span> <span class="k">await</span> <span class="n">midjourney_wrapper</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">images</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">][</span><span class="s2">&quot;midjourney&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">images</span><span class="p">[</span><span class="s2">&quot;prompts&quot;</span><span class="p">][</span><span class="s2">&quot;midjourney&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">midjourney_file</span> <span class="o">=</span> <span class="k">await</span> <span class="n">save_image_from_url</span><span class="p">(</span><span class="n">midjourney_url</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;midjourney_variation_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">variations</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">midjourney_url</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">),</span> <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="n">midjourney_file</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">variations</span>
+</pre></div>
+<p>For DALLE you may use any of <cite>create_variation</cite> methods, but I need to say that nowdays variations operated by DALL-E-2 and you may expect downgrade quality of your images. But due to that we have no choice, let's use it:</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">get_dalle_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get variations from dalle3 images.</span>
+
+<span class="sd">    :param image_list: The image list to use for the function.</span>
+<span class="sd">    :type image_list: list</span>
+<span class="sd">    :return: The variations from dalle3 images.</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">variations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">dalle</span><span class="o">.</span><span class="n">default_model</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># disable dall-e-3 because isn&#39;t supported for variations yet</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">images</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image_list</span><span class="p">):</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="s2">&quot;images&quot;</span><span class="p">][</span><span class="s2">&quot;dalle3&quot;</span><span class="p">]</span>
+        <span class="c1"># you may also use dalle.create_variation_from_url_and_get_url(url), but it&#39;s won&#39;t work for dalle3 urls</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="k">await</span> <span class="n">dalle</span><span class="o">.</span><span class="n">create_variation_from_file_and_get_url</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="k">await</span> <span class="n">save_image_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;dalle3_variation_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+            <span class="n">variations</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">),</span> <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="n">image</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">variations</span>
+</pre></div>
+<p>For Leonardo you need to do same thing as for DALL-E, but the difference here that you may re-use seed (what may not be a good idea) or upload initial image to Leonardo and use it as seed. I'll use second approach:</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">get_leonardo_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get variations from leonardo images.</span>
+
+<span class="sd">    :param image_list: The image list to use for the function.</span>
+<span class="sd">    :type image_list: list</span>
+<span class="sd">    :return: The variations from leonardo images.</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">variations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">images</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image_list</span><span class="p">):</span>
+        <span class="n">image_file</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="s2">&quot;images&quot;</span><span class="p">][</span><span class="s2">&quot;leonardo&quot;</span><span class="p">]</span>
+        <span class="n">leonardo_generation</span> <span class="o">=</span> <span class="k">await</span> <span class="n">leonardo</span><span class="o">.</span><span class="n">upload_init_image</span><span class="p">(</span><span class="n">image_file</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">leonardo</span><span class="o">.</span><span class="n">post_generations</span><span class="p">(</span>
+            <span class="n">prompt</span><span class="o">=</span><span class="n">images</span><span class="p">[</span><span class="s2">&quot;prompts&quot;</span><span class="p">][</span><span class="s2">&quot;leonardo&quot;</span><span class="p">],</span>
+            <span class="n">num_images</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;1e60896f-3c26-4296-8ecc-53e2afecc132&quot;</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+            <span class="n">prompt_magic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">init_image_id</span><span class="o">=</span><span class="n">leonardo_generation</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">leonardo</span><span class="o">.</span><span class="n">wait_for_image_generation</span><span class="p">(</span><span class="n">generation_id</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;sdGenerationJob&quot;</span><span class="p">][</span><span class="s2">&quot;generationId&quot;</span><span class="p">])</span>
+        <span class="n">leonardo_url</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+        <span class="n">leonardo_file</span> <span class="o">=</span> <span class="k">await</span> <span class="n">save_image_from_url</span><span class="p">(</span><span class="n">leonardo_url</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;leonardo_variation_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">variations</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">leonardo_url</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="n">leonardo_file</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">variations</span>
+</pre></div>
+<p>And, finally, let's gather all together:</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">generate_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate variations.</span>
+
+<span class="sd">    :return: The variations list.</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dalle_variations_coro</span> <span class="o">=</span> <span class="n">get_dalle_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span>
+    <span class="n">midjourney_variations_coro</span> <span class="o">=</span> <span class="n">get_midjourney_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span>
+    <span class="n">leonardo_variations_coro</span> <span class="o">=</span> <span class="n">get_leonardo_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span>
+    <span class="n">dalle_variations</span><span class="p">,</span> <span class="n">midjourney_variations</span><span class="p">,</span> <span class="n">leonardo_variations</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+        <span class="n">dalle_variations_coro</span><span class="p">,</span> <span class="n">midjourney_variations_coro</span><span class="p">,</span> <span class="n">leonardo_variations_coro</span>
+    <span class="p">)</span>
+    <span class="n">variations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">leonardo_item</span><span class="p">,</span> <span class="n">dalle_item</span><span class="p">,</span> <span class="n">midjourney_item</span><span class="p">,</span> <span class="n">image_item</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+        <span class="n">leonardo_variations</span><span class="p">,</span> <span class="n">dalle_variations</span><span class="p">,</span> <span class="n">midjourney_variations</span><span class="p">,</span> <span class="n">image_list</span>
+    <span class="p">):</span>
+        <span class="n">variations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;images&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;leonardo&quot;</span><span class="p">:</span> <span class="n">leonardo_item</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;dalle3&quot;</span><span class="p">:</span> <span class="n">dalle_item</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;midjourney&quot;</span><span class="p">:</span> <span class="n">midjourney_item</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;leonardo&quot;</span><span class="p">:</span> <span class="n">leonardo_item</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;dalle3&quot;</span><span class="p">:</span> <span class="n">dalle_item</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;midjourney&quot;</span><span class="p">:</span> <span class="n">midjourney_item</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;prompts&quot;</span><span class="p">:</span> <span class="n">image_item</span><span class="p">[</span><span class="s2">&quot;prompts&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">variations</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main function.&quot;&quot;&quot;</span>
+    <span class="n">variation_list</span> <span class="o">=</span> <span class="k">await</span> <span class="n">generate_variations</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span>
+    <span class="n">pprint</span><span class="p">(</span><span class="n">variation_list</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="section" id="variations-results">
+<h2>Variations results</h2>
+<p>Brief explanation: variations usually is worse than regeneration with slight different prompt. Because during regeneration based on image model will lost some aspects of initial prompt, which may be much more significant for you. In other words, it's something like: &quot;I want something like that you have, bot it should not be the same, surprise me&quot;. But, let's see what we have.</p>
+<div class="section" id="beautiful-and-scary-necromancer-girl-riding-white-unicorn-1">
+<h3>&quot;beautiful and scary necromancer girl riding white unicorn&quot;</h3>
+<p>Midjourney:</p>
+<img alt="Midjourney's necromancer girl riding white unicorn" src="/assets/images/articles/ai/image_generators_api/midjourney_variation_0.png" />
+<p>Leonardo:</p>
+<img alt="Leonardo's necromancer girl riding white unicorn" src="/assets/images/articles/ai/image_generators_api/leonardo_variation_0.jpeg" />
+<p>DALLE:</p>
+<img alt="Dall-e-2's necromancer girl riding white unicorn" src="/assets/images/articles/ai/image_generators_api/dalle_variation_0.png" />
+<p>Midjourney lost dark side of girl, but in general still nice. Leonardo is best here - it's more accurate and more relevant to prompt, but in same time it's slightly different from original prompt. DALLE is not good at all, it looks blurry, some details lost, but, I may say that it have it's own charm.</p>
+</div>
+<div class="section" id="draw-a-character-that-is-a-toast-mascot-in-cartoon-style-1">
+<h3>&quot;draw a character that is a toast-mascot in cartoon style&quot;</h3>
+<p>Midjourney:</p>
+<img alt="Midjourney's toast-mascot" src="/assets/images/articles/ai/image_generators_api/midjourney_variation_1.png" />
+<p>Leonardo:</p>
+<img alt="Leonardo's toast-mascot" src="/assets/images/articles/ai/image_generators_api/leonardo_variation_1.jpg" />
+<p>DALLE:</p>
+<img alt="Dall-e-2's toast-mascot" src="/assets/images/articles/ai/image_generators_api/dalle_variation_1.png" />
+<p>Same as first try, all models works fine. Midjourney is more realistic (may be even better related to initial query), Leonardo is more cartoonish, with more detailed bread, DALLE is simplified, but still a clear and nice character. All images are good, DALLE level looks like DALL-E-2 but still usable.</p>
+</div>
+<div class="section" id="ai-robots-are-fighting-against-humans-in-style-of-pieter-bruegel-1">
+<h3>&quot;ai robots are fighting against humans in style of Pieter Bruegel&quot;</h3>
+<p>Midjourney:</p>
+<img alt="Midjourney's robots fighting against humans" src="/assets/images/articles/ai/image_generators_api/midjourney_variation_2.png" />
+<p>Leonardo:</p>
+<img alt="Leonardo's robots fighting against humans" src="/assets/images/articles/ai/image_generators_api/leonardo_variation_2.jpg" />
+<p>DALLE:</p>
+<img alt="Dall-e-2's robots fighting against humans" src="/assets/images/articles/ai/image_generators_api/dalle_variation_2.png" />
+<p>Last try, and it most interesting. Midjourney is still good, some new details were added, like robot's helmet, but now seems there is a war between robots and reptiloids. I knew it! Leonardo is average again. It's ok, but I have nothing to say about it. DALLE iage now is complete mess and prompt ruined at all. So, fail. But I still like it, like a way of converting normal art to surrealistic, contemporary. Hm, strange thing, but as it is.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Working with AI image generators via API is fun. It's fast, it's bulk, fast enough, it's relatively cheap than spending your time and tokens. All APIs in except of Midjourney is pretty simple to use, and you can use it in your projects. Midjourney is not, but it's still usable. I hope that Midjourney will release web interface and API soon, so, we'll be able to use it in our real-world projects. So, I hope you liked my experiments, more to come...</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Generate images via API using AI&amp;url=https://wwakabobik.github.io/2023/11/ai_image_generators_api/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2023/11/ai_image_generators_api/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2023/11/ai_image_generators_api/&amp;title=Generate images via API using AI" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Generate images via API using AI&amp;body=https://wwakabobik.github.io/2023/11/ai_image_generators_api/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/ai/">ai</a><a href="https://wwakabobik.github.io/tag/image-generation/">image generation</a><a href="https://wwakabobik.github.io/tag/api/">api</a><a href="https://wwakabobik.github.io/tag/leonardo/">leonardo</a><a href="https://wwakabobik.github.io/tag/dalle/">dalle</a><a href="https://wwakabobik.github.io/tag/midjourney/">midjourney</a><a href="https://wwakabobik.github.io/tag/python/">python</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2023/10/gaming_horrors_of_90s/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">Horror games of 90s</h2>
+                            <p class="post-nav-excerpt">Halloween is coming! Let's remember best chilling PC games of 90s. If you like horror...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
