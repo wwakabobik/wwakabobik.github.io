@@ -297,7 +297,7 @@ In general, *llama* is very similar to OpenAI's *ChatGPT*, but I'm too lazy to w
 Other LLMs
 ==========
 
-For `Claude`_ it's too hard to obtain token for personal use, and for `Bard`_ there is no official API exists at all. Thus, you may try to use unofficial API.  But, I won't use them in my tests, and will use one of the service providers. But, If you feel yourself brave enough, you may try to use them:
+For `Claude`_ it's too hard to obtain token for personal use, and for `BardAI`_ there is no official API exists at all. Thus, you may try to use unofficial API.  But, I won't use them in my tests, and will use one of the service providers. But, If you feel yourself brave enough, you may try to use them:
 
 - `BardAI`_ you may try to use unofficial API:
 
