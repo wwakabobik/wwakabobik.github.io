@@ -1,7 +1,7 @@
 ###################
 Comparing 2023 LLMs
 ###################
-:date: 2023-08-25 16:14
+:date: 2023-12-13 16:14
 :author: wwakabobik
 :tags: ai, llm
 :slug: ai_llms_2023
