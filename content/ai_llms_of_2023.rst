@@ -522,13 +522,13 @@ Token results are same as for chars, because we assume, that token is ~3 chars, 
 
 So, as summary, you may find, that *ChatGPT* is average but not a worse. *LLAMA* are fastest models, especially *llama-v2-7b-chat-fireworks-ai*, rest of llama's also fast, but a quite varying, isntead of as *Cohere* models. *Cohere* one of the fastest models, as *palm*, but, if we remember accuracy, it's not a good choice. So, summarizing, I assume, that accuracy is more important than speed (let's say it's 60% of weight in results, and 40% it's speed), so, let's calculate final results:
 
-.. image:: /assets/images/articles/ai/llms_2023/models_sumamry.png
+.. image:: /assets/images/articles/ai/llms_2023/models_summary.png
     :alt: LLMs summary
     :align: center
 
 Due to that type of answers mostly depend on model type, not provider or variation, I assume to I may use some *average* for each model type. So, let's calculate average for each model type:
 
-.. image:: /assets/images/articles/ai/llms_2023/type_sumamry.png
+.. image:: /assets/images/articles/ai/llms_2023/type_summary.png
     :alt: LLMs type summary
     :align: center
 
