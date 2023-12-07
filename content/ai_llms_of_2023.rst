@@ -502,19 +502,19 @@ Performance
 
 Performance, like speed of model output depends not only on model, but on provider also. As an example, GPT of models of *OpenAI* faster than Azure-hosted, and *LLAMa* model of `Fireworks.ai`_ is slower than `Anyscale`_. Here less values is better.
 
-.. image:: assets/images/articles/ai/llms_2023/word_speed.png
+.. image:: /assets/images/articles/ai/llms_2023/word_speed.png
     :alt: Speed of one word per model
     :align: center
 
 I need to say here, that I'm counting words in full response and use space as delimiter. To be honest, I re-run test several times before figure out, that some models have greater ramp-up time than others, so, just curious note here, that ramp-up time of ChatGPT3.5-turbo is higher than ChatGPT4, in example, but output after ramp-up is faster. It's easy to observe on long outputs and streaming. So, it means, that only longer prompts and several reruns needed to get more accurate results.
 
-.. image:: assets/images/articles/ai/llms_2023/char_speed.png
+.. image:: /assets/images/articles/ai/llms_2023/char_speed.png
     :alt: Speed of one char per model
     :align: center
 
 In other hand, chars results a bit different, because based not on full results (full output), but on token completion. So, it's more accurate to use it for counting output speed, but, it's not a game changer, and results are quite similar.
 
-.. image:: assets/images/articles/ai/llms_2023/token_speed.png
+.. image:: /assets/images/articles/ai/llms_2023/token_speed.png
     :alt: Speed of one token per model
     :align: center
 
@@ -522,13 +522,13 @@ Token results are same as for chars, because we assume, that token is ~3 chars, 
 
 So, as summary, you may find, that *ChatGPT* is average but not a worse. *LLAMA* are fastest models, especially *llama-v2-7b-chat-fireworks-ai*, rest of llama's also fast, but a quite varying, isntead of as *Cohere* models. *Cohere* one of the fastest models, as *palm*, but, if we remember accuracy, it's not a good choice. So, summarizing, I assume, that accuracy is more important than speed (let's say it's 60% of weight in results, and 40% it's speed), so, let's calculate final results:
 
-.. image:: assets/images/articles/ai/llms_2023/models_sumamry.png
+.. image:: /assets/images/articles/ai/llms_2023/models_sumamry.png
     :alt: LLMs summary
     :align: center
 
 Due to that type of answers mostly depend on model type, not provider or variation, I assume to I may use some *average* for each model type. So, let's calculate average for each model type:
 
-.. image:: assets/images/articles/ai/llms_2023/type_sumamry.png
+.. image:: /assets/images/articles/ai/llms_2023/type_sumamry.png
     :alt: LLMs type summary
     :align: center
 
