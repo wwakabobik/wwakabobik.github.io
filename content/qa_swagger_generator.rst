@@ -76,7 +76,7 @@ At the beginning, let's create a class for parsing Swagger.
 Utility functions
 -----------------
 
-AT first, let's add some utility functions. I.e. camelCase to snake_case converter. It's useful for converting endpoint names (well, let's assume your devs using Java style) to function names into snake notation.
+AT first, let's add some utility functions. I.e. `camelCase` to `snake_case` converter. It's useful for converting endpoint names (well, let's assume your devs using Java style) to function names into snake notation.
 
 .. code-block:: python
 
