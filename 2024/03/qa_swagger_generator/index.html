@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>I hate API testing</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2024/03/qa_swagger_generator/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Writing API tests is a boring and time-consuming task. Why we need to write tests manually, split from other testing processes, and not...">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="qa">
+    <meta name="tags" content="python">
+    <meta name="tags" content="api">
+    <meta name="tags" content="swagger">
+    <meta name="tags" content="testing">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="I hate API testing"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Writing API tests is a boring and time-consuming task. Why we need to write tests manually, split from other testing processes, and not..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2024/03/qa_swagger_generator/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-03-04 15:58:00+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2024-03-04 15:13:36.401107+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="qa"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="qa"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="api"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="swagger"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="testing"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/qa.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "I hate API testing",
+  "headline": "I hate API testing",
+  "datePublished": "2024-03-04 15:58:00+01:00",
+  "dateModified": "2024-03-04 15:13:36.401107+01:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/qa.png",
+  "url": "https://wwakabobik.github.io/2024/03/qa_swagger_generator/",
+  "description": "Writing API tests is a boring and time-consuming task. Why we need to write tests manually, split from other testing processes, and not..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">I hate API testing</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="04 Mar 2024">04 Mar 2024</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/qa.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>I hate API testing. I never liked it. Why recruiters are still asking about it? Moreover, some companies split automation testing into two parts: UI and API. And, I always wanted to ask: are you serious? Do you write hilarious tests to get states only via UI? Or you spend huge amount of time to generate test data, reuse same accounts, data, what leads to pesticide paradox? Isn't better to get/prepare state and data via API or even API mocking? This will significantly reduce time and efforts for UI automation testing. Moreover, it will make your tests more stable and reliable. And, you will be able to cover more cases with less efforts. It's question for full regression, but for smoke poking API endpoints may be a good idea, that at least backend works well, plus general pages and interfaces exists. So, why we need to write tests manually, split from other testing processes, and not use the same tools for testing as for development?</p>
+<p>API calls. Do you use it?</p>
+<img alt="Most likely you already have some API calls in your test code" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/lock_1.jpg" />
+<p>Wrapped into fixtures...</p>
+<img alt="To use them in test, just wrap it into fixture" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/lock_2.jpg" />
+<p>Used in code to get right state to test UI components...</p>
+<img alt="Then just test UI components" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/lock_3.jpg" />
+<p>I still can't get how you can write autotests without this approach. Because usually splitting tests looks like you have two different projects, with different tools, different languages, different approaches, and different people. And, it's not a good idea. It's better to have one project, one language, one approach, and one team. So, if you're using Selenium and pytest, why do you need some extra tool for API testing? I.e. Postman? Well, if your backend engineer already did it for you, you can just use it for sure... but also without integration with your UI tests.</p>
+<img alt="Good teams use same tools, like Postman for development and testing, just need to use it in right way" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/postman.jpg" />
+<p>But, if you need to write tests manually, you can use Postman, but it's not the best idea. Why you need it, if you can poke endpoints with curl?</p>
+<img alt="Most likely you already have some API calls in your test code" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/curl_request.jpg" />
+<p>For sure, you need to know which endpoints you have, what they do, and how to use them. And, here comes project documentation. Let's stay aside Jira/Confluence based docs, or, even worse, paper-like docs. I hope that your developers already uses self-documented code and APIs, like FastAPI, which creates ReDoc or Swagger documentation for you. And, if you have it, you can use it for your tests. To poke with Swagger UI instead of pure curl...</p>
+<img alt="Most likely you already have some API calls in your test code" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/swagger_api.jpg" />
+<p>But it's still separate entity, outside of automation testing infrastructure. And, it's not good. It's better to have it inside of your project, and use it as a part of your tests. And, it's possible. Let's try to automate API testing using Swagger and few Python magic. Let's write test generator for such purpose.</p>
+<div class="section" id="swagger-parser">
+<h2>Swagger Parser</h2>
+<p>At the beginning, let's create a class for parsing Swagger.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SwaggerParser</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Swagger parser class&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            General init</span>
+
+<span class="sd">            url (str): swagger url</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endpoints</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+<div class="section" id="utility-functions">
+<h3>Utility functions</h3>
+<p>AT first, let's add some utility functions. I.e. <cite>camelCase</cite> to <cite>snake_case</cite> converter. It's useful for converting endpoint names (well, let's assume your devs using Java style) to function names into snake notation.</p>
+<div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">camel_to_snake</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to convert camelCase to snake_case</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): string to convert</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: converted string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">name</span><span class="p">])</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+</pre></div>
+<p>Next, we need some method to load Swagger page as JSON to class variable, raw page already contains all needed data, and we can use it as is right from Swagger url.</p>
+<img alt="Swagger page as JSON, just get and use it" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/json_example.jpg" />
+<p>Because we well get schemes from Swagger page right from JSON format, we can use just <cite>json.loads</cite> here, but for payload generation we need converters from string to JSON (i.e. wrap out quotes and symbols). We'll need it later...</p>
+<div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">dict_to_str</span><span class="p">(</span><span class="n">any_dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to convert dict to string</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        any_dict (dict): dict to convert</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: converted dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;{&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">any_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot;}&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="obtain-data">
+<h3>Obtain data</h3>
+<p>Ok, let's go back to Swagger. Let's get swagger content finally:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="k">def</span> <span class="nf">load_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Method to load swagger page as json to class variable&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+<p>Now need to get schemes from Swagger page and save it to class variable.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_schemes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Method to get schemes from swagger page and save it to class variable&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;components&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;schemas&quot;</span><span class="p">,</span> <span class="p">{})</span>
+</pre></div>
+<p>Schemas is needed to figure out how to generate payload for POST, PUT, PATCH requests, it's crucial to generate different screnarios and tests.</p>
+<img alt="Data schemes from Swagger page, it's better when it's complete" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/schemas.jpg" />
+<p>But, at first, right after figuring out schemes, we need to get endpoints itself from Swagger page and save it to class variable.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="k">def</span> <span class="nf">get_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to get endpoints from swagger url</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): swagger url</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: endpoints</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="k">if</span> <span class="n">url</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">base_url</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;servers&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;paths&quot;</span><span class="p">]</span>
+
+    <span class="n">endpoints</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">paths</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">methods</span><span class="p">:</span>
+            <span class="n">endpoints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">base_url</span><span class="si">}{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">endpoints</span>
+</pre></div>
+<p>Then, we need to parse Swagger page and save endpoints to class variable.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parse_endpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Method to parse swagger page and save endpoints to class variable&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">path_data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="s2">&quot;paths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="n">method_data</span> <span class="ow">in</span> <span class="n">path_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">endpoint_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}{</span><span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">endpoints</span><span class="p">[</span><span class="n">endpoint_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">method_data</span>
+</pre></div>
+<p>Most probably, you have different endpoints for different services (let's name them 'backstages'), and you need to split them into internal and external part. So, let's add some methods to get backstage and external suffix from Swagger URL.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_backstage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to get backstage name from swagger url</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: backstage name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="s2">&quot;servers&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;//&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_external</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to get external suffix name from swagger url</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: external name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;-external&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;-external&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="processing-entities">
+<h3>Processing entities</h3>
+<p>After we got schemas, we need process them. Let's add some methods to process param and return wrong, missing and correct values in according to param type.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheme_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to process scheme and return wrong, missing and correct values</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        scheme_name (str): scheme name</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: wrong, missing and correct values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">scheme</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span><span class="o">.</span><span class="n">items</span><span class="p">()}[</span><span class="n">scheme_name</span><span class="p">]</span>
+    <span class="n">correct_scheme</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">wrong_scheme</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">missed_scheme</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">prop</span><span class="p">,</span> <span class="n">details</span> <span class="ow">in</span> <span class="n">scheme</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">prop_type</span> <span class="o">=</span> <span class="n">details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">wrong_scheme</span><span class="p">[</span><span class="n">prop</span><span class="p">],</span> <span class="n">correct_scheme</span><span class="p">[</span><span class="n">prop</span><span class="p">],</span> <span class="n">missed_scheme</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_param</span><span class="p">(</span><span class="n">param_type</span><span class="o">=</span><span class="n">prop_type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_to_str</span><span class="p">(</span><span class="n">wrong_scheme</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_to_str</span><span class="p">(</span><span class="n">missed_scheme</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_to_str</span><span class="p">(</span><span class="n">correct_scheme</span><span class="p">)</span>
+</pre></div>
+<p>Ok, it's time to say how to deal with parameters. Let's add some method to process param and return wrong, missing and correct values. It's a bit tricky and I want to explain it first. We need to generate wrong, missing and correct values for each parameter. It's not so easy, because we need to figure out what type of parameter we have. It can be string, integer, number, boolean, array, or even some custom type. And, we need to generate wrong, missing and correct values for each type. For example, for string it can be empty string, random string, random number, random float, etc. For integer it can be random float, random string, etc. And, for custom type we need to process it recursively. So, let's add some method to process param and return wrong, missing and correct values. Also, if it contains some boundaries and limits, we need to process it too, using boundary-testing approach. Also, some parameters might have only some specific values, like enums, and we need to process it too. And, of course, we need to process it recursively, if it's a custom type (is it derived from some other type?).</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="c1"># pylint: disable=too-many-branches,too-many-statements</span>
+<span class="k">def</span> <span class="nf">process_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to process param and return wrong, missing and correct values</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        param (dict): param to a process</span>
+<span class="sd">        param_type (str): param type</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: wrong, missing and correct values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">param_type</span> <span class="o">=</span> <span class="n">param_type</span> <span class="k">if</span> <span class="n">param_type</span> <span class="k">else</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;schema&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">schema</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="p">{})</span> <span class="k">if</span> <span class="n">param</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="n">min_boundaries</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;minimum&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;min_value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;restricted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;restricted_value&quot;</span><span class="p">,</span>
+    <span class="p">]</span>  <span class="c1"># Add all possible min names here</span>
+    <span class="n">max_boundaries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;maximum&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;max_value&quot;</span><span class="p">]</span>  <span class="c1"># Add all possible max names here</span>
+    <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">missing_value</span> <span class="o">=</span> <span class="n">correct_value</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">param_type</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span><span class="p">:</span>
+        <span class="n">enum_values</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enum&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">schema</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">enum_values</span><span class="p">:</span>
+            <span class="n">correct_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">enum_values</span><span class="p">)</span>
+            <span class="n">wrong_value</span> <span class="o">=</span> <span class="s2">&quot;random_string()&quot;</span>  <span class="c1"># Assuming this will not generate a value in enum_values</span>
+            <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;&#39;&#39;&quot;</span>
+            <span class="k">return</span> <span class="n">wrong_value</span><span class="p">,</span> <span class="n">missing_value</span><span class="p">,</span> <span class="n">correct_value</span>
+        <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;random_int_number()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_float_number()&quot;</span><span class="p">])</span>
+        <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;&#39;&#39;&quot;</span>
+        <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;random_string()&quot;</span>
+    <span class="k">elif</span> <span class="n">param_type</span> <span class="o">==</span> <span class="s2">&quot;integer&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">min_boundary</span> <span class="ow">in</span> <span class="n">min_boundaries</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">min_boundary</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">min_boundary</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">min_boundary</span><span class="p">])</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;random_float_number()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_string()&quot;</span><span class="p">])</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;random_int_number()&quot;</span>
+            <span class="k">for</span> <span class="n">max_boundary</span> <span class="ow">in</span> <span class="n">max_boundaries</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">max_boundary</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">max_boundary</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">max_boundary</span><span class="p">])</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;random_float_number()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_string()&quot;</span><span class="p">])</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;random_int_number()&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;random_float_number()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_string()&quot;</span><span class="p">])</span>
+            <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+            <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;random_int_number()&quot;</span>
+    <span class="k">elif</span> <span class="n">param_type</span> <span class="o">==</span> <span class="s2">&quot;number&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">min_boundary</span> <span class="ow">in</span> <span class="n">min_boundaries</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">min_boundary</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">min_boundary</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">min_boundary</span><span class="p">])</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="s2">&quot;random_string()&quot;</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;random_float_number()&quot;</span>
+            <span class="k">for</span> <span class="n">max_boundary</span> <span class="ow">in</span> <span class="n">max_boundaries</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">max_boundary</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">max_boundary</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema</span><span class="p">[</span><span class="n">max_boundary</span><span class="p">])</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">wrong_value</span> <span class="o">=</span> <span class="s2">&quot;random_string()&quot;</span>
+                    <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+                    <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;random_float_number()&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wrong_value</span> <span class="o">=</span> <span class="s2">&quot;random_string()&quot;</span>
+            <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+            <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;random_float_number()&quot;</span>
+    <span class="k">elif</span> <span class="n">param_type</span> <span class="o">==</span> <span class="s2">&quot;boolean&quot;</span><span class="p">:</span>
+        <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;random_float_number()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_string()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_int_number()&quot;</span><span class="p">])</span>
+        <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+        <span class="n">correct_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">param_type</span> <span class="o">==</span> <span class="s2">&quot;array&quot;</span><span class="p">:</span>
+        <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;random_float_number()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_string()&quot;</span><span class="p">,</span> <span class="s2">&quot;random_int_number()&quot;</span><span class="p">])</span>
+        <span class="n">missing_value</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+        <span class="n">correct_value</span> <span class="o">=</span> <span class="s2">&quot;[]&quot;</span>
+    <span class="k">elif</span> <span class="n">param_type</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">schemes</span><span class="p">):</span>
+        <span class="n">wrong_value</span><span class="p">,</span> <span class="n">missing_value</span><span class="p">,</span> <span class="n">correct_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_schema</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Warning! Unknown param type: </span><span class="si">{</span><span class="n">param_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">wrong_value</span><span class="p">,</span> <span class="n">missing_value</span><span class="p">,</span> <span class="n">correct_value</span>
+</pre></div>
+<p>Oh, yeah, it looks not so good because of many branches. And I hope, you can refactor it on your needs. But, it's a good start.</p>
+</div>
+<div class="section" id="connections">
+<h3>Connections</h3>
+<p>Well, you know, that we need to follow DRY and SOLID principles. So, I assume, that many tests will use same endpoint, and we need to generate connection for it. And, we need to generate it in a way, that we can use it in different tests. We'll store each endpoint in separate connection file.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">create_connector_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector_folder</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to create connector files and stores it to connector_folder</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        connector_folder (str): connector folder</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">tag</span> <span class="k">for</span> <span class="n">endpoint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">endpoints</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+        <span class="n">tag_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">data</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">endpoints</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">[])}</span>
+        <span class="n">stripped_tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+        <span class="n">connector_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">connector_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_backstage</span><span class="p">()</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_external</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">connector_folder_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">connector_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stripped_tag</span><span class="si">}</span><span class="s2">_endpoints.py&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">connector_folder_path</span><span class="p">,</span> <span class="n">connector_file</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generate_connector_functions</span><span class="p">(</span><span class="n">connector_folder_path</span><span class="p">,</span> <span class="n">tag_data</span><span class="p">,</span> <span class="n">stripped_tag</span><span class="p">)</span>
+</pre></div>
+<p>Then let's add some method to generate connector functions and stores it to <cite>folder_path</cite>.</p>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+
+
+    <span class="c1"># pylint: disable=too-many-locals</span>
+    <span class="k">def</span> <span class="nf">generate_connector_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">,</span> <span class="n">tag_data</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to generate connector functions and stores it to folder_path</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            folder_path (str): folder path</span>
+<span class="sd">            tag_data (dict): tag data</span>
+<span class="sd">            tag (str): tag</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">class_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;Endpoints&quot;</span>
+        <span class="n">endpoint_names</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;{(.*?)}&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">last_two_parts</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;{&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">last_two_parts</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">last_two_parts</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># pylint: disable=line-too-long</span>
+            <span class="k">for</span> <span class="n">endpoint_name</span> <span class="ow">in</span> <span class="n">tag_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">last_two_parts</span> <span class="ow">in</span> <span class="p">[</span><span class="n">endpoint_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
+        <span class="p">]</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s2">_endpoints.py&quot;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_out</span><span class="p">:</span>
+            <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\&quot;\&quot;\&quot;</span><span class="s2">./connectors/backend_api/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_backstage</span><span class="p">()</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_external</span><span class="p">()</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s2">_endpoints.py</span><span class="se">\&quot;\&quot;\&quot;</span><span class="s2">  # pylint: disable=line-too-long</span>
+<span class="s2">from ..core import BackendAPICore, BackendResponse</span>
+
+
+<span class="s2">class </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2">(BackendAPICore):</span>
+<span class="s2">    </span><span class="se">\&quot;\&quot;\&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_backstage</span><span class="p">()</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_external</span><span class="p">()</span><span class="si">}</span><span class="s2"> service has </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">endpoint_names</span><span class="p">)</span><span class="si">}</span><span class="s2"> endpoints</span><span class="se">\&quot;\&quot;\&quot;</span>
+<span class="s2">    def __init__(self, connection):</span>
+<span class="s2">        super().__init__(&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_backstage</span><span class="p">()</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_external</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;, connection)</span>
+<span class="s2">&quot;&quot;&quot;</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">endpoint_name</span><span class="p">,</span> <span class="n">endpoint_data</span> <span class="ow">in</span> <span class="n">tag_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">parameters</span> <span class="o">=</span> <span class="n">endpoint_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">,</span> <span class="p">[])</span>
+                <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">last_two_parts</span> <span class="o">=</span> <span class="n">endpoint_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                <span class="n">second_last_part</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;{(.*?)}&quot;</span><span class="p">,</span> <span class="n">last_two_parts</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;{&quot;</span> <span class="ow">in</span> <span class="n">last_two_parts</span> <span class="k">else</span> <span class="n">last_two_parts</span>
+                <span class="p">)</span>
+                <span class="n">stripped_endpoint_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">second_last_part</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">method</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">endpoint_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">endpoint_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:])</span>
+                <span class="n">path_params</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span>
+                    <span class="k">if</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;path&quot;</span>
+                <span class="p">]</span>
+                <span class="n">required_params</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span>
+                    <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;required&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                <span class="p">]</span>
+                <span class="n">optional_params</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">=None&quot;</span>
+                    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;required&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">required_params</span>
+                <span class="p">]</span>
+                <span class="n">params</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">required_params</span> <span class="o">+</span> <span class="n">optional_params</span><span class="p">)</span>
+                <span class="n">raw_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;/</span><span class="si">{</span><span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">endpoint_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:])</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">endpoint_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="s2">self.base_url</span><span class="se">}}</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">endpoint_url</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">]:</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;f&#39;</span><span class="si">{</span><span class="n">endpoint_url</span><span class="si">}</span><span class="s2">&#39; + (&#39;?&#39; + &#39;&amp;&#39;.join([f&#39;</span><span class="se">{{</span><span class="s2">k</span><span class="se">}}</span><span class="s2">=</span><span class="se">{{</span><span class="s2">v</span><span class="se">}}</span><span class="s2">&#39; for k, v in params_dict.items()]) if params_dict else &#39;&#39;)&quot;</span>  <span class="c1"># pylint: disable=line-too-long</span>
+                    <span class="n">return_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;return BackendResponse(self.session.</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">(url))&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;f&#39;</span><span class="si">{</span><span class="n">endpoint_url</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                    <span class="n">return_statement</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;return BackendResponse(self.session.</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">(url, params=params_dict))&quot;</span>
+                <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def </span><span class="si">{</span><span class="n">stripped_endpoint_name</span><span class="si">}</span><span class="s2">(self, </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">):</span>
+<span class="s2">        </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">generate_connection_docstring</span><span class="p">(</span><span class="n">endpoint_data</span><span class="p">,</span><span class="w"> </span><span class="n">stripped_endpoint_name</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">        params_dict = </span><span class="se">{{</span><span class="s2">&#39;&#39;.join(word.title() for word in k.split(&#39;_&#39;)): v for k, v in locals().items() if k != &#39;self&#39; and v is not None and k not in </span><span class="si">{</span><span class="n">path_params</span><span class="si">}</span><span class="se">}}</span><span class="s2">  # pylint: disable=line-too-long</span>
+<span class="s2">        url = </span><span class="si">{</span><span class="n">url</span><span class="si">}</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">return_statement</span><span class="si">}</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+                <span class="p">)</span>
+</pre></div>
+<p>Well, some explanations for code above. At first, we need to wrap-up code into triple-quotes to not process it while generating. Then, we need to import some base class, and create a class for endpoints. Then, we need to create a method for each endpoint. And, we need to generate docstring for each method. And, we need to generate connection for each method. And, we need to generate return statement for each method. And, we need to generate path and query parameters for each method. And, we need to generate url for each method. And, we need to generate params_dict (which params need to be passed to method).</p>
+<p>So, only one thing here is left out of the scope, and it's generation of docstring. Let's add some method to generate docstring for connection.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_connection_docstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint_data</span><span class="p">,</span> <span class="n">endpoint_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to generate docstring for connection</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        endpoint_data (dict): endpoint data</span>
+<span class="sd">        endpoint_name (str): endpoint name</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: generated docstring</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">endpoint_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">endpoint_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">endpoint_name</span><span class="p">)</span>
+    <span class="n">docstring</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&quot;&quot;&quot;</span><span class="se">\n</span><span class="s1">        </span><span class="si">{</span><span class="n">summary</span><span class="si">}</span><span class="se">\n\n</span><span class="s1">        Args:</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">]:</span>
+            <span class="n">param_type</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;schema&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">)</span>
+            <span class="n">required_params</span> <span class="o">=</span> <span class="s2">&quot; (optional)&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;required&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Parameter </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span><span class="si">}</span><span class="s1"> of type </span><span class="si">{</span><span class="n">param_type</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">)</span>
+                <span class="k">else</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">docstring</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;            </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">param_type</span><span class="si">}</span><span class="s1">)</span><span class="si">{</span><span class="n">required_params</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="p">)</span>
+    <span class="n">response_description</span> <span class="o">=</span> <span class="n">endpoint_data</span><span class="p">[</span><span class="s2">&quot;responses&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;200&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;No description&quot;</span><span class="p">)</span>
+    <span class="n">docstring</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">        Returns:</span><span class="se">\n</span><span class="s1">            BackendResponse object. In case of success, status code is 200. </span><span class="si">{</span><span class="n">response_description</span><span class="si">}</span><span class="se">\n</span><span class="s1">        &quot;&quot;&quot;&#39;</span>  <span class="c1"># pylint: disable=line-too-long</span>
+    <span class="k">return</span> <span class="n">docstring</span>
+</pre></div>
+</div>
+<div class="section" id="your-testing-api">
+<h3>Your testing API</h3>
+<p>In general, in Python we're using <cite>requests</cite> library for API testing. In some other, rare cases, some async library, like <cite>aiohttp</cite> to make requests and get responses. And, it's good idea to to wrap them into some classes, to use it in our tests (with storing environment, session and other project-specific params). Let's add some base classes for it:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">Response</span>
+
+
+<span class="k">class</span> <span class="nc">BackendAPICore</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class shared by all Backend services&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">connection</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Backend API Core</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            service (str): The service to use</span>
+<span class="sd">            connection (Connection): The connection to use</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">service</span> <span class="o">=</span> <span class="n">service</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">session</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">account_id</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">account_id</span> <span class="k">if</span> <span class="n">connection</span><span class="o">.</span><span class="n">account_id</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">base_urls</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;prod&quot;</span><span class="p">:</span> <span class="s2">&quot;https://</span><span class="si">{service}</span><span class="s2">.my-test-project.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;other&quot;</span><span class="p">:</span> <span class="s2">&quot;https://</span><span class="si">{service}</span><span class="s2">.my-test-project</span><span class="si">{environment}</span><span class="s2">.com&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">environment</span> <span class="ow">in</span> <span class="n">base_urls</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">base_urls</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">environment</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">base_urls</span><span class="p">[</span><span class="s2">&quot;other&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">environment</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">BackendResponse</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Backend specific response object which simplifies down the</span>
+<span class="sd">    requests.Response object for Backend API purposes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Backend Response object</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            response (Response): The response object to process</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ok</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">ok</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__content</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="o">&lt;...&gt;</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Processes a requests package Response object to update internal state</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            response (Response): The object we&#39;re going to process</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">content_type</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">content_type</span> <span class="ow">and</span> <span class="s2">&quot;json&quot;</span> <span class="ow">in</span> <span class="n">content_type</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">content_type</span> <span class="ow">and</span> <span class="s2">&quot;txt/csv&quot;</span> <span class="ow">in</span> <span class="n">content_type</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">apparent_encoding</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="tests">
+<h3>Tests</h3>
+<p>To generate tests we'll use the same approach as for connections. We'll store each endpoint in separate test file.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="k">def</span> <span class="nf">create_test_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_folder</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Method to create test files and stores it to test_folder</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        test_folder (str): test folder</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">endpoints</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">]:</span>
+            <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">last_two_parts</span> <span class="o">=</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+            <span class="n">second_last_part</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;{(.*?)}&quot;</span><span class="p">,</span> <span class="n">last_two_parts</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;{&quot;</span> <span class="ow">in</span> <span class="n">last_two_parts</span> <span class="k">else</span> <span class="n">last_two_parts</span>
+            <span class="p">)</span>
+            <span class="n">endpoint_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">second_last_part</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">test_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_backstage</span><span class="p">()</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_external</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">test_folder_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">test_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;test_</span><span class="si">{</span><span class="n">endpoint_name</span><span class="si">}</span><span class="s2">.py&quot;</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_folder_path</span><span class="p">,</span> <span class="n">test_name</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">generate_pytest_functions</span><span class="p">(</span><span class="n">test_folder_path</span><span class="p">,</span> <span class="n">test_name</span><span class="p">,</span> <span class="n">endpoint_name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
+</pre></div>
+<p>Then let's add some method to generate pytest functions and stores it to folder_path.</p>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">os</span>
+
+
+    <span class="c1"># pylint: disable=too-many-branches,too-many-arguments,too-many-locals</span>
+    <span class="k">def</span> <span class="nf">generate_pytest_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">,</span> <span class="n">test_name</span><span class="p">,</span> <span class="n">endpoint_name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to generate pytest functions and stores it to folder_path</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            folder_path (str): folder path</span>
+<span class="sd">            test_name (str): test name</span>
+<span class="sd">            endpoint_name (str): endpoint name</span>
+<span class="sd">            data (dict): data</span>
+<span class="sd">            tag (str): tag</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">formatted_params</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">stripped_test_name</span> <span class="o">=</span> <span class="n">test_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">stripped_tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+        <span class="n">class_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">stripped_test_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;Endpoint&quot;</span>
+        <span class="n">random_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">param_values_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">temp_param</span> <span class="o">=</span> <span class="n">param</span>
+            <span class="n">temp_param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+            <span class="n">formatted_params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_param</span><span class="p">)</span>
+            <span class="n">wrong_value</span><span class="p">,</span> <span class="n">missing_value</span><span class="p">,</span> <span class="n">correct_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_param</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">wrong_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">correct_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">missing_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">wrong_value</span> <span class="o">=</span> <span class="n">missing_value</span> <span class="o">=</span> <span class="n">correct_value</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;  #FIXME param type of </span><span class="si">{</span><span class="n">temp_param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> is UNKNOWN&#39;</span>
+            <span class="n">param_values_dict</span><span class="p">[</span><span class="n">temp_param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;wrong_value&quot;</span><span class="p">:</span> <span class="n">wrong_value</span><span class="p">,</span>
+                <span class="s2">&quot;missing_value&quot;</span><span class="p">:</span> <span class="n">missing_value</span><span class="p">,</span>
+                <span class="s2">&quot;correct_value&quot;</span><span class="p">:</span> <span class="n">correct_value</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">wrong_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">wrong_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">random_list</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s2">&quot;random&quot;</span> <span class="ow">in</span> <span class="n">wrong_value</span> <span class="ow">and</span> <span class="s2">&quot;{&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">wrong_value</span><span class="p">:</span>
+                        <span class="n">random_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wrong_value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">correct_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">correct_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">random_list</span> <span class="ow">and</span> <span class="s2">&quot;{&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">correct_value</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s2">&quot;random&quot;</span> <span class="ow">in</span> <span class="n">correct_value</span><span class="p">:</span>
+                        <span class="n">random_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">correct_value</span><span class="p">)</span>
+        <span class="n">required_params</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">param</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">formatted_params</span> <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;required&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">params_string</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">required_params</span><span class="p">:</span>
+            <span class="n">params_string</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">param_values_dict</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;correct_value&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">required_params</span>
+                    <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">params_string</span><span class="p">:</span>
+            <span class="n">params_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">random_list</span><span class="p">:</span>
+            <span class="n">import_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;from utils import </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random_list</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;()&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">import_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_out</span><span class="p">:</span>
+            <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\&quot;\&quot;\&quot;</span><span class="s2"> ./tests/backend_api/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_backstage</span><span class="p">()</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_external</span><span class="p">()</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">test_name</span><span class="si">}</span><span class="s2"> </span><span class="se">\&quot;\&quot;\&quot;</span>
+<span class="s2">import pytest</span>
+
+<span class="si">{</span><span class="n">import_string</span><span class="si">}</span>
+
+
+<span class="s2">@pytest.mark.api</span>
+<span class="s2">@pytest.mark.</span><span class="si">{</span><span class="n">stripped_tag</span><span class="si">}</span>
+<span class="s2">@pytest.mark.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_backstage</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="si">}</span>
+<span class="s2">@pytest.mark.usefixtures(&quot;ensure_</span><span class="si">{</span><span class="n">stripped_tag</span><span class="si">}</span><span class="s2">_endpoints&quot;)</span>
+<span class="s2">class </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2">(object):</span>
+<span class="s2">&quot;&quot;&quot;</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">response_code</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;responses&quot;</span><span class="p">]:</span>
+                <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def </span><span class="si">{</span><span class="n">stripped_test_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">response_code</span><span class="si">}</span><span class="s2">_response(self):</span>
+<span class="s2">        response = self.</span><span class="si">{</span><span class="n">stripped_tag</span><span class="si">}</span><span class="s2">_endpoints.</span><span class="si">{</span><span class="n">endpoint_name</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">params_string</span><span class="si">}</span><span class="s2">)</span>
+<span class="s2">        assert response.status_code == </span><span class="si">{</span><span class="n">response_code</span><span class="si">}</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+                <span class="p">)</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="n">param</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">formatted_params</span><span class="p">]:</span>
+                <span class="n">param_to_remove</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">if</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">required_params</span><span class="p">:</span>
+                    <span class="n">param_to_remove</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">param_values_dict</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;correct_value&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">,&quot;</span>
+                    <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def test_</span><span class="si">{</span><span class="n">stripped_test_name</span><span class="si">}</span><span class="s2">_403_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">_missing(self):  # pylint: disable=line-too-long</span>
+<span class="s2">        response = self.</span><span class="si">{</span><span class="n">stripped_tag</span><span class="si">}</span><span class="s2">_endpoints.</span><span class="si">{</span><span class="n">endpoint_name</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">param_values_dict</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;missing_value&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">params_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">param_to_remove</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">param_to_remove</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">)  # pylint: disable=line-too-long</span>
+<span class="s2">        assert response.status_code == 403</span>
+<span class="s2">                    &quot;&quot;&quot;</span>
+                    <span class="p">)</span>
+                <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    def test_</span><span class="si">{</span><span class="n">stripped_test_name</span><span class="si">}</span><span class="s2">_403_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">camel_to_snake</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">_wrong(self):  # pylint: disable=line-too-long</span>
+<span class="s2">        response = self.</span><span class="si">{</span><span class="n">stripped_tag</span><span class="si">}</span><span class="s2">_endpoints.</span><span class="si">{</span><span class="n">endpoint_name</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">param_values_dict</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;wrong_value&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">params_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">param_to_remove</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">param_to_remove</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">)  # pylint: disable=line-too-long</span>
+<span class="s2">        assert response.status_code == 403</span>
+<span class="s2">                    &quot;&quot;&quot;</span>
+                <span class="p">)</span>
+                <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        # TODO please do not forget to add missed methods and check, at least border values tests</span>
+<span class="sd">                    &quot;&quot;&quot;</span>
+                <span class="p">)</span>
+</pre></div>
+<p>As you can see, here I used class-based approach for tests, and I used pytest fixtures to ensure that endpoints are available. In most cases you do not need to use test class, because it's not a good practice, i.e., you can't use pytest-rerunfailures with it. But, as an example, let's use complicated version of test files. So, in test file (and here - test class), we always will check endpoints for valid responses (e.g. '200'), and all parameters for missing and wrong values (e.g. '403'). And, we need to generate it for each endpoint. And, we need to generate it for each tag. And, we need to generate it for each service. And, we need to generate it for each external/internal part. And, we need to generate it for each backend. And, we need to generate it for each environment. And, we need to generate it for each test. Bot, for sure, most likely, especially when Swagger documentation is not complete, you need to add missed methods and check, so, some manual work is still needed.</p>
+</div>
+<div class="section" id="calling-generator">
+<h3>Calling generator</h3>
+<p>Finally, we need to call our generator in some order. Let's add some code (task) to call it.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+
+
+<span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="n">swagger_url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Task function that performs the main action&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Got </span><span class="si">{</span><span class="n">swagger_url</span><span class="si">}</span><span class="s2">, starting processing... </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">parsed_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">swagger_url</span><span class="p">)</span>
+    <span class="n">subdomain</span> <span class="o">=</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">netloc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing: </span><span class="si">{</span><span class="n">subdomain</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">swagger_generator</span> <span class="o">=</span> <span class="n">SwaggerParser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">swagger_url</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Loading swagger URL as JSON...&quot;</span><span class="p">)</span>
+    <span class="n">swagger_generator</span><span class="o">.</span><span class="n">load_page</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Processing json to dict with endpoints...&quot;</span><span class="p">)</span>
+    <span class="n">swagger_generator</span><span class="o">.</span><span class="n">parse_endpoints</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Processing schemes of endpoints...&quot;</span><span class="p">)</span>
+    <span class="n">swagger_generator</span><span class="o">.</span><span class="n">get_schemes</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Creating connectors API files in &#39;swagger_connectors&#39;&quot;</span><span class="p">)</span>
+    <span class="n">swagger_generator</span><span class="o">.</span><span class="n">create_connector_files</span><span class="p">(</span><span class="s2">&quot;swagger_connectors&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Creating API tests files in &#39;swagger_tests&#39;&quot;</span><span class="p">)</span>
+    <span class="n">swagger_generator</span><span class="o">.</span><span class="n">create_test_files</span><span class="p">(</span><span class="s2">&quot;swagger_tests&quot;</span><span class="p">)</span>
+    <span class="n">endpoint_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swagger_generator</span><span class="o">.</span><span class="n">get_endpoints</span><span class="p">(</span><span class="n">swagger_url</span><span class="p">))</span>
+</pre></div>
+<p>And, at last, run it in parallel for all URLs via <cite>multiprocessing</cite>.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;https://some-number-one-backstage.my-test-project.com/swagger/backstage-service-external&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://some-number-one-backstage.my-test-project.com/swagger/backstage-service&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://some-number-two-backstage.my-test-project.com/swagger/backstage-service-external&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://some-number-two-backstage.my-test-project.com/swagger/backstage-service&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">endpoint_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">urls</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;endpoints_list.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_list_out</span><span class="p">:</span>
+        <span class="n">file_list_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">endpoint_list</span><span class="p">))</span>
+</pre></div>
+<p>Result will looks like folders with connectors code and tests.</p>
+<img alt="Generation result is folders with connectors and tests" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/generator_example.jpg" />
+</div>
+</div>
+<div class="section" id="some-sceptical-thoughts">
+<h2>Some sceptical thoughts</h2>
+<p>Actually, I'm not a first who thinks about it. There are some tools, that can do it for you. I.e. <cite>swagger-py-codegen</cite> or <cite>swagger-test-templates</cite>, <cite>swagger_meqa</cite>, <cite>merge-dev</cite>. But, they are not so flexible, and you can't use it in your project, and you can't modify it. Actually, when your API testing start to comes not just one-by-one feature development, but from bulk changes, or from legacy systems, or covering the gap of automation, you most likely already have some testing and API infrastructure (come BackedAPI core adapters), which needs to be integrated slightly easy into existing API and UI tests, and there your own code and your own skill is only needed.</p>
+<p>In other hand, you always must pay attention to automation costs and automation ROI, in some non-repeatable testing tasks just manual testing of APIs using curl may be much better than anything else, or smoke-cover by ready-made tools may be enough for you, especially you won't to integrate into supportable and maintainable testing and development infrastructure.</p>
+<img alt="Always remember that simple is better than complex" class="align-center" src="/assets/images/articles/qa/qa_swagger_generator/traingle_example.png" />
+<p>Sometimes, none of these will work due to poor quality of documentation and process maturity, and you need to use some manual work, or even some manual testing, or even some manual testing with some manual work. And, it's ok, because you need to be flexible and use the best approach for your case, not the best approach for the world. So...</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>This generator significantly reduces time and efforts for generation of API tests, at least skeletons for them. Using this approach with some file-existence checker may help to keep your API testing infrastructure is up-to-date with backend API changes. Moreover, you can save the states of tests and check for changes at backend side to update tests in automatic way, or, at least at semi-automatic. And, you can use it for smoke poking API endpoints, that at least backend works well. And, you can use it for generating test data, to use it in feature ramp-up.</p>
+<p>Well, I hate API testing, and best way to deal with it is to automate it. And, I hope, this article will help you to do it. Delegate. Automate. Rule them all.</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=I hate API testing&amp;url=https://wwakabobik.github.io/2024/03/qa_swagger_generator/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2024/03/qa_swagger_generator/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2024/03/qa_swagger_generator/&amp;title=I hate API testing" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=I hate API testing&amp;body=https://wwakabobik.github.io/2024/03/qa_swagger_generator/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/qa/">qa</a><a href="https://wwakabobik.github.io/tag/python/">python</a><a href="https://wwakabobik.github.io/tag/api/">api</a><a href="https://wwakabobik.github.io/tag/swagger/">swagger</a><a href="https://wwakabobik.github.io/tag/testing/">testing</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2023/12/ai_llms_2023/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">Comparing 2023 LLMs</h2>
+                            <p class="post-nav-excerpt">Which AI image generator is the best in 2023? Let's compare more than 20 models and...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
