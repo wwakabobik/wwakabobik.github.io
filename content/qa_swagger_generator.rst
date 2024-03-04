@@ -1,7 +1,7 @@
 ##################
 I hate API testing
 ##################
-:date: 2024-03-03 11:22
+:date: 2024-03-04 15:58
 :author: wwakabobik
 :tags: qa, python, api, swagger, testing
 :slug: qa_swagger_generator
@@ -12,12 +12,48 @@ I hate API testing
 
 I hate API testing. I never liked it. Why recruiters are still asking about it? Moreover, some companies split automation testing into two parts: UI and API. And, I always wanted to ask: are you serious? Do you write hilarious tests to get states only via UI? Or you spend huge amount of time to generate test data, reuse same accounts, data, what leads to pesticide paradox? Isn't better to get/prepare state and data via API or even API mocking? This will significantly reduce time and efforts for UI automation testing. Moreover, it will make your tests more stable and reliable. And, you will be able to cover more cases with less efforts. It's question for full regression, but for smoke poking API endpoints may be a good idea, that at least backend works well, plus general pages and interfaces exists. So, why we need to write tests manually, split from other testing processes, and not use the same tools for testing as for development?
 
-I still can't get how you can write autotests without this approach. Because usually splitting tests looks like you have two different projects, with different tools, different languages, different approaches, and different people. And, it's not a good idea. It's better to have one project, one language, one approach, and one team. So, if you're using Selenium and pytest, why do you need some extra tool for API testing? I.e. Postman? Well, if your backend engineer already did it for you, you can just use it for sure... but also without integration with your UI tests. But, if you need to write tests manually, you can use Postman, but it's not the best idea. Why you need it, if you can poke endpoints with curl? For sure, you need to know which endpoints you have, what they do, and how to use them. And, here comes project documentation. Let's stay aside Jira/Confluence based docs, or, even worse, paper-like docs. I hope that your developers already uses self-documented code and APIs, like FastAPI, which creates ReDoc or Swagger documentation for you. And, if you have it, you can use it for your tests. To poke with Swagger UI instead of pure curl...
+API calls. Do you use it?
 
-But it's still separate entity, outside of automation testing infrastructure. And, it's not good. It's better to have it inside of your project, and use it as a part of your tests. And, it's possible. Let's try to automate API testing using Swagger and few Python magic. Let's write test generator for such puropose.
+.. image:: /assets/images/articles/qa/qa_swagger_generator/lock_1.jpg
+    :alt: Most likely you already have some API calls in your test code
+    :align: center
+
+Wrapped into fixtures...
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/lock_2.jpg
+    :alt: To use them in test, just wrap it into fixture
+    :align: center
+
+Used in code to get right state to test UI components...
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/lock_3.jpg
+    :alt: Then just test UI components
+    :align: center
+
+I still can't get how you can write autotests without this approach. Because usually splitting tests looks like you have two different projects, with different tools, different languages, different approaches, and different people. And, it's not a good idea. It's better to have one project, one language, one approach, and one team. So, if you're using Selenium and pytest, why do you need some extra tool for API testing? I.e. Postman? Well, if your backend engineer already did it for you, you can just use it for sure... but also without integration with your UI tests.
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/postman.jpg
+    :alt: Good teams use same tools, like Postman for development and testing, just need to use it in right way
+    :align: center
+
+But, if you need to write tests manually, you can use Postman, but it's not the best idea. Why you need it, if you can poke endpoints with curl?
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/curl_request.jpg
+    :alt: Most likely you already have some API calls in your test code
+    :align: center
+
+For sure, you need to know which endpoints you have, what they do, and how to use them. And, here comes project documentation. Let's stay aside Jira/Confluence based docs, or, even worse, paper-like docs. I hope that your developers already uses self-documented code and APIs, like FastAPI, which creates ReDoc or Swagger documentation for you. And, if you have it, you can use it for your tests. To poke with Swagger UI instead of pure curl...
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/swagger_api.jpg
+    :alt: Most likely you already have some API calls in your test code
+    :align: center
+
+But it's still separate entity, outside of automation testing infrastructure. And, it's not good. It's better to have it inside of your project, and use it as a part of your tests. And, it's possible. Let's try to automate API testing using Swagger and few Python magic. Let's write test generator for such purpose.
 
 Swagger Parser
 ==============
+
+At the beginning, let's create a class for parsing Swagger.
 
 .. code-block:: python
 
@@ -40,9 +76,10 @@ Swagger Parser
 Utility functions
 -----------------
 
-At the beginning, let's create a class for parsing Swagger. AT first, let's add some utility functions. I.e. camelCase to snake_case converter. It's useful for converting endpoint names (well, let's assume your devs using Java style) to function names into snake notation.
+AT first, let's add some utility functions. I.e. camelCase to snake_case converter. It's useful for converting endpoint names (well, let's assume your devs using Java style) to function names into snake notation.
 
 .. code-block:: python
+
         @staticmethod
         def camel_to_snake(name):
             """
@@ -57,7 +94,13 @@ At the beginning, let's create a class for parsing Swagger. AT first, let's add 
             return "".join(["_" + i.lower() if i.isupper() else i for i in name]).lstrip("_")
 
 
-Next, we need some method to load Swagger page as JSON to class variable. Because we well get schemes from Swagger page right from JSON format, we can use just `json.loads` here, but for payload generation we need converters from string to JSON (i.e. wrap out quotes and symbols). We'll need it later...
+Next, we need some method to load Swagger page as JSON to class variable, raw page already contains all needed data, and we can use it as is right from Swagger url.
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/json_example.jpg
+    :alt: Swagger page as JSON, just get and use it
+    :align: center
+
+Because we well get schemes from Swagger page right from JSON format, we can use just `json.loads` here, but for payload generation we need converters from string to JSON (i.e. wrap out quotes and symbols). We'll need it later...
 
 .. code-block:: python
 
@@ -102,6 +145,10 @@ Now need to get schemes from Swagger page and save it to class variable.
 
 
 Schemas is needed to figure out how to generate payload for POST, PUT, PATCH requests, it's crucial to generate different screnarios and tests.
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/schemas.jpg
+    :alt: Data schemes from Swagger page, it's better when it's complete
+    :align: center
 
 But, at first, right after figuring out schemes, we need to get endpoints itself from Swagger page and save it to class variable.
 
@@ -333,7 +380,7 @@ Well, you know, that we need to follow DRY and SOLID principles. So, I assume, t
                     self.generate_connector_functions(connector_folder_path, tag_data, stripped_tag)
 
 
-Then let's add some method to generate connector functions and stores it to folder_path.
+Then let's add some method to generate connector functions and stores it to `folder_path`.
 
 .. code-block:: python
 
@@ -385,18 +432,16 @@ Then let's add some method to generate connector functions and stores it to fold
                     required_params = [
                         self.camel_to_snake(param["name"]).replace("-", "_")
                         for param in parameters
-                        if param.get("required", False) and param["name"] != "accountId"
+                        if param.get("required", False)
                     ]
                     optional_params = [
                         f"{self.camel_to_snake(param['name']).replace('-', '_')}=None"
                         for param in parameters
                         if not param.get("required", False)
                         and self.camel_to_snake(param["name"]).replace("-", "_") not in required_params
-                        and param["name"] != "accountId"
                     ]
                     params = ", ".join(required_params + optional_params)
                     raw_url = f'/{"_".join(endpoint_name.split("_")[1:])}'
-                    endpoint_url = f'{raw_url.replace("_", "/").replace("accountId", "self.account_id")}'
                     endpoint_url = f"{{self.base_url}}{self.camel_to_snake(endpoint_url)}"
                     if method not in ["post", "put", "patch"]:
                         url = f"f'{endpoint_url}' + ('?' + '&'.join([f'{{k}}={{v}}' for k, v in params_dict.items()]) if params_dict else '')"  # pylint: disable=line-too-long
@@ -435,7 +480,7 @@ So, only one thing here is left out of the scope, and it's generation of docstri
             summary = endpoint_data.get("summary", endpoint_name)
             docstring = f'"""\n        {summary}\n\n        Args:\n'
             for param in parameters:
-                if param["in"] in ["query", "path"] and param["name"] != "accountId":
+                if param["in"] in ["query", "path"]:
                     param_type = param["schema"].get("type", "unknown")
                     required_params = " (optional)" if not param.get("required", False) else ""
                     description = (
@@ -594,17 +639,16 @@ Then let's add some method to generate pytest functions and stores it to folder_
                     "missing_value": missing_value,
                     "correct_value": correct_value,
                 }
-                if temp_param["name"] != "account_id":
-                    if isinstance(wrong_value, str):
-                        if wrong_value not in random_list:
-                            if "random" in wrong_value and "{" not in wrong_value:
-                                random_list.append(wrong_value)
-                    if isinstance(correct_value, str):
-                        if correct_value not in random_list and "{" not in correct_value:
-                            if "random" in correct_value:
-                                random_list.append(correct_value)
+                if isinstance(wrong_value, str):
+                    if wrong_value not in random_list:
+                        if "random" in wrong_value and "{" not in wrong_value:
+                            random_list.append(wrong_value)
+                if isinstance(correct_value, str):
+                    if correct_value not in random_list and "{" not in correct_value:
+                        if "random" in correct_value:
+                            random_list.append(correct_value)
             required_params = [
-                param for param in formatted_params if param.get("required", False) and param["name"] != "account_id"
+                param for param in formatted_params if param.get("required", False)
             ]
             params_string = None
             for param in required_params:
@@ -644,7 +688,7 @@ Then let's add some method to generate pytest functions and stores it to folder_
             assert response.status_code == {response_code}
             """
                     )
-                for param in [param for param in formatted_params if param["name"] != "account_id"]:
+                for param in [param for param in formatted_params]:
                     param_to_remove = ""
                     if param in required_params:
                         param_to_remove = f"{param['name']}={param_values_dict[param['name']]['correct_value']},"
@@ -674,7 +718,7 @@ As you can see, here I used class-based approach for tests, and I used pytest fi
 Calling generator
 -----------------
 
-    Finally, we need to call our generator in some order. Let's add some code (task) to call it.
+Finally, we need to call our generator in some order. Let's add some code (task) to call it.
 
 
 .. code-block:: python
@@ -702,7 +746,7 @@ Calling generator
         swagger_generator.create_test_files("swagger_tests")
         endpoint_list.append(swagger_generator.get_endpoints(swagger_url))
 
-And, finally, run it in parallel for all URLs via multiprocessing.
+And, at last, run it in parallel for all URLs via `multiprocessing`.
 
 .. code-block:: python
 
@@ -725,12 +769,22 @@ And, finally, run it in parallel for all URLs via multiprocessing.
             file_list_out.write(json.dumps(endpoint_list))
 
 
+Result will looks like folders with connectors code and tests.
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/generator_example.jpg
+    :alt: Generation result is folders with connectors and tests
+    :align: center
+
 Some sceptical thoughts
 =======================
 
 Actually, I'm not a first who thinks about it. There are some tools, that can do it for you. I.e. `swagger-py-codegen` or `swagger-test-templates`, `swagger_meqa`, `merge-dev`. But, they are not so flexible, and you can't use it in your project, and you can't modify it. Actually, when your API testing start to comes not just one-by-one feature development, but from bulk changes, or from legacy systems, or covering the gap of automation, you most likely already have some testing and API infrastructure (come BackedAPI core adapters), which needs to be integrated slightly easy into existing API and UI tests, and there your own code and your own skill is only needed.
 
 In other hand, you always must pay attention to automation costs and automation ROI, in some non-repeatable testing tasks just manual testing of APIs using curl may be much better than anything else, or smoke-cover by ready-made tools may be enough for you, especially you won't to integrate into supportable and maintainable testing and development infrastructure.
+
+.. image:: /assets/images/articles/qa/qa_swagger_generator/traingle_example.png
+    :alt: Always remember that simple is better than complex
+    :align: center
 
 Sometimes, none of these will work due to poor quality of documentation and process maturity, and you need to use some manual work, or even some manual testing, or even some manual testing with some manual work. And, it's ok, because you need to be flexible and use the best approach for your case, not the best approach for the world. So...
 
