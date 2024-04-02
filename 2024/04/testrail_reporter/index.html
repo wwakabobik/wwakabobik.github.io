@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>TestRail Reporter</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2024/04/testrail_reporter/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Reporting results from your automation tests to TestRail is a good idea. Especially for management, and, for sure, with some additional...">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="qa">
+    <meta name="tags" content="python">
+    <meta name="tags" content="api">
+    <meta name="tags" content="testrail">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="TestRail Reporter"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Reporting results from your automation tests to TestRail is a good idea. Especially for management, and, for sure, with some additional..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2024/04/testrail_reporter/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-04-02 10:00:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2024-04-02 08:01:38.047617+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="qa"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="qa"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="api"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="testrail"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/qa.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "TestRail Reporter",
+  "headline": "TestRail Reporter",
+  "datePublished": "2024-04-02 10:00:00+02:00",
+  "dateModified": "2024-04-02 08:01:38.047617+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/qa.png",
+  "url": "https://wwakabobik.github.io/2024/04/testrail_reporter/",
+  "description": "Reporting results from your automation tests to TestRail is a good idea. Especially for management, and, for sure, with some additional..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">TestRail Reporter</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="02 Apr 2024">02 Apr 2024</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/qa.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>TestRail. I get it, this tool isn't the new kid on the block, but it's still rocking the charts as a go-to for manual and—let's face it, more painfully—automated testing. In a perfect world, I would've shared my pro-tips with you sooner, but the real deal is to recognize the need, am I right?</p>
+<img alt="TestRail" src="/assets/images/articles/qa/testrail_reporter/testrails_0.png" />
+<p>So, for those code warriors who've battled with TestRail, it's no secret that its convenience as a tracking and automation management tool is, well, up for debate. But as the IT saga goes—you've got this epic test model, a thousand manual tests that you've begun to cover with auto-tests, say with pytest/selenium as your steed. And for some reason, like a manager's whimsy, you need to corral them into &quot;one testing tool&quot;. How do you pull that off?</p>
+<p>It all hinges on your framework of choice. The quick and dirty fix? Use the <a class="reference external" href="https://github.com/gurock/trcli">trcli</a> utility from <a class="reference external" href="https://www.testrail.com/">Gurock</a> and send off those results. There are other paths to victory—tagging or some mapping in your test docstrings with the TestRails field and yanking the API's chain. Bottom line, figure it out. What follows is my saga and my crafted solutions to the challenges faced over five years.</p>
+<div class="section" id="dispatching-automated-test-results-to-testrail">
+<h2>Dispatching Automated Test Results to TestRail</h2>
+<p>So, after giving <a class="reference external" href="https://github.com/gurock/trcli">trcli</a> a whirl without much enthusiasm, I've discovered that out of the box, it doesn't quite perform as I had anticipated. I won't bore you with the details of how the API sometimes hangs, spits out results page by page, and other such nuisances... On the flip side, I wasn't keen on using something alien and far removed from the original <a class="reference external" href="https://www.testrail.com/">Gurock</a> approach. Thus, I decided to craft my own &quot;reporter&quot; with a dash of QA flair and a Pythonic twist.</p>
+<p>Here's what we do, we grab and install the package:</p>
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>testrail-api-reporter
+</pre></div>
+<p>All that's needed, just like in the original, is to add the <cite>automation_id</cite> field to the test cases in the TestRail project(s), and then kick off the tests with the junitxml flag, something like this:</p>
+<div class="highlight"><pre><span></span>pytest<span class="w"> </span>--junitxml<span class="w"> </span><span class="s2">&quot;junit-report.xml&quot;</span><span class="w"> </span><span class="s2">&quot;./tests&quot;</span>
+</pre></div>
+<p>After the tests have run their course, pytest conjures up an xml report with the fruits of the test execution. Now, we need to read it and dispatch it to TestRails:</p>
+<div class="highlight"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">your_tr</span><span class="o">.</span><span class="n">testrail</span><span class="o">.</span><span class="n">io</span>
+<span class="n">email</span><span class="o">=</span><span class="n">your</span><span class="nd">@email</span><span class="o">.</span><span class="n">com</span> <span class="n">password</span><span class="o">=</span><span class="n">your_password</span>
+<span class="n">project_number</span><span class="o">=</span><span class="mi">42</span> <span class="n">test_suite_number</span><span class="o">=</span><span class="mi">66</span>
+<span class="n">api</span><span class="o">=</span><span class="n">TestRailResultsReporter</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+                            <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
+                            <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span>
+                            <span class="n">project_id</span><span class="o">=</span><span class="n">project_id</span><span class="p">,</span>
+                            <span class="n">suite_id</span><span class="o">=</span><span class="n">test_suite_id</span><span class="p">,</span>
+                            <span class="n">xml_report</span><span class="o">=</span><span class="s1">&#39;junit-report.xml&#39;</span><span class="p">)</span> <span class="c1"># And then we simply invoke api.send_results()</span>
+</pre></div>
+<p>As a result, the outcomes will be appended, and a test run akin to: <cite>AT run 2022-09-01T20:25:51</cite> will be created.</p>
+<img alt="TestRail test run" src="/assets/images/articles/qa/testrail_reporter/testrails_1.png" />
+<p>Naturally, if there exists a test in TestRail with the <cite>automation_id</cite> field filled out and correctly formatted, like path.to.test_file.test_class.test, then the results will be added for it. Otherwise, the missing tests will be conjured up in the <cite>pytest</cite> folder.</p>
+<img alt="New test cases published" src="/assets/images/articles/qa/testrail_reporter/testrails_2.png" />
+<p>In essence, the report can be tailored to your needs by passing parameters to send_results():</p>
+<ul class="simple">
+<li><cite>title</cite> - completely replaces the name of the test run.</li>
+<li><cite>environment</cite> - the environment, will be tacked on to the end of the run name, like AT run 2022-09-01T20:25:51 on ENV.</li>
+<li><cite>timestamp</cite> - the time code, will be swapped with the code from the xml report.</li>
+<li><cite>run_id</cite> - the id of an existing test run; if specified, the results will be added to it, and a new test run will not be created.</li>
+<li><cite>close_run</cite> - if True, then any test run will be closed, by default True.</li>
+<li><cite>run_name</cite> - if you don't know the run_id you can find the test run by its name, and then the run_id parameter will be ignored, even if it was specified.</li>
+<li><cite>delete_old_run</cite> - if a test run with the specified id or name existed before, it will be deleted if True.</li>
+</ul>
+<p>Also, it's not necessary to create a separate reporter if you wish to send a report for a different suite, for example, just call api.method_name(), namely:</p>
+<ul class="simple">
+<li><cite>set_project_id(project_id)</cite> - change project id;</li>
+<li><cite>set_suite_id(suite_id)</cite> - switch suite id;</li>
+<li><cite>set_xml_filename(xml_filename)</cite> - change the default path to the report;</li>
+<li><cite>set_at_report_section(section_name)</cite> - change the default folder where the missing tests will be created.</li>
+</ul>
+</div>
+<div class="section" id="automated-coverage-report">
+<h2>Automated Coverage Report</h2>
+<p>So, we've figured out how to transfer results to TestRail, but what if we want to gather metrics that aren't available in TestRail, like coverage by automated tests of our test model? About the progress of automation and the like? Our management lives in Confluence, so why not update those beautiful charts right there? Well, there's a solution for that too!</p>
+<div class="highlight"><pre><span></span><span class="c1"># Let&#39;s create a Confluence Reporter</span>
+<span class="n">confluence_reporter</span> <span class="o">=</span> <span class="n">ConfluenceReporter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;Liberator&#39;</span><span class="p">,</span>
+                                         <span class="n">password</span><span class="o">=</span><span class="s1">&#39;NoWar&#39;</span><span class="p">,</span>
+                                         <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://my.confluence.com&quot;</span><span class="p">,</span>
+                                         <span class="n">confluence_page</span><span class="o">=</span><span class="s2">&quot;1234&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now let&#39;s create several reports at once!</span>
+<span class="n">confluence_reporter</span><span class="o">.</span><span class="n">generate_report</span><span class="p">(</span><span class="n">reports</span><span class="o">=</span><span class="n">automation_distribution</span><span class="p">,</span>
+                                    <span class="n">cases</span><span class="o">=</span><span class="n">area_distribution</span><span class="p">,</span>
+                                    <span class="n">values</span><span class="o">=</span><span class="n">priority_distribution</span><span class="p">,</span>
+                                    <span class="n">type_platforms</span><span class="o">=</span><span class="n">my_platforms</span><span class="p">,</span>
+                                    <span class="n">automation_platforms</span><span class="o">=</span><span class="n">my_automation_platforms</span><span class="p">)</span>
+
+<span class="c1"># Or each report separately</span>
+<span class="n">confluence_reporter</span><span class="o">.</span><span class="n">history_type_chart</span><span class="p">(</span><span class="n">type_platforms</span><span class="o">=</span><span class="n">my_platforms</span><span class="p">)</span>  <span class="c1"># historical chart of automation coverage by platforms</span>
+<span class="n">confluence_reporter</span><span class="o">.</span><span class="n">history_state_chart</span><span class="p">(</span><span class="n">automation_platforms</span><span class="o">=</span><span class="n">my_automation_platforms</span><span class="p">)</span>  <span class="c1"># historical chart of test coverage by attribute</span>
+<span class="n">confluence_reporter</span><span class="o">.</span><span class="n">test_case_area_distribution</span><span class="p">(</span><span class="n">cases</span><span class="o">=</span><span class="n">area_distribution</span><span class="p">)</span>  <span class="c1"># chart of test distribution by platforms (pie chart)</span>
+<span class="n">confluence_reporter</span><span class="o">.</span><span class="n">test_case_priority_distribution</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">priority_distribution</span><span class="p">)</span>  <span class="c1"># chart of test breakdown by priority (pie chart)</span>
+<span class="n">confluence_reporter</span><span class="o">.</span><span class="n">automation_state</span><span class="p">(</span><span class="n">reports</span><span class="o">=</span><span class="n">automation_distribution</span><span class="p">)</span>  <span class="c1"># chart of automated coverage by platforms (bar chart)</span>
+</pre></div>
+<img alt="TestRail summary charts" src="/assets/images/articles/qa/testrail_reporter/testrails_3.png" />
+<p>Okay, maybe some explanations are needed about where all this comes from. Of course, the data is taken from TestRail. You can get the data like this:</p>
+<div class="highlight"><pre><span></span><span class="n">testrails_adapter</span> <span class="o">=</span> <span class="n">ATCoverageReporter</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">tr_url</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="n">tr_client_email</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">tr_client_password</span><span class="p">,</span>
+                               <span class="n">project</span><span class="o">=</span><span class="n">tr_default_project</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">type_platforms</span><span class="o">=</span><span class="n">my_platforms</span><span class="p">,</span>
+                               <span class="n">automation_platforms</span><span class="o">=</span><span class="n">automation_platforms</span><span class="p">)</span>
+
+<span class="c1"># Now let&#39;s get the results for each type</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">tr_reporter</span><span class="o">.</span><span class="n">test_case_by_priority</span><span class="p">()</span>
+<span class="n">cases</span> <span class="o">=</span> <span class="n">tr_reporter</span><span class="o">.</span><span class="n">test_case_by_type</span><span class="p">()</span>
+<span class="n">reports</span> <span class="o">=</span> <span class="n">tr_reporter</span><span class="o">.</span><span class="n">automation_state_report</span><span class="p">()</span>
+</pre></div>
+<p>Alright, but it's still unclear what &quot;platforms&quot; are? Platforms are sections (TestRail folders), or even their combinations/intersections, from which we take the data. That is, we may have common tests for the functionality of our product, as well as different, specific ones for each of the platforms (for example, mobile/desktop browsers).</p>
+<div class="highlight"><pre><span></span><span class="c1"># You need to specify the top section(s) (folder(s) where tests for each of your platforms are stored,</span>
+<span class="c1"># the reporter will recursively collect all tests in nested folders.</span>
+<span class="c1"># You also need to specify the field name by which automation affiliation will be selected,</span>
+<span class="c1"># by default &#39;internal_name&#39; is used, namely &#39;type_id&#39;.</span>
+<span class="c1"># By default, these are values like &quot;Automated&quot;, &quot;Functional&quot;, &quot;Other&quot;, etc.</span>
+
+<span class="n">automation_platforms</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Desktop Chrome&#39;</span><span class="p">,</span> <span class="s1">&#39;internal_name&#39;</span><span class="p">:</span> <span class="s1">&#39;type_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sections&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4242</span><span class="p">,</span> <span class="mi">1111</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Desktop Firefox&#39;</span><span class="p">,</span> <span class="s1">&#39;internal_name&#39;</span><span class="p">:</span> <span class="s1">&#39;custom_firefox&#39;</span><span class="p">,</span> <span class="s1">&#39;sections&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2424</span><span class="p">]})</span>
+<span class="err">```</span>
+
+<span class="c1"># If you don&#39;t need to collect automation data, you can use these platforms without specifying a field:</span>
+<span class="n">type_platforms</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;UI&#39;</span><span class="p">,</span> <span class="s1">&#39;sections&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">6969</span><span class="p">,</span> <span class="mi">8888</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;API&#39;</span><span class="p">,</span> <span class="s1">&#39;sections&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9696</span><span class="p">]})</span>
+</pre></div>
+<p>I hope this makes it clearer. But, perhaps you don't use Confluence? Then just draw the charts as images!</p>
+<div class="highlight"><pre><span></span><span class="n">plotly_reporter</span> <span class="o">=</span> <span class="n">PlotlyReporter</span><span class="p">(</span><span class="n">type_platforms</span><span class="o">=</span><span class="n">type_platforms</span><span class="p">)</span>
+<span class="n">plotly_reporter</span><span class="o">.</span><span class="n">draw_test_case_by_priority</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;stacked_bar_chart.png&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plotly_reporter</span><span class="o">.</span><span class="n">draw_test_case_by_area</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;pie_chart1.png&#39;</span><span class="p">,</span> <span class="n">cases</span><span class="o">=</span><span class="n">cases</span><span class="p">)</span>
+<span class="n">plotly_reporter</span><span class="o">.</span><span class="n">draw_automation_state_report</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;pie_chart2.png&quot;</span><span class="p">,</span> <span class="n">reports</span><span class="o">=</span><span class="n">reports</span><span class="p">)</span>
+<span class="n">plotly_reporter</span><span class="o">.</span><span class="n">draw_history_type_chart</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;line_stacked_chart.png&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">automation_platforms</span><span class="p">:</span>
+    <span class="n">plotly_reporter</span><span class="o">.</span><span class="n">draw_history_state_chart</span><span class="p">(</span><span class="n">chart_name</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="section" id="alternative-data-sharing-methods">
+<h2>Alternative Data Sharing Methods</h2>
+<p>Alright, alright, we're not going to manually send images to our management, right? I've got a solution for that too!</p>
+<p>For instance, we can send the report via e-mail:</p>
+<div class="highlight"><pre><span></span><span class="n">chart_drawings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;report_chart.png&#39;</span><span class="p">,</span> <span class="s1">&#39;path/to/more_graphics.png&#39;</span><span class="p">]</span>
+<span class="n">chart_captions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Priority distribution&#39;</span><span class="p">,</span> <span class="s1">&#39;AT coverage&#39;</span><span class="p">]</span>
+<span class="n">emailer</span> <span class="o">=</span> <span class="n">EmailSender</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;my_personal@email.com&quot;</span><span class="p">,</span>
+                      <span class="n">password</span><span class="o">=</span><span class="s2">&quot;my_secure_password&quot;</span><span class="p">,</span>
+                      <span class="n">server_smtp</span><span class="o">=</span><span class="s2">&quot;smtp.email_server.com&quot;</span><span class="p">,</span>
+                      <span class="n">server_port</span><span class="o">=</span><span class="mi">587</span><span class="p">)</span>
+<span class="n">emailer</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">files</span><span class="o">=</span><span class="n">chart_drawings</span><span class="p">,</span>
+                     <span class="n">captions</span><span class="o">=</span><span class="n">chart_captions</span><span class="p">,</span>
+                     <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;buddy@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;boss@email.com&#39;</span><span class="p">])</span>
+</pre></div>
+<p>If you're using GMail, you'll need to get an oauth token and use it. Then the EmailSender would be initialized like this:</p>
+<div class="highlight"><pre><span></span><span class="n">emailer</span> <span class="o">=</span> <span class="n">EmailSender</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;my_personal@gmail.com&quot;</span><span class="p">,</span>
+                      <span class="n">gmail_token</span><span class="o">=</span><span class="s2">&quot;token.json&quot;</span><span class="p">)</span>
+</pre></div>
+<img alt="Report with summary charts to email (or gmail)" src="/assets/images/articles/qa/testrail_reporter/testrails_4.png" />
+<p>Seems like email is a bit of an anachronism? Well then, let's send the report to Slack! Just don't forget to set up the token!</p>
+<div class="highlight"><pre><span></span><span class="n">slack_sender</span> <span class="o">=</span> <span class="n">SlackSender</span><span class="p">(</span><span class="n">hook_url</span><span class="o">=</span><span class="s1">&#39;https://hooks.slack.com/services/</span><span class="si">{your}</span><span class="s1">/</span><span class="si">{api}</span><span class="s1">/</span><span class="si">{key}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">slack_sender</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">files</span><span class="o">=</span><span class="n">chart_drawings</span><span class="p">,</span> <span class="n">captions</span><span class="o">=</span><span class="n">chart_captions</span><span class="p">)</span>
+</pre></div>
+<img alt="Report with summary charts to Slack" src="/assets/images/articles/qa/testrail_reporter/testrails_5.png" />
+</div>
+<div class="section" id="don-t-forget-the-backup">
+<h2>Don't Forget the Backup!</h2>
+<p>Hark! As we frolic in the digital meadows of TestRail, a shadow looms – the specter of lost work. What if our results and tests vanish into the ether? Fear not, for I shall unveil a secret incantation to preserve our toils.</p>
+<div class="highlight"><pre><span></span><span class="n">tc_backup</span> <span class="o">=</span> <span class="n">TCBackup</span><span class="p">(</span><span class="n">tr_url</span><span class="p">,</span> <span class="n">tr_email</span><span class="p">,</span> <span class="n">tr_password</span><span class="p">,</span> <span class="n">test_rails_suite</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">tc_backup</span><span class="o">.</span><span class="n">backup</span><span class="p">()</span>  <span class="c1"># This spell conjures a backup.xml file with all our tests</span>
+<span class="n">tc_backup</span><span class="o">.</span><span class="n">get_archive_backup</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># And this one summons a backup.zip archive of our tests</span>
+</pre></div>
+<p>Now, where to safeguard these precious scrolls? Let us entrust them to the cloud, to the mighty vaults of GoogleDrive!</p>
+<div class="highlight"><pre><span></span><span class="c1"># First, forge a Google token by visiting the arcane halls of:</span>
+<span class="c1"># https://console.developers.google.com/apis/credentials?pli=1</span>
+<span class="c1"># Navigate ye through: Create Credentials =&gt; OAuth client ID =&gt; TV</span>
+<span class="c1"># and limited Input Devices to obtain thy client_id and client_secret</span>
+
+<span class="c1"># Use these relics to initialize the uploader with parameters:</span>
+<span class="c1">#  google_id = client_id and google_secret = client_secret</span>
+<span class="n">gdrive</span> <span class="o">=</span> <span class="n">GoogleDriveUploader</span><span class="p">(</span><span class="n">google_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span> <span class="n">google_secret</span><span class="o">=</span><span class="n">client_secret</span><span class="p">)</span>
+
+<span class="c1"># Upon the first invocation, you shall be prompted to enter your user_code</span>
+<span class="c1"># from the user account and activate the API token.</span>
+
+<span class="c1"># But if you already possess the tokens of access, proceed thusly:</span>
+<span class="n">gdrive</span> <span class="o">=</span> <span class="n">GoogleDriveUploader</span><span class="p">(</span><span class="n">google_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
+                             <span class="n">google_secret</span><span class="o">=</span><span class="n">client_secret</span><span class="p">,</span>
+                             <span class="n">google_api_refresh_token</span><span class="o">=</span><span class="n">refresh_token</span><span class="p">)</span>
+
+<span class="c1"># Now you may upload any artifact, but by default, we seek to hoist our archived backup with tests, the backup.zip</span>
+<span class="n">gdrive</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;backup.zip&#39;</span><span class="p">,</span> <span class="n">mime_type</span><span class="o">=</span><span class="s1">&#39;application/zip&#39;</span><span class="p">)</span>
+</pre></div>
+<img alt="Backup with test cases of TestRail has been zipped and saved using Google Drive" src="/assets/images/articles/qa/testrail_reporter/testrails_6.png" />
+</div>
+<div class="section" id="tricks-and-pitfalls">
+<h2>Tricks and pitfalls</h2>
+<p>What could possibly go awry? Perchance, in the realm of plotly, you must separately summon orca:</p>
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>electron<span class="w"> </span>orca
+</pre></div>
+<p>Mark well, Slack, the messenger of the workplace, does not entertain the direct upload of images, but only the links to their abodes. To wield images in Slack, you may swiftly upload them to a sanctuary like <a class="reference external" href="https://freeimage.host/">Freeimage.host</a>. Forsooth, like so (the utility is included in the package):</p>
+<div class="highlight"><pre><span></span><span class="n">image_uploaded</span> <span class="o">=</span> <span class="n">upload_image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">chart_drawings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">api_token</span><span class="o">=</span><span class="n">YOUR_SECRET_TOKEN</span><span class="p">)</span>
+
+<span class="c1"># Extract the URL of the image</span>
+<span class="n">image_url</span> <span class="o">=</span> <span class="n">image_uploaded</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+
+<span class="c1"># Or its thumbnail</span>
+<span class="n">image_thumb</span> <span class="o">=</span> <span class="n">image_uploaded</span><span class="p">[</span><span class="s1">&#39;thumb&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions</h2>
+<p>Thus concludes our quest. Getting rid of manual reporting and manual manipulations with data, statuses significantly free your time on SDET, automation needs and fun. Wouldn't it be easier to use an alias and re-learn a new, better, habit? If you like my article, feel free to <a class="reference external" href="https://www.donationalerts.com/r/rocketsciencegeek">share a coin</a>. And, for sure here are links to the <a class="reference external" href="https://github.com/wwakabobik/testrail_api_reporter">GitHub repo</a> and <a class="reference external" href="https://pypi.org/project/testrail-api-reporter/">pypi package</a>.</p>
+<p>May your backups be many and your data loss few. Until next time, I bid thee safe coding!</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=TestRail Reporter&amp;url=https://wwakabobik.github.io/2024/04/testrail_reporter/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2024/04/testrail_reporter/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2024/04/testrail_reporter/&amp;title=TestRail Reporter" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=TestRail Reporter&amp;body=https://wwakabobik.github.io/2024/04/testrail_reporter/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/qa/">qa</a><a href="https://wwakabobik.github.io/tag/python/">python</a><a href="https://wwakabobik.github.io/tag/api/">api</a><a href="https://wwakabobik.github.io/tag/testrail/">testrail</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2024/03/qa_swagger_generator/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">I hate API testing</h2>
+                            <p class="post-nav-excerpt">Writing API tests is a boring and time-consuming task. Why we need to write tests...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
