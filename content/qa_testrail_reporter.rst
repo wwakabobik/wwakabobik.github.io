@@ -1,7 +1,7 @@
 #################
 TestRail Reporter
 #################
-:date: 2024-04-08 12:58
+:date: 2024-04-02 10:00
 :author: wwakabobik
 :tags: qa, python, api, testrail
 :slug: testrail_reporter
