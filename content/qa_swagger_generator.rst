@@ -7,7 +7,7 @@ I hate API testing
 :slug: qa_swagger_generator
 :category: qa
 :status: published
-:summary: Writing API tests is a boring and time-consuming task. Why we need to write tests manually, split from other testing processes, and not use the same tools for testing as for development? Let's try to automate API testing using Swagger and few Python magic.
+:summary: Writing API tests is a boring and time-consuming task. Why we need to write tests manually and not use the same tools for testing as for development? Let's try to automate API testing using Swagger and few Python magic.
 :cover: assets/images/bg/qa.png
 
 I hate API testing. I never liked it. Why recruiters are still asking about it? Moreover, some companies split automation testing into two parts: UI and API. And, I always wanted to ask: are you serious? Do you write hilarious tests to get states only via UI? Or you spend huge amount of time to generate test data, reuse same accounts, data, what leads to pesticide paradox? Isn't better to get/prepare state and data via API or even API mocking? This will significantly reduce time and efforts for UI automation testing. Moreover, it will make your tests more stable and reliable. And, you will be able to cover more cases with less efforts. It's question for full regression, but for smoke poking API endpoints may be a good idea, that at least backend works well, plus general pages and interfaces exists. So, why we need to write tests manually, split from other testing processes, and not use the same tools for testing as for development?
