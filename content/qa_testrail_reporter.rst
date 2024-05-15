@@ -7,7 +7,7 @@ TestRail Reporter
 :slug: testrail_reporter
 :category: qa
 :status: published
-:summary: Reporting results from your automation tests to TestRail is a good idea. Especially for management, and, for sure, with some additional info, like KPIs of automation coverage, and some other metrics. But it's too boring to do it manually. Let's automate it and report it to Testrail, Slack, email, etc.
+:summary: Reporting results from your automation tests to TestRail is a good idea. Especially for management with KPIs of automation coverage, and some other metrics. Let's automate it and report it to Testrail, Slack, email, etc.
 :cover: assets/images/bg/qa.png
 
 TestRail. I get it, this tool isn't the new kid on the block, but it's still rocking the charts as a go-to for manual and—let's face it, more painfully—automated testing. In a perfect world, I would've shared my pro-tips with you sooner, but the real deal is to recognize the need, am I right?
