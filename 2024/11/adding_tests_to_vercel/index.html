@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Adding Tests to Vercel</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/qa.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Adding automated tests to your Vercel project can be quick and efficient. Here's a two-path guide to integrating tests using GitHub...">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="qa">
+    <meta name="tags" content="vercel">
+    <meta name="tags" content="ci">
+    <meta name="tags" content="github actions">
+    <meta name="tags" content="devops">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Adding Tests to Vercel"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Adding automated tests to your Vercel project can be quick and efficient. Here's a two-path guide to integrating tests using GitHub..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2024-11-06 20:28:00+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2024-11-06 19:27:25.662319+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="qa"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="qa"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="vercel"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="ci"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="github actions"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="devops"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/qa.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Adding Tests to Vercel",
+  "headline": "Adding Tests to Vercel",
+  "datePublished": "2024-11-06 20:28:00+01:00",
+  "dateModified": "2024-11-06 19:27:25.662319+01:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/qa.png",
+  "url": "https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/",
+  "description": "Adding automated tests to your Vercel project can be quick and efficient. Here's a two-path guide to integrating tests using GitHub..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">Adding Tests to Vercel</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="06 Nov 2024">06 Nov 2024</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/qa.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <blockquote class="pull-quote">
+This is my original article (published May 2023), translated from a <a class="reference external" href="https://habr.com/en/users/wwakabobik/">Habrahabr</a>. I decided to remove all old articles from it and store it only in my personal blog because I don't like moral position of Habr audience.</blockquote>
+<p>Good day to all developers, engineers, and automators who stumbled upon this guide. If your project is running on <a class="reference external" href="https://vercel.com/">Vercel</a> and you've dabbled in automation, then this quick guide is right up your alley.</p>
+<p>The story is short and sweet, much like most things in <a class="reference external" href="https://vercel.com/">Vercel</a> – adding your automated tests is straightforward and quick. And yes, there are two ways to go about it.</p>
+<div class="section" id="using-github-actions">
+<h2>Using GitHub Actions</h2>
+<p>Original reference <a class="reference external" href="https://vercel.com/guides/how-can-i-run-end-to-end-tests-after-my-vercel-preview-deployment">here</a> if you want to go into the weeds. This method is ideal if you already have a solid foundation of automated tests or if you’re using <a class="reference external" href="https://www.selenium.dev/">Selenium</a>, <a class="reference external" href="https://www.cypress.io/">Cypress</a>, or similar frameworks (but not <a class="reference external" href="https://mochajs.org/">Mocha</a>, <a class="reference external" href="https://pptr.dev/">Puppeteer</a>, or <a class="reference external" href="https://playwright.dev/">Playwright</a> – we’re talking the heavier hitters here). All is powered by <a class="reference external" href="https://github.com/features/actions">GitHub Actions</a>. All you need is to add or update a file in your project’s directory: <strong>.github/workflows/e2e.yml</strong> (name it whatever suits your fancy, as long as it aligns with the tests you’re running).:</p>
+<div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E2E Tests</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">deployment_status</span><span class="p">:</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">e2e-tests</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.event.deployment_status.state == &#39;success&#39;</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Node.js</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install pnpm</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=9.12.3 sh - | node - add --global pnpm</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pnpm install</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run E2E tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">if [ &quot;${{ env.VERCEL_ENV }}&quot; != &quot;production&quot; ]; then</span>
+<span class="w">            </span><span class="no">my_param=&quot;qa&quot;</span>
+<span class="w">          </span><span class="no">else</span>
+<span class="w">            </span><span class="no">my_param=&quot;&quot;</span>
+<span class="w">          </span><span class="no">fi</span>
+<span class="w">          </span><span class="no">npx cypress run --config-file &quot;cypress.config.ts&quot; --config specPattern=&quot;cypress/e2e&quot; baseUrl=${{ github.event.deployment_status.target_url }} --env nice_param=$my_param allure=true --spec &quot;cypress/e2e/base.cy.js,cypress/e2e/meta.cy.js&quot;</span>
+<span class="w">        </span><span class="nt">continue-on-error</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e2e_tests</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate Allure report</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always()</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pnpm run allure:generate allure-results</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Archive Allure report</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip -r allure-report.zip allure-report</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload Allure report</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allure-report</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allure-report.zip</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check test status (finally)</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.e2e_tests.outcome == &#39;failure&#39; }}</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exit 1</span>
+</pre></div>
+<p>You could replace <a class="reference external" href="https://www.cypress.io/">Cypress</a> with anything else you’re using – <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a>/<a class="reference external" href="https://www.selenium.dev/">Selenium</a>, for instance – and set up the environment with something like <a class="reference external" href="https://tox.wiki/en/latest/">tox</a>. Or, if you’re feeling adventurous, go ahead and trigger a third-party service or webhook. Here are a few things to note:</p>
+<div class="highlight"><pre><span></span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.event.deployment_status.state == &#39;success&#39;</span>
+</pre></div>
+<ul class="simple">
+<li>Tests will only run if the deployment is successful (courtesy of a webhook trigger).</li>
+<li>You’ll likely want to customize tests or parameters based on the environment being deployed. In this example, if the deployment isn't for production, we add the &quot;my_param&quot; parameter, which will be picked up by the tests. The <a class="reference external" href="https://vercel.com/">Vercel</a> environment itself is available through the <strong>env.VERCEL_ENV</strong> variable.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">if [ &quot;${{ env.VERCEL_ENV }}&quot; != &quot;production&quot; ]; then</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">my_param=&quot;&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">else</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">my_param=&quot;qa&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">fi</span>
+</pre></div>
+<p>The base URL (base_url) for testing lives in a variable as well:</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">${{ github.event.deployment_status.target_url }}</span>
+</pre></div>
+<p>You can also add different tests or reports to various steps, such as using <a class="reference external" href="https://docs.qameta.io/allure/">Allure-reports</a> for test results. Upon completion, you’ll see the results in GitHub Actions (unless, of course, you’re calling in a heavy-duty service like <a class="reference external" href="https://www.jenkins.io/">Jenkins</a> or some cloud testing platform).</p>
+<img alt="GitHub actions" src="/assets/images/articles/qa/adding_tests_to_vercel/01_vercel_ga.png" />
+<p>A detailed log will show up here:</p>
+<img alt="GitHub actions log" src="/assets/images/articles/qa/adding_tests_to_vercel/02_vercel_log.png" />
+<p>Report will be stored in <strong>Actions -&gt; Run -&gt; Summary -&gt; Artifacts</strong>:</p>
+<img alt="Allure report" src="/assets/images/articles/qa/adding_tests_to_vercel/03_vercel_allure.png" />
+</div>
+<div class="section" id="using-checks">
+<h2>Using Checks</h2>
+<p>Alternatively, you can run checks directly within the Vercel deployment workflow via the <strong>Checks</strong> action. Write your own plugin (<a class="reference external" href="https://vercel.com/docs/integrations/create-integration">Integration</a>) to check your deployment with the <a class="reference external" href="https://vercel.com/docs/integrations/checks-overview">Checks API</a>, or use an existing one like <a class="reference external" href="https://www.checklyhq.com/">Checkly</a>:</p>
+<img alt="Checkly" src="/assets/images/articles/qa/adding_tests_to_vercel/04_vercel_checkly.png" />
+<p><a class="reference external" href="https://www.checklyhq.com/">Checkly</a> operates with <a class="reference external" href="https://playwright.dev/">Playwright</a> tests, offering a base level of checks out of the box, which you can expand upon with your own tests:</p>
+<img alt="Playwright tests on Checkly" src="/assets/images/articles/qa/adding_tests_to_vercel/05_vercel_playwright.png" />
+<p>During deployment, these tests will run as a separate step, with results generated accordingly:</p>
+<img alt="Checkly testing results" src="/assets/images/articles/qa/adding_tests_to_vercel/06_vercel_results.png" />
+</div>
+<div class="section" id="in-conclusion">
+<h2>In Conclusion</h2>
+<p>As you can see, adding tests to Vercel projects is simple and fast.</p>
+<p>That’s all, folks. If this guide has been a useful addition to your automation toolkit, feel free to like the post, drop a comment, or, if you’re feeling particularly generous, <a class="reference external" href="https://www.donationalerts.com/r/rocketsciencegeek">throw a coin</a> my way.</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Adding Tests to Vercel&amp;url=https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/&amp;title=Adding Tests to Vercel" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Adding Tests to Vercel&amp;body=https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/qa/">qa</a><a href="https://wwakabobik.github.io/tag/vercel/">vercel</a><a href="https://wwakabobik.github.io/tag/ci/">ci</a><a href="https://wwakabobik.github.io/tag/github-actions/">github actions</a><a href="https://wwakabobik.github.io/tag/devops/">devops</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2024/08/pytest_rerunclassfailures/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">Test classes - how to rerun them</h2>
+                            <p class="post-nav-excerpt">Dealing with imperfect code and test environments can drive you crazy, especially when...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
