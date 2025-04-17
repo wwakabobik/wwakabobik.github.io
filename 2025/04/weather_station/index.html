@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Supercharged Weather Station</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2025/04/weather_station/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="A weather station with a Raspberry Pi, webserver and Arduino, LoRa SX1278 modules.">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="raspberry pi">
+    <meta name="tags" content="weather station">
+    <meta name="tags" content="lora">
+    <meta name="tags" content="arduino">
+    <meta name="tags" content="python">
+    <meta name="tags" content="flask">
+    <meta name="tags" content="iot">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Supercharged Weather Station"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="A weather station with a Raspberry Pi, webserver and Arduino, LoRa SX1278 modules."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2025/04/weather_station/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2025-04-17 23:06:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2025-04-17 21:17:42.568740+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="raspberry pi"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="weather station"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="lora"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="arduino"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="flask"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="iot"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/python.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Supercharged Weather Station",
+  "headline": "Supercharged Weather Station",
+  "datePublished": "2025-04-17 23:06:00+02:00",
+  "dateModified": "2025-04-17 21:17:42.568740+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/python.png",
+  "url": "https://wwakabobik.github.io/2025/04/weather_station/",
+  "description": "A weather station with a Raspberry Pi, webserver and Arduino, LoRa SX1278 modules."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">Supercharged Weather Station</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="17 Apr 2025">17 Apr 2025</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/python.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <blockquote class="pull-quote">
+This is my original article (published May 2021), translated from a <a class="reference external" href="https://habr.com">Habrahabr</a>. I decided to remove all old articles from it and store it only in my personal blog because I don't like moral position of Habr audience.</blockquote>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eQUUWfOznbs?si=5690pBHNFhbYC3Sr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div class="section" id="problem-statement">
+<h2>Problem Statement</h2>
+<p>So, why bother with a weather station at all? Sure, there are more weather apps and services today than anyone could ever need, complete with local forecasts down to the meter. But apart from checking the outdoor conditions, I need real-time data from temperature and humidity sensors inside my own space. And I’m not just gathering this data for fun. Knowing the indoor and outdoor temperatures means I can control things like the boiler or ventilation system, automating a comfortable indoor climate without lifting a finger—weather-responsive automation at its finest.</p>
+<p>On top of that, I want to track weather trends over longer time periods, like one or two years. Meaning, this data needs a place to live—a proper, dedicated storage solution.</p>
+<p>From all this, let’s lay down the key requirements:</p>
+<ol class="arabic simple">
+<li>Data Storage: We’ll need a server to hoard all the precious data.</li>
+<li>Sensor Variety and Modularity: Sensors in different locations, doing different things, so let’s keep it modular (hello, IoT).</li>
+<li>Cloud Sync: Besides local storage, it’d be nice to throw at least the current readings into the cloud.</li>
+<li>Data Sharing: We’ll end up with a solid dataset, so why not make it shareable?</li>
+</ol>
+<p>Ready? Let's dive into the fun stuff.</p>
+</div>
+<div class="section" id="architecture">
+<h2>Architecture</h2>
+<p>The simplest and most popular setup for a weather station is often Arduino. But getting it to play nice with a home network? That’s going to need additional shields and adapters, meaning extra cash and extra hassle—i.e., wasted time. So instead, I’m going for something with Wi-Fi baked right in: the ESP8266 (NodeMCU) module, paired with various sensors. This little powerhouse works just as well indoors as it does outdoors and can even act as a server if you’re feeling adventurous.</p>
+<img alt="ESP8266" src="/assets/images/articles/python/weather_station/ws_00.png" />
+<p>But why stop there? Let’s get some real muscle at the center. Luckily, I’ve got a dust-covered, first-gen Raspberry Pi lying around (though any version would work). The indoor sensors could connect directly to the Pi’s GPIO, but here’s the catch: my Pi and router are conveniently set up in one room, but I need monitoring in another. If you don’t have this setup challenge, congrats—you can cut down on one NodeMCU. For the rest of us, the Pi will receive data from the sensors, store it in a database, and display it on demand. Plus, the Pi can be outfitted with a LoRa receiver, letting it pull data from out-of-range sensors (perfect for those Arduinos). Finally, the Pi will ship all the data to the cloud.</p>
+<img alt="Weather Station architecture" src="/assets/images/articles/python/weather_station/ws_01.jpg" />
+<div class="section" id="parts-list">
+<h3>Parts List</h3>
+<p>Here’s what we’ll need to assemble this dream team:</p>
+<ul class="simple">
+<li>Raspberry Pi</li>
+<li>ESP8266 (2 units, +1 optional)</li>
+<li>BME280 (2 units) for temperature, humidity, and pressure</li>
+<li>Real-Time Clock DS1302 (optional)</li>
+<li>128x64 OLED Display with SH1106 controller (optional)</li>
+<li>Rain Sensor with LM373 comparator (optional)</li>
+<li>UV Sensor GY-VEML6070 (optional)</li>
+<li>Raspberry Pi Camera (optional)</li>
+<li>Arduino Nano (2 units, optional)</li>
+<li>SX1278 LoRa module (3 units, optional)</li>
+<li>Magnetic Compass with QMC5883L or HMC5883L chip (optional)</li>
+<li>Ambient Light Sensor with LM737 comparator (optional)</li>
+<li>Voltage Sensors up to 25V (optional)</li>
+<li>Current Sensors ACS712 (optional)</li>
+</ul>
+<p>With all this in hand, we’re ready to construct a networked weather-tracking beast.</p>
+</div>
+</div>
+<div class="section" id="connecting-the-sx1278-to-the-raspberry-pi">
+<h2>Connecting the SX1278 to the Raspberry Pi</h2>
+<p>First, let’s wire up the radio module to the Raspberry Pi.</p>
+<div class="section" id="pin-connections">
+<h3>Pin Connections</h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Raspberry Pi Pin</th>
+<th class="head">SX1278 Pin</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>3.3V</td>
+<td>3.3V</td>
+</tr>
+<tr><td>GROUND</td>
+<td>GROUND</td>
+</tr>
+<tr><td>GPIO10</td>
+<td>MOSI</td>
+</tr>
+<tr><td>GPIO9</td>
+<td>MISO</td>
+</tr>
+<tr><td>GPIO11</td>
+<td>SCK</td>
+</tr>
+<tr><td>GPIO8</td>
+<td>NSS/ENABLE</td>
+</tr>
+<tr><td>GPIO4</td>
+<td>DIO0</td>
+</tr>
+<tr><td>GPIO22</td>
+<td>RST</td>
+</tr>
+</tbody>
+</table>
+<p>Connect the pins on your Raspberry Pi to the SX1278 as shown in the diagram.</p>
+<img alt="Raspberry Pi and SX1278 wiring" src="/assets/images/articles/python/weather_station/ws_02.jpg" />
+<blockquote class="pull-quote">
+Different Raspberry Pi revisions can have varying pin layouts, so check the documentation to confirm which pins to use.</blockquote>
+</div>
+<div class="section" id="a-few-warnings-for-lora-module-setup">
+<h3>A Few Warnings for LoRa Module Setup</h3>
+<blockquote class="pull-quote">
+Before powering up the LoRa module, <em>make sure an antenna is attached</em>. Neglect this and you could end up with a nice, expensive paperweight if the module burns out.</blockquote>
+<blockquote class="pull-quote">
+Signal quality depends not just on the antenna but on correct configurations. Pay attention to matching the frequencies of the transmitter and receiver and keep the frequency range clear of noise (think of it like avoiding the traffic jam caused by kids’ RC cars on the same band).</blockquote>
+</div>
+</div>
+<div class="section" id="setting-up-the-server">
+<h2>Setting up the Server</h2>
+<p>Load <strong>Raspberry Pi OS Lite</strong> onto your Raspberry Pi.</p>
+<p>Next, let’s set a static IP address:</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/dhcpcd.conf
+</pre></div>
+<p>Add or edit the lines to set your desired IP address and router IP:</p>
+<div class="highlight"><pre><span></span>interface<span class="w"> </span>eth0<span class="w">  </span><span class="c1"># or wlan0 if you’re connecting via Wi-Fi</span>
+static<span class="w"> </span><span class="nv">ip_address</span><span class="o">=</span><span class="m">192</span>.168.0.4/24
+static<span class="w"> </span><span class="nv">routers</span><span class="o">=</span><span class="m">192</span>.168.0.1
+static<span class="w"> </span><span class="nv">domain_name_servers</span><span class="o">=</span><span class="m">192</span>.168.0.1<span class="w"> </span><span class="m">8</span>.8.8.8
+</pre></div>
+<p>Now, let’s enable remote access options via SSH, SPI (for LoRa), and the Camera module if we’ll be using it:</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>raspi-config
+</pre></div>
+<img alt="Raspberry Pi configuration" src="/assets/images/articles/python/weather_station/ws_03.png" />
+<img alt="Raspberry Pi configuration" src="/assets/images/articles/python/weather_station/ws_04.png" />
+<p>Enable:</p>
+<ul class="simple">
+<li><strong>SSH</strong> (for remote access, unless you’re working with a keyboard attached)</li>
+<li><strong>SPI</strong> (if using LoRa)</li>
+<li><strong>Camera</strong> (if using the camera)</li>
+</ul>
+<p>Make sure auto-login is set:</p>
+<ul class="simple">
+<li>Navigate to <cite>Boot Options -&gt; Console Autologin</cite></li>
+</ul>
+<p>Exit <cite>raspi-config</cite>, then reboot:</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>shutdown<span class="w"> </span>-r<span class="w"> </span>now
+</pre></div>
+<p>With remote access ready, we can connect to the Pi via SSH or keep working with the keyboard.</p>
+<p>Since all server logic is written in Python3, install it:</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3.12
+</pre></div>
+<p>Now download the project H.O.M.E.:</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/wwakabobik/home.git
+</pre></div>
+<p>I’ve chosen <strong>Flask</strong> as the web server—there’s an excellent articles by <a class="reference external" href="https://blog.miguelgrinberg.com/">Miguel Grinberg</a>, so I won’t go into the details.</p>
+<p>Copy the server content to a new directory:</p>
+<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>web-server
+cp<span class="w"> </span>-r<span class="w"> </span>home/home_server/*<span class="w"> </span>/home/pi/web-server/
+</pre></div>
+<p>Install dependencies:</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>web-server
+sudo<span class="w"> </span>python3.7<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+<p>Create the database from the schema template:</p>
+<div class="highlight"><pre><span></span>cat<span class="w"> </span>db/schema.sql<span class="w"> </span><span class="p">|</span><span class="w"> </span>sqlite3<span class="w"> </span>flask_db
+</pre></div>
+<p>Everything’s ready! Launch the server:</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/home/pi/web-server<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>python3.7<span class="w"> </span>app.py
+</pre></div>
+<p>If you want the server to start on boot, add a script call to <strong>/etc/rc.local</strong> just before <cite>exit 0</cite>:</p>
+<div class="highlight"><pre><span></span>/home/pi/flask_startup.sh<span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+<p>Copy this startup script into place:</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+cp<span class="w"> </span>~/home/bash/flask_startup.sh<span class="w"> </span>.
+</pre></div>
+<p>For added reliability, set up a watchdog script to monitor the server’s status and restart it if it’s down. Copy the health check script:</p>
+<div class="highlight"><pre><span></span>cp<span class="w"> </span>~/home/bash/check_health.sh<span class="w"> </span>.
+</pre></div>
+<p>Add it to cron:</p>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>crontab<span class="w"> </span>-e
+</pre></div>
+<p>with the following task:</p>
+<div class="highlight"><pre><span></span><span class="m">1</span>-59/5<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/home/pi/check_health.sh
+</pre></div>
+<div class="section" id="server-software-overview">
+<h3>Server Software Overview</h3>
+<p>The main server file is <strong>app.py</strong>:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.12</span>
+
+<span class="kn">from</span> <span class="nn">multiprocessing.pool</span> <span class="kn">import</span> <span class="n">ThreadPool</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">db.db</span> <span class="kn">import</span> <span class="n">init_app</span>
+<span class="kn">from</span> <span class="nn">lora_receiver</span> <span class="kn">import</span> <span class="n">run_lora</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=</span><span class="s1">&#39;templates&#39;</span><span class="p">)</span>
+
+<span class="c1"># import all routes</span>
+<span class="kn">import</span> <span class="nn">routes.api</span>
+<span class="kn">import</span> <span class="nn">routes.pages</span>
+<span class="kn">import</span> <span class="nn">routes.single_page</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># Start LoRa receiver as subprocess</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">ThreadPool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">run_lora</span><span class="p">)</span>
+    <span class="c1"># Start Flask server</span>
+    <span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;80&#39;</span><span class="p">)</span>
+    <span class="c1"># Teardown</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+<p>In addition to launching the server, this script starts the LoRa receiver as a subprocess to gather sensor data and forward it to the server.</p>
+<img alt="Project structure" src="/assets/images/articles/python/weather_station/ws_05.png" />
+<p>The rest of the architecture is classic Flask. All routes are organized into separate files, static content (like images) is in <strong>static</strong>, templates are in <strong>templates</strong>, and database logic is stored in <strong>db</strong>. Any camera images will be stored in <strong>camera</strong>.</p>
+<img alt="Web page interface (dashboard)" src="/assets/images/articles/python/weather_station/ws_06.png" />
+<p>Finally, current readings can be viewed on the dashboard pages, while graphs and data (rendered with Plotly) are available on separate pages.</p>
+<img alt="Web page interface (charts)" src="/assets/images/articles/python/weather_station/ws_07.png" />
+</div>
+</div>
+<div class="section" id="lora-receiver-software">
+<h2>LoRa Receiver Software</h2>
+<p>The LoRa receiver's logic is implemented in <strong>home_server/lora_receiver.py</strong>.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">SX127x.LoRa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">SX127x.board_config</span> <span class="kn">import</span> <span class="n">BOARD</span>
+
+<span class="n">endpoint</span> <span class="o">=</span> <span class="s2">&quot;http://0.0.0.0:80/api/v1&quot;</span>
+
+<span class="k">class</span> <span class="nc">LoRaRcvCont</span><span class="p">(</span><span class="n">LoRa</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LoRaRcvCont</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">MODE</span><span class="o">.</span><span class="n">SLEEP</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_dio_mapping</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_ptr_rx</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">MODE</span><span class="o">.</span><span class="n">RXCONT</span><span class="p">)</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
+            <span class="n">rssi_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rssi_value</span><span class="p">()</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_modem_status</span><span class="p">()</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_rx_done</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_irq_flags</span><span class="p">(</span><span class="n">RxDone</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_payload</span><span class="p">(</span><span class="n">nocheck</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">formatted_payload</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_to_home</span><span class="p">(</span><span class="n">formatted_payload</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># got data, let’s nap to skip repeats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">MODE</span><span class="o">.</span><span class="n">SLEEP</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_ptr_rx</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">MODE</span><span class="o">.</span><span class="n">RXCONT</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">send_to_home</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">payload</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;0,&#39;</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">/add_wind_data&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">payload</span><span class="p">})</span>
+        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">payload</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;1,&#39;</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s1">/add_power_data&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">payload</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Garbage collected, ignoring&quot;</span><span class="p">)</span>  <span class="c1"># debug</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">status</span>
+
+<span class="k">def</span> <span class="nf">run_lora</span><span class="p">():</span>
+    <span class="n">BOARD</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="n">lora</span> <span class="o">=</span> <span class="n">LoRaRcvCont</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">lora</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">MODE</span><span class="o">.</span><span class="n">STDBY</span><span class="p">)</span>
+    <span class="n">lora</span><span class="o">.</span><span class="n">set_pa_config</span><span class="p">(</span><span class="n">pa_select</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="n">lora</span><span class="o">.</span><span class="n">get_agc_auto_on</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">lora</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">lora</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">MODE</span><span class="o">.</span><span class="n">SLEEP</span><span class="p">)</span>
+        <span class="n">BOARD</span><span class="o">.</span><span class="n">teardown</span><span class="p">()</span>
+</pre></div>
+<p>Here, the main event is in <cite>on_rx_done</cite>, where we receive and decode packets. In <cite>send_to_home</cite>, if the first two characters of <cite>payload</cite> match our sensor code (<cite>&quot;0,&quot;</cite> for wind data or <cite>&quot;1,&quot;</cite> for power data), it’s sent to the server, and we sleep to skip repeated packets.</p>
+<div class="section" id="api">
+<h3>API</h3>
+<p>The server spends 99% of its time just idling, but for that precious 1%, it handles incoming and outgoing data via an API.</p>
+<p>Using Flask’s REST API, we’ll receive and send data from sensors.</p>
+<p><strong>home_server/routes/api.py</strong></p>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/v1/send_data&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">send_weather_data</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">send_data</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/v1/add_weather_data&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">store_weather_data</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+    <span class="n">unix_timestamp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">db_data</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">&quot;, </span><span class="si">{</span><span class="n">unix_timestamp</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">store_weather_data</span><span class="p">(</span><span class="n">db_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">db_data</span><span class="p">}),</span> <span class="mi">201</span>
+</pre></div>
+<p>Data is writing to log.</p>
+<img alt="Log file" src="/assets/images/articles/python/weather_station/ws_08.png" />
+<p>In our case, receiving sensor data involves handling a POST request containing JSON, which we then store in the database. On a GET request (via <cite>send_data</cite>), we send data to the cloud.</p>
+<p><strong>home_server/pages/weather_station/send_data.py</strong></p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">send_data</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">get_last_measurement_pack</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">take_photo</span><span class="p">()</span>
+    <span class="n">wu_data</span> <span class="o">=</span> <span class="n">prepare_wu_format</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">send_data_to_wu</span><span class="p">(</span><span class="n">wu_data</span><span class="p">))</span>
+    <span class="n">response</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">send_data_to_pwsw</span><span class="p">(</span><span class="n">wu_data</span><span class="p">))</span>
+    <span class="n">response</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">send_data_to_ow</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="n">response</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">send_data_to_nardmon</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="n">send_image_to_wu</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">copyfile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s1">/camera/image.jpg&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+<img alt="Raspberry Pi camera" src="/assets/images/articles/python/weather_station/ws_09.png" />
+<p>Ah yes, the camera. If we have a camera attached to the Raspberry Pi, we can also send or save images of the weather outside. The function below handles that.</p>
+<p><strong>home_server/pages/shared/tools.py</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+<span class="o">&lt;...&gt;</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">PiCamera</span><span class="p">()</span>
+<span class="o">&lt;...&gt;</span>
+
+<span class="k">def</span> <span class="nf">take_photo</span><span class="p">():</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>  <span class="c1"># lower resolution to fit in limits</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">start_preview</span><span class="p">()</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s1">/camera/image_</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s1">.jpg&#39;</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">stop_preview</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">image</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="external-sensors">
+<h2>External Sensors</h2>
+<p>Full sketches can be found in <strong>home/iot</strong>.</p>
+<img alt="BME280" src="/assets/images/articles/python/weather_station/ws_10_1.jpg" />
+<p>The most convenient and straightforward module for a DIY weather station is the BME280 — a neat little combo of thermometer, hygrometer, and barometer. We hook it up to the ESP8266 via I2C:</p>
+<img alt="BME280 wiring with ESP8266" src="/assets/images/articles/python/weather_station/ws_10.jpg" />
+<p>Flashing will be done using the Arduino IDE (how to add ESP8266 support is described, for instance, in this <a class="reference external" href="https://habr.com/ru/articles/371853/">Habr article</a>).</p>
+<p><strong>iot/esp8266/weatherstation_in/weatherstation_in.ino</strong></p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ESP8266WiFi.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ESP8266HTTPClient.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_BME280.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino_JSON.h&gt;</span>
+
+<span class="n">Adafruit_BME280</span><span class="w"> </span><span class="n">bme</span><span class="p">;</span><span class="w"> </span><span class="c1">// use I2C interface</span>
+<span class="n">Adafruit_Sensor</span><span class="w"> </span><span class="o">*</span><span class="n">bme_temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bme</span><span class="p">.</span><span class="n">getTemperatureSensor</span><span class="p">();</span>
+<span class="n">Adafruit_Sensor</span><span class="w"> </span><span class="o">*</span><span class="n">bme_pressure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bme</span><span class="p">.</span><span class="n">getPressureSensor</span><span class="p">();</span>
+<span class="n">Adafruit_Sensor</span><span class="w"> </span><span class="o">*</span><span class="n">bme_humidity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bme</span><span class="p">.</span><span class="n">getHumiditySensor</span><span class="p">();</span>
+
+<span class="c1">// Датчик не сказать, чтобы очень точный, поэтому добавляем корректирующие значения</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">correction_temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">correction_pressure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">correction_humidity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">// подключаем Wifi</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">connect_to_WiFi</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">WiFi</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="n">WIFI_STA</span><span class="p">);</span>
+<span class="w">   </span><span class="n">WiFi</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">wifi_ssid</span><span class="p">,</span><span class="w"> </span><span class="n">wifi_password</span><span class="p">);</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">status</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">WL_CONNECTED</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;WiFi connected&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;IP address: &quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">WiFi</span><span class="p">.</span><span class="n">localIP</span><span class="p">());</span>
+<span class="w">   </span><span class="cp">#endif</span>
+
+<span class="p">}</span>
+
+<span class="cm">/* &lt;…&gt; */</span>
+
+<span class="c1">// собираем данные с датчиков</span>
+
+<span class="kt">float</span><span class="w"> </span><span class="nf">get_temperature</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">sensors_event_t</span><span class="w"> </span><span class="n">temp_event</span><span class="p">,</span><span class="w"> </span><span class="n">pressure_event</span><span class="p">,</span><span class="w"> </span><span class="n">humidity_event</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bme_temp</span><span class="o">-&gt;</span><span class="n">getEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">temp_event</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">temp_event</span><span class="p">.</span><span class="n">temperature</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">correction_temperature</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="cm">/* &lt;…&gt; */</span>
+
+<span class="c1">// также точку росы можно вычислить до отправки на сервер, делаем это:</span>
+<span class="kt">float</span><span class="w"> </span><span class="nf">get_dew_point</span><span class="p">()</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">dew_point</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_temperature</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">humi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_humidity</span><span class="p">();</span>
+<span class="w">    </span><span class="n">dew_point</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mf">14.55</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.114</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mf">0.01</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">humi</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pow</span><span class="p">(((</span><span class="mf">2.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.007</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mf">0.01</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">humi</span><span class="p">))),</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mf">15.9</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.117</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pow</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mf">0.01</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">humi</span><span class="p">)),</span><span class="w"> </span><span class="mi">14</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dew_point</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* &lt;…&gt; */</span>
+
+<span class="c1">// Форматируем в строку</span>
+<span class="n">String</span><span class="w"> </span><span class="nf">get_csv_data</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">ret_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEVICE_ID</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ret_string</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delimiter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">get_temperature</span><span class="p">());</span>
+<span class="w">    </span><span class="n">ret_string</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delimiter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">get_humidity</span><span class="p">());</span>
+<span class="w">    </span><span class="n">ret_string</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delimiter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">get_pressure</span><span class="p">());</span>
+<span class="w">    </span><span class="n">ret_string</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delimiter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">get_dew_point</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ret_string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Отправляем через HTTP, упаковав строку в JSON:</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">post_data</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">check_connection</span><span class="p">();</span>
+<span class="w">    </span><span class="n">HTTPClient</span><span class="w"> </span><span class="n">http</span><span class="p">;</span><span class="w">    </span><span class="c1">//Declare object of class HTTPClient</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_csv_data</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">http_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">retries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">http_code</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">201</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">api_url</span><span class="p">);</span><span class="w"> </span><span class="c1">// connect to request destination</span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">);</span><span class="w">        </span><span class="c1">// set content-type header</span>
+<span class="w">        </span><span class="n">http_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="n">POST</span><span class="p">(</span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">data</span><span class="se">\&quot;</span><span class="s">: </span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="o">+</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">}&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// send the request</span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w">                                                </span><span class="c1">// close connection</span>
+<span class="w">        </span><span class="n">retries</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max_retries</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Package lost!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// cобственно, повторяем это время от времени:</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">post_data</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="n">cooldown</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>By default, the polling interval is set to 5 minutes. I treat <strong>DEVICE_ID = &quot;0&quot;</strong> as the indoor sensor and <strong>DEVICE_ID = &quot;1&quot;</strong> as the outdoor one. Works well enough.</p>
+<div class="section" id="rain-sensor-lm393-yl-83">
+<h3>Rain Sensor LM393 + YL-83</h3>
+<p>You can also add an ultraviolet sensor (e.g., <strong>GY-VEML6070</strong>) and a rain sensor (based on an LM393 comparator) to the outdoor node. The YL-83 is more of a toy than a serious tool when it comes to actual precipitation levels (especially without calibration), but it does the job — at least if your only concern is “is it raining?” versus “is it dry?”. Which, in my case, it is.</p>
+<img alt="Rain sensor LM393+YL83" src="/assets/images/articles/python/weather_station/ws_11.png" />
+<p>Optionally, you could use an analog UV sensor like the <strong>GY-8511</strong>, but note that NodeMCU has only one analog input. So it’s either UV or rain — pick your poison. The UV sensor is nice to have for things like solar panel efficiency estimates or simply knowing when it's sunscreen o’clock while mowing the lawn.</p>
+<p>Here’s the wiring diagram for ESP8266:</p>
+<img alt="UV sensor GY-VEML6070" src="/assets/images/articles/python/weather_station/ws_12.jpg" />
+<p>We’ll add three corresponding functions to this sketch:</p>
+<p><strong>iot/esp8266/weatherstation_out/weatherstation_out.ino</strong></p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Adafruit_VEML6070.h&quot;</span>
+
+<span class="n">Adafruit_VEML6070</span><span class="w"> </span><span class="n">uv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adafruit_VEML6070</span><span class="p">();</span>
+<span class="cp">#define VEML6070_ADDR_L     (0x38) </span><span class="c1">///&lt; Low address</span>
+<span class="n">RAIN_SENSOR_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A0</span><span class="p">;</span>
+
+<span class="cm">/* &lt;...&gt; */</span>
+
+<span class="cp">#ifdef UV_ANALOG_SENSOR</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">get_uv_level</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">uv_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">averageAnalogRead</span><span class="p">(</span><span class="n">UV_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">uv_intensity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapfloat</span><span class="p">(</span><span class="n">uv_level</span><span class="p">,</span><span class="w"> </span><span class="mf">0.99</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">15.0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">uv_intensity</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef UV_I2C_SENSOR</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">get_uv_level</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">uv</span><span class="p">.</span><span class="n">readUV</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef RAIN_SENSOR</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">get_rain_level</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rain_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">averageAnalogRead</span><span class="p">(</span><span class="n">RAIN_SENSOR_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rain_level</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+</pre></div>
+<p>NodeMCU is quite convenient — provided there's decent Wi-Fi signal in range. Sure, slapping weather sensors right on your front porch isn’t exactly pro-tier meteorology, but a properly placed unit a few meters from the house works great. The router signal usually has no problem reaching that far.</p>
+</div>
+</div>
+<div class="section" id="sensor-installation-guidelines">
+<h2>Sensor Installation Guidelines</h2>
+<blockquote class="pull-quote">
+<ul class="simple">
+<li>Temperature and humidity sensors must be mounted over natural ground (grass, soil). No asphalt, concrete, gravel, rock, or metal surfaces allowed.</li>
+</ul>
+</blockquote>
+<blockquote class="pull-quote">
+<ul class="simple">
+<li>They should be installed at a height of 2 meters above the ground, inside a Stevenson screen — a small wooden or plastic box (roughly 40x40x40 cm), with white louvered or perforated walls, and a sunlight- and precipitation-resistant cover. The lid should be sealed and sloped to allow water runoff.</li>
+</ul>
+</blockquote>
+<blockquote class="pull-quote">
+<ul class="simple">
+<li>Wind sensors must be mounted at 10–12 meters above the ground — and yes, that’s ground, not your roof. In a pinch, they can go on top of a one-story building if they rise 2–3 meters above the roof and still meet the 10–12 meter height requirement relative to ground level.</li>
+</ul>
+</blockquote>
+<blockquote class="pull-quote">
+<ul class="simple">
+<li>In the worst-case scenario (high error probability, especially at night), the temperature/humidity sensor can be placed on the shaded side of a building, 2 meters up, with a 3-meter-long mounting rod extending over grass (not pavement!). Never install them near heat sources like walls or rooftops.</li>
+</ul>
+</blockquote>
+<blockquote class="pull-quote">
+<ul class="simple">
+<li>The barometric pressure sensor goes indoors, away from windows and heating appliances. Since pressure readings depend on altitude, the sensor must be calibrated before use. Compare it to a reference barometer or use readings from the nearest official weather station, adjusted for elevation difference (every 10 meters up = ~1 mmHg or ~1.3 hPa drop).</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="bonus-device-display-unit">
+<h2>Bonus Device: Display Unit</h2>
+<p>As a little side project, I added another ESP8266-based unit just to display weather station data. It’s more elegant to have a separate display somewhere convenient, rather than tethering it directly to the indoor sensor.</p>
+<p>To make it slightly more useful, I also added a real-time clock module.</p>
+<img alt="Wiring OLED display with ESP8266" src="/assets/images/articles/python/weather_station/ws_13.jpg" />
+<p>The sketch for the display unit shows the current time (HH:MM) and scrolls the latest weather station data across the screen:</p>
+<p><strong>iot/informer/esp8266/informer/informer.ino</strong></p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ESP8266WiFi.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ESP8266HTTPClient.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;U8g2lib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;virtuabotixRTC.h&gt;</span><span class="c1">  // https://ampermarket.kz/files/rtc_virtualbotix.zip</span>
+
+
+<span class="c1">// RTC</span>
+<span class="n">virtuabotixRTC</span><span class="w"> </span><span class="nf">myRTC</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">);</span>
+
+
+<span class="c1">// OLED</span>
+<span class="n">U8G2_SH1106_128X64_NONAME_F_HW_I2C</span><span class="w"> </span><span class="nf">u8g2</span><span class="p">(</span><span class="n">U8G2_R0</span><span class="p">);</span>
+<span class="n">u8g2_uint_t</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w">            </span><span class="c1">// current offset for the scrolling text</span>
+<span class="n">u8g2_uint_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span><span class="w">             </span><span class="c1">// pixel width of the scrolling text (must be lesser than 128 unless U8G2_16BIT is defined</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">string_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w">  </span><span class="c1">// maximum count of symbols in marquee</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">text</span><span class="p">[</span><span class="n">string_length</span><span class="p">];</span><span class="w">      </span><span class="c1">// text buffer to scroll</span>
+
+<span class="c1">// Wi-Fi</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">wifi_ssid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;YOUR_SSID&quot;</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">wifi_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;YOUR_PASSWORD&quot;</span><span class="p">;</span>
+
+<span class="c1">// API</span>
+<span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">ip_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;YOUR_IP_OF_SERVER&quot;</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;YOUR_PORT&quot;</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">api_endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/api/v1/add_weather_data&quot;</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">api_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ip_address</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">api_endpoint</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max_retries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">  </span><span class="c1">// number of retries to send packet</span>
+
+<span class="c1">// Timers and delays</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">data_retrieve_delay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300000</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cycle_delay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">last_measurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">    </span><span class="n">init_OLED</span><span class="p">();</span>
+<span class="w">    </span><span class="n">init_RTC</span><span class="p">();</span>
+<span class="p">}</span>
+
+
+<span class="cm">/* Init functions */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">init_OLED</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">u8g2</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="w">    </span><span class="n">u8g2</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">u8g2_font_inb30_mr</span><span class="p">);</span><span class="w"> </span><span class="c1">// set the target font to calculate the pixel width</span>
+<span class="w">    </span><span class="n">u8g2</span><span class="p">.</span><span class="n">setFontMode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">              </span><span class="c1">// enable transparent mode, which is faster</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">init_RTC</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// seconds, minutes, hours, day of the week, day of the month, month, year</span>
+<span class="w">    </span><span class="c1">// раскомментируйте при прошивке, заполнив текущую дату и время, затем снова закомментируйте и прошейте ещё раз</span>
+<span class="w">    </span><span class="c1">//myRTC.setDS1302Time(30, 03, 22, 5, 19, 2, 2021); // set RTC time</span>
+<span class="w">    </span><span class="n">myRTC</span><span class="p">.</span><span class="n">updateTime</span><span class="p">();</span><span class="w"> </span><span class="c1">// update of variables for time or accessing the individual elements.</span>
+<span class="p">}</span>
+
+
+<span class="s">&quot;&quot;&quot; &lt;...&gt; &quot;&quot;&quot;</span>
+
+
+<span class="n">String</span><span class="w"> </span><span class="n">get_data</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">check_connection</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cp">#ifdef DEBUG</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Obtaining data from server&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="w">    </span><span class="n">HTTPClient</span><span class="w"> </span><span class="n">http</span><span class="p">;</span><span class="w">    </span><span class="c1">//Declare object of class HTTPClient</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">http_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">retries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Data retrieve error&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">http_code</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">api_url</span><span class="p">);</span><span class="w">                </span><span class="c1">// connect to request destination</span>
+<span class="w">        </span><span class="n">http_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="n">GET</span><span class="p">();</span><span class="w">             </span><span class="c1">// send the request</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="n">getString</span><span class="p">();</span><span class="w">   </span><span class="c1">// get response payload</span>
+<span class="w">        </span><span class="n">http</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w">                         </span><span class="c1">// close connection</span>
+
+<span class="w">        </span><span class="n">retries</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max_retries</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="cp">#ifdef DEBUG</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Couldn&#39;t get the data!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="cp">#endif</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">http_code</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">payload</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="n">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Check that new data is needed to be retrieved from server</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(((</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">last_measurement</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">data_retrieve_delay</span><span class="p">)</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">last_measurement</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">stext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_data</span><span class="p">();</span>
+<span class="w">        </span><span class="n">stext</span><span class="p">.</span><span class="n">toCharArray</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">string_length</span><span class="p">);</span>
+<span class="w">        </span><span class="n">last_measurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
+<span class="w">        </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u8g2</span><span class="p">.</span><span class="n">getUTF8Width</span><span class="p">(</span><span class="n">text</span><span class="p">);</span><span class="w">    </span><span class="c1">// calculate the pixel width of the text</span>
+<span class="w">        </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Update RTC</span>
+<span class="w">    </span><span class="n">myRTC</span><span class="p">.</span><span class="n">updateTime</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Now update OLED</span>
+<span class="w">    </span><span class="n">u8g2_uint_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u8g2</span><span class="p">.</span><span class="n">firstPage</span><span class="p">();</span>
+<span class="w">    </span><span class="k">do</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// draw the scrolling text at current offset</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span>
+<span class="w">        </span><span class="n">u8g2</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">u8g2_font_inb16_mr</span><span class="p">);</span><span class="w">       </span><span class="c1">// set the target font</span>
+<span class="w">        </span><span class="k">do</span>
+<span class="w">        </span><span class="p">{</span><span class="w">                                       </span><span class="c1">// repeated drawing of the scrolling text...</span>
+<span class="w">            </span><span class="n">u8g2</span><span class="p">.</span><span class="n">drawUTF8</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">);</span><span class="w">         </span><span class="c1">// draw the scrolling text</span>
+<span class="w">            </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">width</span><span class="p">;</span><span class="w">                         </span><span class="c1">// add the pixel width of the scrolling text</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">u8g2</span><span class="p">.</span><span class="n">getDisplayWidth</span><span class="p">());</span><span class="w">   </span><span class="c1">// draw again until the complete display is filled</span>
+
+<span class="w">        </span><span class="n">u8g2</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">u8g2_font_inb30_mr</span><span class="p">);</span><span class="w">       </span><span class="c1">// choose big font for clock</span>
+<span class="w">        </span><span class="n">u8g2</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">                  </span><span class="c1">// set position of clock</span>
+<span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w">                            </span><span class="c1">// init bufer to formatted string</span>
+<span class="w">        </span><span class="n">sprintf_P</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">PSTR</span><span class="p">(</span><span class="s">&quot;%02d:%02d&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">myRTC</span><span class="p">.</span><span class="n">hours</span><span class="p">,</span><span class="w"> </span><span class="n">myRTC</span><span class="p">.</span><span class="n">minutes</span><span class="p">);</span><span class="w"> </span><span class="c1">// format clock with leading zeros</span>
+<span class="w">        </span><span class="n">u8g2</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span><span class="w">                        </span><span class="c1">// display clock</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">u8g2</span><span class="p">.</span><span class="n">nextPage</span><span class="p">());</span>
+
+<span class="w">    </span><span class="n">offset</span><span class="o">-=</span><span class="mi">2</span><span class="p">;</span><span class="w">                       </span><span class="c1">// scroll by two pixels</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">u8g2_uint_t</span><span class="p">)</span><span class="n">offset</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">((</span><span class="n">u8g2_uint_t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">width</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                  </span><span class="c1">// start over again</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="n">cycle_delay</span><span class="p">);</span><span class="w">              </span><span class="c1">// do some small delay</span>
+<span class="p">}</span>
+</pre></div>
+<p>The result looks like this:</p>
+<img alt="Weather station OLED display" src="/assets/images/articles/python/weather_station/ws_14.jpg" />
+<p>And on the Raspberry Pi side:</p>
+<p><strong>home_server/routes/api.py</strong></p>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/v1/get_weather_data&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">store_wind_data</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">send_data_to_informer</span><span class="p">()</span>
+</pre></div>
+<p><strong>pages/weather_station/send_data.py</strong></p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">send_data_to_informer</span><span class="p">():</span>
+    <span class="n">data_in</span> <span class="o">=</span> <span class="n">get_last_measurement_pack</span><span class="p">(</span><span class="s1">&#39;weather_data&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+    <span class="n">data_out</span> <span class="o">=</span> <span class="n">get_last_measurement_pack</span><span class="p">(</span><span class="s1">&#39;weather_data&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">data_in</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">data_out</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">formatted_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;IN: T=</span><span class="si">{</span><span class="n">data_in</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">*C, &quot;</span> \
+                       <span class="sa">f</span><span class="s2">&quot;H=</span><span class="si">{</span><span class="n">data_in</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">% | &quot;</span> \
+                       <span class="sa">f</span><span class="s2">&quot;OUT: T=</span><span class="si">{</span><span class="n">data_out</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">*C, &quot;</span> \
+                       <span class="sa">f</span><span class="s2">&quot;H=</span><span class="si">{</span><span class="n">data_out</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">%, &quot;</span> \
+                       <span class="sa">f</span><span class="s2">&quot;DP=</span><span class="si">{</span><span class="n">data_out</span><span class="p">[</span><span class="s1">&#39;dew_point&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">*C | &quot;</span> \
+                       <span class="sa">f</span><span class="s2">&quot;P=</span><span class="si">{</span><span class="n">pressure</span><span class="si">}</span><span class="s2"> mmhg&quot;</span>
+    <span class="k">return</span> <span class="n">formatted_string</span>
+</pre></div>
+</div>
+<div class="section" id="radio-sensors">
+<h2>Radio Sensors</h2>
+<p>Where Wi-Fi coverage ends and dragons dwell, alternative data transmission methods come into play. In my case — LoRa modules (paired with, say, an Arduino Nano).</p>
+<img alt="LoRa module SX1278" src="/assets/images/articles/python/weather_station/ws_15.jpg" />
+<p>I’ve got two such contraptions: one is a wind speed and direction sensor (with a compass thrown in for good measure). I’ll skip the juicy details on that one for now — maybe I’ll write a separate rant if there’s demand.</p>
+<img alt="Wiring LoRa module with Arduino Nano for wind sensor" src="/assets/images/articles/python/weather_station/ws_16.jpg" />
+<p>The second device is a voltmeter plus two ammeters — used to monitor turbine performance, battery charging, and load consumption. Because just looking at spinning blades isn’t geeky enough.</p>
+<div class="section" id="hardware-wiring-sx1278-arduino-nano">
+<h3>Hardware Wiring: SX1278 + Arduino Nano</h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">SX1278</th>
+<th class="head">Arduino Nano</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>3.3V</td>
+<td>3.3V</td>
+</tr>
+<tr><td>GROUND</td>
+<td>GROUND</td>
+</tr>
+<tr><td>MOSI</td>
+<td>D10</td>
+</tr>
+<tr><td>MISO</td>
+<td>D11</td>
+</tr>
+<tr><td>SCK</td>
+<td>D13</td>
+</tr>
+<tr><td>NSS / ENABLE</td>
+<td>D12</td>
+</tr>
+<tr><td>DIO0</td>
+<td>D2</td>
+</tr>
+<tr><td>RST</td>
+<td>D9</td>
+</tr>
+</tbody>
+</table>
+<p>And the code, naturally, lives here:</p>
+<p><strong>iot/arduino/*_meter/*_meter.ino</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">// Required includes</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;LoRa.h&gt;</span>
+
+<span class="c1">// LoRA config</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LORA_SEND_RETRIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// сколько раз посылать сообщение</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LORA_SEND_DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w">  </span><span class="c1">// задержка между пакетами</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LORA_POWER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w">       </span><span class="c1">// мощность передатчика на максимум</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LORA_RETRIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w">     </span><span class="c1">// сколько раз пытаться инициализировать модуль</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LORA_DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w">      </span><span class="c1">// задержка между попыткой инициализации</span>
+
+
+<span class="c1">// Инициализируем модуль</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">init_LoRa</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">LORA_RETRIES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LoRa</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mf">433E6</span><span class="p">))</span><span class="w"> </span><span class="c1">// используем 433Мгц</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="n">LORA_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="cp">#ifdef DEBUG</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LoRa init failed.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="cp">#endif</span>
+<span class="w">        </span><span class="n">stop</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">LoRa</span><span class="p">.</span><span class="n">setTxPower</span><span class="p">(</span><span class="n">LORA_POWER</span><span class="p">);</span><span class="w">  </span><span class="c1">// aplify TX power</span>
+<span class="w">    </span><span class="cp">#ifdef DEBUG</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LoRa started!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="c1">// Посылаем пакет с данными строкой</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">LoRa_send</span><span class="p">(</span><span class="n">power_data</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">packet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEVICE_ID</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">avg_voltage</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">packet</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">avg_current</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">avg_power</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">avg_consumption</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">LORA_SEND_RETRIES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LoRa</span><span class="p">.</span><span class="n">beginPacket</span><span class="p">();</span><span class="w">  </span><span class="c1">// just open packet</span>
+<span class="w">        </span><span class="n">LoRa</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">packet</span><span class="p">);</span><span class="w">  </span><span class="c1">// send whole data</span>
+<span class="w">        </span><span class="n">LoRa</span><span class="p">.</span><span class="n">endPacket</span><span class="p">();</span><span class="w">    </span><span class="c1">// end packet</span>
+<span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="n">LORA_SEND_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Pretty straightforward, right?</p>
+</div>
+</div>
+<div class="section" id="cloud-services">
+<h2>Cloud Services</h2>
+<p>Originally, I didn’t plan on sharing data with third-party cloud services — this was meant to be a private, cold, geeky fortress of solitude. But during debugging, I thought: “Hey, it’d be nice to compare my numbers with local weather stations, just to make sure my sensors aren’t lying.”</p>
+<p>The first candidate — and by far the one with the most sample code and API documentation — was <a class="reference external" href="https://www.wunderground.com/">WeatherUnderground</a>.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wunderground_pws</span> <span class="kn">import</span> <span class="n">WUndergroundAPI</span><span class="p">,</span> <span class="n">units</span>
+
+<span class="kn">from</span> <span class="nn">secure_data</span> <span class="kn">import</span> <span class="n">wu_api_key</span><span class="p">,</span> <span class="n">wu_reference_station_id</span>
+
+<span class="sd">&quot;&quot;&quot; ... &quot;&quot;&quot;</span>
+
+<span class="n">wu_current</span> <span class="o">=</span> <span class="n">wu</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
+
+<span class="sd">&quot;&quot;&quot; ... &quot;&quot;&quot;</span>
+
+<span class="n">wu_humidity</span><span class="o">=</span><span class="n">wu_current</span><span class="p">[</span><span class="s1">&#39;observations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;humidity&#39;</span><span class="p">],</span>
+<span class="n">wu_pressure</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">wu_current</span><span class="p">[</span><span class="s1">&#39;observations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;metric_si&#39;</span><span class="p">][</span><span class="s1">&#39;pressure&#39;</span><span class="p">])</span><span class="o">/</span><span class="mf">1.33</span><span class="p">),</span>
+<span class="n">wu_dew_point</span><span class="o">=</span><span class="n">wu_current</span><span class="p">[</span><span class="s1">&#39;observations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;metric_si&#39;</span><span class="p">][</span><span class="s1">&#39;dewpt&#39;</span><span class="p">],</span>
+<span class="n">wu_wind_speed</span><span class="o">=</span><span class="n">wu_current</span><span class="p">[</span><span class="s1">&#39;observations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;metric_si&#39;</span><span class="p">][</span><span class="s1">&#39;windSpeed&#39;</span><span class="p">],</span>
+<span class="n">wu_wind_gust</span><span class="o">=</span><span class="n">wu_current</span><span class="p">[</span><span class="s1">&#39;observations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;metric_si&#39;</span><span class="p">][</span><span class="s1">&#39;windGust&#39;</span><span class="p">],</span>
+<span class="n">wu_wind_direction</span><span class="o">=</span><span class="n">wu_current</span><span class="p">[</span><span class="s1">&#39;observations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;winddir&#39;</span><span class="p">],</span>
+<span class="n">wu_wind_heading</span><span class="o">=</span><span class="n">deg_to_heading</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">wu_current</span><span class="p">[</span><span class="s1">&#39;observations&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;winddir&#39;</span><span class="p">]))</span>
+</pre></div>
+<p>Then, of course, the old lightbulb went off: “If I’m already pulling this data, why not share mine too?” It’s not like I’m measuring nuclear secrets.</p>
+<p>WU accepts data via a simple GET request. So we prep the payload accordingly…</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prepare_wu_format</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&amp;dateutc=</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">timestamp</span> <span class="k">else</span> <span class="s2">&quot;&amp;dateutc=now&quot;</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;action=updateraw&quot;</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;humidity=&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{0:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">])</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;tempf=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]))</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;baromin=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mmhg_to_baromin</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]))</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;dewptf=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dew_point&#39;</span><span class="p">]))</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;heatindex=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">heat_index</span><span class="p">(</span><span class="n">temp</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">],</span> <span class="n">hum</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">])))</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;humidex=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">humidex</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">],</span> <span class="n">d</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dew_point&#39;</span><span class="p">])))</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;precip=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;precip&#39;</span><span class="p">])</span>
+    <span class="n">payload</span> <span class="o">+=</span> <span class="s2">&quot;&amp;uv&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;uv&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">payload</span>
+</pre></div>
+<p>...and fire it off. Voilà — data appears on our personal weather station dashboard.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="sd">&quot;&quot;&quot; ... &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">send_data_to_wu</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">wu_url</span> <span class="o">=</span> <span class="s2">&quot;https://weatherstation.wunderground.com/weatherstation/updateweatherstation.php?&quot;</span>
+    <span class="n">wu_creds</span> <span class="o">=</span> <span class="s2">&quot;ID=&quot;</span> <span class="o">+</span> <span class="n">wu_station_id</span> <span class="o">+</span> <span class="s2">&quot;&amp;PASSWORD=&quot;</span> <span class="o">+</span> <span class="n">wu_station_pwd</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">wu_url</span><span class="si">}{</span><span class="n">wu_creds</span><span class="si">}{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+<p>As result, we get a nice little dashboard with our data, plus a few extra features like photo uploads and historical data.</p>
+<img alt="WeatherUnderground dashboard" src="/assets/images/articles/python/weather_station/ws_17.png" />
+<p>Important caveat: All these services (WU included) demand registration and usually an API key. All sensitive stuff (logins, tokens, etc.) goes into <strong>secure_data.py</strong> — because we’re professionals here, not cavemen.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Geo Data</span>
+<span class="n">latitude</span> <span class="o">=</span>
+<span class="n">longitude</span> <span class="o">=</span>
+<span class="n">altitude</span> <span class="o">=</span>
+<span class="n">cur_location</span> <span class="o">=</span>
+
+<span class="c1"># WEATHER UNDERGROUND DATA</span>
+<span class="n">wu_api_key</span> <span class="o">=</span>
+<span class="n">wu_station_id</span> <span class="o">=</span>
+<span class="n">wu_station_pwd</span> <span class="o">=</span>
+<span class="n">wu_reference_station_id</span> <span class="o">=</span>
+
+<span class="c1"># OPEN WEATHER DATA</span>
+<span class="n">ow_api_key</span> <span class="o">=</span>
+<span class="n">ow_station_id</span> <span class="o">=</span>
+
+<span class="c1"># PWSWEATHER DATA</span>
+<span class="n">pwsw_station_id</span> <span class="o">=</span>
+<span class="n">pwsw_api_key</span> <span class="o">=</span>
+
+<span class="c1"># NARODMON DATA</span>
+<span class="n">narodmon_name</span> <span class="o">=</span>
+<span class="n">narodmon_owner</span> <span class="o">=</span>
+<span class="n">narodmon_mac</span> <span class="o">=</span>
+<span class="n">narodmon_api_key</span> <span class="o">=</span>
+</pre></div>
+<p>Fill in the blanks and off we go :)</p>
+<p>Sadly, WeatherUnderground went full capitalist, and the API key I received is only valid for one year unless you pony up. So I looked for alternatives — and found <a class="reference external" href="https://www.pwsweather.com/">PWS Weather</a>.</p>
+<div class="section" id="pws-weather">
+<h3>PWS Weather</h3>
+<p>Despite lacking any official public API docs for non-industrial devices, the devs are friendly and quick to send examples by request. That said, I cracked it on my own overnight. Their API format is blissfully identical to WU’s.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">send_data_to_pwsw</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">pwsw_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.pwsweather.com/pwsupdate/pwsupdate.php?&quot;</span>
+    <span class="n">pwsw_creds</span> <span class="o">=</span> <span class="s2">&quot;ID=&quot;</span> <span class="o">+</span> <span class="n">pwsw_station_id</span> <span class="o">+</span> <span class="s2">&quot;&amp;PASSWORD=&quot;</span> <span class="o">+</span> <span class="n">pwsw_api_key</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pwsw_url</span><span class="si">}{</span><span class="n">pwsw_creds</span><span class="si">}{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+<p>Honestly, I liked this service more.</p>
+<img alt="PWS Weather dashboard" src="/assets/images/articles/python/weather_station/ws_18.png" />
+<img alt="PWS Weather historical data" src="/assets/images/articles/python/weather_station/ws_19.png" />
+<p>It has a lovely switch between imperial and metric systems (the latter being blessed by the gods of SI units), pretty charts, and reasonably good forecasts.</p>
+</div>
+<div class="section" id="openweathermap">
+<h3>OpenWeatherMap</h3>
+<p>You can also push data to <a class="reference external" href="https://openweathermap.org/">OpenWeatherMap</a>. It won’t give you a snazzy personal dashboard, and the historical data comes as averages, but hey — supporting open data is noble, right?</p>
+<p>OWM has its own <a class="reference external" href="https://openweathermap.org/stations">OpenWeatherMap API</a> for PWS (Personal Weather Station), but — surprise — I didn’t find a Python wrapper for it. So I wrote my own - <a class="reference external" href="https://pypi.org/project/openweather-pws/">openweather-pws</a>. Again.</p>
+<!-- code-block: python
+
+from openweather_pws import Station
+
+def send_data_to_ow(data):
+    pws = Station(api_key=ow_api_key, station_id=ow_station_id)
+    response = pws.measurements.set(temperature=data['temperature'], humidity=data['humidity'],
+                                    dew_point=data['dew_point'], pressure=data['pressure'],
+                                    heat_index=fahrenheit_to_celsius(heat_index(temp=data['temperature'],
+                                                                                hum=data['humidity'])),
+                                    humidex=humidex(t=data['temperature'], d=data['dew_point']))
+    return response -->
+<p>Unlike the American services clinging to Fahrenheit and feet, the folks behind OWM are from Latvia and speak fluent metric. So no need to run our numbers through a unit converter — just pipe them straight from our sensor database.</p>
+</div>
+</div>
+<div class="section" id="narodmon-the-local-hero">
+<h2>Narodmon: The Local Hero</h2>
+<p>And then there’s <a class="reference external" href="https://narodmon.ru/?invite=ilya877">Narodmon</a> — a Russian-made alternative that supports even “secret” data (like indoor temperature, or how hot your Raspberry Pi is getting from doing all this nonsense).</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">send_data_to_nardmon</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">nm</span> <span class="o">=</span> <span class="n">Narodmon</span><span class="p">(</span><span class="n">mac</span><span class="o">=</span><span class="n">narodmon_mac</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">narodmon_name</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="n">narodmon_owner</span><span class="p">,</span>
+                  <span class="n">lat</span><span class="o">=</span><span class="n">latitude</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="n">longitude</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="n">altitude</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">nm</span><span class="o">.</span><span class="n">via_json</span><span class="o">.</span><span class="n">prepare_sensor_data</span><span class="p">(</span><span class="n">id_in</span><span class="o">=</span><span class="s2">&quot;TEMPC&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">])</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">nm</span><span class="o">.</span><span class="n">via_json</span><span class="o">.</span><span class="n">prepare_sensor_data</span><span class="p">(</span><span class="n">id_in</span><span class="o">=</span><span class="s2">&quot;MMHG&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]))</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">nm</span><span class="o">.</span><span class="n">via_json</span><span class="o">.</span><span class="n">prepare_sensor_data</span><span class="p">(</span><span class="n">id_in</span><span class="o">=</span><span class="s2">&quot;HUM&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">])</span>
+    <span class="n">dew_point</span> <span class="o">=</span> <span class="n">nm</span><span class="o">.</span><span class="n">via_json</span><span class="o">.</span><span class="n">prepare_sensor_data</span><span class="p">(</span><span class="n">id_in</span><span class="o">=</span><span class="s2">&quot;DEW&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dew_point&#39;</span><span class="p">])</span>
+    <span class="n">sensors</span> <span class="o">=</span> <span class="p">[</span><span class="n">temperature</span><span class="p">,</span> <span class="n">pressure</span><span class="p">,</span> <span class="n">humidity</span><span class="p">,</span> <span class="n">dew_point</span><span class="p">]</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">nm</span><span class="o">.</span><span class="n">via_json</span><span class="o">.</span><span class="n">send_short_data</span><span class="p">(</span><span class="n">sensors</span><span class="o">=</span><span class="n">sensors</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+<p>It has one odd quirk: You’re not allowed to send data more than once every five minutes. In practice, that seems to mean “once every 10 to 15 minutes” — either their server is slow or we live in different time zones. Either way, if you set everything up correctly, your data will show up.</p>
+<img alt="Narodmon dashboard (pws data)" src="/assets/images/articles/python/weather_station/ws_20.png" />
+<p>Their API is quite rich: you can send sensor data, fetch nearby readings, manage devices remotely, or even do social things like “like” a weather station or send it a message. Plus, it’ll email you if a sensor goes AWOL for an hour — or if a threshold is crossed. But — you guessed it — no Python wrapper here either. So, guess what? I wrote another one - <a class="reference external" href="https://pypi.org/project/narodmon-python-api/">narodmon-python-api</a>.</p>
+<p>To send data, you just poke <strong>/api/v1/send_data</strong> with an empty GET request. Cron job to the rescue:</p>
+<div class="highlight"><pre><span></span>*/5 * * * * /usr/bin/wget -O - -q -t 1 http://0.0.0.0:80/api/v1/send_data
+</pre></div>
+<div class="section" id="weatherunderground-photo-upload">
+<h3>WeatherUnderground Photo Upload</h3>
+<p>Still a work in progress. Photos <em>can</em> be sent to WeatherUnderground via FTP — and it’s not even hard. It just... hasn’t happened yet.</p>
+<div class="highlight"><pre><span></span>from<span class="w"> </span>ftplib<span class="w"> </span>import<span class="w"> </span>FTP
+
+def<span class="w"> </span>send_image_to_wu<span class="o">(</span>image<span class="o">)</span>:
+<span class="w">    </span><span class="nv">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FTP<span class="o">(</span><span class="s1">&#39;webcam.wunderground.com&#39;</span>,<span class="w"> </span>wu_cam_id,<span class="w"> </span>wu_cam_pwd<span class="o">)</span>
+<span class="w">    </span><span class="nv">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>open<span class="o">(</span>image,<span class="w"> </span><span class="s1">&#39;rb&#39;</span><span class="o">)</span>
+<span class="w">    </span>session.storbinary<span class="o">(</span><span class="s1">&#39;image.jpg&#39;</span>,<span class="w"> </span>file<span class="o">)</span>
+<span class="w">    </span>file.close<span class="o">()</span>
+<span class="w">    </span>session.quit<span class="o">()</span>
+</pre></div>
+<p>To this day, I’ve <em>never</em> successfully uploaded even a single photo to WU. According to their forums, this feature is temperamental at best and dead at worst.</p>
+<p>Narodmon, on the other hand, accepts image uploads with a quick call to <strong>/api/v1/capture_photo</strong> (which triggers <strong>take_photo</strong>). Let’s say we call this every 30 minutes via cron, like so:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">PATH_TO_PHOTO</span><span class="o">=</span><span class="sb">`</span>/usr/bin/wget<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>-q<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span><span class="w"> </span>http://0.0.0.0/api/v1/capture_photo<span class="sb">`</span>
+<span class="nv">REQUEST</span><span class="o">=</span><span class="s1">&#39;curl -F YOUR_CAM_KEY=@&#39;</span><span class="nv">$PATH_TO_PHOTO</span><span class="s1">&#39; http://narodmon.ru/post&#39;</span>
+<span class="nv">RESULT</span><span class="o">=</span><span class="sb">`</span><span class="nv">$REQUEST</span><span class="sb">`</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+<p>Boom — the image appears on the service dashboard.</p>
+<img alt="Narodmon photo upload" src="/assets/images/articles/python/weather_station/ws_21.png" />
+<p>Don’t forget to occasionally clean up old photos — say, once a week:</p>
+<div class="highlight"><pre><span></span>#!/bin/bash bash
+
+# Notes:
+# This file will remove all files in camera folder older than 7 days, just run in via cron periodically (i.e. daily).
+find /home/pi/web-server/camera/ -type f -mtime +7 -name &#39;*.jpg&#39; -execdir rm -- &#39;{}&#39; \;
+</pre></div>
+</div>
+<div class="section" id="what-about-the-camera">
+<h3>What About the Camera?</h3>
+</div>
+</div>
+<div class="section" id="whats-next">
+<h2>What’s Next?</h2>
+<p>The plan is to bring the whole setup into shape — build a proper Stevenson screen once the snow melts, and hoist the wind sensor to a respectable height come spring.</p>
+<p>The software? Oh, it’s definitely going to need some polishing along the way. Eventually, I want the station to do things — like regulate heating, or engage/disengage wind power generator.</p>
+<p>If you like my article, feel free to <a class="reference external" href="https://www.donationalerts.com/r/rocketsciencegeek">throw a coin</a>. And, for sure here are link to the <a class="reference external" href="https://github.com/wwakabobik/home">GitHub repo</a> with all code.</p>
+<p>May your backups be many and your data loss few. Until next time, I bid thee safe coding and DYI!</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Supercharged Weather Station&amp;url=https://wwakabobik.github.io/2025/04/weather_station/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2025/04/weather_station/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2025/04/weather_station/&amp;title=Supercharged Weather Station" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Supercharged Weather Station&amp;body=https://wwakabobik.github.io/2025/04/weather_station/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/raspberry-pi/">raspberry pi</a><a href="https://wwakabobik.github.io/tag/weather-station/">weather station</a><a href="https://wwakabobik.github.io/tag/lora/">lora</a><a href="https://wwakabobik.github.io/tag/arduino/">arduino</a><a href="https://wwakabobik.github.io/tag/python/">python</a><a href="https://wwakabobik.github.io/tag/flask/">flask</a><a href="https://wwakabobik.github.io/tag/iot/">iot</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2024/11/adding_tests_to_vercel/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">Adding Tests to Vercel</h2>
+                            <p class="post-nav-excerpt">Adding automated tests to your Vercel project can be quick and efficient. Here's a...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
