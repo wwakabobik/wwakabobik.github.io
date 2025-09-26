@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>When You Can’t Stop Working, Automate Saying “No”</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2025/09/self_blocker/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="When you're too tired to stop working, a brutal set of scripts can save you from yourself. MacOS, Python, and some shell magic.">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="macos">
+    <meta name="tags" content="productivity">
+    <meta name="tags" content="burnout">
+    <meta name="tags" content="python">
+    <meta name="tags" content="automation">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="When You Can’t Stop Working, Automate Saying “No”"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="When you're too tired to stop working, a brutal set of scripts can save you from yourself. MacOS, Python, and some shell magic."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2025/09/self_blocker/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2025-09-26 22:36:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2025-09-26 20:58:35.188725+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="macos"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="productivity"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="burnout"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="automation"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/python.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "When You Can’t Stop Working, Automate Saying “No”",
+  "headline": "When You Can’t Stop Working, Automate Saying “No”",
+  "datePublished": "2025-09-26 22:36:00+02:00",
+  "dateModified": "2025-09-26 20:58:35.188725+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/python.png",
+  "url": "https://wwakabobik.github.io/2025/09/self_blocker/",
+  "description": "When you're too tired to stop working, a brutal set of scripts can save you from yourself. MacOS, Python, and some shell magic."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">When You Can’t Stop Working, Automate Saying “No”</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="26 Sep 2025">26 Sep 2025</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/python.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>Ever been in that situation where you’re busting your ass on multiple projects, grinding day and night, and somehow your bank account is <em>not</em> reflecting your heroic effort? Clients forget to pay. Partners burn through budgets. Project scopes balloon while the paycheck politely declines.</p>
+<p>And yet we keep going. Because who else will do it? The overworked developers, freelance warriors, silent soldiers of the digital age. It’s &quot;fine.&quot; For now. The only thing we’re running out of is time — and maybe a little soul.</p>
+<p>That’s how I ended up building a thing to make me stop.</p>
+<div class="section" id="the-problem-your-brain-is-the-worst-boss-you-could-have">
+<h2>The Problem: Your Brain Is the Worst Boss You Could Have</h2>
+<p>Let’s be blunt: the problem isn’t laziness. The problem is that you’re <em>too good</em> at your job. Your brain has learned to reward you for doing more, so it keeps conning you into overtime and guilt-tripped evenings.</p>
+<p>Every hour of downtime becomes a failure. You tell yourself: &quot;Just one more ticket,&quot; and three hours later you’re debugging something that can wait until morning. The more you grind, the worse you feel. The harder you try to fix the situation with sheer will, the more you burn out.</p>
+<p>When your mind is both the problem and the manager, you can’t just fire yourself. You need external constraints.</p>
+<p>Enter: the Self-Blocker.</p>
+<div class="section" id="the-self-blocker-not-a-productivity-app-a-survival-mechanism">
+<h3>The Self-Blocker: Not a Productivity App, a Survival Mechanism</h3>
+<p>This is not a &quot;workflow optimization&quot; toy. This is for the person who literally can’t stop working. It’s for the type who will work for a client who hasn’t paid in a year and a half, who will tolerate a salary well below market, and who will mentally flog themselves to squeeze another hour out of the day.</p>
+<p>What it does: it blocks access to <em>work</em>, not to life. It can lock directories, open apps, and network resources that are directly associated with paid work — while leaving your personal projects and leisure untouched.</p>
+<p>Philosophy in one sentence: if your willpower fails, automate your refusal.</p>
+</div>
+<div class="section" id="why-blocker-and-why-not-just-turn-off-the-computer">
+<h3>Why Blocker, and Why Not Just Turn Off the Computer?</h3>
+<p>At first, I thought about just going the easy route and <em>locking myself out</em> of my computer completely. Maybe using a keyboard and screen blocker, or some productivity app that would make me feel better about not working for a few hours. But here’s the thing: aside from the fact that <em>blocking</em> everything feels like a major overkill, I actually have things I <em>want</em> to work on outside of my paid work. Like pet projects that keep me going, ideas I want to experiment with, or just the need to escape from the grind and get creative.</p>
+<p>So, as much as I wanted to &quot;force myself&quot; to stop working, completely locking down the machine — especially my IDEs, which I use for both work and side projects — just didn’t make sense.</p>
+<p>Here’s where I hit a crossroads:</p>
+<p>I needed something that could help me focus on <em>not working</em>, but still allow me to access those pet projects. The goal wasn’t to put my whole computer into a &quot;working lockdown&quot; but to specifically block <em>work</em> — not the things I enjoy doing on the side.</p>
+<p>I know there are productivity solutions out there, tools that force you to take breaks or limit your screen time. But most of these come with a hefty price tag, and they aren't as flexible as I needed them to be. They either block <em>everything</em>, including my personal stuff, or they’re just not targeted enough. Plus, part of me was just like: “Hey, I could do this myself. I want something that works <em>exactly</em> for me.”</p>
+<p>That’s how I ended up building a tool that was strictly targeted to block <em>only work-related stuff</em>. Because in the end, it’s not about shutting down the entire system, it’s about keeping work out while giving space for the things I want to <em>choose</em> to do.</p>
+<p><strong>What Are We Blocking? Only Work.</strong></p>
+<p>Now, you might be thinking: <em>Why don’t you just use a general productivity app that shuts down everything after certain hours?</em></p>
+<p>Here’s the thing: I have my pet projects, right? These are the ones I enjoy working on. I can’t just shut down everything, including my own creative space. But work? Work <em>can</em> get blocked. The goal is to target only the work stuff — the stuff that doesn't <em>deserve</em> my attention after hours.</p>
+<p>So, I asked myself: <em>How do I block just my work stuff</em>? My first idea was to block access to the code repositories — Git is easy to lock, right? Wrong. I need access to my GitHub for personal projects too, so blocking the whole Git service wouldn't work. Then I thought: <em>What about blocking access to the directories where my work stuff is?</em></p>
+<p>That seemed like a reasonable solution. Instead of shutting down the entire system, I could block access to specific directories where all the work-related files are stored.</p>
+</div>
+</div>
+<div class="section" id="the-approach-targeted-blocks">
+<h2>The Approach: Targeted Blocks</h2>
+<p>Three layers of blocking:</p>
+<ul class="simple">
+<li><strong>File-level</strong> — block the directories where paid-work lives.</li>
+<li><strong>Process-level</strong> — kill and prevent relaunch of work apps.</li>
+<li><strong>Network-level</strong> — block domains and IPs for cloud services that are
+work-only.</li>
+</ul>
+<p>You can stack these. Each layer compensates for weaknesses in another.</p>
+<div class="section" id="directory-blocking-a-k-a-make-your-files-temporarily-invisible">
+<h3>Directory Blocking (a.k.a. &quot;Make Your Files Temporarily Invisible&quot;)</h3>
+<p>The simplest, most reliable strike: change file permissions so you can’t open or edit the stuff you shouldn’t touch.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Make the directory inaccessible</span>
+chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">000</span><span class="w"> </span>/path/to/work/project
+</pre></div>
+<p>This removes read/write/execute permissions for owner, group and others. It doesn't delete anything — it merely makes the files inaccessible until you restore permissions.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li>Simple, system-level, and portable on Unix-like systems (macOS included).</li>
+<li>Reversible: you can <em>chmod</em> back when it’s work time</li>
+<li>No third-party lock-in; no subscription.</li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li>It only blocks access to files. It won't stop you from opening web tools or
+streaming from a cloud IDE unless you combine it with other measures.</li>
+<li>If you forget to restore permissions, you'll be annoyed — intentionally so.</li>
+<li>Determined you as sudo may reset it; this is a soft-but-nasty friction.</li>
+</ul>
+<p>Implementation sketch (Python)</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">stat</span>
+
+<span class="k">def</span> <span class="nf">block_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set permissions to 0 for all files and directories under *path*.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error chmod file </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error chmod dir </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Blocked: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<p>And the reverse:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="k">def</span> <span class="nf">unblock_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Restore directories to 755 and files to 644 using *find* + *chmod*.</span>
+<span class="sd">    Requires sudo for some cases.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="s2">&quot;find&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="s2">&quot;-type&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;-exec&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;chmod&quot;</span><span class="p">,</span> <span class="s2">&quot;755&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="s2">&quot;find&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="s2">&quot;-type&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;-exec&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;chmod&quot;</span><span class="p">,</span> <span class="s2">&quot;644&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unblocked: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="alternatives-renaming-and-encryption-and-why-they-suck">
+<h3>Alternatives: Renaming and Encryption (and Why They Suck)</h3>
+<p>So, I thought, maybe I could take it a step further. Instead of just using <em>chmod</em>, why not rename directories or even encrypt them? After all, renaming them would make it harder to find them and encryption could make sure even if I <em>did</em> find them, they’d be unreadable. Problem solved, right?</p>
+<p>Well, not quite.</p>
+<p><strong>Renaming</strong> is a viable option, but it’s honestly a pain in the ass. I could rename every folder to something unrecognizable, like <em>Work_12345</em>, but then I’d spend the next 10 minutes wondering where my projects are. Plus, it's <em>manual</em>. If I forget to rename a folder before my “off-hours,” I’m back to square one.</p>
+<p>As for <strong>encryption</strong>... sure, I could encrypt my work files. It adds a layer of protection and prevents me from accessing them unless I decrypt them manually. But the problem with this approach is that it’s cumbersome. You’re adding unnecessary complexity to the process, and it’s easy to break the flow. And trust me — when you’re dealing with a gazillion files, decrypting them just to <em>not</em> work becomes the new form of procrastination.</p>
+<p>In the end, I decided that renaming and encryption were overkill for what I wanted to achieve: a simple, flexible, and effective way to block myself from work during off-hours without completely removing my ability to work on things I <em>actually care about</em>.</p>
+<p>Well, I might be more brutal to <em>rm -rf</em> my work directory if I ever get desperate enough, but for now, <em>chmod</em> does the trick. Honestly, I like my git repos to stay intact, so I can always clone them back when it’s time to work again.</p>
+</div>
+<div class="section" id="app-dropping-because-quit-is-for-the-weak">
+<h3>App Dropping: Because &quot;Quit&quot; Is for the Weak</h3>
+<p>Quitting apps is polite. Force-killing them is decisive.</p>
+<p>If you've ever tried to simply close your applications to &quot;stop working,&quot; you might as well be whispering sweet nothings to your workaholic brain. Just closing an app doesn't stop it from secretly running in the background, silently mocking your attempts at self-care. For those who require a tougher solution, let's get down to the dirty business of killing those processes completely.
+It's not just about shutting things down anymore—no, no, no. It's about forcefully terminating your productivity nightmares, using system commands that will make even the most stubborn apps go away. Welcome to the world of SIGTERM, SIGKILL, and a few choice scripts designed to obliterate your distractions in a way that even your &quot;chill&quot; after-hours self will approve of.
+Remember that &quot;just quit&quot; mindset? Forget it. You can quit like a civilized human being, or you can kill a process like the data-hungry monster that it is. This isn't a mere closing of windows; we're talking about full-on termination. Enter pkill, pgrep, and a healthy dose of kill signals. Let’s break down the code that will make your unwanted apps disappear faster than your desire to work.</p>
+<p>Processes linger. Some apps auto-relaunch. Some live in the menu bar. Idea is simple: find process IDs and send SIGTERM, then SIGKILL if they refuse to die. Also, unload their launch agents so macOS doesn't restart them behind your back.
+First, let’s look at this handy script:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">PKILL</span> <span class="o">=</span> <span class="s1">&#39;/usr/bin/pkill&#39;</span>
+<span class="n">PGREP</span> <span class="o">=</span> <span class="s1">&#39;/usr/bin/pgrep&#39;</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">capture</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="n">check</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="n">capture</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">pgrep_pids</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">run</span><span class="p">([</span><span class="n">PGREP</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="n">pattern</span><span class="p">],</span> <span class="n">capture</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+
+<span class="k">def</span> <span class="nf">kill_pids</span><span class="p">(</span><span class="n">pids</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">pid</span> <span class="ow">in</span> <span class="n">pids</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sent signal </span><span class="si">{</span><span class="n">sig</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">pid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error signaling </span><span class="si">{</span><span class="n">pid</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">drop_entry</span><span class="p">(</span><span class="n">entry</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">pids</span> <span class="o">=</span> <span class="n">pgrep_pids</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pids</span><span class="p">:</span>
+        <span class="n">kill_pids</span><span class="p">(</span><span class="n">pids</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+        <span class="n">pids</span> <span class="o">=</span> <span class="n">pgrep_pids</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pids</span><span class="p">:</span>
+            <span class="n">kill_pids</span><span class="p">(</span><span class="n">pids</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Force-killed: </span><span class="si">{</span><span class="n">entry</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No processes for: </span><span class="si">{</span><span class="n">entry</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<p>Notice how the script uses pkill and pgrep to ruthlessly hunt down and terminate processes. It's like playing the predator, but instead of chasing down small mammals, you're hunting down Slack, Spotify, or any other productivity-sucking monstrosity.
+Understanding SIGTERM and SIGKILL: Your New Best Friends
+Let’s take a quick detour to talk about the stars of the show: SIGTERM and SIGKILL.
+* SIGTERM (signal 15): This is your &quot;let's be polite&quot; approach. It tells the application to gracefully shut down. Think of it like trying to talk someone out of staying at your party after you've had enough. It's the nice way out.
+* SIGKILL (signal 9): But when that polite request doesn’t work, it's time to bring out the big guns. SIGKILL forcefully terminates the application without warning. It’s like smashing the “end call” button during an awkward conversation. There's no coming back from this one.
+The kill_pids function in the script does both: first it sends SIGTERM to allow the process to exit peacefully, and if that fails, it uses SIGKILL to terminate the application with extreme prejudice.
+The Art of Unloading Launch Agents (Because We Hate Reboots)
+It’s not just about killing apps in the foreground. Oh no, we’re going deeper. We’re talking about launch agents—those sneaky little background services that restart applications as soon as you try to close them. Because nothing says “I’m a rebel” like quitting your job only for it to restart in the background.
+Enter launchctl—the macOS tool for interacting with launch agents. With the script's unload_launch_agent function, we can force macOS to stop these persistent little buggers from restarting. So, if you want to be the absolute master of your work environment, it's time to get familiar with how launchctl bootout and launchctl unload work.</p>
+<p>Unloading launch agents (to stop auto-restarts):</p>
+<div class="highlight"><pre><span></span><span class="n">LAUNCHCTL</span> <span class="o">=</span> <span class="s1">&#39;/bin/launchctl&#39;</span>
+
+<span class="k">def</span> <span class="nf">unload_launch_agent</span><span class="p">(</span><span class="n">plist_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">run</span><span class="p">([</span><span class="n">LAUNCHCTL</span><span class="p">,</span> <span class="s1">&#39;bootout&#39;</span><span class="p">,</span> <span class="n">plist_path</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bootout attempted: </span><span class="si">{</span><span class="n">plist_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">run</span><span class="p">([</span><span class="n">LAUNCHCTL</span><span class="p">,</span> <span class="s1">&#39;unload&#39;</span><span class="p">,</span> <span class="n">plist_path</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unload attempted: </span><span class="si">{</span><span class="n">plist_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to unload </span><span class="si">{</span><span class="n">plist_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<p>A small, mercifully brutal script that kills and prevents relaunch will stop most app-based temptations. Pair it with directory-blocking and you’ve got a ridiculously reliable deterrent.</p>
+<p>So, what's the takeaway from all of this? The next time you're tempted to tell yourself, “I’ll just close Slack for the night,” remember that there's a much more satisfying (and permanent) way to do it. Use pkill to obliterate those pesky processes. Use launchctl to disable the auto-start of those launch agents. Because you’re not just quitting; you’re winning at not working.
+This script will turn your nightly routine into a warzone where your work apps are the unwelcome intruders, and you're the ruthless commander sending them to oblivion. And when it's time to get back to work? Just run the opposite: unblock, reload, and pick up where you left off. But for now, let’s enjoy some well-deserved freedom.</p>
+</div>
+<div class="section" id="website-blocking-because-slack-is-a-hydra">
+<h3>Website Blocking: Because Slack Is a Hydra</h3>
+<p>Alright, we’ve locked ourselves out of the working directories, and we’ve ruthlessly murdered every app that dared to run during off-hours. But let’s face it: we can still fall into the trap of checking emails, reading Slack messages, or—god forbid—staring at Jira tickets. All this while we pretend we're being productive.</p>
+<p>So, it's time for the ultimate move: blocking access to those glorious websites. The only thing we want to see during non-work hours is a cat video, not a task list. For that, I use macOS’s PF (packet filter) to block specific IPs.</p>
+<p>The idea:</p>
+<ul class="simple">
+<li>List domains in a <em>work_domains.txt</em> file (one per line).</li>
+<li>Resolve domains to IPv4 addresses with <em>dig</em>.</li>
+<li>Write <em>block</em> rules to a PF anchor file.</li>
+<li>Load the anchor via <em>/etc/pf.conf</em> and <em>pfctl</em>.</li>
+</ul>
+<p>Why PF and not <em>/etc/hosts</em>? Because IPs change and hosts-based blocking is
+fragile. PF blocks at the network layer and is harder for your impulse to bypass.</p>
+<p>Resolve and write anchor (sketch):</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">DOMAINS_FILE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;work_domains.txt&#39;</span><span class="p">)</span>
+<span class="n">ANCHOR_FILE</span> <span class="o">=</span> <span class="s1">&#39;/etc/pf.anchors/work_blocker&#39;</span>
+
+<span class="k">def</span> <span class="nf">resolve_ips</span><span class="p">(</span><span class="n">domains</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="n">ips</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">domains</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;dig&#39;</span><span class="p">,</span> <span class="s1">&#39;+short&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">line</span><span class="p">):</span>
+                <span class="n">ips</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ips</span><span class="p">)</span>
+</pre></div>
+<p>This snippet takes a list of domains, runs a dig command to resolve them, and collects the IPs. You’ll notice we’re being picky about the format—only valid IP addresses are added to our list.
+Now why not use hosts or DNS blocking? Because domains can resolve to multiple IP addresses, and DNS caching can screw you over. In the grand scheme of things, we need to work on real-time IP addresses.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_anchor_file</span><span class="p">(</span><span class="n">ips</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ANCHOR_FILE</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">ips</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;block drop out quick to </span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>In the above code, we're writing our rules to the pf anchor file. Important: You will need to run this script as sudo because modifying firewall rules requires admin privileges. No surprises here, we’re doing this to make sure nothing slips past.
+Ensuring Rules Are Loaded
+Now, we need to ensure that these rules are actually being loaded into macOS’s pf system. This is where things get slightly annoying because macOS uses pf as a packet filter for firewall rules, but its configuration files aren’t automatically set up to include custom rules.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ensure_pf_conf_includes_anchor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">anchor_rule</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;anchor &quot;</span><span class="si">{</span><span class="n">ANCHOR_NAME</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+    <span class="n">anchor_load</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;load anchor &quot;</span><span class="si">{</span><span class="n">ANCHOR_NAME</span><span class="si">}</span><span class="s1">&quot; from &quot;</span><span class="si">{</span><span class="n">ANCHOR_FILE</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">PF_CONF_FILE</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">anchor_rule</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">contents</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">PF_CONF_FILE</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">anchor_rule</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">anchor_load</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="p">(</span><span class="s2">&quot;Added anchor rules to /etc/pf.conf&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Permission denied: cannot write to </span><span class="si">{</span><span class="n">PF_CONF_FILE</span><span class="si">}</span><span class="s2">. Use sudo.&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>We’re checking if the pf.conf file already includes our custom anchor rules. If not, we append the necessary lines to make sure our rules get loaded every time the firewall is applied. Again, expect to run this with sudo for the necessary permissions.</p>
+<p>Once everything is set up, we simply need to apply the rules. But don't worry—if you change your mind and decide to start &quot;working&quot; again, we can easily revert the blocking.
+To apply the rules, we use pfctl:</p>
+<div class="highlight"><pre><span></span><span class="n">PFCTL_BIN</span> <span class="o">=</span> <span class="s1">&#39;/sbin/pfctl&#39;</span>
+<span class="n">PF_CONF_FILE</span> <span class="o">=</span> <span class="s1">&#39;/etc/pf.conf&#39;</span>
+
+<span class="k">def</span> <span class="nf">apply_pf</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">PFCTL_BIN</span><span class="p">,</span> <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="n">PF_CONF_FILE</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">PFCTL_BIN</span><span class="p">,</span> <span class="s2">&quot;-e&quot;</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">log</span><span class="p">(</span><span class="s2">&quot;pfctl rules applied and pf enabled&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to apply pfctl rules: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>In short, you’ll activate pfctl with the rules we’ve added and block the domains. When you’re ready to unblock, it’s as simple as running another command that clears the anchor and reloads the config.
+And don't worry—if you suddenly need to reconnect with the outside world (or un-apply your firewall rules), we've got you covered with a function to disable the blocking:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">disable_pf_block</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ANCHOR_FILE</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">pass</span>  <span class="c1"># Empty the anchor file</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">PFCTL_BIN</span><span class="p">,</span> <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="n">PF_CONF_FILE</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">log</span><span class="p">(</span><span class="s2">&quot;pfctl reloaded with cleared rules&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to disable PF blocking rules: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>The beauty of this solution is that it’s both flexible and aggressive. Want to block access to Slack? Great, just add it to your work_domains.txt. Want to shut down Jira tickets like they never existed? No problem, put those domain names in the file, and this script will handle the rest. You’ve got your personal firewall. Go ahead—be &quot;productive&quot; somewhere else.</p>
+<p>That’s how we use real firewall rules to ensure we're not getting sucked into digital work addiction. Want to know what other digital distractions you could block? Get creative, and you’ll never have to see those godforsaken task lists ever again.</p>
+<p>How It Works: An Overly Complicated Way to Avoid Temptation
+Now that you have the code, here’s a quick rundown of what’s going on behind the scenes. We're using PF, the packet filter in macOS, which is kind of like a bouncer at the club of the internet. This is not your average &quot;edit the /etc/hosts file&quot; nonsense. No, this is real-deal firewall stuff.
+Here’s how this works, step by step:
+1. Resolving Domains to IPs: We need to resolve the domains (e.g., slack.com, jira.com) to their IP addresses. Why? Because, while domains are nice and human-friendly, the network speaks in IPs. And if you try blocking a domain directly, you’ll quickly discover that they can change their IPs on you. The process of resolving to IP addresses is done with the dig command, which gets us the current IPs for any domain we throw at it.
+2. Blocking the IPs: Once we’ve resolved these IP addresses, we write them into PF's anchor file. Think of it as a blacklist of sites we should never visit during work hours (or any hours, really).
+3. Applying the Block: The PF configuration file is updated with our custom blocking rules. Once that’s done, we use pfctl to enforce the block on those IPs. Now, anytime you try to visit a site on the list, it’s as if the internet just refuses to acknowledge your existence. Bye, work distractions!
+4. Reversing the Block: If, for some reason, you want to get back to working (and pretending to be productive), the script can clear the block by removing the anchor rules and reloading PF without those rules. Simple, effective, and a perfect reminder that we’re all just doing the bare minimum.</p>
+<p>At the end of the day, this is all about one thing: shutting down your productivity-killing habits before they even start. You've blocked the apps, you've locked down directories, and now you've blocked the very websites that you would otherwise use to procrastinate. You've practically built a fortress around your work life—and if you're feeling like a rebellious coder, you can always unblock things later.
+But for now, go ahead and enjoy the sweet silence of being free from distraction. Until the next time you forget about all this and try to cheat your way back into work—because we both know that’s inevitable.</p>
+</div>
+<div class="section" id="utility-glue-logging-and-notifications">
+<h3>Utility Glue: Logging and Notifications</h3>
+<p>You’ll want logs and notifications so the thing doesn’t feel like a random punishment. Logging gives you a trail; notifications give you context when you try to cheat.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">LOG_FILE</span> <span class="o">=</span> <span class="s1">&#39;/var/log/self_blocker.log&#39;</span>
+<span class="n">OSASCRIPT_BIN</span> <span class="o">=</span> <span class="s1">&#39;/usr/bin/osascript&#39;</span>
+
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ts</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">LOG_FILE</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;🚫 Self-Blocker&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">OSASCRIPT_BIN</span><span class="p">,</span> <span class="s1">&#39;-e&#39;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s1">&#39;display notification &quot;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s1">&quot; with title &quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">],</span>
+                       <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Notify failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+<p>We use AppleScript (osascript) under the hood to trigger the notifications. This is a simple but powerful way to alert you when something important happens during the script’s operation. For example, when the websites are successfully blocked or unblocked, or when an error occurs, you’ll get a notification, keeping you updated without needing to check logs manually.
+Customization: You can even add a subtitle or choose a custom sound for the notification. For instance, using the &quot;Submarine&quot; sound effect gives it a bit more flair. You know, for when you need to feel like you're in control of your digital life—or when you just want to hear the notification sound over and over again.</p>
+<p>Blocking websites is only useful if you're not constantly second-guessing yourself and saying, “Oh, I’ll just unblock everything for 5 minutes…” That’s a recipe for disaster. In the script, we ensure you can’t unblock access unless you're officially in &quot;off-hours.&quot;</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">WORK_MODE_FILE</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;.work_mode&#39;</span>
+
+<span class="k">def</span> <span class="nf">check_work_mode_file</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prevent unblock unless .work_mode exists (i.e. it&#39;s not work time).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">WORK_MODE_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">log</span><span class="p">(</span><span class="s2">&quot;❌ Cannot unblock: not work time.&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>Here, we’ve added a little guardrail: the script checks for the presence of a .work_mode file before allowing you to unblock access. If that file exists, it’s your own personal signal that you’ve entered “work mode” and shouldn’t be messing around with your internet access. This simple file-based check helps reinforce the boundaries between work and personal time.
+If you try to unblock during work time, the script will log it and promptly stop you. This is your safety net, helping you resist the urge to slip into that black hole of productivity-sucking websites.</p>
+</div>
+<div class="section" id="automation-launchd-because-cron-is-ancient">
+<h3>Automation: launchd, Because Cron Is Ancient</h3>
+<p>You’ve done the hard part—blocking those productivity-draining websites and setting up notifications and logs. Now, you need to automate it all, right? Well, let’s talk about running this script at scheduled times, because let's face it, no one’s got time to run this manually.
+And no, cron isn’t the answer. Sure, it’s been around forever, and people still use it like it’s some kind of sacred relic, but let’s be real: it’s not even close to being as neat and modern as macOS’s launchd. Cron is an ancient tool that doesn't handle macOS’s security features, sudo permissions, or the finer details of system scheduling—plus, it won’t even run GUI-based processes properly. This is macOS, not some Linux server where you can get away with just typing a cron job every week to download logs.</p>
+<p><em>launchd</em> is macOS’s native service manager. It's more powerful and flexible than cron could ever dream of being. With launchd, you can schedule tasks with precision down to the minute, manage those tasks while they’re running, and, most importantly, make sure they run even after a reboot. And you definitely need that for something as crucial as blocking access to websites, right?
+But before you go setting it up, there’s one little hurdle you’ll need to cross—getting your script to run with sudo. Most of the time, you won’t need sudo for launchd, but there are situations where elevated privileges are necessary (like changing firewall rules or modifying network settings). When that’s the case, we have to tweak the sudoers file to grant the necessary permissions.</p>
+<p><strong>Giving sudo Permissions</strong>.</p>
+<p>When the script calls for sudo, you’ll probably get an error like this:</p>
+<div class="highlight"><pre><span></span>Sorry, user yourusername may not run sudo on this host.
+</pre></div>
+<p>To avoid this frustration, you’ll need to give your user permission to run these scripts without typing in a password every single time. But wait! Be careful—editing the sudoers file is no joke, and one wrong line could make your machine inaccessible. You don’t want that, do you?
+To give the script sudo permissions, follow these steps:</p>
+<ol class="arabic simple">
+<li>Open the terminal and type <em>sudo visudo</em> — this opens the sudoers file in a safe editor.</li>
+<li>Scroll to the bottom and add this line:</li>
+</ol>
+<div class="highlight"><pre><span></span>yourusername<span class="w"> </span><span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span><span class="w"> </span>NOPASSWD:<span class="w"> </span>/path/to/your/script
+</pre></div>
+<ol class="arabic simple" start="3">
+<li>Save and exit (in <em>visudo</em>, press <em>Ctrl + X</em>, then <em>Y</em>, then Enter to save).</li>
+</ol>
+<p>Now, your script can run with sudo permissions without asking for your password. We love convenience, don’t we?</p>
+<p><strong>Setting Up the Jobs with launchd</strong>.</p>
+<p>Once you’ve edited the sudoers file, it’s time to schedule your self-blocking script with launchd. The beauty of launchd is that it’s a real service manager. Forget cron’s basic time scheduling—launchd allows you to run jobs based on conditions like user login, system boot, or, in our case, custom time intervals. It’s far more robust and has much better integration with the macOS ecosystem.</p>
+<p>In the script, we've set up multiple launchd jobs, including:</p>
+<ul class="simple">
+<li>Block and Unblock Jobs: These jobs are scheduled based on your work hours. The block job runs when you're supposed to be working, and the unblock job kicks in when it’s break time.</li>
+<li>Relock Job: This task checks periodically (every 5 minutes, in this case) to see if your workblocker script is still running, ensuring your system remains locked down, even if you’re distracted and forget to re-enable blocking.</li>
+<li>Relock Loaders: These jobs make sure to load and unload the blocking schedules at the correct times, so you don’t have to lift a finger—unless you're trying to cheat.</li>
+</ul>
+<p>The core of these tasks is the plist files (launchd configuration files), which are generated by the script. They’re loaded into LaunchAgents, macOS's equivalent of cron jobs. This lets macOS know what tasks to run and when.</p>
+<p>Tips:</p>
+<ul class="simple">
+<li>If your scripts need <em>sudo</em>, consider adding a minimal <em>NOPASSWD</em> entry in
+<em>sudoers</em> for those specific binaries. Be <em>very</em> careful editing <em>sudoers</em>.</li>
+<li>Generate <em>.plist</em> files for <em>launchd</em> programmatically and load them under
+<em>~/Library/LaunchAgents</em>.</li>
+<li>Create a periodic relock job that runs every 5 minutes to ensure your
+blocking state is intact.</li>
+</ul>
+<p>A short <em>launchd</em> checklist:</p>
+<ul class="simple">
+<li>Create plists for block/unblock/relock.</li>
+<li>Load them with <em>launchctl bootstrap</em> / <em>launchctl enable</em> as appropriate.</li>
+<li>Test thoroughly — a misconfigured job can be noisy.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="final-thoughts-philosophy">
+<h2>Final Thoughts (Philosophy)</h2>
+<p>The Self-Blocker tool offers a robust yet simple solution to a problem faced by many knowledge workers — the inability to stop working when work life bleeds into personal time. This tool is not about productivity or motivation, but about setting clear boundaries in an environment where distractions and the pressure to &quot;do more&quot; often come from within.
+By leveraging MacOS's native launchd scheduling system, this tool automates the blocking and unblocking of work-related apps, directories, and internet access based on user-configured schedules. It empowers users to enforce boundaries for themselves, ensuring that rest and personal time are honored, even when their own willpower might fail.
+It is clear that this tool’s value isn't just in the technical details — the use of chmod, sudoers, and launchd — but in its core philosophy. It offers a solution for those who are overwhelmed by the demands of an unforgiving work culture, creating a strict, automated mechanism to force users to disconnect.
+With options for configuration, users can define their own &quot;work intervals,&quot; block directories or apps, and even prevent internet access to stay focused during work hours. Outside of those intervals, it shields users from their own tendencies to slip back into overwork, offering an enforced and uncaring reset.</p>
+<p>The Self-Blocker isn’t about &quot;helping you be more productive.&quot; It’s about helping you <em>stop</em> working when work starts killing you. It’s a set of friction mechanisms aimed at breaking the addictive loop of &quot;just one more&quot; that many of us are trapped in.</p>
+<p>It’s opinionated: it will be inconvenient. That’s the point. If you deserve to be on call 24/7, don’t use it. If you, like me, need to stop yourself from turning constant hustle into self-destruction, it’s liberating.</p>
+<p>If you like my article, feel free to <a class="reference external" href="https://www.donationalerts.com/r/rocketsciencegeek">throw a coin</a>. And, for sure here are link to the <a class="reference external" href="https://github.com/wwakabobik/macos_selfblocker">GitHub repo</a> with all code. Star and fork it if you like it.</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=When You Can’t Stop Working, Automate Saying “No”&amp;url=https://wwakabobik.github.io/2025/09/self_blocker/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2025/09/self_blocker/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2025/09/self_blocker/&amp;title=When You Can’t Stop Working, Automate Saying “No”" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=When You Can’t Stop Working, Automate Saying “No”&amp;body=https://wwakabobik.github.io/2025/09/self_blocker/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/macos/">macos</a><a href="https://wwakabobik.github.io/tag/productivity/">productivity</a><a href="https://wwakabobik.github.io/tag/burnout/">burnout</a><a href="https://wwakabobik.github.io/tag/python/">python</a><a href="https://wwakabobik.github.io/tag/automation/">automation</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2025/04/weather_station/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">Supercharged Weather Station</h2>
+                            <p class="post-nav-excerpt">A weather station with a Raspberry Pi, webserver and Arduino, LoRa SX1278 modules.</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
