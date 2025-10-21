@@ -1,7 +1,7 @@
 ############################
 We Don’t Get Paid for This
 ############################
-:date: 2025-10-23 22:02
+:date: 2025-10-21 12:49
 :author: wwakabobik
 :tags: motivation, work, responsibility, leadership, company culture
 :slug: we_dont_get_paid_for_this
@@ -119,4 +119,9 @@ To paraphrase something I wrote before: the workplace shouldn’t just be a plac
 If you find yourself in a situation where your work is being devalued, where your effort is just being used for someone else’s gain — leave. If you can’t leave, work well, but for yourself. That’s the only way to make sure that, at the end of the day, you’re not just getting paid, but truly rewarded for what you bring to the table.
 
 
+If you liked this article, then you can support me on `BuyMeACoffee`_, `ThanksDev`_, or `DonationAlerts`_.
+
 .. _Habrahabr: https://habr.com
+.. _BuyMeACoffee: https://www.buymeacoffee.com/wwakabobik
+.. _ThanksDev: https://thanks.dev/wwakabobik
+.. _DonationAlerts: https://www.donationalerts.com/r/rocketsciencegeek
