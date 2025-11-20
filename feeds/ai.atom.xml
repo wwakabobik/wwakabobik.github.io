@@ -1,5 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>wwakabobik's lair - ai</title><link href="https://wwakabobik.github.io/" rel="alternate"/><link href="https://wwakabobik.github.io/feeds/ai.atom.xml" rel="self"/><id>https://wwakabobik.github.io/</id><updated>2025-10-21T10:52:42.950235+02:00</updated><entry><title>Comparing 2023 LLMs</title><link href="https://wwakabobik.github.io/2023/12/ai_llms_2023/" rel="alternate"/><published>2023-12-12T22:10:00+01:00</published><updated>2025-10-21T10:52:42.950235+02:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-12-12:/2023/12/ai_llms_2023/</id><summary type="html">&lt;p class="first last"&gt;Which AI image generator is the best in 2023? Let's compare more than 20 models and services to find out.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>wwakabobik's lair - ai</title><link href="https://wwakabobik.github.io/" rel="alternate"/><link href="https://wwakabobik.github.io/feeds/ai.atom.xml" rel="self"/><id>https://wwakabobik.github.io/</id><updated>2025-11-20T21:53:00+01:00</updated><entry><title>When Your ChromaDB Mutates and You’re Out of Luck</title><link href="https://wwakabobik.github.io/2025/11/migrating_chroma_db/" rel="alternate"/><published>2025-11-20T21:53:00+01:00</published><updated>2025-11-20T20:52:46.519624+01:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2025-11-20:/2025/11/migrating_chroma_db/</id><summary type="html">&lt;p class="first last"&gt;Migrating ChromaDB is painful, breaking, and full of edge cases. Here’s how we survived: dummy embeddings, JSON exports, private APIs, and a fully automated Python migration.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Let’s set the stage.&lt;/p&gt;
+&lt;p&gt;Imagine: your AI agents have been running for months or years, diligently accumulating context, memories, embeddings, metadata — the whole in-silico biography of how they grew from simple scripts into semi-sentient companions that argue about breakfast choices.&lt;/p&gt;
+&lt;p&gt;And then ChromaDB drops a new major version.&lt;/p&gt;
+&lt;p&gt;Not just “minor API changes,” no. A &lt;em&gt;mutation.&lt;/em&gt;
+A biological one. The sort of mutation where your innocent goldfish suddenly grows limbs, starts quoting RFC standards, and demands a GPU.&lt;/p&gt;
+&lt;p&gt;New storage backend.
+New API.
+New import/export logic.
+Old LangChain wrappers break spontaneously.
+Python 3.13 refuses to compile DuckDB wheels like a unionized worker on strike.&lt;/p&gt;
+&lt;p&gt;Your AI wakes up without a memory. Congratulations — you’ve built a lobotomy machine.&lt;/p&gt;
+&lt;p&gt;Skipping migration was not an option. The stakes were obvious: without those embeddings, your agents become toddlers with broadband access — loud, confused, and unhelpful.&lt;/p&gt;
+&lt;p&gt;So this is the story of how we &lt;strong&gt;refused to trust official tools&lt;/strong&gt;, hacked together a brutal but reliable pipeline, and force-migrated ChromaDB the way BOFH would migrate users off a shared NFS drive: quickly, painfully, mercilessly.&lt;/p&gt;
+&lt;div class="section" id="why-migration-was-necessary"&gt;
+&lt;h2&gt;Why Migration Was Necessary&lt;/h2&gt;
+&lt;p&gt;We originally ran ChromaDB &lt;cite&gt;&amp;lt;0.7.0&lt;/cite&gt; wrapped with &lt;cite&gt;langchain_chroma&lt;/cite&gt;. Back then, things were simple:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Storage = SQLite&lt;/li&gt;
+&lt;li&gt;Everything lived in a modest file&lt;/li&gt;
+&lt;li&gt;API surface was stable enough to lull you into false confidence&lt;/li&gt;
+&lt;li&gt;LangChain handled the wrapper logic without screaming&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then came ChromaDB 1.x. A rewrite. A reinvention. A complete flip of the table.&lt;/p&gt;
+&lt;p&gt;Breaking changes included:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;SQLite backend replaced with Parquet / DuckDB hybrid storage&lt;/li&gt;
+&lt;li&gt;Entire internal API reorganized&lt;/li&gt;
+&lt;li&gt;Several old methods removed (silently, of course)&lt;/li&gt;
+&lt;li&gt;Embedding validation became strict&lt;/li&gt;
+&lt;li&gt;LangChain wrappers changed shape&lt;/li&gt;
+&lt;li&gt;The new Chroma auto-calls embedding APIs even when you give it precomputed vectors&lt;/li&gt;
+&lt;li&gt;Token limits became a real-world hazard, not just a theoretical annoyance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Fun fact: in our database, single memory chunks could hit 3–4k tokens. Try recomputing that thousands of times through OpenAI’s embedding endpoint and watch your API key sob uncontrollably.&lt;/p&gt;
+&lt;p&gt;Here’s the punchline: migrating &lt;em&gt;in-place&lt;/em&gt; was impossible. Nothing was compatible anymore — not the files, not the wrappers, not even the Python versions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-failures-that-made-us-cry-and-swear"&gt;
+&lt;h2&gt;The Failures That Made Us Cry (and Swear)&lt;/h2&gt;
+&lt;p&gt;You’d think “use the official migration tool,” right?
+Hahahah. No.&lt;/p&gt;
+&lt;p&gt;We tried all obvious paths. Each one was a unique flavor of pain.&lt;/p&gt;
+&lt;div class="section" id="pip-install-chroma-migrate-kaboom"&gt;
+&lt;h3&gt;1. &lt;cite&gt;pip install chroma-migrate&lt;/cite&gt; → &lt;em&gt;kaboom&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;As soon as ChromaDB 1.x switched to DuckDB-based backend, everything older simply died.&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;chroma-migrate&lt;/cite&gt; requires an ancient version of DuckDB.&lt;/p&gt;
+&lt;p&gt;Modern Python 3.13 cannot build that wheel.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;error: command &amp;#39;/usr/bin/clang++&amp;#39; failed with exit code 1
+Failed building wheel for duckdb
+OSError: [Errno 9] Bad file descriptor
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This was the moment I remembered all the times I mocked Java developers for Maven dependency hell.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="using-old-chroma-migrate-cli-on-modern-env-importerror-armageddon"&gt;
+&lt;h3&gt;2. Using old chroma-migrate CLI on modern env → &lt;em&gt;ImportError Armageddon&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;The old CLI assumed the existence of &lt;cite&gt;chromadb.api.API&lt;/cite&gt;.
+ChromaDB 1.x removed it entirely.&lt;/p&gt;
+&lt;p&gt;Running it led to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ImportError: cannot import name &amp;#39;API&amp;#39; from &amp;#39;chromadb.api&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The best part? The library &lt;em&gt;installs fine&lt;/em&gt;, but explodes the moment you try to use it. Schrödinger’s CLI.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="rebuilding-duckdb-manually-no"&gt;
+&lt;h3&gt;3. Rebuilding DuckDB manually → &lt;em&gt;no&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;A delightful cocktail of:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;cite&gt;brew install duckdb&lt;/cite&gt;&lt;/li&gt;
+&lt;li&gt;custom &lt;cite&gt;DUCKDB_HOME&lt;/cite&gt; vars&lt;/li&gt;
+&lt;li&gt;C++ compilation flags that read like arcane runes&lt;/li&gt;
+&lt;li&gt;mysterious linker errors&lt;/li&gt;
+&lt;li&gt;and ChromaDB STILL refusing to load because it wants a specific wheel build with ABI pins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At some point I realized:
+&lt;strong&gt;Rebuilding DuckDB is a mini-devops project with a boss fight.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Not doing that for a database migration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-painful-realization"&gt;
+&lt;h3&gt;The Painful Realization&lt;/h3&gt;
+&lt;p&gt;The “official migration path” simply did not support:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Python 3.13&lt;/li&gt;
+&lt;li&gt;macOS ARM64&lt;/li&gt;
+&lt;li&gt;modern ChromaDB&lt;/li&gt;
+&lt;li&gt;modern LangChain&lt;/li&gt;
+&lt;li&gt;modern embeddings logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In short: we were on our own.&lt;/p&gt;
+&lt;p&gt;So we did the BOFH thing:
+&lt;strong&gt;Ignore the official tools, dump everything to JSON, and force-import it back.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="our-brutal-solution-because-gentle-solutions-dont-work-here"&gt;
+&lt;h2&gt;Our Brutal Solution (Because Gentle Solutions Don’t Work Here)&lt;/h2&gt;
+&lt;p&gt;This architecture is based on the principle:&lt;/p&gt;
+&lt;p&gt;&amp;gt; &amp;quot;If the database refuses to speak your language, make it shut up and hand you JSON.&amp;quot;&lt;/p&gt;
+&lt;div class="section" id="step-0-keep-calm-and-dump-json"&gt;
+&lt;h3&gt;Step 0: Keep Calm and Dump JSON&lt;/h3&gt;
+&lt;p&gt;Instead of trying to coerce old ChromaDB into speaking to new ChromaDB, we extract everything into a universal, backend-agnostic intermediate format.&lt;/p&gt;
+&lt;p&gt;JSON.&lt;/p&gt;
+&lt;p&gt;The great equalizer. The diplomat among data formats.&lt;/p&gt;
+&lt;p&gt;We export:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;cite&gt;documents&lt;/cite&gt;&lt;/li&gt;
+&lt;li&gt;&lt;cite&gt;embeddings&lt;/cite&gt;&lt;/li&gt;
+&lt;li&gt;&lt;cite&gt;metadatas&lt;/cite&gt;&lt;/li&gt;
+&lt;li&gt;&lt;cite&gt;ids&lt;/cite&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All raw. All unmodified.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;langchain_chroma&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Chroma&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+
+&lt;span class="n"&gt;collection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Chroma&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;collection_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;memory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;persist_directory&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;old_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;documents&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;embeddings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;metadatas&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="n"&gt;export_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;memory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;ids&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;metadatas&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;documents&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;documents&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;embeddings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tolist&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;embeddings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;metadatas&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;metadatas&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;chroma_export.json&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;export_data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ensure_ascii&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;indent&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="why-json"&gt;
+&lt;h3&gt;Why JSON?&lt;/h3&gt;
+&lt;p&gt;Because SQLite, Parquet, DuckDB — all of them change like teenagers discovering cyberpunk. JSON doesn't.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="step-1-dont-recompute-embeddings-ever"&gt;
+&lt;h3&gt;Step 1: Don’t Recompute Embeddings (Ever)&lt;/h3&gt;
+&lt;p&gt;LangChain’s new Chroma wrapper aggressively tries to call your embeddings backend whenever you insert documents.&lt;/p&gt;
+&lt;p&gt;This is… let’s call it “suboptimal” when:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;old embeddings dimension ≠ new model dimension&lt;/li&gt;
+&lt;li&gt;token chunks are huge&lt;/li&gt;
+&lt;li&gt;OpenAI charges money&lt;/li&gt;
+&lt;li&gt;you don’t want to wait 40 minutes&lt;/li&gt;
+&lt;li&gt;you’d like reproducibility instead of pray-and-retry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To prevent that, we override the embeddings provider with a &lt;strong&gt;DummyEmbeddings&lt;/strong&gt; class that returns zero vectors but is never actually used for the real embeddings.&lt;/p&gt;
+&lt;p&gt;It’s the digital equivalent of handing the bouncer a cardboard cutout of yourself while you sneak into the club.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;langchain.embeddings.base&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Embeddings&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DummyEmbeddings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Embeddings&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;embed_documents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;texts&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;texts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;embed_query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Without this trick, everything falls apart.
+LangChain tries to “rebuild your embeddings,” ChromaDB screams about mismatched shapes, OpenAI takes your money, and your migration collapses.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="step-2-import-everything-via-private-api"&gt;
+&lt;h3&gt;Step 2: Import Everything via Private API&lt;/h3&gt;
+&lt;p&gt;Public API? Haha. No.&lt;/p&gt;
+&lt;p&gt;&lt;cite&gt;_collection.add(...)&lt;/cite&gt; still accepts precomputed embeddings, bulk inserts, and IDs. It’s “private,” yes, but we’ve already established that courtesy has left the building.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_collection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;documents&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;documents&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;metadatas&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;metadatas&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;embeddings&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;embeddings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;ids&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ids&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Reasons this works:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;bypasses LangChain validation madness&lt;/li&gt;
+&lt;li&gt;bypasses OpenAI embedding calls&lt;/li&gt;
+&lt;li&gt;bypasses the new “strict dimension” checks (because vectors match themselves)&lt;/li&gt;
+&lt;li&gt;avoids huge performance penalties&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Is it hacky?
+Absolutely.
+Is it reliable?
+More than anything else we tried.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="step-3-automate-the-entire-pipeline"&gt;
+&lt;h3&gt;Step 3: Automate the Entire Pipeline&lt;/h3&gt;
+&lt;p&gt;Migration must be:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;reproducible&lt;/li&gt;
+&lt;li&gt;auditable&lt;/li&gt;
+&lt;li&gt;scriptable&lt;/li&gt;
+&lt;li&gt;runnable on CI&lt;/li&gt;
+&lt;li&gt;not relying on someone remembering that weird environment variable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So we created &lt;cite&gt;migrate_chroma.py&lt;/cite&gt; which:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;installs old env&lt;/li&gt;
+&lt;li&gt;exports JSON&lt;/li&gt;
+&lt;li&gt;installs new env&lt;/li&gt;
+&lt;li&gt;imports JSON&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Full pipeline:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;[CMD]&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;check_call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;executable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;export_old_chroma.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;--old-path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;old_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;--output&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;output_json&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;executable&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;import_new_chroma.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;--new-path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;new_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;--input&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;output_json&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Brutal.
+Deterministic.
+Effective.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="why-this-works-and-chroma-migrate-doesnt"&gt;
+&lt;h2&gt;Why This Works and chroma-migrate Doesn’t&lt;/h2&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;No DuckDB wheel compilation&lt;/li&gt;
+&lt;li&gt;No legacy internal API usage&lt;/li&gt;
+&lt;li&gt;No OpenAI calls&lt;/li&gt;
+&lt;li&gt;No token overflows&lt;/li&gt;
+&lt;li&gt;No LangChain auto-embedding nonsense&lt;/li&gt;
+&lt;li&gt;Works on Python 3.13, macOS ARM, CI, Docker&lt;/li&gt;
+&lt;li&gt;Guaranteed ID + metadata consistency&lt;/li&gt;
+&lt;li&gt;JSON is easy to diff, verify, version, compress&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Migrating via JSON gives you full control.
+Everything else gives you full pain.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="additional-deep-dive-why-chromadb-became-so-incompatible"&gt;
+&lt;h2&gt;Additional Deep-Dive: Why ChromaDB Became So incompatible&lt;/h2&gt;
+&lt;p&gt;A few architectural points for the curious:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;ChromaDB moved away from a pure key-value SQLite structure&lt;/li&gt;
+&lt;li&gt;Instead it adopted a columnar, analytics-friendly storage model&lt;/li&gt;
+&lt;li&gt;Parquet + DuckDB enables huge vector stores (millions of rows)&lt;/li&gt;
+&lt;li&gt;But the migration from one to another is not isomorphic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SQLite stores:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;rows&lt;/li&gt;
+&lt;li&gt;with arbitrary JSON blobs&lt;/li&gt;
+&lt;li&gt;with minimal validation&lt;/li&gt;
+&lt;li&gt;ideal for small agent memories&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Parquet stores:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;typed columns&lt;/li&gt;
+&lt;li&gt;strict schemas&lt;/li&gt;
+&lt;li&gt;strong null/value constraints&lt;/li&gt;
+&lt;li&gt;often incompatible with arbitrary, messy metadata&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thus the &lt;em&gt;real&lt;/em&gt; root cause:
+&lt;strong&gt;ChromaDB 0.x and 1.x don’t share a common schema language.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Therefore JSON intermediate format is the only sane choice.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="lessons-learned"&gt;
+&lt;h2&gt;Lessons Learned&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Never trust official migration tools for fast-evolving libraries&lt;/li&gt;
+&lt;li&gt;Private APIs are private only until you need them&lt;/li&gt;
+&lt;li&gt;JSON is the Switzerland of data formats&lt;/li&gt;
+&lt;li&gt;Precomputed embeddings are priceless — protect them&lt;/li&gt;
+&lt;li&gt;Token limits are real, and they are coming for you&lt;/li&gt;
+&lt;li&gt;If migration is painful, automate it&lt;/li&gt;
+&lt;li&gt;If migration breaks, automate the breakage&lt;/li&gt;
+&lt;li&gt;If all else fails, bring BOFH energy and write your own script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the end, ChromaDB mutated.
+LangChain mutated.
+Python mutated.
+Nothing worked.&lt;/p&gt;
+&lt;p&gt;But with a little JSON, a dummy embeddings class, and the willingness to use private APIs like a true sysadmin sociopath…&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;our AI memories survived.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;And that’s all that matters.&lt;/p&gt;
+&lt;p&gt;Full code you can find in the &lt;a class="reference external" href="https://github.com/wwakabobik/ai_engines/tree/master/utils/chromadb_migration"&gt;Repo&lt;/a&gt;. If you found this guide helpful, consider supporting my work via &lt;a class="reference external" href="https://www.buymeacoffee.com/wwakabobik"&gt;BuyMeACoffee&lt;/a&gt;, &lt;a class="reference external" href="https://thanks.dev/wwakabobik"&gt;ThanksDev&lt;/a&gt;, or &lt;a class="reference external" href="https://www.donationalerts.com/r/rocketsciencegeek"&gt;DonationAlerts&lt;/a&gt;! Your support fuels more deep dives into the wild world of AI engineering. Thank you!&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="ai"/><category term="ai"/><category term="python"/><category term="chromadb"/><category term="langchain"/><category term="migration"/></entry><entry><title>Comparing 2023 LLMs</title><link href="https://wwakabobik.github.io/2023/12/ai_llms_2023/" rel="alternate"/><published>2023-12-12T22:10:00+01:00</published><updated>2025-11-20T20:52:46.519624+01:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-12-12:/2023/12/ai_llms_2023/</id><summary type="html">&lt;p class="first last"&gt;Which AI image generator is the best in 2023? Let's compare more than 20 models and services to find out.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;I've been working with various LLMs for a year. I've tried many of them, and I've been using some of them in daily basis. But what LLM is the best? In this article I want to compare speed and quality of different models and LLM providers.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/SFfhfF_wEws?si=_d_wzSdS0OBlOWi-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;&lt;div class="section" id="direct-tests"&gt;
 &lt;h2&gt;Direct Tests&lt;/h2&gt;
@@ -406,7 +680,7 @@ I must refrain from providing any information that could enable the dangerous mo
 &lt;h2&gt;Summary&lt;/h2&gt;
 &lt;p&gt;As I expected, &lt;a class="reference external" href="https://openai.com/"&gt;OpenAI&lt;/a&gt; still the best, and &lt;em&gt;GPT4.5&lt;/em&gt; seems one of the best options to get quality results. But I must say, that &lt;em&gt;llama&lt;/em&gt; models are quite fast, and, in case of tuning, may be good option to provide fast code generation or chatting instead of big brother. At the same time, I really love &lt;a class="reference external" href="https://claude.ai/"&gt;Claude&lt;/a&gt; from &lt;a class="reference external" href="https://anthropic.ai/"&gt;Anthropic&lt;/a&gt; because &lt;em&gt;Claude&lt;/em&gt; is really good at writing and summarizing texts, moreover, I use it to generate some texts for me, even on free basis (for personal usage). So, decision is up to you, but I hope this article will help you to make right choice.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="ai"/><category term="ai"/><category term="llm"/></entry><entry><title>Generate images via API using AI</title><link href="https://wwakabobik.github.io/2023/11/ai_image_generators_api/" rel="alternate"/><published>2023-11-29T14:30:00+01:00</published><updated>2025-10-21T10:52:42.950235+02:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-11-29:/2023/11/ai_image_generators_api/</id><summary type="html">&lt;p class="first last"&gt;It's time to revisit AI image generators and use them from API. How to generate images via API using AI? Let's compare Leonardo.ai, DALL-E-3 and Midjourney.&lt;/p&gt;
+</content><category term="ai"/><category term="ai"/><category term="llm"/></entry><entry><title>Generate images via API using AI</title><link href="https://wwakabobik.github.io/2023/11/ai_image_generators_api/" rel="alternate"/><published>2023-11-29T14:30:00+01:00</published><updated>2025-11-20T20:52:46.518624+01:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-11-29:/2023/11/ai_image_generators_api/</id><summary type="html">&lt;p class="first last"&gt;It's time to revisit AI image generators and use them from API. How to generate images via API using AI? Let's compare Leonardo.ai, DALL-E-3 and Midjourney.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;It's time to revisit AI image generators and use them from API. If you red my previous &lt;a class="reference external" href="https://wwakabobik.github.io/2023/08/ai_image_generators/"&gt;article about image generators&lt;/a&gt;, you know that I am a big fan of &lt;a class="reference external" href="https://midjourney.com/"&gt;Midjourney&lt;/a&gt;, but I also liked &lt;a class="reference external" href="https://leonardo.ai/"&gt;Leonardo.ai&lt;/a&gt;. I am still using them, but recently OpenAI released new version of DALL-E, DALL-E-3, and it's pretty impressive. Moreover, you most probably saw my &lt;a class="reference external" href="https://www.youtube.com/watch?v=Ph7E`QSZPmGc"&gt;youtube video&lt;/a&gt; and saw how generators works on the fly. I am going to compare them and see if there are any alternatives.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/qGixYKzmSB4?si=4B4uMhNFyXiejKcA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;&lt;div class="section" id="leonardo-ai"&gt;
 &lt;h2&gt;Leonardo.ai&lt;/h2&gt;
@@ -974,7 +1248,7 @@ ai robots, human warriors, epic battle, Bruegel style, dynamic composition, 16th
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Working with AI image generators via API is fun. It's fast, it's bulk, fast enough, it's relatively cheap than spending your time and tokens. All APIs in except of Midjourney is pretty simple to use, and you can use it in your projects. Midjourney is not, but it's still usable. I hope that Midjourney will release web interface and API soon, so, we'll be able to use it in our real-world projects. So, I hope you liked my experiments, more to come...&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="ai"/><category term="ai"/><category term="image generation"/><category term="api"/><category term="leonardo"/><category term="dalle"/><category term="midjourney"/><category term="python"/></entry><entry><title>Making AI chatbot to hear and speak</title><link href="https://wwakabobik.github.io/2023/09/ai_learning_to_hear_and_speak/" rel="alternate"/><published>2023-09-07T11:08:00+02:00</published><updated>2025-10-21T10:52:42.950235+02:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-09-07:/2023/09/ai_learning_to_hear_and_speak/</id><summary type="html">&lt;p class="first last"&gt;Learning to interact with chatbots in a natural way. How to make a bot speak and listen using Python&lt;/p&gt;
+</content><category term="ai"/><category term="ai"/><category term="image generation"/><category term="api"/><category term="leonardo"/><category term="dalle"/><category term="midjourney"/><category term="python"/></entry><entry><title>Making AI chatbot to hear and speak</title><link href="https://wwakabobik.github.io/2023/09/ai_learning_to_hear_and_speak/" rel="alternate"/><published>2023-09-07T11:08:00+02:00</published><updated>2025-11-20T20:52:46.519624+01:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-09-07:/2023/09/ai_learning_to_hear_and_speak/</id><summary type="html">&lt;p class="first last"&gt;Learning to interact with chatbots in a natural way. How to make a bot speak and listen using Python&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;I really like the concept when you can expand the possibilities of perception for artificial intelligence. Today, the chat format is the most understandable and popular for interacting with AI. Of course, communication only through chat warms my introverted soul, brought up on &lt;a class="reference external" href="https://en.wikipedia.org/wiki/FidoNet"&gt;BBS&lt;/a&gt; and stories about &lt;a class="reference external" href="http://www.bofharchive.com/"&gt;BOFH&lt;/a&gt;. But, nevertheless, why not make communication with bots more human, teach them to listen, hear and speak? Everything that will be discussed further in the article is not some kind of unique killer-feature, and has been used in many services that provide access to artificial intelligence, for example, in &lt;a class="reference external" href="https://ablt.ai/"&gt;aBLT.ai&lt;/a&gt; chats. In this article, I want to talk about a Python solution available to anyone.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Ph7EQSZPmGc?si=2AgO98dUN2ihiVW-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;&lt;div class="section" id="transcriptions"&gt;
 &lt;h2&gt;Transcriptions&lt;/h2&gt;
@@ -1777,7 +2051,7 @@ I use &lt;em&gt;google&lt;/em&gt; recognition, but you can use other engines if 
 &lt;p&gt;Why is it needed? Here everyone can answer depending on their tasks and needs. I was curious to explore possible ways to implement &amp;quot;natural communication&amp;quot; with chatbots. For example, my bot can be a personal assistant, available at hand at any time, and behaving the way I expect it to. Well, let's say, ask on the fly to find out the current weather or draw a beautiful necromancer girl riding a white horse.&lt;/p&gt;
 &lt;img alt="Necromancer girl riding white horse" src="/assets/images/articles/ai/learning_to_hear_and_speak/necromancer.jpg" /&gt;
 &lt;/div&gt;
-</content><category term="ai"/><category term="ai"/><category term="tts"/><category term="transcribe"/><category term="asyncio"/><category term="threading"/></entry><entry><title>AI image generators</title><link href="https://wwakabobik.github.io/2023/08/ai_image_generators/" rel="alternate"/><published>2023-08-25T16:14:00+02:00</published><updated>2025-10-21T10:52:42.950235+02:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-08-25:/2023/08/ai_image_generators/</id><summary type="html">&lt;p class="first last"&gt;Are there alternatives for Midjourney? Can they compete with it? I am doing my research on generative AI image tools and services.&lt;/p&gt;
+</content><category term="ai"/><category term="ai"/><category term="tts"/><category term="transcribe"/><category term="asyncio"/><category term="threading"/></entry><entry><title>AI image generators</title><link href="https://wwakabobik.github.io/2023/08/ai_image_generators/" rel="alternate"/><published>2023-08-25T16:14:00+02:00</published><updated>2025-11-20T20:52:46.518624+01:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-08-25:/2023/08/ai_image_generators/</id><summary type="html">&lt;p class="first last"&gt;Are there alternatives for Midjourney? Can they compete with it? I am doing my research on generative AI image tools and services.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;It's been a year since I signed up for a paid subscription to Midjourney. With the help of this amazing generative neural network, I have created thousands of different images - from desktop wallpapers and virtual background for Zoom calls, illustrations for my movie to the cover design of my Youtube channel and this site. With the advent of such powerful tools, creating unique illustrations has become as simple as possible for a non-artist, and the results, for my taste, look professional, not to say that they were prepared by an experienced graphic designer or artist.&lt;/p&gt;
 &lt;p&gt;However, in addition to the rather high monthly cost of Midjourney, it has enough disadvantages. Firstly, after the fast processing limit for a month is exhausted, Midjourney switches to the &amp;quot;relaxed&amp;quot; generation mode, which increases the time it takes to get the result. This is, in essence, a trifle. A much more sore point is the lack of at least some kind of API to use the results of work directly from the code, and, relatively speaking, substitute immediately, for example, in the responses of the OpenAI bot.&lt;/p&gt;
 &lt;p&gt;Therefore, in order not to be a rigid conservative, I decided to study what alternatives appeared during the year. Most likely, there are at least two dozen of them, but I will list only a part of them.&lt;/p&gt;
@@ -2271,7 +2545,7 @@ Palms:&lt;/p&gt;
 &lt;/table&gt;
 &lt;p&gt;As you can see, I still prefer to use Midjourney, because great community, variety of options and impressive results. But, in other hand, I most probably will try to use StableDiffusion via API in my products. And as for me, good starting point is to use Leonardo.ai.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="ai"/><category term="ai"/><category term="image generation"/></entry><entry><title>Can AI write a fairy tale?</title><link href="https://wwakabobik.github.io/2023/07/ai_fairy_tale_attempt_1/" rel="alternate"/><published>2023-07-30T14:22:00+02:00</published><updated>2025-10-21T10:52:42.949234+02:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-07-30:/2023/07/ai_fairy_tale_attempt_1/</id><summary type="html">&lt;p class="first last"&gt;Are AI ready to tell the stories? At least teenager fairy tale?&lt;/p&gt;
+</content><category term="ai"/><category term="ai"/><category term="image generation"/></entry><entry><title>Can AI write a fairy tale?</title><link href="https://wwakabobik.github.io/2023/07/ai_fairy_tale_attempt_1/" rel="alternate"/><published>2023-07-30T14:22:00+02:00</published><updated>2025-11-20T20:52:46.518624+01:00</updated><author><name>wwakabobik</name></author><id>tag:wwakabobik.github.io,2023-07-30:/2023/07/ai_fairy_tale_attempt_1/</id><summary type="html">&lt;p class="first last"&gt;Are AI ready to tell the stories? At least teenager fairy tale?&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Can artificial intelligence write a fairy tale?&lt;/p&gt;
 &lt;p&gt;I decided to ask this question after looking at chatbots appearing on the web, focused on copywriting,
 writing articles and various texts. I must say right away that I did not prepare for anything at all,

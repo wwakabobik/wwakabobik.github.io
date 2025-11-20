@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>When Your ChromaDB Mutates and You’re Out of Luck</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2025/11/migrating_chroma_db/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/ai.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/ai.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Migrating ChromaDB is painful, breaking, and full of edge cases. Here’s how we survived: dummy embeddings, JSON exports, private APIs,...">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="ai">
+    <meta name="tags" content="python">
+    <meta name="tags" content="chromadb">
+    <meta name="tags" content="langchain">
+    <meta name="tags" content="migration">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="When Your ChromaDB Mutates and You’re Out of Luck"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Migrating ChromaDB is painful, breaking, and full of edge cases. Here’s how we survived: dummy embeddings, JSON exports, private APIs,..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2025/11/migrating_chroma_db/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2025-11-20 21:53:00+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2025-11-20 20:52:46.519624+01:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="ai"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="ai"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="chromadb"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="langchain"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="migration"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/ai.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "When Your ChromaDB Mutates and You’re Out of Luck",
+  "headline": "When Your ChromaDB Mutates and You’re Out of Luck",
+  "datePublished": "2025-11-20 21:53:00+01:00",
+  "dateModified": "2025-11-20 20:52:46.519624+01:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/ai.png",
+  "url": "https://wwakabobik.github.io/2025/11/migrating_chroma_db/",
+  "description": "Migrating ChromaDB is painful, breaking, and full of edge cases. Here’s how we survived: dummy embeddings, JSON exports, private APIs,..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">When Your ChromaDB Mutates and You’re Out of Luck</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="20 Nov 2025">20 Nov 2025</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/ai.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>Let’s set the stage.</p>
+<p>Imagine: your AI agents have been running for months or years, diligently accumulating context, memories, embeddings, metadata — the whole in-silico biography of how they grew from simple scripts into semi-sentient companions that argue about breakfast choices.</p>
+<p>And then ChromaDB drops a new major version.</p>
+<p>Not just “minor API changes,” no. A <em>mutation.</em>
+A biological one. The sort of mutation where your innocent goldfish suddenly grows limbs, starts quoting RFC standards, and demands a GPU.</p>
+<p>New storage backend.
+New API.
+New import/export logic.
+Old LangChain wrappers break spontaneously.
+Python 3.13 refuses to compile DuckDB wheels like a unionized worker on strike.</p>
+<p>Your AI wakes up without a memory. Congratulations — you’ve built a lobotomy machine.</p>
+<p>Skipping migration was not an option. The stakes were obvious: without those embeddings, your agents become toddlers with broadband access — loud, confused, and unhelpful.</p>
+<p>So this is the story of how we <strong>refused to trust official tools</strong>, hacked together a brutal but reliable pipeline, and force-migrated ChromaDB the way BOFH would migrate users off a shared NFS drive: quickly, painfully, mercilessly.</p>
+<div class="section" id="why-migration-was-necessary">
+<h2>Why Migration Was Necessary</h2>
+<p>We originally ran ChromaDB <cite>&lt;0.7.0</cite> wrapped with <cite>langchain_chroma</cite>. Back then, things were simple:</p>
+<ul class="simple">
+<li>Storage = SQLite</li>
+<li>Everything lived in a modest file</li>
+<li>API surface was stable enough to lull you into false confidence</li>
+<li>LangChain handled the wrapper logic without screaming</li>
+</ul>
+<p>Then came ChromaDB 1.x. A rewrite. A reinvention. A complete flip of the table.</p>
+<p>Breaking changes included:</p>
+<ul class="simple">
+<li>SQLite backend replaced with Parquet / DuckDB hybrid storage</li>
+<li>Entire internal API reorganized</li>
+<li>Several old methods removed (silently, of course)</li>
+<li>Embedding validation became strict</li>
+<li>LangChain wrappers changed shape</li>
+<li>The new Chroma auto-calls embedding APIs even when you give it precomputed vectors</li>
+<li>Token limits became a real-world hazard, not just a theoretical annoyance</li>
+</ul>
+<p>Fun fact: in our database, single memory chunks could hit 3–4k tokens. Try recomputing that thousands of times through OpenAI’s embedding endpoint and watch your API key sob uncontrollably.</p>
+<p>Here’s the punchline: migrating <em>in-place</em> was impossible. Nothing was compatible anymore — not the files, not the wrappers, not even the Python versions.</p>
+</div>
+<div class="section" id="the-failures-that-made-us-cry-and-swear">
+<h2>The Failures That Made Us Cry (and Swear)</h2>
+<p>You’d think “use the official migration tool,” right?
+Hahahah. No.</p>
+<p>We tried all obvious paths. Each one was a unique flavor of pain.</p>
+<div class="section" id="pip-install-chroma-migrate-kaboom">
+<h3>1. <cite>pip install chroma-migrate</cite> → <em>kaboom</em></h3>
+<p>As soon as ChromaDB 1.x switched to DuckDB-based backend, everything older simply died.</p>
+<p><cite>chroma-migrate</cite> requires an ancient version of DuckDB.</p>
+<p>Modern Python 3.13 cannot build that wheel.</p>
+<div class="highlight"><pre><span></span>error: command &#39;/usr/bin/clang++&#39; failed with exit code 1
+Failed building wheel for duckdb
+OSError: [Errno 9] Bad file descriptor
+</pre></div>
+<p>This was the moment I remembered all the times I mocked Java developers for Maven dependency hell.</p>
+</div>
+<div class="section" id="using-old-chroma-migrate-cli-on-modern-env-importerror-armageddon">
+<h3>2. Using old chroma-migrate CLI on modern env → <em>ImportError Armageddon</em></h3>
+<p>The old CLI assumed the existence of <cite>chromadb.api.API</cite>.
+ChromaDB 1.x removed it entirely.</p>
+<p>Running it led to:</p>
+<div class="highlight"><pre><span></span>ImportError: cannot import name &#39;API&#39; from &#39;chromadb.api&#39;
+</pre></div>
+<p>The best part? The library <em>installs fine</em>, but explodes the moment you try to use it. Schrödinger’s CLI.</p>
+</div>
+<div class="section" id="rebuilding-duckdb-manually-no">
+<h3>3. Rebuilding DuckDB manually → <em>no</em></h3>
+<p>A delightful cocktail of:</p>
+<ul class="simple">
+<li><cite>brew install duckdb</cite></li>
+<li>custom <cite>DUCKDB_HOME</cite> vars</li>
+<li>C++ compilation flags that read like arcane runes</li>
+<li>mysterious linker errors</li>
+<li>and ChromaDB STILL refusing to load because it wants a specific wheel build with ABI pins</li>
+</ul>
+<p>At some point I realized:
+<strong>Rebuilding DuckDB is a mini-devops project with a boss fight.</strong></p>
+<p>Not doing that for a database migration.</p>
+</div>
+<div class="section" id="the-painful-realization">
+<h3>The Painful Realization</h3>
+<p>The “official migration path” simply did not support:</p>
+<ul class="simple">
+<li>Python 3.13</li>
+<li>macOS ARM64</li>
+<li>modern ChromaDB</li>
+<li>modern LangChain</li>
+<li>modern embeddings logic</li>
+</ul>
+<p>In short: we were on our own.</p>
+<p>So we did the BOFH thing:
+<strong>Ignore the official tools, dump everything to JSON, and force-import it back.</strong></p>
+</div>
+</div>
+<div class="section" id="our-brutal-solution-because-gentle-solutions-dont-work-here">
+<h2>Our Brutal Solution (Because Gentle Solutions Don’t Work Here)</h2>
+<p>This architecture is based on the principle:</p>
+<p>&gt; &quot;If the database refuses to speak your language, make it shut up and hand you JSON.&quot;</p>
+<div class="section" id="step-0-keep-calm-and-dump-json">
+<h3>Step 0: Keep Calm and Dump JSON</h3>
+<p>Instead of trying to coerce old ChromaDB into speaking to new ChromaDB, we extract everything into a universal, backend-agnostic intermediate format.</p>
+<p>JSON.</p>
+<p>The great equalizer. The diplomat among data formats.</p>
+<p>We export:</p>
+<ul class="simple">
+<li><cite>documents</cite></li>
+<li><cite>embeddings</cite></li>
+<li><cite>metadatas</cite></li>
+<li><cite>ids</cite></li>
+</ul>
+<p>All raw. All unmodified.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain_chroma</span> <span class="kn">import</span> <span class="n">Chroma</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">collection</span> <span class="o">=</span> <span class="n">Chroma</span><span class="p">(</span><span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="p">,</span> <span class="n">persist_directory</span><span class="o">=</span><span class="n">old_path</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">,</span> <span class="s2">&quot;metadatas&quot;</span><span class="p">])</span>
+
+<span class="n">export_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;memory&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;metadatas&quot;</span><span class="p">]],</span>
+        <span class="s2">&quot;documents&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;documents&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;embeddings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;embeddings&quot;</span><span class="p">]],</span>
+        <span class="s2">&quot;metadatas&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;metadatas&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;chroma_export.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">export_data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="why-json">
+<h3>Why JSON?</h3>
+<p>Because SQLite, Parquet, DuckDB — all of them change like teenagers discovering cyberpunk. JSON doesn't.</p>
+</div>
+<div class="section" id="step-1-dont-recompute-embeddings-ever">
+<h3>Step 1: Don’t Recompute Embeddings (Ever)</h3>
+<p>LangChain’s new Chroma wrapper aggressively tries to call your embeddings backend whenever you insert documents.</p>
+<p>This is… let’s call it “suboptimal” when:</p>
+<ul class="simple">
+<li>old embeddings dimension ≠ new model dimension</li>
+<li>token chunks are huge</li>
+<li>OpenAI charges money</li>
+<li>you don’t want to wait 40 minutes</li>
+<li>you’d like reproducibility instead of pray-and-retry</li>
+</ul>
+<p>To prevent that, we override the embeddings provider with a <strong>DummyEmbeddings</strong> class that returns zero vectors but is never actually used for the real embeddings.</p>
+<p>It’s the digital equivalent of handing the bouncer a cardboard cutout of yourself while you sneak into the club.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">langchain.embeddings.base</span> <span class="kn">import</span> <span class="n">Embeddings</span>
+
+<span class="k">class</span> <span class="nc">DummyEmbeddings</span><span class="p">(</span><span class="n">Embeddings</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">embed_documents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">]]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">embed_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+</pre></div>
+<p>Without this trick, everything falls apart.
+LangChain tries to “rebuild your embeddings,” ChromaDB screams about mismatched shapes, OpenAI takes your money, and your migration collapses.</p>
+</div>
+<div class="section" id="step-2-import-everything-via-private-api">
+<h3>Step 2: Import Everything via Private API</h3>
+<p>Public API? Haha. No.</p>
+<p><cite>_collection.add(...)</cite> still accepts precomputed embeddings, bulk inserts, and IDs. It’s “private,” yes, but we’ve already established that courtesy has left the building.</p>
+<div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">_collection</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">documents</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;documents&quot;</span><span class="p">],</span>
+    <span class="n">metadatas</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;metadatas&quot;</span><span class="p">],</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;embeddings&quot;</span><span class="p">],</span>
+    <span class="n">ids</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ids&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+<p>Reasons this works:</p>
+<ul class="simple">
+<li>bypasses LangChain validation madness</li>
+<li>bypasses OpenAI embedding calls</li>
+<li>bypasses the new “strict dimension” checks (because vectors match themselves)</li>
+<li>avoids huge performance penalties</li>
+</ul>
+<p>Is it hacky?
+Absolutely.
+Is it reliable?
+More than anything else we tried.</p>
+</div>
+<div class="section" id="step-3-automate-the-entire-pipeline">
+<h3>Step 3: Automate the Entire Pipeline</h3>
+<p>Migration must be:</p>
+<ul class="simple">
+<li>reproducible</li>
+<li>auditable</li>
+<li>scriptable</li>
+<li>runnable on CI</li>
+<li>not relying on someone remembering that weird environment variable</li>
+</ul>
+<p>So we created <cite>migrate_chroma.py</cite> which:</p>
+<ul class="simple">
+<li>installs old env</li>
+<li>exports JSON</li>
+<li>installs new env</li>
+<li>imports JSON</li>
+</ul>
+<p>Full pipeline:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[CMD]&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+
+<span class="n">run</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;export_old_chroma.py&quot;</span><span class="p">,</span> <span class="s2">&quot;--old-path&quot;</span><span class="p">,</span> <span class="n">old_path</span><span class="p">,</span> <span class="s2">&quot;--output&quot;</span><span class="p">,</span> <span class="n">output_json</span><span class="p">])</span>
+<span class="n">run</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;import_new_chroma.py&quot;</span><span class="p">,</span> <span class="s2">&quot;--new-path&quot;</span><span class="p">,</span> <span class="n">new_path</span><span class="p">,</span> <span class="s2">&quot;--input&quot;</span><span class="p">,</span> <span class="n">output_json</span><span class="p">])</span>
+</pre></div>
+<p>Brutal.
+Deterministic.
+Effective.</p>
+</div>
+</div>
+<div class="section" id="why-this-works-and-chroma-migrate-doesnt">
+<h2>Why This Works and chroma-migrate Doesn’t</h2>
+<ol class="arabic simple">
+<li>No DuckDB wheel compilation</li>
+<li>No legacy internal API usage</li>
+<li>No OpenAI calls</li>
+<li>No token overflows</li>
+<li>No LangChain auto-embedding nonsense</li>
+<li>Works on Python 3.13, macOS ARM, CI, Docker</li>
+<li>Guaranteed ID + metadata consistency</li>
+<li>JSON is easy to diff, verify, version, compress</li>
+</ol>
+<p>Migrating via JSON gives you full control.
+Everything else gives you full pain.</p>
+</div>
+<div class="section" id="additional-deep-dive-why-chromadb-became-so-incompatible">
+<h2>Additional Deep-Dive: Why ChromaDB Became So incompatible</h2>
+<p>A few architectural points for the curious:</p>
+<ul class="simple">
+<li>ChromaDB moved away from a pure key-value SQLite structure</li>
+<li>Instead it adopted a columnar, analytics-friendly storage model</li>
+<li>Parquet + DuckDB enables huge vector stores (millions of rows)</li>
+<li>But the migration from one to another is not isomorphic</li>
+</ul>
+<p>SQLite stores:</p>
+<ul class="simple">
+<li>rows</li>
+<li>with arbitrary JSON blobs</li>
+<li>with minimal validation</li>
+<li>ideal for small agent memories</li>
+</ul>
+<p>Parquet stores:</p>
+<ul class="simple">
+<li>typed columns</li>
+<li>strict schemas</li>
+<li>strong null/value constraints</li>
+<li>often incompatible with arbitrary, messy metadata</li>
+</ul>
+<p>Thus the <em>real</em> root cause:
+<strong>ChromaDB 0.x and 1.x don’t share a common schema language.</strong></p>
+<p>Therefore JSON intermediate format is the only sane choice.</p>
+</div>
+<div class="section" id="lessons-learned">
+<h2>Lessons Learned</h2>
+<ul class="simple">
+<li>Never trust official migration tools for fast-evolving libraries</li>
+<li>Private APIs are private only until you need them</li>
+<li>JSON is the Switzerland of data formats</li>
+<li>Precomputed embeddings are priceless — protect them</li>
+<li>Token limits are real, and they are coming for you</li>
+<li>If migration is painful, automate it</li>
+<li>If migration breaks, automate the breakage</li>
+<li>If all else fails, bring BOFH energy and write your own script</li>
+</ul>
+<p>In the end, ChromaDB mutated.
+LangChain mutated.
+Python mutated.
+Nothing worked.</p>
+<p>But with a little JSON, a dummy embeddings class, and the willingness to use private APIs like a true sysadmin sociopath…</p>
+<p><strong>our AI memories survived.</strong></p>
+<p>And that’s all that matters.</p>
+<p>Full code you can find in the <a class="reference external" href="https://github.com/wwakabobik/ai_engines/tree/master/utils/chromadb_migration">Repo</a>. If you found this guide helpful, consider supporting my work via <a class="reference external" href="https://www.buymeacoffee.com/wwakabobik">BuyMeACoffee</a>, <a class="reference external" href="https://thanks.dev/wwakabobik">ThanksDev</a>, or <a class="reference external" href="https://www.donationalerts.com/r/rocketsciencegeek">DonationAlerts</a>! Your support fuels more deep dives into the wild world of AI engineering. Thank you!</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=When Your ChromaDB Mutates and You’re Out of Luck&amp;url=https://wwakabobik.github.io/2025/11/migrating_chroma_db/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2025/11/migrating_chroma_db/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2025/11/migrating_chroma_db/&amp;title=When Your ChromaDB Mutates and You’re Out of Luck" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=When Your ChromaDB Mutates and You’re Out of Luck&amp;body=https://wwakabobik.github.io/2025/11/migrating_chroma_db/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/ai/">ai</a><a href="https://wwakabobik.github.io/tag/python/">python</a><a href="https://wwakabobik.github.io/tag/chromadb/">chromadb</a><a href="https://wwakabobik.github.io/tag/langchain/">langchain</a><a href="https://wwakabobik.github.io/tag/migration/">migration</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2025/10/we_dont_get_paid_for_this/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">We Don’t Get Paid for This</h2>
+                            <p class="post-nav-excerpt">An exploration of the toxic mindset that “we don’t get paid for this” and how it...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
