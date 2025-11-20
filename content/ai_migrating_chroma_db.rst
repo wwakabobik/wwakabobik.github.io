@@ -1,7 +1,7 @@
 #################################################
 When Your ChromaDB Mutates and You’re Out of Luck
 #################################################
-:date: 2025-11-20 22:36
+:date: 2025-11-20 21:53
 :author: wwakabobik
 :tags: ai, python, chromadb, langchain, migration
 :slug: migrating_chroma_db
