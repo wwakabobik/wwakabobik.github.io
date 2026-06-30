@@ -6,54 +6,50 @@ About
 :status: published
 :cover: assets/images/bg/personal.jpg
 
-**QA Automation Architect · AI Testing Lead · SDET** — Novi Sad, Serbia · remote across EU/US timezones.
+**QA Automation Architect · AI Testing Lead · SDET** — based in Novi Sad, Serbia, working remotely across EU and US timezones.
 
-I fix the expensive problem of slow release cycles and engineering idle time. I design **AI-native testing infrastructure** — pytest frameworks, LangGraph agents, CI/CD glue — so product teams can ship daily with confidence.
+I help teams stop bleeding time on slow releases and flaky pipelines. Most of my work sits at the intersection of **test automation**, **AI-assisted QA**, and the boring infrastructure that makes both actually run in CI — pytest, Playwright, LangGraph agents, the usual suspects.
 
-18 years across fintech, aerospace, media, enterprise SaaS, and AI products. Equally comfortable defining QA strategy for a thousand-engineer org and writing the Python that makes it real.
+Roughly eighteen years across fintech, aerospace, media, enterprise SaaS, and newer AI products. I have built QA orgs and frameworks from scratch, trained large internal audiences, and still prefer to keep my hands on the code.
 
 .. image:: /assets/images/authors/wwakabobik.png
    :alt: Ilia Vereshchagin (wwakabobik)
    :align: center
    :width: 200px
 
-What I ship
------------
+What I tend to work on
+----------------------
 
-* **5× automation scale** on a live media platform — 300 → 1500+ tests, daily DevOps releases.
-* **Company-wide QA ecosystem from zero** at Sberbank-Technologies (1200+ engineers): processes, metrics, certification, training.
-* **1000+ engineers trained** in automation, test design, and DevOps through programs I designed and delivered.
-* **Pylint 5.3 → 9.98** on a legacy test codebase — without stopping delivery.
-* **Zero-to-one RAG marketing platform** — LangGraph, async email agent, Postgres, S3, bot engines across Telegram / WhatsApp / Discord, TTS and WebRTC voice.
-* **Non-deterministic AI systems** — multi-agent test harnesses, LLM-as-a-judge evaluation for story / scenario generators.
-* **DO-178B Class A avionics** — flight-control software for Airbus, Bombardier, Sukhoi (earlier life as embedded engineer).
+* Scaling automation when a product outgrows its first pytest folder — including daily release pipelines.
+* Standing up QA practice where there was mostly hope and spreadsheets: process, metrics, training, certification.
+* Making legacy test code less embarrassing without freezing delivery.
+* Greenfield AI products — RAG pipelines, async agents, chat and voice bots, evaluation for systems that do not give the same answer twice.
+* Earlier career detour into **safety-critical embedded** — flight-control and avionics — which still informs how I think about traceability and «did we actually test the scary path?»
 
-Core stack
-----------
+Toolbox (short version)
+-----------------------
 
-**Python** (expert) · pytest · Playwright · Selenium · Appium · FastAPI · async SQLAlchemy / Postgres · Redis
+Python first. pytest, Playwright, Selenium, Appium, FastAPI, async Postgres/Redis stacks.
 
-**AI / LLM** — LangChain, LangGraph, RAG, vector search, MCP, cloud and local model providers, evaluation for non-deterministic systems
+On the AI side: LangChain, LangGraph, RAG, vector search, MCP, local and cloud models, and test strategies for non-deterministic output.
 
-**Infra** — Docker, GitHub Actions, Jenkins, GitLab CI, Prometheus, Grafana, AWS / GCP
-
-**Protocols** — REST, GraphQL, WebSocket, gRPC, WebRTC, SMTP/IMAP
+Docker, GitHub Actions, Jenkins, GitLab CI, Prometheus, Grafana, AWS/GCP when the job needs it.
 
 Open to
 -------
 
-Staff / Principal SDET · Head of QA Engineering · **fractional QA leadership** · senior consulting engagements.
+Staff / Principal SDET roles, Head of QA Engineering, **fractional QA leadership**, and focused consulting engagements.
 
-`LinkedIn <https://www.linkedin.com/in/wwakabobik>`_ · `GitHub <https://github.com/wwakabobik>`_ · `PyPI <https://pypi.org/user/wwakabobik/>`_ · i.vereshchagin@gmail.com
+`LinkedIn <https://www.linkedin.com/in/wwakabobik>`_ · `GitHub <https://github.com/wwakabobik>`_ · `PyPI <https://pypi.org/user/wwakabobik/>`_
 
-Side projects & open source
----------------------------
+Open source & side builds
+-------------------------
 
-**Pam** — autonomous personal AI assistant (LangGraph, multi-level memory, vision, speech, TTS, Jira/Slack/RAG integrations).
+I maintain a growing pile of **open-source projects** — some around AI and agents, others around QA tooling, APIs, and the occasional hardware firmware experiment. Several are published on **PyPI**; a few have picked up **GitHub stars** without me turning into a full-time influencer.
 
-Published on PyPI: ``leonardo_api``, ``pytest-rerunclassfailures``, ``testrail_api_reporter`` — plus firmware and tooling experiments you will find scattered through this blog.
+This blog is where the longer write-ups land when a weekend rabbit hole deserves more than a README.
 
 Beyond work
 -----------
 
-Amateur **rocketry** (Arduino-controlled models, open-source designs). Astrophotography, electronics tinkering, long-distance travel, board games, cooking, and the occasional weekend firmware rabbit hole — like turning a corporate desk tracker into something you actually own.
+Amateur **rocketry**, astrophotography, electronics tinkering, travel, board games, cooking, and pet projects that start as «quick firmware tweak» and end as articles.
