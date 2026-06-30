@@ -3,7 +3,7 @@ From a Corporate Spy Box to Presence Hub
 #############################################
 :date: 2026-06-30 18:00
 :author: wwakabobik
-:tags: iot, privacy, macos, automation
+:tags: iot, privacy, security, ethics, burnout, macos, automation
 :slug: corporate_spy_box_to_presence_hub
 :category: python
 :status: published
