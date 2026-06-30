@@ -8,7 +8,7 @@ From a Corporate Spy Box to Presence Hub
 :category: python
 :status: published
 :summary: A corporate mmWave desk tracker arrived as a «gift» — wrong clocks, presence gaps, power-strip lectures, and an API naked to curl. GDPR/ZZPL, flash dumps, forensic autopsy, walking away from a broken cloud, and rebuilding the hardware as Presence Hub — MQTT on a Mac, honest 1D gestures, and real TinyML instead of Medium cosplay.
-:cover: assets/images/bg/python.png
+:cover: assets/images/bg/qa.png
 
 .. pull-quote::
 
