@@ -610,13 +610,14 @@ hr {
 
 blockquote {
     margin: 2em auto;
-    padding: 1em;
+    padding: 1em 1.25em;
     box-sizing: border-box;
-    border-left: 0.25em solid #e5e4e1;
+    border-left: 4px solid #3ad6e5;
     font-style: italic;
     font-weight: 400;
-    color: #81656e;
-    background: #faf9f7
+    color: #e8f0ee;
+    background: rgba(8, 28, 38, 0.88);
+    border-radius: 0 6px 6px 0
 }
 
 blockquote p {
@@ -685,15 +686,19 @@ mark {
 
 code,
 tt {
-    position: relative;
-    margin: 0 0.333em;
-    padding: 0.333em 0.666em;
+    display: inline;
+    vertical-align: baseline;
+    margin: 0 0.2em;
+    padding: 0.12em 0.45em;
     font-family: 'Inconsolata', monospace, sans-serif;
     font-size: 0.75em;
-    white-space: pre;
-    background: #faf9f7;
-    border: 1px solid #e5e4e1;
-    top: -2px
+    line-height: 1.35;
+    white-space: nowrap;
+    color: #e8f4f1;
+    background: #1a3340;
+    border: 1px solid #4a8a9a;
+    border-radius: 3px;
+    -webkit-text-fill-color: #e8f4f1;
 }
 
 pre {
@@ -703,8 +708,9 @@ pre {
     overflow: hidden;
     font-family: 'Inconsolata', monospace, sans-serif;
     white-space: pre;
-    background: #faf9f7;
-    border: 1px solid #e5e4e1;
+    color: #e8f0ee;
+    background: #152530;
+    border: 1px solid #3a6a78;
     box-sizing: border-box
 }
 
@@ -715,18 +721,18 @@ pre .lines {
     left: 0;
     top: 0;
     padding: 1.333em 0;
-    border-right: 1px solid #e5e4e1;
+    border-right: 1px solid #3a6a78;
     font-size: 0.75em;
     line-height: 2em;
     text-align: right;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.5)
+    background: rgba(8, 28, 38, 0.65)
 }
 
 pre .lines .line {
     display: block;
     padding-right: 0.333em;
-    color: #0d202c
+    color: #9dc8b7
 }
 
 pre code,
@@ -761,14 +767,14 @@ kbd {
     display: inline-block;
     margin-bottom: 0.5em;
     padding: 1px 8px;
-    border: #e5e4e1 1px solid;
-    color: #0d202c;
-    text-shadow: #fff 0 1px 0;
+    border: 1px solid #3a6a78;
+    color: #e8f4f1;
+    text-shadow: none;
     font-size: 0.9em;
     font-weight: bold;
-    background: #faf9f7;
+    background: #1a3340;
     border-radius: 4px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #fff inset
+    box-shadow: none
 }
 
 table {
@@ -808,7 +814,7 @@ table td:after {
     padding: 1px;
     z-index: -1;
     content: '';
-    background: #faf9f7
+    background: #0d202c
 }
 
 img {
@@ -2066,6 +2072,305 @@ img {
 
 .no-border td, .no-border th {
     border: none;
+}
+
+/* Dark-theme article readability (pull-quotes, inline code, epigraphs) */
+.post-content blockquote,
+.post-content blockquote.pull-quote,
+.post-content blockquote.epigraph {
+    margin: 1.75em auto;
+    padding: 1.1em 1.25em;
+    border-left: 4px solid #3ad6e5;
+    border-radius: 0 6px 6px 0;
+    color: #e8f0ee;
+    background: rgba(8, 28, 38, 0.88);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.post-content blockquote p {
+    color: inherit;
+}
+
+.post-content blockquote em,
+.post-content blockquote i {
+    color: #b8ebe0;
+    font-style: italic;
+}
+
+.post-content blockquote strong,
+.post-content blockquote b {
+    color: #4de8f7;
+    font-weight: 700;
+}
+
+.post-content blockquote.epigraph {
+    border-left-color: #9dc8b7;
+    font-style: italic;
+}
+
+.post-content code,
+.post-content tt,
+.post-content tt.docutils.literal,
+.post-content span.docutils.literal,
+.post-content p tt,
+.post-content li tt,
+.post-content td tt,
+.post-content th tt,
+.post-content h1 tt,
+.post-content h2 tt,
+.post-content h3 tt,
+.post-content h4 tt,
+.post-content h5 tt,
+.post-content h6 tt,
+.post-content blockquote tt,
+.post-content strong tt,
+.post-content em tt,
+.post-content span.pre,
+.post-content kbd {
+    color: #e8f4f1 !important;
+    -webkit-text-fill-color: #e8f4f1 !important;
+    background: rgba(12, 36, 48, 0.95) !important;
+    background-color: #1a3340 !important;
+    border: 1px solid #4a8a9a !important;
+    border-radius: 3px;
+    font-size: 0.85em;
+    top: 0;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.post-content pre {
+    background: #152530;
+    border: 1px solid #3a6a78;
+}
+
+.post-content pre code,
+.post-content pre tt,
+.post-content .highlight code,
+.post-content .highlight tt {
+    color: inherit !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.post-content .toc {
+    margin: 1.5em 0 2em;
+    padding: 1em 1.25em;
+    border-left: 4px solid #3ad6e5;
+    border-radius: 0 6px 6px 0;
+    background: rgba(8, 28, 38, 0.65);
+}
+
+.post-content .toc ul {
+    margin: 0.5em 0 0;
+    padding-left: 1.25em;
+    columns: 2;
+    column-gap: 2em;
+}
+
+.post-content .toc li {
+    margin: 0.35em 0;
+    break-inside: avoid;
+}
+
+.post-content .toc a {
+    color: #4de8f7;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(77, 232, 247, 0.35);
+}
+
+.post-content .toc a:hover,
+.post-content .toc a:focus {
+    color: #9dfbff;
+    border-bottom-color: #9dfbff;
+}
+
+@media only screen and (max-width: 640px) {
+    .post-content .toc ul {
+        columns: 1;
+    }
+}
+
+.post-content img {
+    border-radius: 6px;
+    border: 1px solid rgba(58, 106, 120, 0.45);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.post-content .figure,
+.post-content figure {
+    margin: 2em auto;
+    text-align: center;
+}
+
+.post-content figcaption,
+.post-content .figure-caption,
+.post-content p.caption {
+    margin-top: 0.75em;
+    font-size: 0.9em;
+    color: #9dc8b7;
+    font-style: italic;
+    text-align: center;
+}
+
+.post-content .figures-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    margin: 2em 0;
+}
+
+.post-content .figures-horizontal img {
+    max-width: 280px;
+    height: auto;
+}
+
+/* Inline literals: headings/blockquotes must not paint white-on-white chips */
+article.post tt,
+article.post tt.docutils.literal,
+article.post span.docutils.literal,
+article.post .post-content tt,
+article.post .post-content tt.docutils.literal,
+article.post .post-content span.docutils.literal,
+article.post .post-content h1 tt,
+article.post .post-content h2 tt,
+article.post .post-content h3 tt,
+article.post .post-content h4 tt,
+article.post .post-content h5 tt,
+article.post .post-content h6 tt,
+article.post .post-content blockquote tt,
+article.post .post-content table tt,
+article.post .post-content td tt,
+article.post .post-content th tt {
+    color: #e8f4f1 !important;
+    -webkit-text-fill-color: #e8f4f1 !important;
+    background-color: #1a3340 !important;
+    background-image: none !important;
+    border: 1px solid #4a8a9a !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+article.post pre code,
+article.post pre tt,
+article.post .highlight code,
+article.post .highlight tt,
+article.post .post-content pre code,
+article.post .post-content pre tt,
+article.post .post-content .highlight code,
+article.post .post-content .highlight tt {
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+}
+
+/* Tables — cell text wraps; inline code/identifiers stay on one line */
+.post-content table td,
+.post-content table th,
+article.post .post-content table td,
+article.post .post-content table th {
+    vertical-align: top;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.post-content table td tt,
+.post-content table th tt,
+article.post .post-content table td tt,
+article.post .post-content table th tt {
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    display: inline !important;
+    font-size: 0.75em;
+    line-height: 1.4;
+    padding: 0.12em 0.3em;
+}
+
+article.post .post-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Article code blocks — copy on hover; size from normalize (pre { font-size: 0.45em }) */
+.post-content .highlight {
+    position: relative;
+    margin: 1.5em 0;
+    border-radius: 6px;
+    border: 1px solid #3a6a78;
+    background: #152530;
+}
+
+.post-content .highlight pre,
+.post-content pre.literal-block {
+    margin: 0;
+    overflow-x: auto;
+}
+
+article.post .post-content .highlight pre,
+article.post .post-content pre.literal-block {
+    font-size: 0.45em;
+    line-height: 1;
+    font-family: 'Inconsolata', monospace, sans-serif;
+}
+
+.post-content .code-block-wrap {
+    position: relative;
+    margin: 1.5em 0;
+}
+
+.post-content .code-block-wrap .highlight {
+    margin: 0;
+}
+
+.post-content .code-copy-btn {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.45rem;
+    z-index: 2;
+    padding: 0.35rem 0.65rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #c8e8f0;
+    background: rgba(12, 36, 48, 0.92);
+    border: 1px solid #4a8a9a;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.post-content .code-block-wrap:hover .code-copy-btn,
+.post-content .code-block-wrap:focus-within .code-copy-btn,
+.post-content .code-copy-btn:focus {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.post-content .code-copy-btn:hover {
+    color: #fff;
+    background: #2a5a6a;
+    border-color: #5bc4d8;
+}
+
+.post-content .code-copy-btn.copied {
+    color: #a8f0c8;
+    border-color: #5fbca2;
 }
 
 

@@ -33,8 +33,15 @@ pip install -r requirements.txt
 invoke build
 # Rebuild suite
 invoke rebuild
-# Serve locally
+# Serve locally (production SITEURL — CSS from GitHub Pages path)
 invoke serve
+```
+
+For theme/CSS work, use the Makefile with `developconf.py` (relative URLs, local `theme/css/`):
+
+```bash
+make devserver          # rebuild on change + http://localhost:8000
+make html               # one-shot production build
 ```
 
 ### GitHub Pages
