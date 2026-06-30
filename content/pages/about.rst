@@ -14,8 +14,6 @@ Roughly eighteen years across fintech, aerospace, media, enterprise SaaS, and ne
 
 .. image:: /assets/images/authors/wwakabobik.png
    :alt: Ilia Vereshchagin (wwakabobik)
-   :align: center
-   :width: 200px
 
 What I tend to work on
 ----------------------
