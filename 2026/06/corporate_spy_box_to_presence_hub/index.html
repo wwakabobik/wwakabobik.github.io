@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>From a Corporate Spy Box to Presence Hub</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://wwakabobik.github.io/2026/06/corporate_spy_box_to_presence_hub/" rel="canonical" />
+  <!-- Feed -->
+        <link href="https://wwakabobik.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Full Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Full RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair RSS Feed" />
+          <link href="https://wwakabobik.github.io/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="wwakabobik's lair Categories Atom Feed" />
+          <link href="https://wwakabobik.github.io/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="wwakabobik's lair Categories RSS Feed" />
+
+  <link href="https://wwakabobik.github.io/theme/css/style.css?v=20260701h" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="A corporate mmWave desk tracker arrived as a «gift» — wrong clocks, presence gaps, power-strip lectures, and an API naked to curl....">
+
+    <meta name="author" content="wwakabobik">
+
+    <meta name="tags" content="iot">
+    <meta name="tags" content="privacy">
+    <meta name="tags" content="security">
+    <meta name="tags" content="ethics">
+    <meta name="tags" content="burnout">
+    <meta name="tags" content="macos">
+    <meta name="tags" content="automation">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="wwakabobik's lair"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="From a Corporate Spy Box to Presence Hub"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="A corporate mmWave desk tracker arrived as a «gift» — wrong clocks, presence gaps, power-strip lectures, and an API naked to curl...."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://wwakabobik.github.io/2026/06/corporate_spy_box_to_presence_hub/"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2026-06-30 18:00:00+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content="2026-06-30 22:58:06.774439+02:00"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://wwakabobik.github.io/author/wwakabobik/">
+  <meta prefix="og: http://ogp.me/ns#" property="article:publisher" content="https://www.facebook.com/wwakabobik" />
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="python"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="iot"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="privacy"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="security"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="ethics"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="burnout"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="macos"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="automation"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://wwakabobik.github.io/assets/images/bg/qa.png">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "From a Corporate Spy Box to Presence Hub",
+  "headline": "From a Corporate Spy Box to Presence Hub",
+  "datePublished": "2026-06-30 18:00:00+02:00",
+  "dateModified": "2026-06-30 22:58:06.774439+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "wwakabobik",
+    "url": "https://wwakabobik.github.io/author/wwakabobik/"
+  },
+  "image": "https://wwakabobik.github.io/assets/images/bg/qa.png",
+  "url": "https://wwakabobik.github.io/2026/06/corporate_spy_box_to_presence_hub/",
+  "description": "A corporate mmWave desk tracker arrived as a «gift» — wrong clocks, presence gaps, power-strip lectures, and an API naked to curl...."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/tag/index.html" role="presentation">Tags</a></li>
+          <li><a href="/category/index.html" role="presentation">Categories</a></li>
+          <li><a href="/archive/index.html" role="presentation">Archives</a></li>
+
+              <li role="presentation"><a href="https://wwakabobik.github.io/pages/about/">About</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://wwakabobik.github.io/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">From a Corporate Spy Box to Presence Hub</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a>
+            | <time datetime="30 Jun 2026">30 Jun 2026</time>
+        </span>
+            <div class="post-cover cover" style="background-image: url('https://wwakabobik.github.io/assets/images/bg/qa.png')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <blockquote class="pull-quote">
+This article describes security and privacy failures in a third-party corporate wellness gadget. Names and domains are fictionalized. The open replacement is <a class="reference external" href="https://github.com/wwakabobik/esp32_radar_tracker">Presence Hub on GitHub</a>.*</blockquote>
+<blockquote class="epigraph">
+<p>«It's not a bug — it's a feature.»
+— Corporate release notes, every vendor, every quarter.</p>
+<p>«Liberty means responsibility. That is why most men dread it.»
+— George Bernard Shaw</p>
+</blockquote>
+<div class="section" id="tl-dr">
+<h2>TL;DR</h2>
+<p>A corporate «wellness» mmWave tracker landed on my desk. It phoned home to an open API, ranked me on a fleet table, and asked for a spare power outlet. I dumped the flash, walked away from the cloud, and rebuilt the hardware as <strong>Presence Hub</strong> — local MQTT, SQLite, honest radar physics, on-device TinyML.</p>
+<p>The question underneath everything else:</p>
+<p><strong>Who owns the device sitting on my desk — me, or someone else's dashboard?</strong></p>
+<p><em>Full forensic detail, MQTT cookbook, and firmware depth below.</em> Skim the narrative through <a class="reference internal" href="#part-3-enough-proof">Part 3 — Enough Proof</a>; jump to <a class="reference internal" href="#part-4-presence-hub">Part 4 — Presence Hub</a> for the rebuild.</p>
+<div class="section" id="jump-to">
+<h3>Jump to</h3>
+<div class="toc docutils container">
+<ul class="simple">
+<li><a class="reference internal" href="#prologue">Prologue</a></li>
+<li><a class="reference internal" href="#part-0-5-power-strip-lecture">Part 0.5 — Power Strip Lecture</a></li>
+<li><a class="reference internal" href="#part-1-threat-model">Part 1 — Threat Model</a></li>
+<li><a class="reference internal" href="#part-2-forensic-specimen">Part 2 — Forensic Specimen</a></li>
+<li><a class="reference internal" href="#part-3-enough-proof">Part 3 — Enough Proof</a></li>
+<li><a class="reference internal" href="#part-4-presence-hub">Part 4 — Presence Hub</a></li>
+<li><a class="reference internal" href="#part-5-udp-discovery">Part 5 — UDP Discovery</a></li>
+<li><a class="reference internal" href="#part-6-gpio-archaeology">Part 6 — GPIO Archaeology</a></li>
+<li><a class="reference internal" href="#part-7-mac-daemon">Part 7 — Mac Daemon</a></li>
+<li><a class="reference internal" href="#part-8-firmware">Part 8 — Firmware</a></li>
+<li><a class="reference internal" href="#part-9-radar-101">Part 9 — Radar 101</a></li>
+<li><a class="reference internal" href="#part-10-gestures">Part 10 — Gestures</a></li>
+<li><a class="reference internal" href="#part-11-tinyml">Part 11 — TinyML</a></li>
+<li><a class="reference internal" href="#part-12-evolution">Part 12 — Evolution</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li><a class="reference internal" href="#epilogue">Epilogue</a></li>
+<li><a class="reference internal" href="#appendix-a-mqtt">Appendix A — MQTT</a></li>
+<li><a class="reference internal" href="#appendix-b-debug">Appendix B — Debug</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="prologue-the-package-arrives-norton-commander-for-the-soul">
+<span id="prologue"></span><h2>Prologue: The Package Arrives (Norton Commander for the Soul)</h2>
+<p>In the corporate wellness industry there is a razor-thin line between <em>caring for an employee</em> and full-blown Orwellian surveillance. Sometimes that line is not crossed — it is run over by a tank painted «ergonomic beige» and marketed as an <em>attention antivirus</em>.</p>
+<p>It started innocently. A friendly direct message on a spring afternoon:</p>
+<p><em>«Hi, please send me your mailing address — I want to send you a small package.»</em></p>
+<div class="figure align-center">
+<img alt="Telegram DM — «send me your mailing address, I want to send you a small parcel»" src="/assets/images/articles/iot/presence_hub/telegram_gift_dm.png" style="width: 520px;" />
+<p class="caption">Where the story starts — a spring DM, anonymized. <em>Small parcel</em> is corporate for <em>prototype surveillance with layer lines</em>.</p>
+</div>
+<p>The post office experience was already a metaphor. The courier apparently could not be bothered to walk to the door or leave a slip; the parcel sat at the depot until I collected it myself.</p>
+<div class="figure align-center">
+<img alt="USPS tracking — Delivered, Serbia" src="/assets/images/articles/iot/presence_hub/usps_delivered.png" style="width: 640px;" />
+<p class="caption"><em>Delivered, SERBIA</em> — the corporate wellness prototype clears customs faster than their GDPR story.</p>
+</div>
+<div class="figure align-center">
+<img alt="FDM print close-up — layer lines, diagonal seam, four screws holding the faceplate" src="/assets/images/articles/iot/presence_hub/device_fdm_closeup.png" style="width: 380px;" />
+<p class="caption">Layer lines, diagonal seam, four screws — industrial design tax still zero.</p>
+</div>
+<p>Plug it in. First-run wizard on the OLED: <strong>Wi-Fi SSID</strong>, <strong>Wi-Fi password</strong>, pick a <strong>timezone</strong> (I chose <tt class="docutils literal">Europe/Belgrade</tt> — sensible for Serbia, wrong city label on their dashboard later). That was the whole onboarding. No manual. No «here is your employer dashboard». No explanation of what the numbers on the screen meant.</p>
+<p>The gadget just <strong>sat there</strong>: cryptic counters, mode toggles I did not ask for, a <strong>clock that lied</strong> — wrong wall time, daylight saving ignored. I am an <strong>engineer</strong> shipping AI test infrastructure and real deliverables, not a desk-toy babysitter. It collected dust while I worked.</p>
+<p>Then the question arrived, quietly and insistently: <em>what is it sending, and to whom?</em> I did <strong>not</strong> start with a screwdriver. I started on the <strong>network</strong> — same LAN, watch the wire, save pcaps, replay with scripts. Only after traffic proved the story did I crack the enclosure and plug in <strong>USB</strong>. The forensic timeline is <a class="reference internal" href="#part-2-forensic-specimen">Part 2 — Forensic Specimen</a>.</p>
+<p>The corporate pitch on their product website — when I finally read it — sounded almost empathetic:</p>
+<ul class="simple">
+<li>Monitor your deep-work blocks.</li>
+<li>Receive healthy break reminders.</li>
+<li>Rest assured: <strong>no cameras, no microphones</strong> — just a tiny, harmless radio-wave sensor that uses radio waves to understand who is sitting in front of it.</li>
+</ul>
+<div class="figure align-center">
+<img alt="Vendor landing — «Work measured by hardware. Performance built on truth.»" src="/assets/images/articles/iot/presence_hub/vendor_landing.png" style="width: 640px;" />
+<p class="caption"><em>Performance built on truth.</em> <em>Healthier teams.</em> Hardware included — anxiety sold separately.</p>
+</div>
+<p><em>Performance built on truth</em> — if «truth» is an open API, a MAC address, and a fleet table that ranks your bladder breaks. <em>Healthier teams</em> — like a gym that bills you for steps to the toilet and calls it ergonomics. They had the copy; I had Wireshark. Guess which one lied less.</p>
+<p>Reality disagreed — once I could see <strong>their</strong> dashboard and cross-check the wire:</p>
+<ul class="simple">
+<li>I had set timezone on the device. The OLED clock was still <strong>wrong</strong>. Their admin UI agreed the unit was confused — and still phoned home with HTTP 200.</li>
+<li>Activity logs showed a <strong>curious gap from 17:00 to 18:00</strong> — precisely when I was at my desk, quietly and intensely coding. Not pacing. Not vibing. <em>Working.</em></li>
+</ul>
+<div class="figure align-center">
+<img alt="Employer dashboard — presence gap 17:00–18:00 while logged time continues" src="/assets/images/articles/iot/presence_hub/dashboard_presence_gap.png" style="width: 700px;" />
+<p class="caption"><em>Logged vs Presence Timeline</em>: device online, manual log through 20:00 — but motion «presence» vanishes for most of the 17:00 hour while I was coding.</p>
+</div>
+<ul class="simple">
+<li>The gadget did not track <em>focus</em>. It tracked coarse motion and noise, then uploaded the interpretation to <strong>their</strong> cloud.</li>
+</ul>
+<p>They wrote back: <em>great feedback, this is a new prototype we plan to sell, testing phase, just leave it on your desk collecting data, left button resets time, five presses hard-resets, right button switches display modes, we'll fix timezone on the dashboard soon, try hard-reset and set timezone to Berlin on the device.</em></p>
+<p>Sure. I'll get right on that — right after I finish the UI test suite for Xavier and the auto-AI crash-analysis agents that actually help my job, not a leaderboard of bladder breaks.</p>
+</div>
+<div class="section" id="part-0-5-the-power-strip-lecture-survival-vs-wellness">
+<span id="part-0-5-power-strip-lecture"></span><h2>Part 0.5: The Power Strip Lecture — Survival vs. «Wellness»</h2>
+<p>A week later:</p>
+<div class="figure align-center">
+<img alt="Telegram — power-strip lecture vs. «I'll flash my own firmware»" src="/assets/images/articles/iot/presence_hub/telegram_power_strip.png" style="width: 480px;" />
+<p class="caption">The corporate reply: plug it into a power strip. My reply: California sockets or my own firmware.</p>
+</div>
+<p><em>«Hi — your tracker wasn't online yesterday or today. Any trouble with it?»</em></p>
+<p><em>«All good, we're working. Raised UI tests this week, building auto-AI failure analysis so agents fix flaky tests themselves. The tracker — yeah, it's off. It eats a power socket. I have one outlet for the laptop, one for the desk lamp. Where do I plug your toy? And why should I? On the weekend I'll probably flash something useful — gesture media control, a health nudge that reminds me to stretch, **my*</em> firmware.»*</p>
+<p>The reply was patient, corporate, and completely deaf:</p>
+<p><em>«You need to plug it in so it collects data. Then we can test whether it understands you correctly — healthy break reminders are already there. Plug it into a power strip or USB, leave it running, watch realtime on the dashboard.»</em></p>
+<p>I answered the only way that felt honest:</p>
+<p><em>«Fine — as soon as I rent a house in California with a spare outlet and a power strip. Until then, no.»</em></p>
+<p><em>«I believe in you — I'm sure they sell power strips in Serbia too :)»</em></p>
+<p>And there it was. The full insult compressed into one emoji.</p>
+<p><strong>What actually helps a remote engineer be productive</strong> is not a mmWave snitch on a stick. It is modern hardware (neural accelerators help). A comfortable workspace — home or coworking — that a <em>remote-first company</em> could fund instead of surveillance cosplay. Above all: income that does not force you to calculate whether you can afford a <strong>€3 power strip</strong> to feed someone else's data pipeline while you're buying second-hand trousers for your kid and rotten discount food to survive the month.</p>
+<p><em>«But without violating personal boundaries»</em> — should I strap it to a dog's collar? This thing literally logs how many times I walked away to pee. <strong>Work is measured in deliverables</strong>, not chair time. Respect is not <em>«no money but hold on»</em> plus a mandatory desk pet.</p>
+<p><em>«Privacy is preserved»</em> — especially when data flows freely to anyone on the internet with zero authentication. That is not privacy. That is negligence wearing a yoga mat.</p>
+<blockquote class="pull-quote">
+<strong>Why I did not «just say no» on day one</strong> — Refusing a «gift» tracker is not friction-free. Remote work already means proving you exist. A prototype phase sounds reasonable: <em>we're testing, leave it on the desk</em>. Saying no reads as not-a-team-player — especially mid-sprint on real deliverables. I gave polite feedback first. I unplugged when the power-strip lecture arrived.</blockquote>
+<p>I work from <strong>Novi Sad</strong> — Serbia, not an EU member, but with an <strong>EU adequacy decision since 2023</strong> and a <strong>ZZPL</strong> that tracks GDPR closely. I am not a random hobbyist flashing boards for sport: I am an <strong>engineer</strong> under a privacy framework that <em>should</em> have protected my home office. It did not — because the vendor stack ignored Art. 32 before I ever opened esptool.</p>
+<blockquote class="pull-quote">
+<strong>Vendor Medium vs measured</strong> — <em>Claimed:</em> edge AI saves workers. <em>Measured:</em> <tt class="docutils literal">Radar fail</tt> + HTTP 200. <em>Claimed:</em> privacy-first. <em>Measured:</em> open API, MAC-as-ID, public fleet table.</blockquote>
+<p>This is the thread some of us still call <strong>«a dialogue about losing meaning and footing.»</strong> Under the sympathetic pitch: my body as radar samples, focus scores in an admin UI that labeled the unit <em>Living Room SPT</em> while it sat in <strong>my</strong> home office.</p>
+<p>Months later the same silicon starred in a vendor Medium story about «AI on a chip saving workers.» I had already lived the other side — flash dumps, serial logs, fleet tables.</p>
+<p>That anger was not abstract. I was being watched without meaningful consent.</p>
+<p>So I stopped being a passive <strong>user</strong> and became a <strong>forensic investigator</strong> — engineer habits, not sysadmin cosplay. Network first, flash second: read the EEPROM like it's 1995 — boot <tt class="docutils literal">Norton Commander</tt> on the family 386, hit <strong>TURBO</strong>, copy the game to <tt class="docutils literal">RAMDISK</tt>, trust the floppy only after — then rebuild firmware that answers to <strong>me</strong>. Back then the monster under the bed was <tt class="docutils literal">COMMAND.COM</tt>; in 2026 it sits on the desk and asks for a USB port.</p>
+<div class="figure align-center">
+<img alt="Vendor pricing — SPT module, fleet table, location history on higher tiers" src="/assets/images/articles/iot/presence_hub/vendor_pricing.png" style="width: 640px;" />
+<p class="caption">The product sheet: live monitor, team view, location history — wellness as a subscription tier.</p>
+</div>
+</div>
+<div class="section" id="part-1-threat-model-law-borders-and-whose-desk-is-this">
+<span id="part-1-threat-model"></span><h2>Part 1: Threat Model — Law, Borders, and Whose Desk Is This?</h2>
+<p>Before I touch esptool, the legal and moral premise was rotten. (GDPR/ZZPL detail: <a class="reference internal" href="#part-0-5-power-strip-lecture">Part 0.5 — Power Strip Lecture</a>.)</p>
+<p>The gadget micro-managed <strong>physical presence</strong> — seat-time, not deliverables.</p>
+<p>In short: <strong>no lawful basis, no security, no erasure</strong> — complaint-ready under <strong>Poverenik</strong> or any EU DPA. The legal thread and the corporate reply are in <a class="reference internal" href="#part-0-5-power-strip-lecture">Part 0.5 — Power Strip Lecture</a>.</p>
+</div>
+<div class="section" id="part-2-forensic-specimen-reading-the-flash-like-it-s-1995">
+<span id="part-2-forensic-specimen"></span><h2>Part 2: Forensic Specimen — Reading the Flash Like It's 1995</h2>
+<p><em>Technical deep dive from here through</em> <a class="reference internal" href="#part-11-tinyml">Part 11 — TinyML</a> <em>— narrative resumes in the Conclusion.</em></p>
+<p><strong>Order of battle:</strong> LAN traffic and HTTP replay <strong>before</strong> opening the case. USB and flash come after the network tells you where to look.</p>
+<p>Step zero on the bench: <strong>do not brick the evidence</strong>. In the 90s you copied <tt class="docutils literal">AUTOEXEC.BAT</tt> to a floppy before running the thing that might delete <tt class="docutils literal">C:\</tt>. Same ritual: <strong>full flash dump before experiments</strong>. Stock firmware is ground truth when marketing lies.</p>
+<p><strong>Technical timeline</strong> (that summer, stock firmware <strong>v1.0.7</strong>, admin name <em>Living Room SPT</em>):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="16%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">#</th>
+<th class="head">Step</th>
+<th class="head">Tool / outcome</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>Network</td>
+<td><tt class="docutils literal">capture_traffic.sh</tt> / tshark → HTTPS to vendor API host</td>
+</tr>
+<tr><td>2</td>
+<td>HTTP replay</td>
+<td><tt class="docutils literal">curl</tt> + OpenAPI → no auth on track endpoints</td>
+</tr>
+<tr><td>3</td>
+<td>USB ID</td>
+<td>Open enclosure; <tt class="docutils literal">detect_device.sh</tt> → CP2102, ESP32-D0WD-V3</td>
+</tr>
+<tr><td>4</td>
+<td>Preserve flash</td>
+<td><tt class="docutils literal">dump_firmware.sh</tt> → 4 MB <tt class="docutils literal">.bin</tt> + partition table</td>
+</tr>
+<tr><td>5</td>
+<td>Strings</td>
+<td><tt class="docutils literal">strings</tt> → API paths, <strong>plaintext Wi-Fi credentials in NVS</strong></td>
+</tr>
+<tr><td>6</td>
+<td>Serial</td>
+<td><tt class="docutils literal">monitor_serial.sh</tt> → <tt class="docutils literal">Radar fail</tt> + HTTP 200</td>
+</tr>
+<tr><td>7</td>
+<td>GPIO</td>
+<td>Boot pin map; later GPIO probe → buttons 18/5</td>
+</tr>
+</tbody>
+</table>
+<p>Hardware baseline (boring — scandal was never the silicon):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="15%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Component</th>
+<th class="head">Interface</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>ESP32-D0WD-V3</td>
+<td>USB-UART (CP2102)</td>
+<td>Dual-core, Wi-Fi/BT</td>
+</tr>
+<tr><td>HLK-LD2410C</td>
+<td>UART</td>
+<td>24 GHz mmWave presence radar</td>
+</tr>
+<tr><td>SSD1306 OLED</td>
+<td>I2C &#64; 0x3C</td>
+<td>128×64</td>
+</tr>
+<tr><td>2× tactile buttons</td>
+<td>GPIO</td>
+<td>Active LOW (discovered later — PCB had no silkscreen)</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="network-capture-capture-traffic-sh">
+<h3>Network capture — <tt class="docutils literal">capture_traffic.sh</tt></h3>
+<p><em>This is where I started — before opening the case.</em></p>
+<p>Multi-mode: <tt class="docutils literal">interfaces</tt> | <tt class="docutils literal">raw</tt> (pcap) | <tt class="docutils literal">live</tt> | <tt class="docutils literal">mitm</tt> | <tt class="docutils literal">mitmdump</tt> | <tt class="docutils literal">analyze</tt>.</p>
+<p>Live decode:</p>
+<div class="highlight"><pre><span></span><span class="c1"># scripts/service/capture_traffic.sh live en0 &#39;host api.vendor.example&#39;</span>
+tshark<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$IFACE</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FILTER</span><span class="s2">&quot;</span><span class="w"> </span>-V<span class="w"> </span>-l<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span>--line-buffered<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;HTTP|Host:|GET |POST |Authorization|TLS|DNS|MQTT&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</pre></div>
+<p>Analyze saved pcap — HTTP URIs, DNS, TLS SNI, MQTT topics:</p>
+<div class="highlight"><pre><span></span>tshark<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FILE</span><span class="s2">&quot;</span><span class="w"> </span>-Y<span class="w"> </span><span class="s2">&quot;http.request&quot;</span><span class="w"> </span>-T<span class="w"> </span>fields<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span>ip.src<span class="w"> </span>-e<span class="w"> </span>http.host<span class="w"> </span>-e<span class="w"> </span>http.request.uri<span class="w"> </span>-e<span class="w"> </span>http.authorization
+</pre></div>
+<p><tt class="docutils literal">mitmdump</tt> uses <tt class="docutils literal">mitm_addon.py</tt> — pretty JSON + highlight auth/MAC fields:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">flow</span><span class="p">:</span> <span class="n">http</span><span class="o">.</span><span class="n">HTTPFlow</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&gt;&gt;&gt; </span><span class="si">{</span><span class="n">flow</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">flow</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">pretty_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;replace&quot;</span><span class="p">)</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>  <span class="c1"># when JSON</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">parsed</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+<p>Stock telemetry was bare JSON over HTTPS — but <strong>without meaningful client authentication</strong>:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mac_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XX:XX:XX:XX:XX:XX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;s_energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;s_dist&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;m_energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;m_dist&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;presence_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+<p>Identity was the hardware MAC string — spoofable, guessable, not authentication. (Shapes in <strong>Evidence pack</strong> below.)</p>
+</div>
+<div class="section" id="detect-and-identify-detect-device-sh">
+<h3>Detect and identify — <tt class="docutils literal">detect_device.sh</tt></h3>
+<p><em>Only after the wire told me enough — four screws out, faceplate off, USB in.</em></p>
+<p>Inside: a prototype desk gadget — rough FDM 3D-printed enclosure with <strong>zero post-processing</strong> (no dichloroethane smoothing, no shame, no industrial design), a 128×64 OLED, two tactile buttons, and a 24 GHz millimetric-wave radar module.</p>
+<div class="figure align-center">
+<img alt="Faceplate lifted off — OLED cutout, two buttons, FDM layer lines in daylight" src="/assets/images/articles/iot/presence_hub/hardware_enclosure.jpg" style="width: 420px;" />
+<p class="caption">Four screws out — faceplate in hand, hollow box underneath. FDM honesty, no industrial design tax.</p>
+</div>
+<div class="figure align-center">
+<img alt="ESP32 + mmWave radar stack — bare board, stock firmware still on flash" src="/assets/images/articles/iot/presence_hub/hardware_internals.jpg" style="width: 420px;" />
+<p class="caption">ESP32-D0WD, LD2410-class radar, corporate firmware still intact — bench photo from step 3 in the timeline above.</p>
+</div>
+<p>Finds the first USB serial port (CP2102, CH340, FTDI, …), runs esptool:</p>
+<div class="highlight"><pre><span></span><span class="c1"># scripts/service/detect_device.sh</span>
+find_port<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">ports</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>/dev/cu.*<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;usb|uart|ch34|cp21|ftdi|wchusb&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span><span class="k">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ports</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<span class="o">}</span>
+<span class="nv">PORT</span><span class="o">=</span><span class="k">$(</span>find_port<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Detected port: </span><span class="nv">$PORT</span><span class="s2">&quot;</span>
+<span class="s2">&quot;</span><span class="nv">$ESPTOOL</span><span class="s2">&quot;</span><span class="w"> </span>--port<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PORT</span><span class="s2">&quot;</span><span class="w"> </span>chip_id
+<span class="s2">&quot;</span><span class="nv">$ESPTOOL</span><span class="s2">&quot;</span><span class="w"> </span>--port<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PORT</span><span class="s2">&quot;</span><span class="w"> </span>flash_id
+</pre></div>
+<p>Typical output: <tt class="docutils literal"><span class="pre">ESP32-D0WD-V3</span></tt>, <tt class="docutils literal">Detected flash size: 4MB</tt>.</p>
+</div>
+<div class="section" id="full-flash-dump-dump-firmware-sh">
+<h3>Full flash dump — <tt class="docutils literal">dump_firmware.sh</tt></h3>
+<p>Reads flash at <strong>921600 baud</strong>, saves <tt class="docutils literal">dumps/firmware_YYYYMMDD_HHMMSS.bin</tt>, dumps partition table, parses entries:</p>
+<div class="highlight"><pre><span></span><span class="nv">FLASH_SIZE</span><span class="o">=</span><span class="k">$(</span>esptool<span class="w"> </span>flash_id<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oE<span class="w"> </span><span class="s2">&quot;[0-9]+MB&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FLASH_SIZE</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>4MB<span class="o">)</span><span class="w"> </span><span class="nv">SIZE_HEX</span><span class="o">=</span><span class="s2">&quot;0x400000&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="k">esac</span>
+
+esptool<span class="w"> </span>--port<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PORT</span><span class="s2">&quot;</span><span class="w"> </span>--baud<span class="w"> </span><span class="m">921600</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>read_flash<span class="w"> </span>0x00000<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SIZE_HEX</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DUMP_FILE</span><span class="s2">&quot;</span>
+
+esptool<span class="w"> </span>--port<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PORT</span><span class="s2">&quot;</span><span class="w"> </span>read_flash<span class="w"> </span>0x8000<span class="w"> </span>0xC00<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PART_FILE</span><span class="s2">&quot;</span>
+
+<span class="c1"># Embedded Python walks 32-byte partition entries (magic 0xAA 0x50)</span>
+<span class="c1"># Prints: Name, Type, Offset, Size → nvs, otadata, app0, spiffs, ...</span>
+</pre></div>
+<p>Restore stock firmware (for researchers): <tt class="docutils literal">esptool write_flash 0x0 <span class="pre">dumps/firmware_*.bin</span></tt></p>
+<div class="figure align-center">
+<img alt="Illustrative terminal — esptool partition table from stock flash dump" src="/assets/images/articles/iot/presence_hub/terminal_partition_table.png" style="width: 720px;" />
+<p class="caption">Illustrative <tt class="docutils literal">dump_firmware.sh</tt> output — typical ESP32 OTA layout (<tt class="docutils literal">nvs</tt>, <tt class="docutils literal">app0</tt>/<tt class="docutils literal">app1</tt>, <tt class="docutils literal">spiffs</tt>).</p>
+</div>
+</div>
+<div class="section" id="strings-archaeology">
+<h3>Strings archaeology</h3>
+<div class="highlight"><pre><span></span>strings<span class="w"> </span>dumps/firmware_*.bin<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">&#39;api\.|http|/v1/|Authorization|wifi|ssid&#39;</span>
+</pre></div>
+<p>Yielded API paths, auth header placeholders, <strong>plaintext Wi-Fi SSIDs in NVS</strong>. Convenient storage ≠ secrets vault.</p>
+</div>
+<div class="section" id="live-serial-monitor-monitor-serial-sh">
+<h3>Live serial monitor — <tt class="docutils literal">monitor_serial.sh</tt></h3>
+<p>Colorized Python harness — logs to <tt class="docutils literal"><span class="pre">logs/serial_*.log</span></tt>, highlights <tt class="docutils literal">fail</tt> in red, HTTP/MQTT in cyan, Wi-Fi secrets in green:</p>
+<div class="highlight"><pre><span></span><span class="c1"># scripts/service/monitor_serial.sh (embedded Python)</span>
+<span class="k">def</span> <span class="nf">colorize</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="n">lower</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">lower</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;fail&quot;</span><span class="p">,</span> <span class="s2">&quot;fault&quot;</span><span class="p">,</span> <span class="s2">&quot;panic&quot;</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">RED</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="n">RESET</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">lower</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;http&quot;</span><span class="p">,</span> <span class="s2">&quot;mqtt&quot;</span><span class="p">,</span> <span class="s2">&quot;connect&quot;</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">CYAN</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="n">RESET</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">lower</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;wifi&quot;</span><span class="p">,</span> <span class="s2">&quot;ssid&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">GREEN</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="n">RESET</span>
+    <span class="k">return</span> <span class="n">line</span>
+</pre></div>
+<p>Stock boot (representative):</p>
+<div class="highlight"><pre><span></span>WiFi connected: &lt;SSID&gt;
+Firmware v1.0.7
+Device name: Living Room SPT
+Radar fail
+HTTP POST 200
+</pre></div>
+<p><strong>Radar fail + HTTP 200</strong> — dashboard «presence» while sensor blind. Presence Hub logs honestly.</p>
+<div class="figure align-center">
+<img alt="Illustrative colorized serial monitor — Radar fail then HTTP 200" src="/assets/images/articles/iot/presence_hub/terminal_serial_boot.png" style="width: 720px;" />
+<p class="caption">Illustrative <tt class="docutils literal">monitor_serial.sh</tt> session — <strong>Radar fail</strong> and <strong>HTTP 200</strong> on the same boot (fictional SSID/MAC).</p>
+</div>
+</div>
+<div class="section" id="api-autopsy-when-curl-returns-200">
+<h3>API autopsy — when <tt class="docutils literal">curl</tt> returns 200</h3>
+<p>First shock: not hacking — <strong>curl returning 200</strong>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Finding</th>
+<th class="head">Impact</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">POST /v1/track</tt> without auth</td>
+<td>Write presence for <strong>any</strong> MAC from the internet</td>
+</tr>
+<tr><td>OpenAPI at <tt class="docutils literal">/openapi.json</tt></td>
+<td>Full schema published</td>
+</tr>
+<tr><td><tt class="docutils literal">GET /v1/leaderboard</tt></td>
+<td>Fleet nicknames — <em>Office SPT</em>, <em>Main Desk</em>, …</td>
+</tr>
+<tr><td>Per-MAC history</td>
+<td>Desk patterns if you guess MAC</td>
+</tr>
+<tr><td>OTA on public S3</td>
+<td>Firmware bucket visible</td>
+</tr>
+</tbody>
+</table>
+<p>The open <tt class="docutils literal">GET /v1/leaderboard</tt> response listed my nickname at rank <strong>#2</strong> in the fleet. Wellness washing as gamified surveillance.</p>
+<p>Employer dashboard (separate stack — API Gateway + Cognito SSO):</p>
+<div class="highlight"><pre><span></span>ESP32 ──► vendor device API (telemetry, wide open)
+              ▼
+        HR dashboard («live monitor», «Belgrade» — from ``Europe/Belgrade`` TZ, not GPS)
+              ▲
+Employee browser ──► API Gateway + JWT
+</pre></div>
+<p><strong>Timezone-as-GPS:</strong> no satellite — timezone string from NVS rendered as city. I live in <strong>Novi Sad</strong>; the device only had <tt class="docutils literal">Europe/Belgrade</tt> in NVS. On <strong>my own</strong> unit I changed the timezone to <tt class="docutils literal">Asia/Pyongyang</tt>; the dashboard obediently showed <em>Pyongyang Office</em> — proof the «location» was configuration theatre, not telemetry.</p>
+<p><strong>Walking the holes:</strong> The OpenAPI is not decoration — it is a map. <strong>Public fleet table</strong> — nicknames and ranked seat-time for desks that are not yours. <strong>IDOR on employee IDs</strong> — increment <tt class="docutils literal"><span class="pre">/employee/{id}</span></tt> and receive display names, tracker MACs, timezone strings; no hardware guessing, no stolen browser session. <strong>MAC-bound history</strong> — any address copied from the fleet table opens <tt class="docutils literal"><span class="pre">/v1/tracker/{mac}/history</span></tt>. <strong>Unauthenticated write path</strong> — <tt class="docutils literal">POST /v1/track</tt> accepts payloads for MACs you never paired. Ordinary HTTP tools against the same endpoints the devices use — not a secret exploit chain, not malware. That is the scandal: a product <strong>sold to enterprises</strong> under «privacy», «security», and «personal boundaries» — wellness copy on the landing page — backed by a telemetry sink that treats <strong>any internet client as trusted</strong>. For a home-office worker under EU-adequacy law, that is not a Tuesday patch; it is <strong>security theatre with your kitchen in frame</strong>.</p>
+<p>The employer dashboard (API Gateway, Cognito SSO, JWT in the browser) is a <strong>second failure mode</strong> on the same product story: HR «live monitor» marketed as the controlled, consent-aware surface — while the device API already published the fleet and accepted forged MACs. Garnish on an open buffet.</p>
+</div>
+<div class="section" id="appendix-evidence-pack-redacted">
+<h3>Appendix — Evidence pack (redacted)</h3>
+<p>Representative shapes only — hosts and names removed.</p>
+<p><strong>OpenAPI fragment</strong> (public <tt class="docutils literal">/openapi.json</tt>):</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;/v1/track&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;post&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;security&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;/v1/tracker&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;post&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;security&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;/v1/leaderboard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;security&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;/v1/tracker/{mac}/history&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p><strong>Stock POST body</strong> (device → cloud):</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mac_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XX:XX:XX:XX:XX:XX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;s_energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;s_dist&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;m_energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;m_dist&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;presence_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+<p><strong>Response:</strong> <tt class="docutils literal">HTTP/1.1 200 OK</tt> — no <tt class="docutils literal">Authorization</tt> header required.</p>
+<p><strong>Leaderboard row</strong> (redacted nicknames):</p>
+<div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;rank&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nickname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Office ***&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;presence_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">412</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;rank&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nickname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Living ***&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;presence_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">287</span><span class="w"> </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+<p><strong>IDOR employee record</strong> (increment <tt class="docutils literal">id</tt> — fields only):</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[REDACTED]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tracker_mac&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XX:XX:XX:XX:XX:XX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timezone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Europe/Belgrade&quot;</span>
+<span class="p">}</span>
+</pre></div>
+<div class="figure align-center">
+<img alt="ESP32 on the bench — USB to laptop, enclosure shell beside the board" src="/assets/images/articles/iot/presence_hub/hardware_dev_setup.jpg" style="width: 640px;" />
+<p class="caption">Forensics bench: stock firmware out, esptool in, 3D-printed shell optional.</p>
+</div>
+</div>
+</div>
+<div class="section" id="part-3-enough-proof-then-i-left">
+<span id="part-3-enough-proof"></span><h2>Part 3: Enough Proof — Then I Left</h2>
+<p>I walked other people's records through the holes above — fleet nicknames, employee rows, MAC histories — enough to see the system could not tell my home office from a lab bench. Proving the write path on <strong>my</strong> MAC alone was sufficient for the thesis; I did not vandalise anyone else's telemetry. Fake timezone, junk telemetry, HTTP 200. Same JSON schema, no <tt class="docutils literal">Authorization</tt> header. If the backend cannot tell garbage from a keyboard, it cannot tell an attacker from a colleague.</p>
+<p><strong>What I ship publicly is Presence Hub</strong> — the replacement, not an attack kit.</p>
+<p>Then I <strong>severed my device from their cloud</strong>, wiped the flash, and built firmware that answers only to my LAN.</p>
+</div>
+<div class="section" id="part-4-presence-hub-liberation-architecture">
+<span id="part-4-presence-hub"></span><h2>Part 4: Presence Hub — Liberation Architecture</h2>
+<p><strong>Ownership thesis in one line:</strong> the ESP32 on my desk runs <strong>my</strong> firmware, talks to <strong>my</strong> Mac, stores <strong>my</strong> logs. No fleet table. No employer view.</p>
+<p>I wiped flash and wrote <strong>Presence Hub</strong>: ESP32 firmware (PlatformIO) + Python asyncio daemon on macOS. <strong>Zero vendor API. Zero employer dashboard.</strong> My LAN, my SQLite, my rules.</p>
+<div class="figure align-center">
+<img alt="Presence Hub on a desk — OLED clock, retro faceplate, USB power" src="/assets/images/articles/iot/presence_hub/device_real_world.png" style="width: 380px;" />
+<p class="caption">Same crooked enclosure — different firmware. Clock and mode badge from the Mac daemon, not the vendor cloud.</p>
+</div>
+<div class="figure align-center">
+<img alt="Presence Hub hardware — ESP32 stack with radar module" src="/assets/images/articles/iot/presence_hub/hardware_esp32_stack.jpg" style="width: 480px;" />
+<p class="caption">Same silicon. Different owner. GPIO map mine, MQTT topic mine.</p>
+</div>
+<p>Principles I carried from the anger:</p>
+<ul class="simple">
+<li><strong>Local-first</strong> — Mac is optional infrastructure, not a surveillance landlord</li>
+<li><strong>Offline honesty</strong> — LittleFS event log; no fake sync when hub sleeps</li>
+<li><strong>Physics over marketing</strong> — one radar axis; sleep charts say «estimate»</li>
+<li><strong>Documented fallback</strong> — heuristics before you train; weights in repo</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Vector</th>
+<th class="head">Stock stack</th>
+<th class="head">Presence Hub</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Telemetry</td>
+<td>Vendor cloud API</td>
+<td><strong>MQTT on Mac</strong> (<tt class="docutils literal">hub/*</tt>)</td>
+</tr>
+<tr><td>Dashboard</td>
+<td>Employer leaderboard</td>
+<td><strong>SQLite + Chart.js</strong> localhost</td>
+</tr>
+<tr><td>Hub address</td>
+<td>Hard-coded / vendor DNS</td>
+<td><strong>UDP discovery</strong> — no fixed Mac IP</td>
+</tr>
+<tr><td>«AI wellness»</td>
+<td>Opaque thresholds</td>
+<td>Documented heuristics → <strong>TinyML</strong></td>
+</tr>
+<tr><td>OTA</td>
+<td>Vendor S3 bucket</td>
+<td><strong>LAN OTA</strong> from your daemon</td>
+</tr>
+</tbody>
+</table>
+<p>Stack:</p>
+<div class="highlight"><pre><span></span>LD2410C → ESP32 firmware → MQTT (LAN) → Python daemon → SQLite / Web / Telegram
+     ↓
+OLED + buttons + LittleFS offline log
+</pre></div>
+<p><strong>Why MQTT on the Mac, not REST on the chip?</strong></p>
+<ul class="simple">
+<li>Pub/sub fits radar streams, display push, config — no HTTP server on 320 KB RAM.</li>
+<li><tt class="docutils literal">PubSubClient</tt> is small; stock FW already abused HTTPS on ESP32.</li>
+<li><tt class="docutils literal">mosquitto_sub</tt> + sensor log UI = transparency by design.</li>
+</ul>
+<p><strong>Trade-off:</strong> Mac asleep → Telegram/Spotify pause; ESP32 still journals and syncs later. No fake cloud illusion.</p>
+<img alt="Presence Hub architecture — ESP32, MQTT, Mac daemon, SQLite" class="align-center" src="/assets/images/articles/iot/presence_hub/architecture.png" style="width: 700px;" />
+<p>Figure: <strong>Presence Hub</strong> — device firmware, UDP discovery, LAN MQTT, Python daemon, local SQLite. No vendor cloud in the loop.</p>
+</div>
+<div class="section" id="part-5-udp-discovery-dhcp-is-not-your-friend">
+<span id="part-5-udp-discovery"></span><h2>Part 5: UDP Discovery — DHCP Is Not Your Friend</h2>
+<p>Early builds hard-coded the Mac's LAN IP. DHCP reassigned it; MQTT died; I aged five years in one afternoon.</p>
+<p><strong>Current flow:</strong></p>
+<ol class="arabic simple">
+<li>ESP32 broadcasts <tt class="docutils literal">PHUB_DISCOVER</tt> on UDP port <strong>18832</strong>.</li>
+<li>Mac daemon replies with JSON: <tt class="docutils literal">mqtt_host</tt>, <tt class="docutils literal">mqtt_port</tt>, <tt class="docutils literal">ota_host</tt>, <tt class="docutils literal">ota_port</tt>.</li>
+<li>ESP32 caches endpoints in NVS (<tt class="docutils literal">Preferences</tt> namespace <tt class="docutils literal">phub</tt>).</li>
+<li>After <strong>3 failed MQTT connects</strong>, cache clears and discovery runs again.</li>
+</ol>
+<p>Firmware side (simplified):</p>
+<div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">DISCOVER_MAGIC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PHUB_DISCOVER&quot;</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="n">udp</span><span class="p">.</span><span class="n">beginPacket</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span><span class="w"> </span><span class="n">DISCOVERY_PORT</span><span class="p">);</span>
+<span class="n">udp</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">DISCOVER_MAGIC</span><span class="p">),</span><span class="w"> </span><span class="n">magicLen</span><span class="p">);</span>
+<span class="n">udp</span><span class="p">.</span><span class="n">endPacket</span><span class="p">();</span>
+</pre></div>
+<p>Mac daemon (<tt class="docutils literal">discovery.py</tt>):</p>
+<div class="highlight"><pre><span></span><span class="n">DISCOVER_MAGIC</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;PHUB_DISCOVER&quot;</span>
+
+<span class="k">def</span> <span class="nf">datagram_received</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">addr</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="n">DISCOVER_MAGIC</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">lan_ip</span> <span class="o">=</span> <span class="n">get_lan_ip</span><span class="p">()</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+        <span class="s2">&quot;mqtt_host&quot;</span><span class="p">:</span> <span class="n">lan_ip</span><span class="p">,</span>
+        <span class="s2">&quot;mqtt_port&quot;</span><span class="p">:</span> <span class="n">MQTT_PORT</span><span class="p">,</span>
+        <span class="s2">&quot;ota_host&quot;</span><span class="p">:</span> <span class="n">lan_ip</span><span class="p">,</span>
+        <span class="s2">&quot;ota_port&quot;</span><span class="p">:</span> <span class="n">OTA_PORT</span><span class="p">,</span>
+    <span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+</pre></div>
+<p><strong>Why not mDNS/Bonjour?</strong> Fewer moving parts. Broadcast JSON is enough on home Wi-Fi. This is a desk gadget, not a service-mesh keynote.</p>
+<p><strong>Why OTA?</strong> The device lives on the desk; USB cables do not. The daemon serves <tt class="docutils literal">firmware.bin</tt> on <tt class="docutils literal">:18081</tt> after <tt class="docutils literal">pio run</tt>. Triggers: web dashboard, Telegram <tt class="docutils literal">/update</tt>, MQTT <tt class="docutils literal">hub/ota/trigger</tt>. Same trust model as discovery — LAN only, no vendor S3 bucket.</p>
+</div>
+<div class="section" id="part-6-gpio-archaeology-when-the-schematic-is-figure-it-out">
+<span id="part-6-gpio-archaeology"></span><h2>Part 6: GPIO Archaeology — When the Schematic Is «Figure It Out»</h2>
+<p>The carrier had <strong>no public pinout</strong>. Product photos implied Minority Report; silkscreen implied «good luck».</p>
+<p><strong>GPIO probe mode</strong> — firmware scans candidate GPIOs, publishes <tt class="docutils literal">hub/debug/gpio</tt> on change + 5 s heartbeat (<tt class="docutils literal">gpio_probe.cpp</tt>). <tt class="docutils literal">button_gpio_probe.sh</tt> subscribes and prints which pin toggled when you press:</p>
+<div class="highlight"><pre><span></span><span class="c1"># scripts/button_gpio_probe.sh</span>
+mosquitto_sub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">18830</span><span class="w"> </span>-t<span class="w"> </span><span class="s1">&#39;hub/debug/gpio&#39;</span><span class="w"> </span>-v<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>topic<span class="w"> </span>payload<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$payload</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">import json, sys</span>
+<span class="s1">d = json.load(sys.stdin)</span>
+<span class="s1">changed = d.get(&quot;changed&quot;, [])</span>
+<span class="s1">if changed:</span>
+<span class="s1">    pins = d.get(&quot;pins&quot;, {})</span>
+<span class="s1">    print(&quot;&gt;&gt;&gt; CHANGED:&quot;, &quot;, &quot;.join(f&quot;GPIO {p}={pins.get(str(p))}&quot; for p in changed))</span>
+<span class="s1">&#39;</span>
+<span class="k">done</span>
+</pre></div>
+<p><strong>Confirmed after GPIO probe:</strong> Btn1 = <strong>GPIO 18</strong>, Btn2 = <strong>GPIO 5</strong>, <strong>active LOW</strong>. Radar UART <strong>16/17</strong>, I2C <strong>21/22</strong>.</p>
+<p>Runtime (<tt class="docutils literal">buttons.cpp</tt>): <strong>30 ms</strong> debounce, <strong>800 ms</strong> long press (session reset). Pin map is published on the retained MQTT topic <tt class="docutils literal">hub/config</tt> and persisted to NVS — no reflash to rewire GPIO.</p>
+<div class="figure align-center">
+<img alt="Illustrative GPIO probe — Btn1 GPIO 18, Btn2 GPIO 5, active LOW" src="/assets/images/articles/iot/presence_hub/terminal_gpio_probe.png" style="width: 640px;" />
+<p class="caption">Illustrative <tt class="docutils literal">button_gpio_probe.sh</tt> session — <strong>GPIO 18 / 5</strong>, active LOW.</p>
+</div>
+</div>
+<div class="section" id="part-7-the-mac-daemon-asyncio-not-applescript-hell-okay-some-applescript">
+<span id="part-7-mac-daemon"></span><h2>Part 7: The Mac Daemon — asyncio, Not AppleScript Hell (Okay, Some AppleScript)</h2>
+<p><tt class="docutils literal">daemon/main.py</tt> starts everything in one process:</p>
+<div class="highlight"><pre><span></span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">mqtt_loop</span><span class="p">(</span><span class="n">daemon</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mqtt&quot;</span><span class="p">),</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">discovery_loop</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;discovery&quot;</span><span class="p">),</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">daemon</span><span class="o">.</span><span class="n">display_loop</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;display&quot;</span><span class="p">),</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">daemon</span><span class="o">.</span><span class="n">standup_loop</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;standup&quot;</span><span class="p">),</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">start_ota_server</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ota&quot;</span><span class="p">),</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">run_web</span><span class="p">(</span><span class="n">app</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;web&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+<div class="line-block">
+<div class="line"><strong>FastAPI</strong> web UI on <tt class="docutils literal">127.0.0.1:18080</tt> — dashboard, settings, gesture calibration, sensor log, OLED layout editor.</div>
+<div class="line"><strong>aiomqtt</strong> subscriber routes <tt class="docutils literal">hub/radar</tt>, <tt class="docutils literal">hub/gesture</tt>, <tt class="docutils literal">hub/button</tt>, <tt class="docutils literal">hub/sync/events</tt>, etc.</div>
+<div class="line"><strong>SQLite</strong> stores sessions, radar samples, AI state transitions, sleep nights.</div>
+<div class="line">Optional <strong>Telegram bot</strong> for standup nudges and morning sleep summary.</div>
+</div>
+<p><tt class="docutils literal">HubDaemon.handle_message</tt> is the central switchboard — radar samples fan out to mode handlers:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">topic</span> <span class="o">==</span> <span class="n">TOPIC_RADAR</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">insert_radar_sample</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="ow">in</span> <span class="n">WORK_TRACKING_MODES</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">work</span><span class="o">.</span><span class="n">on_radar</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;sleep&quot;</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">sleep</span><span class="o">.</span><span class="n">on_radar</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;media&quot;</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">on_radar</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+<p>Work mode presence logic lives on the <strong>daemon</strong>, not the firmware — change standup interval without reflash. Away ≥4 of last 5 minutes → standup timer resets (radar flicker). Long press btn1 → manual reset.</p>
+<p>Offline sync (<tt class="docutils literal">sync.py</tt>) — daemon replays LittleFS batch, dedups by event ID:</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">should_skip_event</span><span class="p">(</span><span class="n">event_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_last_event_id</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">event_id</span> <span class="o">&lt;=</span> <span class="n">last</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">apply_event</span><span class="p">(</span><span class="n">daemon</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">etype</span> <span class="o">==</span> <span class="s2">&quot;presence&quot;</span> <span class="ow">and</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">WORK_TRACKING_MODES</span><span class="p">:</span>
+        <span class="n">present</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;present&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">present</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">session</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">start_session_at</span><span class="p">(</span><span class="s2">&quot;work&quot;</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">present</span> <span class="ow">and</span> <span class="n">session</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">end_session_at</span><span class="p">(</span><span class="n">session</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">ts</span><span class="p">)</span>
+</pre></div>
+<p>NTP on ESP32 before timestamps; <tt class="docutils literal">hub/sync/ack</tt> clears device buffer after successful replay.</p>
+<p>Run everything:</p>
+<div class="highlight"><pre><span></span>./daemon/run.sh<span class="w">          </span><span class="c1"># mosquitto + web :18080 + MQTT :18830 + discovery :18832</span>
+./scripts/flash_firmware.sh
+./scripts/install_launchd.sh<span class="w">   </span><span class="c1"># optional Mac login autostart</span>
+</pre></div>
+<div class="figure align-center">
+<img alt="Presence Hub web dashboard on macOS — work mode, 7-day chart, local FastAPI UI" src="/assets/images/articles/iot/presence_hub/hub_dashboard.png" style="width: 720px;" />
+<p class="caption">Local dashboard at <tt class="docutils literal">127.0.0.1:18080</tt> — illustrative demo data; no vendor cloud.</p>
+</div>
+<div class="figure align-center">
+<img alt="Presence Hub sensor log — radar and gesture debug stream" src="/assets/images/articles/iot/presence_hub/hub_sensor_log.png" style="width: 720px;" />
+<p class="caption">Sensor log — same LAN, same SQLite, same honesty policy as the charts.</p>
+</div>
+<div class="figure align-center">
+<img alt="OLED layout editor — widgets, fonts, brightness, sleep display mode" src="/assets/images/articles/iot/presence_hub/hub_display.png" style="width: 720px;" />
+<p class="caption">Display editor — <tt class="docutils literal">display.html</tt>. <em>Screenshot uses seeded demo data from</em> <tt class="docutils literal">render_hub_screenshots.py</tt>.</p>
+</div>
+<div class="figure align-center">
+<img alt="Hub settings — radar gates, standup interval, Edge AI, Spotify backend" src="/assets/images/articles/iot/presence_hub/hub_settings.png" style="width: 720px;" />
+<p class="caption">Settings page — radar, standup, TinyML globals, media backend. <em>Illustrative demo session, not live desk stats.</em></p>
+</div>
+<div class="section" id="spotify-gestures-on-chip-policy-on-mac">
+<h3>Spotify — gestures on chip, policy on Mac</h3>
+<p>The LD2410 is <strong>one-dimensional</strong>: distance along the beam, not Minority Report hand poses. Controlling Spotify with OAuth on the ESP32 would be absurd (TLS + token refresh on 320 KB RAM).</p>
+<p><strong>Media mode</strong> publishes <tt class="docutils literal">hub/gesture</tt>; <tt class="docutils literal">MediaController</tt> runs AppleScript on the Mac:</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">_next_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;spotify&quot;</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_osascript</span><span class="p">(</span>
+            <span class="s1">&#39;tell application &quot;Spotify&quot; to play next track&#39;</span><span class="p">,</span>
+            <span class="n">fallback_key</span><span class="o">=</span><span class="mi">124</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_key</span><span class="p">(</span><span class="mi">124</span><span class="p">)</span>
+</pre></div>
+<p>Track metadata (artist, title, position) flows back to the OLED via <tt class="docutils literal">display_engine</tt> → <tt class="docutils literal">hub/display</tt>. Alternative backend: <strong>system media keys</strong> via System Events, with optional <tt class="docutils literal"><span class="pre">nowplaying-cli</span></tt> fallback.</p>
+<p>Honest limits: Spotify must be installed; <tt class="docutils literal">prev</tt> and hover-volume need TinyML calibration — zone-hold <strong>next</strong> is the production baseline.</p>
+<div class="figure align-center">
+<img alt="Zone-hold gesture — near-zone hand hold, Spotify next track, OLED track line updates" src="/assets/images/articles/iot/presence_hub/gesture_spotify.gif" style="width: 420px;" />
+<p class="caption">Real desk footage — hold in the near zone (~12–28 cm), Spotify skips track, OLED scrolls metadata from the Mac daemon.</p>
+</div>
+</div>
+<div class="section" id="display-engine-spotify-on-the-oled">
+<h3>Display engine — Spotify on the OLED</h3>
+<p><tt class="docutils literal">DisplayEngine</tt> builds widget lines every second; <tt class="docutils literal">display_loop</tt> publishes to <tt class="docutils literal">hub/display</tt>:</p>
+<div class="highlight"><pre><span></span><span class="c1"># media mode — track widget from AppleScript metadata</span>
+<span class="n">track</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">format_track_display</span><span class="p">()</span>  <span class="c1"># &quot;Artist - Title  1:23/4:05&quot;</span>
+<span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">track</span><span class="p">,</span> <span class="s2">&quot;font&quot;</span><span class="p">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}]</span>
+</pre></div>
+<p>Flow: gesture → <tt class="docutils literal">MediaController.on_gesture</tt> → AppleScript → <tt class="docutils literal">refresh_track</tt> → <tt class="docutils literal">display_engine</tt> → MQTT → firmware renders U8g2 text. <strong>Policy on Mac, pixels on ESP32.</strong></p>
+</div>
+<div class="section" id="telegram-bot-sample-session">
+<h3>Telegram bot — sample session</h3>
+<div class="highlight"><pre><span></span>You: /status
+Bot: Mode: work
+     Online: yes
+     Present: True
+     AI state: active_focus
+     Session: 2h 14m
+
+You: /today
+Bot: Today at desk: 5h 32m
+     Fatigue hints (AI): 2
+
+You: /update
+Bot: OTA triggered: http://192.168.1.42:18081/firmware.bin
+</pre></div>
+</div>
+<div class="section" id="standup-logic-on-the-daemon-work-py">
+<h3>Standup logic on the daemon (<tt class="docutils literal">work.py</tt>)</h3>
+<p>Why <strong>4 of last 5 minutes absent</strong> resets the standup timer: radar flicker from fans or posture shifts should not spam stretch reminders. The firmware only reports physics; <strong>policy lives on the Mac</strong> so I can tune intervals in Settings without reflash:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute_had_presence</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">now_minute</span> <span class="o">-</span> <span class="n">offset</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">absent_minutes</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">absent_minutes</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">last_standup_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>  <span class="c1"># reset standup clock</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-8-firmware-modes-mqtt-offline-journal">
+<span id="part-8-firmware"></span><h2>Part 8: Firmware — Modes, MQTT, Offline Journal</h2>
+<p>Three modes, one radar, zero cloud:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Mode</th>
+<th class="head">Button 2</th>
+<th class="head">Button 1</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><strong>work</strong></td>
+<td>cycle mode</td>
+<td>short: pause; long: reset session</td>
+</tr>
+<tr><td><strong>sleep</strong></td>
+<td>→ media</td>
+<td>btn1: went to bed; btn2: woke up</td>
+</tr>
+<tr><td><strong>media</strong></td>
+<td>cycle mode</td>
+<td>gestures + work log continues</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Offline buffer:</strong> ESP32 <strong>always</strong> appends events to LittleFS — presence, mode changes, buttons, gestures, sleep markers — even when the Mac is off. After Wi-Fi: NTP for real timestamps, UDP discovery, MQTT connect, batched <tt class="docutils literal">hub/sync/events</tt>, daemon dedup by event ID, <tt class="docutils literal">hub/sync/ack</tt>, buffer cleared.</p>
+<p><tt class="docutils literal"><span class="pre">EventLog::append</span></tt> writes JSON lines:</p>
+<div class="highlight"><pre><span></span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ts</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;ts&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ts</span><span class="p">;</span>
+<span class="n">doc</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="n">doc</span><span class="p">[</span><span class="s">&quot;mode&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mode</span><span class="p">;</span>
+<span class="c1">// data object serialized into LittleFS</span>
+</pre></div>
+<p>Display uses <strong>U8g2</strong>, not LVGL — a 128×64 OLED does not need a scene graph; flash budget goes to radar + ML. Web layout editor pushes widget strings via MQTT; firmware only renders text.</p>
+<p>Key MQTT topics:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Topic</th>
+<th class="head">Role</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">hub/radar</tt></td>
+<td>Extended radar + optional <tt class="docutils literal">ai_state</tt>, <tt class="docutils literal">ai_confidence</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/gesture</tt></td>
+<td><tt class="docutils literal">{type, value}</tt> → Mac media control</td>
+</tr>
+<tr><td><tt class="docutils literal">hub/display</tt></td>
+<td>Daemon → OLED widget lines</td>
+</tr>
+<tr><td><tt class="docutils literal">hub/config</tt></td>
+<td>Retained settings → ESP32 NVS</td>
+</tr>
+<tr><td><tt class="docutils literal">hub/sync/events</tt> / <tt class="docutils literal">hub/sync/ack</tt></td>
+<td>Offline replay</td>
+</tr>
+<tr><td><tt class="docutils literal">hub/radar/raw</tt></td>
+<td>Full gate arrays (recording mode only)</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="offline-sync-mac-asleep-for-8-hours">
+<h3>Offline sync — Mac asleep for 8 hours</h3>
+<p>Mini case study: laptop closed overnight, ESP32 still powered. Events append to <tt class="docutils literal">/events.jsonl</tt> on LittleFS. Morning: Wi-Fi → NTP → UDP discovery → MQTT → batch sync → SQLite → ack → buffer cleared.</p>
+<img alt="Offline sync sequence — LittleFS to SQLite" class="align-center" src="/assets/images/articles/iot/presence_hub/offline_sync.png" style="width: 650px;" />
+<p><strong>LittleFS line</strong> (representative):</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1042</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1719751200.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;presence&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;work&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;present&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}}</span>
+<span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1043</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1719754800.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gesture&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;media&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;next&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">}}</span>
+</pre></div>
+<p><strong>``hub/sync/events`` batch</strong> (ESP32 → Mac):</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1042</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1719751200.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;presence&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;work&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;present&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}},</span>
+<span class="w">  </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1043</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1719754800.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gesture&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;media&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;next&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">}}</span>
+<span class="p">]}</span>
+</pre></div>
+<p><strong>``hub/sync/ack``:</strong> <tt class="docutils literal">{&quot;ack_id&quot;: 1043}</tt></p>
+</div>
+<div class="section" id="ota-over-lan">
+<h3>OTA over LAN</h3>
+<p>Typical serial log after <tt class="docutils literal">pio run</tt> + Telegram <tt class="docutils literal">/update</tt>:</p>
+<div class="highlight"><pre><span></span>OTA from http://192.168.1.42:18081/firmware.bin
+OTA OK, rebooting
+Firmware v0.6.0
+Radar ready
+MQTT connected
+</pre></div>
+<p><tt class="docutils literal">ota.cpp</tt> uses ESP32 <tt class="docutils literal">HTTPUpdate</tt> — same trust model as discovery (LAN HTTP, no vendor S3).</p>
+</div>
+</div>
+<div class="section" id="part-9-radar-101-what-the-ld2410-actually-sees">
+<span id="part-9-radar-101"></span><h2>Part 9: Radar 101 — What the LD2410 Actually Sees</h2>
+<p>Before gestures and TinyML: <strong>physics</strong>.</p>
+<p>The HLK-LD2410C is a <strong>24 GHz FMCW</strong> presence sensor. In <strong>enhanced mode</strong> (what we use) it exposes:</p>
+<ul class="simple">
+<li><strong>Distance</strong> to dominant target (cm)</li>
+<li><strong>Moving</strong> and <strong>stationary</strong> energy per distance <strong>gate</strong> (typically 9 gates × ~20–75 cm steps)</li>
+<li>Boolean <tt class="docutils literal">present</tt> / <tt class="docutils literal">moving</tt> — useful but <strong>not authoritative</strong> in the near field</li>
+</ul>
+<img alt="LD2410 single-beam gates — 1D only" class="align-center" src="/assets/images/articles/iot/presence_hub/ld2410_gates.png" style="width: 600px;" />
+<p><strong>Enhanced vs basic:</strong> enhanced gives per-gate arrays (<tt class="docutils literal">moving_gates[]</tt>, <tt class="docutils literal">stationary_gates[]</tt>) for ML and fan-noise filtering; basic mode is coarser distance + single energy — fine for a light switch, not for «focus scoring.»</p>
+<p><strong>Why ``present=false`` with valid ``dist``:</strong> near-field multipath (monitor stand, desk edge) decouples the vendor boolean from geometry. Presence Hub keys gestures off <strong>distance in zone</strong>, not <tt class="docutils literal">present</tt>.</p>
+<p><strong>Desk fan false positive:</strong> moving blades pump energy into far gates with weak distance stability → rules-only «someone is here» breaks; TinyML class <strong>env_noise</strong> targets exactly this pattern (high <tt class="docutils literal">m_energy</tt> variance, low <tt class="docutils literal">s_energy</tt> variance).</p>
+</div>
+<div class="section" id="part-10-gestures-why-i-fought-physics-for-days-not-weeks-i-swear">
+<span id="part-10-gestures"></span><h2>Part 10: Gestures — Why I Fought Physics for Days (Not Weeks, I Swear)</h2>
+<p>The vendor's «Revolutionary Edge AI» was <strong>hardcoded threshold comparisons</strong>. Desk fan? False positive. Curtain? False positive. Their Medium article showed hands gliding through air like a conductor at the Philharmonic; the LD2410 is a <strong>single-beam ranger</strong> — one distance axis, per-gate moving/stationary energy. <strong>No left/right. No 3D pose.</strong> Product photography lied; physics did not. It <em>felt</em> like weeks because every «almost works» session ended with me staring at a distance graph at 1 a.m. In calendar time it was <strong>days</strong> — still long enough to develop opinions about multipath and a grudge against monitor stands.</p>
+<div class="section" id="what-the-sensor-actually-gives-you">
+<h3>What the sensor actually gives you</h3>
+<ul class="simple">
+<li>Distance along the radar line of sight (~20 cm gate steps in gesture profile)</li>
+<li>Useful near field at desk: often <strong>12–35 cm</strong>, heavily quantized</li>
+<li><tt class="docutils literal">present</tt> boolean often <strong>wrong</strong> in near field — distance is the honest signal</li>
+</ul>
+</div>
+<div class="section" id="what-i-planned-vs-what-shipped">
+<h3>What I planned vs what shipped</h3>
+<p>Ambition: Minority Report. Reality: a ruler that sometimes lies about how far your knuckles are.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="35%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Gesture</th>
+<th class="head">Idea</th>
+<th class="head">Outcome</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Swipe <strong>in</strong> → next</td>
+<td>Fast approach (Δdistance/Δt)</td>
+<td><strong>Hard</strong> — velocity is noisy 1D mush</td>
+</tr>
+<tr><td>Swipe <strong>out</strong> → prev</td>
+<td>Recede</td>
+<td><strong>Harder</strong> — hand leaves beam faster; multipath fakes «approach»</td>
+</tr>
+<tr><td><strong>Hover</strong> → volume</td>
+<td>Stable distance → level</td>
+<td><strong>Medium</strong> — fan multipath breaks variance</td>
+</tr>
+<tr><td><strong>Zone hold</strong> → next</td>
+<td>Hand in 12–28 cm for 400 ms</td>
+<td><strong>Reliable</strong> — one bit of geometry + time</td>
+</tr>
+</tbody>
+</table>
+<p>After a few days of tuning (and several nights of «one more gate»), <strong>v1 shipped zone-hold → next only</strong>. Honest UX: treat <strong>next</strong> as production; <strong>prev/vol</strong> as «enable after calibration session — and maybe bring snacks.»</p>
+</div>
+<div class="section" id="why-prev-still-feels-broken-even-in-tinyml-branch">
+<h3>Why <tt class="docutils literal">prev</tt> still feels broken (even in TinyML branch)</h3>
+<p>Physics is not symmetric; your hand leaving the beam does not owe you a clean retreat signal. Four reasons the «previous track» gesture remains a diva:</p>
+<ol class="arabic simple">
+<li><strong>Symmetric noise</strong> — retreat is weaker than approach (hand exits beam quickly).</li>
+<li><strong>Multipath</strong> — monitor stand / desk edge creates fake approach more than retreat.</li>
+<li><strong>Default ML weights are heuristic</strong>, not trained on your desk.</li>
+<li><strong>Global debounce</strong> — rapid next→prev can lose.</li>
+</ol>
+<p>Media radar tuning (<tt class="docutils literal">radar.cpp</tt>): gesture profile → <strong>20 cm gates</strong>, max gate <strong>2</strong>, <strong>8× poll/loop</strong>, <strong>200 ms</strong> MQTT — temporal resolution for hold detection.</p>
+</div>
+<div class="section" id="zone-hold-state-machine-actual-firmware-media-mode-cpp">
+<h3>Zone-hold state machine — actual firmware (<tt class="docutils literal">media_mode.cpp</tt>)</h3>
+<div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MediaMode::fallbackZoneHold</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RadarReading</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reading</span><span class="p">,</span><span class="w"> </span><span class="n">GestureCallback</span><span class="w"> </span><span class="n">cb</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gestureDist</span><span class="p">(</span><span class="n">reading</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">inZone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inNearZone</span><span class="p">(</span><span class="n">d</span><span class="p">);</span><span class="w">  </span><span class="c1">// default 12–28 cm</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">inZone</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">zoneArmed_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// re-arm on exit — critical</span>
+<span class="w">        </span><span class="n">zoneEnterMs_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">zoneArmed_</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">zoneEnterMs_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">zoneEnterMs_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">zoneEnterMs_</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="n">holdMs</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">      </span><span class="c1">// 400 ms hold</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastNextMs_</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cfg</span><span class="p">.</span><span class="n">debounceMs</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// 1200 ms debounce</span>
+<span class="w">    </span><span class="n">cb</span><span class="p">(</span><span class="s">&quot;next&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+<p>TinyML path calls <tt class="docutils literal">handleMlGesture</tt> first; if confidence low, <strong>fallback zone-hold still runs</strong>:</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MediaMode::onRadar</span><span class="p">(...,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TinyMlResult</span><span class="w"> </span><span class="o">*</span><span class="n">ai</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ai</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ai</span><span class="o">-&gt;</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">AiState</span><span class="o">::</span><span class="n">GestureNone</span><span class="p">)</span>
+<span class="w">        </span><span class="n">handleMlGesture</span><span class="p">(</span><span class="o">*</span><span class="n">ai</span><span class="p">,</span><span class="w"> </span><span class="n">reading</span><span class="p">,</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fallbackZoneHold</span><span class="p">(</span><span class="n">reading</span><span class="p">,</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span><span class="w">  </span><span class="c1">// always available</span>
+<span class="p">}</span>
+</pre></div>
+<p>Debug: <tt class="docutils literal">gestures.html</tt> — live dist bar, zone overlay, hold countdown. MQTT <tt class="docutils literal">hub/debug/gesture</tt> when debug on.</p>
+<div class="figure align-center">
+<img alt="Media gestures page — near zone 12–28 cm, zone hold next track, TinyML toggles" src="/assets/images/articles/iot/presence_hub/hub_gestures.png" style="width: 720px;" />
+<p class="caption">Gesture calibration UI — distance bar, zone hold, ML toggles. <em>Seeded demo session from</em> <tt class="docutils literal">render_hub_screenshots.py</tt> <em>— same UI, fake radar stream.</em></p>
+</div>
+</div>
+</div>
+<div class="section" id="part-11-honest-tinyml-not-the-medium-article">
+<span id="part-11-tinyml"></span><h2>Part 11: Honest TinyML — Not the Medium Article</h2>
+<p>(Vendor «edge AI» marketing vs measured reality: <a class="reference internal" href="#part-0-5-power-strip-lecture">Part 0.5 — Power Strip Lecture</a> pull-quote.)</p>
+<p>I added TinyML (firmware <strong>0.6.0</strong>, <tt class="docutils literal">feat/tinyml</tt>) because <strong>rules-only hit walls after liberation</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="36%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Problem</th>
+<th class="head">Rules only</th>
+<th class="head">TinyML</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Desk presence</td>
+<td>Distance threshold</td>
+<td>active / fatigued / vacant / <strong>env_noise</strong> (fan filter)</td>
+</tr>
+<tr><td>Gestures</td>
+<td>Zone-hold → next</td>
+<td>next / prev / hover from velocity + stability</td>
+</tr>
+<tr><td>Sleep</td>
+<td>Fixed <tt class="docutils literal">s_energy</tt> threshold</td>
+<td>breathing_stable / restless / absent</td>
+</tr>
+<tr><td>Host bug</td>
+<td><tt class="docutils literal">s_energy</tt> missing from MQTT (0.5.x)</td>
+<td>Fixed pipeline + breath-rate estimate on Mac</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What I still refuse to claim:</strong> clinical sleep staging, 3D air gestures, ChatGPT-on-chip.</p>
+<div class="section" id="why-inline-int8-mlp-not-tensorflow-lite-micro">
+<h3>Why inline INT8 MLP — not TensorFlow Lite Micro?</h3>
+<p>The liberated stack already lived in <strong>Arduino / PlatformIO</strong>. TFLite Micro + ESP-NN would cost flash/RAM for marginal gain on a problem that fits a <strong>single hidden-layer MLP</strong>. My implementation: <strong>~15–40 KB</strong> weights in <tt class="docutils literal">model_data.h</tt>, <strong>&lt;5 ms</strong> inference inline in <tt class="docutils literal">loop()</tt> — no arena allocator, no dependency hell, full source in the repo. That is the kind of edge AI I can explain line-by-line on a bus ride.</p>
+<p>Pipeline:</p>
+<div class="highlight"><pre><span></span>LD2410C UART → RadarReading (+ 9+9 gate energies)
+     → FeatureBuffer (32 frames)
+     → 16 features (variance, velocity, ZCR, gate centroid, cross-correlation, …)
+     → INT8 MLP (model_data.h)
+     → AiState + confidence
+     → work / sleep / media handlers + MQTT hub/ai/state
+</pre></div>
+<p><strong>Mac daemon does NOT run real-time inference</strong> — logs states, standup on fatigue, Spotify on gestures. Training is <strong>offline on Mac</strong>; chip runs inference only. Privacy + CPU budget.</p>
+<p>16 features — interpretable, debuggable in sensor log (mirrors <tt class="docutils literal">tools/ml/features.py</tt>):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="28%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">f#</th>
+<th class="head">Name (concept)</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>f0</td>
+<td><tt class="docutils literal">mean_s_energy</tt></td>
+<td>Average stationary energy in window</td>
+</tr>
+<tr><td>f1</td>
+<td><tt class="docutils literal">var_s_energy</tt></td>
+<td>Stationary variance — stillness vs fan jitter</td>
+</tr>
+<tr><td>f2</td>
+<td><tt class="docutils literal">mean_m_energy</tt></td>
+<td>Average moving energy</td>
+</tr>
+<tr><td>f3</td>
+<td><tt class="docutils literal">var_m_energy</tt></td>
+<td>Moving variance — env_noise discriminator</td>
+</tr>
+<tr><td>f4</td>
+<td><tt class="docutils literal">mean_dist</tt></td>
+<td>Mean distance (cm)</td>
+</tr>
+<tr><td>f5</td>
+<td><tt class="docutils literal">dist_velocity</tt></td>
+<td>Δdistance/Δt (cm/s) — swipe classes</td>
+</tr>
+<tr><td>f6</td>
+<td><tt class="docutils literal">peak_m_gate</tt></td>
+<td>Gate index with max moving energy</td>
+</tr>
+<tr><td>f7</td>
+<td><tt class="docutils literal">peak_s_gate</tt></td>
+<td>Gate index with max stationary energy</td>
+</tr>
+<tr><td>f8</td>
+<td><tt class="docutils literal">m_gate_centroid</tt></td>
+<td>Energy-weighted moving gate center</td>
+</tr>
+<tr><td>f9</td>
+<td><tt class="docutils literal">zcr_s</tt></td>
+<td>Zero-crossing rate on stationary energy</td>
+</tr>
+<tr><td>f10</td>
+<td><tt class="docutils literal">cross_corr_ms</tt></td>
+<td>Moving/stationary correlation</td>
+</tr>
+<tr><td>f11</td>
+<td><tt class="docutils literal">present_ratio</tt></td>
+<td>Fraction of frames with presence flag</td>
+</tr>
+<tr><td>f12</td>
+<td><tt class="docutils literal">moving_ratio</tt></td>
+<td>Fraction of frames with moving flag</td>
+</tr>
+<tr><td>f13</td>
+<td><tt class="docutils literal">max_s_energy</tt></td>
+<td>Peak stationary energy</td>
+</tr>
+<tr><td>f14</td>
+<td><tt class="docutils literal">dist_std</tt></td>
+<td>Distance stability</td>
+</tr>
+<tr><td>f15</td>
+<td><tt class="docutils literal">spectral_centroid_s</tt></td>
+<td>Stationary energy vs gate index</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recording mode CSV</strong> (<tt class="docutils literal">hub/radar/raw</tt> → <tt class="docutils literal">collect.py</tt>, 5 rows):</p>
+<div class="highlight"><pre><span></span>ts,dist,s_energy,m_energy,presence,moving,moving_gates_0,...
+1719751200.12,84,18,4,1,0,2,1,0,0,0,0,0,0,0
+1719751200.62,83,19,3,1,0,2,1,0,0,0,0,0,0,0
+1719751201.12,85,17,5,1,0,1,2,0,0,0,0,0,0,0
+</pre></div>
+<p><strong>Rules vs ML — desk fan scenario:</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="35%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Condition</th>
+<th class="head">Rules-only</th>
+<th class="head">TinyML (work head)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Fan on, chair empty</td>
+<td>Often <tt class="docutils literal">present=true</tt> (false positive)</td>
+<td><tt class="docutils literal">env_noise</tt> or <tt class="docutils literal">vacant</tt> after train</td>
+</tr>
+<tr><td>Seated, typing</td>
+<td><tt class="docutils literal">active_focus</tt> if thresholds lucky</td>
+<td><tt class="docutils literal">active_focus</tt> stable</td>
+</tr>
+<tr><td>Seated, frozen 45+ min</td>
+<td>May still show present</td>
+<td><tt class="docutils literal">static_fatigue</tt> → stretch hint</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Build budget</strong> (<tt class="docutils literal">pio run</tt> — ESP32-D0WD, firmware 0.6.0): flash <strong>~76%</strong> of 4 MB partition; RAM <strong>~18%</strong> at runtime with ML enabled; inference <strong>&lt;5 ms</strong> per 500 ms loop — no TFLite Micro arena.</p>
+<div class="highlight"><pre><span></span><span class="n">out</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">meanS</span><span class="p">;</span>
+<span class="n">out</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distVelocity</span><span class="p">();</span>
+<span class="c1">// ... see tiny_ml.cpp extractFeatures()</span>
+</pre></div>
+<p>INT8 forward pass:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">classCount</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bias</span><span class="p">[</span><span class="n">c</span><span class="p">];</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">inputCount</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="n">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">weights</span><span class="p">[</span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">inputCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)</span><span class="n">features</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// argmax → state; confidence from score margin</span>
+</pre></div>
+<p>Below <tt class="docutils literal">confidenceMin</tt> → <strong>heuristic fallback</strong> (device usable day-one).</p>
+<p>Export — <tt class="docutils literal">tools/ml/export_model.py</tt> quantizes sklearn <tt class="docutils literal">MLPClassifier</tt> to C arrays:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quantize_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">32.0</span><span class="p">):</span>
+    <span class="n">clipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">matrix</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="o">-</span><span class="mi">127</span><span class="p">,</span> <span class="mi">127</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">clipped</span><span class="o">.</span><span class="n">flatten</span><span class="p">()]</span>
+
+<span class="c1"># → static const int8_t WORK_WEIGHTS[...] in model_data.h</span>
+</pre></div>
+</div>
+<div class="section" id="training-workflow">
+<h3>Training workflow</h3>
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>tools/ml<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Web Settings → Edge AI → Recording mode ON</span>
+python<span class="w"> </span>collect.py<span class="w"> </span>--output<span class="w"> </span>../../datasets/raw.csv
+python<span class="w"> </span>label.py<span class="w"> </span>../../datasets/raw.csv<span class="w"> </span>--events-json<span class="w"> </span>events.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>../../datasets/labeled.csv
+python<span class="w"> </span>train_presence.py<span class="w"> </span>../../datasets/labeled.csv<span class="w"> </span>-o<span class="w"> </span>models/presence_mlp.joblib
+python<span class="w"> </span>train_gesture.py<span class="w"> </span>../../datasets/labeled.csv<span class="w"> </span>-o<span class="w"> </span>models/gesture_mlp.joblib
+python<span class="w"> </span>export_model.py<span class="w"> </span>--work-model<span class="w"> </span>models/presence_mlp.joblib<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gesture-model<span class="w"> </span>models/gesture_mlp.joblib
+<span class="nb">cd</span><span class="w"> </span>../../firmware<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pio<span class="w"> </span>run<span class="w">   </span><span class="c1"># then OTA from daemon :18081</span>
+</pre></div>
+<p>Resource budget (ESP32-D0WD): <strong>15–40 KB</strong> flash (models), <strong>8–20 KB</strong> RAM, <strong>&lt;5 ms</strong> &#64; 500 ms period.</p>
+<p><strong>Honest limits:</strong></p>
+<ul class="simple">
+<li>Not medical. Not EEG. Not left/right hands.</li>
+<li>Models improve only with <strong>your</strong> CSV from <strong>your</strong> desk layout, fan, monitor stand.</li>
+<li>Default <tt class="docutils literal">model_data.h</tt> = heuristic weights until you train.</li>
+</ul>
+<p>Future I did not ship (see <tt class="docutils literal">ADVANCED_AI_ROADMAP.md</tt>): 1D-CNN on gate tensor, TFLite if flash tax worth it, gesture calibration wizard, Linux hub with MPRIS instead of AppleScript.</p>
+</div>
+</div>
+<div class="section" id="appendix-a-mqtt-payload-cookbook">
+<span id="appendix-a-mqtt"></span><h2>Appendix A — MQTT payload cookbook</h2>
+<p>Copy-paste shapes from <tt class="docutils literal">mqtt_client.cpp</tt> / daemon — subscribe with <tt class="docutils literal">mosquitto_sub <span class="pre">-h</span> 127.0.0.1 <span class="pre">-p</span> 18830 <span class="pre">-t</span> <span class="pre">'hub/#'</span> <span class="pre">-v</span></tt>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Topic</th>
+<th class="head">Example payload</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">hub/radar</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;dist&quot;:84,&quot;s_energy&quot;:18,&quot;m_energy&quot;:4,&quot;presence&quot;:true,&quot;moving&quot;:false,&quot;ai_state&quot;:1,&quot;ai_confidence&quot;:78,&quot;ts&quot;:1719751200.5}</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/ai/state</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;mode&quot;:&quot;work&quot;,&quot;state&quot;:&quot;active_focus&quot;,&quot;confidence&quot;:78,&quot;ts&quot;:1719751200.5}</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/gesture</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;type&quot;:&quot;next&quot;,&quot;value&quot;:22,&quot;eid&quot;:1043,&quot;ts&quot;:1719751200.5}</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/button</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;id&quot;:1,&quot;event&quot;:&quot;long&quot;,&quot;eid&quot;:1040}</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/display</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;lines&quot;:[{&quot;pos&quot;:0,&quot;text&quot;:&quot;14:32&quot;,&quot;font&quot;:&quot;xlarge&quot;,&quot;center&quot;:true}]}</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/config</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;gesture_zone_min_cm&quot;:12,&quot;gesture_zone_max_cm&quot;:28,&quot;ai_enabled&quot;:1}</span></tt> (retained)</td>
+</tr>
+<tr><td><tt class="docutils literal">hub/status</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;mode&quot;:&quot;work&quot;,&quot;online&quot;:true,&quot;version&quot;:&quot;0.6.0&quot;,&quot;buffered&quot;:3,&quot;pending_events&quot;:0}</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/sync/events</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;events&quot;:[{...},{...}]}</span></tt> — see Offline sync above</td>
+</tr>
+<tr><td><tt class="docutils literal">hub/ota/trigger</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;url&quot;:&quot;http://192.168.1.42:18081/firmware.bin&quot;}</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">hub/radar/raw</tt></td>
+<td><tt class="docutils literal"><span class="pre">{&quot;dist&quot;:84,&quot;moving_gates&quot;:[2,1,0,...],&quot;stationary_gates&quot;:[5,3,1,...]}</span></tt> (recording only)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="appendix-b-debug-cheat-sheet">
+<span id="appendix-b-debug"></span><h2>Appendix B — Debug cheat sheet</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Symptom</th>
+<th class="head">Check</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>No MQTT</td>
+<td>Discovery? <tt class="docutils literal">hub/status</tt> heartbeat? Mosquitto <tt class="docutils literal">:18830</tt>?</td>
+</tr>
+<tr><td>Wrong buttons</td>
+<td>GPIO probe + <tt class="docutils literal">button_gpio_probe.sh</tt></td>
+</tr>
+<tr><td>Gesture fires twice</td>
+<td><tt class="docutils literal">gesture_debounce_ms</tt>; leave zone to re-arm</td>
+</tr>
+<tr><td>Gesture never fires</td>
+<td>Gestures page: dist in zone? Media mode? Debug on?</td>
+</tr>
+<tr><td><tt class="docutils literal">ai_state</tt> stuck vacant</td>
+<td>Fan noise → record CSV, retrain; or lower <tt class="docutils literal">ai_confidence_min</tt></td>
+</tr>
+<tr><td>Spotify no-op</td>
+<td>Spotify running? <tt class="docutils literal">media_backend</tt> in Settings?</td>
+</tr>
+<tr><td>OTA fail</td>
+<td><tt class="docutils literal">pio run</tt> built bin? Daemon up? Serial <tt class="docutils literal">OTA failed:</tt> line</td>
+</tr>
+<tr><td>Sleep chart empty</td>
+<td><tt class="docutils literal">s_energy</tt> in <tt class="docutils literal">hub/radar</tt>; daemon running overnight?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="part-12-evolution-timeline">
+<span id="part-12-evolution"></span><h2>Part 12: Evolution Timeline</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Firmware</th>
+<th class="head">Milestone</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0.1–0.2</td>
+<td>MQTT hub, modes, SQLite, basic OLED</td>
+</tr>
+<tr><td>0.3+</td>
+<td>UDP discovery, LittleFS offline sync</td>
+</tr>
+<tr><td>0.4</td>
+<td>Near-zone gesture (next only), gesture debug UI</td>
+</tr>
+<tr><td>0.5.1</td>
+<td>MQTT payload size fix (radar was silently dropped — a classic)</td>
+</tr>
+<tr><td>0.5.2</td>
+<td>Single-line OLED font scaling</td>
+</tr>
+<tr><td>0.6.0</td>
+<td>TinyML heads, experimental prev/vol/hover, AI dashboard</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="what-i-would-do-differently">
+<h2>What I would do differently</h2>
+<p>Hindsight after firmware <strong>0.6.0</strong>:</p>
+<ul class="simple">
+<li><strong>Gesture calibration wizard</strong> — record 50 swipes, one-click retrain; today it is manual CSV + <tt class="docutils literal">label.py</tt>.</li>
+<li><strong>mDNS</strong> alongside UDP discovery — broadcast JSON is fine on home Wi-Fi, but Bonjour would help multi-subnet nerds.</li>
+<li><strong>Linux hub</strong> — MPRIS instead of AppleScript for Spotify; Mac-only was pragmatic, not eternal.</li>
+<li><strong>TLS on MQTT</strong> — overkill on isolated LAN; worth it if the hub ever faces guest Wi-Fi.</li>
+<li><strong>1D-CNN on gate tensor</strong> — if flash budget allows; hand-crafted features were the right v1 trade-off.</li>
+</ul>
+</div>
+<div class="section" id="conclusion-intent-is-the-malware">
+<span id="conclusion"></span><h2>Conclusion — Intent Is the Malware</h2>
+<p>Strip away GDPR, OpenAPI, mmWave gates, and INT8 weights. One question remains:</p>
+<p><strong>Who owns the device on my desk?</strong></p>
+<p>In the 90s we feared the computer <em>under</em> the desk. In the 2020s the threat sits <em>on</em> it — OLED smile, wellness branding, someone else's cloud on the other end of the wire.</p>
+<p>Silicon is not evil. <strong>Intent is the malware.</strong> Harm lives in architects who ship MAC-as-identity into a home office and call it care.</p>
+<p>I took ownership back — hostile hardware → accountable appliance:</p>
+<ul class="simple">
+<li>No external management view. No bathroom-break scoring. No timezone-as-GPS theatre.</li>
+<li>Stretch nudges, Spotify skips, offline journals — <strong>because I configured them</strong>, on <strong>my</strong> LAN, in <strong>my</strong> SQLite.</li>
+</ul>
+<p>Know your digital rights. Protect your desk boundary. When «Edge AI» cannot survive a desk fan, <strong>read the flash first</strong>. When the spy box arrives as a «gift», <strong>say no</strong> — then, if you are an engineer, ship the alternative.</p>
+<p>Presence Hub: same ESP32, same radar, <strong>my</strong> logs, <strong>my</strong> rules. The spy box asked for my outlet; I asked for my desk back. Source: <a class="reference external" href="https://github.com/wwakabobik/esp32_radar_tracker">Presence Hub on GitHub</a>.</p>
+</div>
+<div class="section" id="epilogue-the-small-spy-box-and-the-big-one">
+<span id="epilogue"></span><h2>Epilogue — The Small Spy Box and the Big One</h2>
+<p>This story is small. One desk. One ESP32. One engineer who <strong>stopped being a user</strong> and read the flash.</p>
+<p>But it sits inside a much larger shift — one I chose with a suitcase, not a thought experiment. I left an <strong>authoritarian despotism</strong> where surveillance is infrastructure, not a startup pitch — and found the same logic in a different badge: not a dossier, but a fleet table; not a street camera, but a mmWave module on the kitchen table.</p>
+<p>In the <strong>90s</strong> — the decade that formed many of us who learned computers through Norton Commander, BBS ethics, and the idea that <strong>information wants to be free</strong> — the bargain was at least argued in the open. Benjamin Franklin, already in the 18th century, had the formula:</p>
+<blockquote>
+«Those who would give up essential Liberty, to purchase a little temporary Safety, deserve neither Liberty nor Safety.»</blockquote>
+<p>We quoted it on forum signatures. We meant it. The strong of the world — states, platforms, employers — have since made a counter-offer: surrender a little more privacy each year, and we will call it security, productivity, care. Cameras in the lobby. Trackers on the desk. Models that score your attention. Logs that outlive your employment. The corporate spy box is not an aberration. It is <strong>imitation at startup scale</strong>: <em>we are small incompetent technical shitheads, but we copy the architecture of control — and you will not hide from us on your home Wi-Fi either.</em></p>
+<p>That is why the old <strong>hacker ethos</strong> — cypherpunk, BBS, <strong>information wants to be free</strong> — is not nostalgia. It is a design requirement: <strong>local, inspectable, owned by the person in the room.</strong> Open firmware. MQTT on your machine. SQLite you can delete. Models you train at your desk.</p>
+<p>I do not know if that ethic has a political name in 2026. Maybe <strong>info-anarchy</strong>: no central landlord for your presence data. Maybe <strong>AI-anarchism</strong> in the narrow engineering sense: inference on <em>your</em> chip, weights <em>you</em> exported, no cloud priest interpreting your radar returns for HR. Not LLM messianism — just the stubborn idea that <strong>intelligence on the edge should serve the edge</strong>, not the org chart.</p>
+<p>The spy box on my desk was a joke with a MAC address. The world building more of them is not a joke. The only honest response I know — the one this article and this repo are — is to take the hardware back, document the lie, ship the replacement, and keep the boundary where Franklin said it should be: <strong>you do not trade liberty for safety and expect to keep either.</strong></p>
+<p>And do not stay quiet about it. <strong>Call things by their proper names.</strong> Surveillance is surveillance, not «wellness.» Exploitation is exploitation, not «culture fit.» Abusers and exploiters — in the state, in the company, in the product brief — deserve to be named, not wrapped in OKR-friendly euphemism. The IT and AI age makes this worse, not better: the same hypocrisy, but smoother UI, a chatbot smile, and a privacy policy nobody reads. We have never needed more honesty about <em>who</em> gets hurt and <em>who</em> profits.</p>
+<p>Watch people, not slogans. Look at what a system does to the human behind the MAC address — instead of hiding behind «we care.» Georgy Sadykov's <em>The Face</em> (<em>Лицо</em>, 1988) — <a class="reference external" href="https://www.youtube.com/watch?v=5n8RWqP7UVE">watch it here</a> — said it before desk trackers: bureaucracy grinding a person until the face they show is no longer their own. In 2026 the mask is an OLED and a radar module.</p>
+<p><strong>Do not be silent. Name the lie. Then build the alternative.</strong></p>
+<p>If this long read was useful — firmware, story, or both — you can support the work on <a class="reference external" href="https://www.buymeacoffee.com/wwakabobik">BuyMeACoffee</a>, <a class="reference external" href="https://thanks.dev/wwakabobik">ThanksDev</a>, or <a class="reference external" href="https://www.donationalerts.com/r/rocketsciencegeek">DonationAlerts</a>. More weird hardware, more honest ML, more articles that treat your desk as <em>yours</em>. Thank you.</p>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=From a Corporate Spy Box to Presence Hub&amp;url=https://wwakabobik.github.io/2026/06/corporate_spy_box_to_presence_hub/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://wwakabobik.github.io/2026/06/corporate_spy_box_to_presence_hub/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://wwakabobik.github.io/2026/06/corporate_spy_box_to_presence_hub/&amp;title=From a Corporate Spy Box to Presence Hub" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=From a Corporate Spy Box to Presence Hub&amp;body=https://wwakabobik.github.io/2026/06/corporate_spy_box_to_presence_hub/">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://wwakabobik.github.io/tag/iot/">iot</a><a href="https://wwakabobik.github.io/tag/privacy/">privacy</a><a href="https://wwakabobik.github.io/tag/security/">security</a><a href="https://wwakabobik.github.io/tag/ethics/">ethics</a><a href="https://wwakabobik.github.io/tag/burnout/">burnout</a><a href="https://wwakabobik.github.io/tag/macos/">macos</a><a href="https://wwakabobik.github.io/tag/automation/">automation</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+
+
+                        <figure class="post-author-avatar">
+                            <img src="https://wwakabobik.github.io/assets/images/authors/wwakabobik.png" alt="Iliya Vereshchagin" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://wwakabobik.github.io/author/wwakabobik/">Iliya Vereshchagin</a></h4>
+                            <p class="post-author-about">Quality is not an act, it's habit</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Serbia, Novi Sad</span>
+                        <!-- Social linkes in alphabet order. -->
+                            <span class="post-author-github"><a target="_blank" href="https://github.com/wwakabobik"><i class="ic ic-github"></i> GitHub</a></span>
+                        <span class="post-author-instagram"><a target="_blank" href="https://www.instagram.com/i_ver"><i class="ic ic-instagram"></i> Instagram</a></span>
+                        <span class="post-author-pypi"><a target="_blank" href="https://pypi.org/user/wwakabobik/"><i class="ic ic-pypi"></i> pypi</a></span>
+                            <span class="post-author-linkedin"><a target="_blank" href="https://www.linkedin.com/in/wwakabobik"><i class="ic ic-linkedin"></i> LinkedIn</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <a class="post-nav-prev" href="https://wwakabobik.github.io/2025/11/migrating_chroma_db/">
+                        <section class="post-nav-teaser">
+                            <i class="ic ic-arrow-right"></i>
+                                <h2 class="post-nav-title">When Your ChromaDB Mutates and You’re Out of Luck</h2>
+                            <p class="post-nav-excerpt">Migrating ChromaDB is painful, breaking, and full of edge cases. Here’s how we...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/script.js"></script>
+  <script type="text/javascript" src="https://wwakabobik.github.io/theme/js/copy-code.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVTS1WKZ1T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MVTS1WKZ1T', { 'anonymize_ip': true });
+    </script>
+</body>
+</html>
