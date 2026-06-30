@@ -32,13 +32,7 @@ The question underneath everything else:
 
 **Who owns the device sitting on my desk — me, or someone else's dashboard?**
 
-*Full forensic detail, MQTT cookbook, and firmware depth below. Skim the narrative through `Part 3`_; jump to `Part 4`_ for the rebuild.*
-
-.. _Part 2: Part 2 — Forensic Specimen_
-.. _Part 0.5: Part 0.5 — Power Strip Lecture_
-.. _Part 3: Part 3 — Enough Proof_
-.. _Part 4: Part 4 — Presence Hub_
-.. _Part 11: Part 11 — TinyML_
+*Full forensic detail, MQTT cookbook, and firmware depth below.* Skim the narrative through `Part 3 — Enough Proof`_; jump to `Part 4 — Presence Hub`_ for the rebuild.
 
 Jump to
 -------
@@ -102,7 +96,7 @@ Plug it in. First-run wizard on the OLED: **Wi-Fi SSID**, **Wi-Fi password**, pi
 
 The gadget just **sat there**: cryptic counters, mode toggles I did not ask for, a **clock that lied** — wrong wall time, daylight saving ignored. I am an **engineer** shipping AI test infrastructure and real deliverables, not a desk-toy babysitter. It collected dust while I worked.
 
-Then the question arrived, quietly and insistently: *what is it sending, and to whom?* I did **not** start with a screwdriver. I started on the **network** — same LAN, watch the wire, save pcaps, replay with scripts. Only after traffic proved the story did I crack the enclosure and plug in **USB**. The forensic timeline is `Part 2`_.
+Then the question arrived, quietly and insistently: *what is it sending, and to whom?* I did **not** start with a screwdriver. I started on the **network** — same LAN, watch the wire, save pcaps, replay with scripts. Only after traffic proved the story did I crack the enclosure and plug in **USB**. The forensic timeline is `Part 2 — Forensic Specimen`_.
 
 The corporate pitch on their product website — when I finally read it — sounded almost empathetic:
 
@@ -205,11 +199,11 @@ So I stopped being a passive **user** and became a **forensic investigator** —
 Part 1: Threat Model — Law, Borders, and Whose Desk Is This?
 =============================================================
 
-Before I touch esptool, the legal and moral premise was rotten. (GDPR/ZZPL detail: `Part 0.5`_.)
+Before I touch esptool, the legal and moral premise was rotten. (GDPR/ZZPL detail: `Part 0.5 — Power Strip Lecture`_.)
 
 The gadget micro-managed **physical presence** — seat-time, not deliverables.
 
-In short: **no lawful basis, no security, no erasure** — complaint-ready under **Poverenik** or any EU DPA. The legal thread and the corporate reply are in `Part 0.5`_.
+In short: **no lawful basis, no security, no erasure** — complaint-ready under **Poverenik** or any EU DPA. The legal thread and the corporate reply are in `Part 0.5 — Power Strip Lecture`_.
 
 
 .. _Part 2 — Forensic Specimen:
@@ -217,7 +211,7 @@ In short: **no lawful basis, no security, no erasure** — complaint-ready under
 Part 2: Forensic Specimen — Reading the Flash Like It's 1995
 =============================================================
 
-*Technical deep dive from here through `Part 11`_ — narrative resumes in the Conclusion.*
+*Technical deep dive from here through* `Part 11 — TinyML`_ *— narrative resumes in the Conclusion.*
 
 **Order of battle:** LAN traffic and HTTP replay **before** opening the case. USB and flash come after the network tells you where to look.
 
@@ -1115,7 +1109,7 @@ Debug: ``gestures.html`` — live dist bar, zone overlay, hold countdown. MQTT `
 Part 11: Honest TinyML — Not the Medium Article
 ===============================================
 
-(Vendor «edge AI» marketing vs measured reality: `Part 0.5`_ pull-quote.)
+(Vendor «edge AI» marketing vs measured reality: `Part 0.5 — Power Strip Lecture`_ pull-quote.)
 
 I added TinyML (firmware **0.6.0**, ``feat/tinyml``) because **rules-only hit walls after liberation**:
 
